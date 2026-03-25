@@ -4,12 +4,13 @@ import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { WORD_LISTS, type WordListLevel } from './src/data/wordLists';
+import { WORD_LISTS } from './src/data/wordLists';
 import {
   Alert,
   Animated,
   BackHandler,
   Easing,
+  Image,
   Platform,
   Pressable,
   SafeAreaView,
@@ -22,7 +23,7 @@ import {
 
 type Article = 'der' | 'die' | 'das';
 type LevelId = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
-type Screen = 'home' | 'levels' | 'game' | 'results' | 'stats' | 'settings' | 'wordListLevels' | 'wordList';
+type Screen = 'home' | 'levels' | 'game' | 'results' | 'stats' | 'settings' | 'wordList';
 type Language = 'tr' | 'en';
 
 type WordSeed = {
@@ -40,6 +41,8 @@ type Settings = {
   vibrationEnabled: boolean;
   language: Language;
 };
+
+type WordListMode = 'menu' | 'letters' | 'articles';
 
 type AppStats = {
   totalRounds: number;
@@ -76,18 +79,40 @@ type FloatingArticleConfig = {
   rotate: string;
 };
 
+type WordListItem = {
+  article: Article;
+  word: string;
+  level: LevelId;
+};
+
+type ConfettiSeed = {
+  dx: number;
+  dy: number;
+  rotate: string;
+  color: string;
+};
+
+type GradientButtonVariant = 'gold' | 'blue' | 'berry' | 'teal' | 'slate';
+
 const STORAGE_KEY = 'derdiedas.levels.v4';
 const ROUND_LENGTH = 10;
 const STARTING_LIVES = 3;
 const LEVEL_POOL_SIZE = 500;
-const ANSWER_DELAY_MS = 850;
+const ANSWER_DELAY_MS = 1850;
 const ARTICLES: Article[] = ['der', 'die', 'das'];
 const LEVELS: LevelId[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+const WORDS_PER_PAGE = 100;
 
 const ARTICLE_COLORS: Record<Article, string> = {
   der: '#3498db',
   die: '#ff5b8a',
   das: '#2ecc71',
+};
+
+const ARTICLE_CARD_GRADIENTS: Record<Article, [string, string, string]> = {
+  der: ['#7fbfff', '#3478f6', '#1d4ed8'],
+  die: ['#ff8db2', '#e94b7d', '#be185d'],
+  das: ['#6fdf9c', '#22c55e', '#15803d'],
 };
 
 const LEVEL_META: Record<Language, Record<LevelId, { subtitle: string }>> = {
@@ -118,6 +143,17 @@ const LEVEL_GRADIENTS: Record<LevelId, { colors: [string, string, string]; textC
   C2: { colors: ['#5C5C5C', '#333333', '#212121'], textColor: '#ffffff', metaColor: '#d7d7d7' },
 };
 
+const BUTTON_GRADIENTS: Record<
+  GradientButtonVariant,
+  { colors: [string, string, string]; textColor: string }
+> = {
+  gold: { colors: ['#ffe066', '#ff8c42', '#d7263d'], textColor: '#ffffff' },
+  blue: { colors: ['#5da8ff', '#3478f6', '#2451d1'], textColor: '#ffffff' },
+  berry: { colors: ['#ff7aa2', '#e94b7d', '#c92f6a'], textColor: '#ffffff' },
+  teal: { colors: ['#4cd6c9', '#14b8a6', '#0f8f88'], textColor: '#ffffff' },
+  slate: { colors: ['#7d8797', '#4b5563', '#1f2937'], textColor: '#ffffff' },
+};
+
 const COPY = {
   tr: {
     heroEyebrow: 'Seviye bazlı mini oyun',
@@ -125,12 +161,20 @@ const COPY = {
     start: 'BAŞLA',
     statistics: 'İSTATİSTİKLER',
     wordList: 'KELİME LİSTESİ',
+    sortByLetter: 'HARFE GÖRE SIRALA',
+    sortByArticle: 'ARTİKELE GÖRE SIRALA',
+    chooseLetter: 'Harf seç',
+    chooseArticle: 'Artikel seç',
+    backToWordList: 'KELİME LİSTESİNE DÖN',
     settings: 'AYARLAR',
     exit: 'ÇIKIŞ',
     chooseLevel: 'Dil seviyesi seç',
-    chooseWordListLevel: 'Kelime listesi seviyesi seç',
     poolLabel: '500 kelime havuzu',
+    totalWords: '3000 kelime',
     home: 'ANA MENÜ',
+    page: 'Sayfa',
+    previous: 'ÖNCEKİ',
+    next: 'SONRAKİ',
     level: 'Seviye',
     progress: 'İlerleme',
     score: 'Skor',
@@ -170,7 +214,7 @@ const COPY = {
     on: 'Açık',
     off: 'Kapalı',
     settingsHint: 'Sesleri ve uygulama dilini buradan yönetebilirsin.',
-    wordListHint: 'Seçtiğin seviyedeki kelimeler alfabetik sırayla listelenir.',
+    wordListHint: '3000 kelime alfabetik sırayla 100’erli sayfalar halinde listelenir.',
   },
   en: {
     heroEyebrow: 'Level-based mini game',
@@ -178,12 +222,20 @@ const COPY = {
     start: 'START',
     statistics: 'STATISTICS',
     wordList: 'WORD LIST',
+    sortByLetter: 'SORT BY LETTER',
+    sortByArticle: 'SORT BY ARTICLE',
+    chooseLetter: 'Choose a letter',
+    chooseArticle: 'Choose an article',
+    backToWordList: 'BACK TO WORD LIST',
     settings: 'SETTINGS',
     exit: 'EXIT',
     chooseLevel: 'Choose a level',
-    chooseWordListLevel: 'Choose a word list level',
     poolLabel: '500-word pool',
+    totalWords: '3000 words',
     home: 'HOME',
+    page: 'Page',
+    previous: 'PREVIOUS',
+    next: 'NEXT',
     level: 'Level',
     progress: 'Progress',
     score: 'Score',
@@ -223,21 +275,25 @@ const COPY = {
     on: 'On',
     off: 'Off',
     settingsHint: 'Manage sounds and app language here.',
-    wordListHint: 'Words are listed alphabetically for the selected level.',
+    wordListHint: 'All 3000 words are listed alphabetically in pages of 100.',
   },
 } as const;
 
-const CONFETTI_PIECES = [
-  { x: -110, rotate: '-30deg', color: '#ff6b6b' },
-  { x: -80, rotate: '20deg', color: '#feca57' },
-  { x: -55, rotate: '-15deg', color: '#48dbfb' },
-  { x: -25, rotate: '35deg', color: '#1dd1a1' },
-  { x: 0, rotate: '-10deg', color: '#5f27cd' },
-  { x: 25, rotate: '15deg', color: '#ff9ff3' },
-  { x: 50, rotate: '-25deg', color: '#54a0ff' },
-  { x: 80, rotate: '30deg', color: '#00d2d3' },
-  { x: 110, rotate: '-20deg', color: '#ff9f43' },
-];
+const CONFETTI_COLORS = ['#ff6b6b', '#ffd166', '#f368e0', '#48dbfb', '#10ac84', '#ff9f43', '#54a0ff', '#5f27cd', '#00d2d3', '#ee5253'];
+
+const buildConfettiSeeds = (count = 24): ConfettiSeed[] =>
+  Array.from({ length: count }, (_, index) => {
+    const baseAngle = (Math.PI * 2 * index) / count;
+    const randomOffset = (Math.random() - 0.5) * 0.8;
+    const angle = baseAngle + randomOffset;
+    const distance = 110 + Math.random() * 120;
+    return {
+      dx: Math.cos(angle) * distance,
+      dy: Math.sin(angle) * distance,
+      rotate: `${Math.round((Math.random() - 0.5) * 220)}deg`,
+      color: CONFETTI_COLORS[index % CONFETTI_COLORS.length],
+    };
+  });
 
 const WORD_SEEDS: WordSeed[] = [
   { id: 'a1-table', word: 'Tisch', article: 'der', translation: { tr: 'masa', en: 'table' }, level: 'A1' },
@@ -352,20 +408,22 @@ const shuffle = <T,>(items: T[]) => {
   return copy;
 };
 
+const WORD_SEED_TRANSLATIONS = new Map(
+  WORD_SEEDS.map((word) => [`${word.level}-${word.article}-${word.word}`, word.translation] as const),
+);
+
 const buildLevelPool = (level: LevelId) => {
-  const seeds = WORD_SEEDS.filter((word) => word.level === level);
-  const expanded: WordSeed[] = [];
-  let cycle = 0;
-  while (expanded.length < LEVEL_POOL_SIZE) {
-    expanded.push(
-      ...shuffle(seeds).map((seed) => ({
-        ...seed,
-        id: `${seed.id}-${cycle}`,
-      })),
-    );
-    cycle += 1;
-  }
-  return expanded.slice(0, LEVEL_POOL_SIZE);
+  return WORD_LISTS[level].slice(0, LEVEL_POOL_SIZE).map((item, index) => ({
+    id: `${level}-${item.article}-${item.word}-${index}`,
+    word: item.word,
+    article: item.article,
+    level,
+    translation:
+      WORD_SEED_TRANSLATIONS.get(`${level}-${item.article}-${item.word}`) ?? {
+        tr: '',
+        en: '',
+      },
+  }));
 };
 
 const LEVEL_POOLS: Record<LevelId, WordSeed[]> = {
@@ -377,7 +435,26 @@ const LEVEL_POOLS: Record<LevelId, WordSeed[]> = {
   C2: buildLevelPool('C2'),
 };
 
-const buildRound = (level: LevelId) => shuffle(LEVEL_POOLS[level]).slice(0, ROUND_LENGTH);
+const buildRound = (level: LevelId) => {
+  const uniqueRound: WordSeed[] = [];
+  const seenWords = new Set<string>();
+
+  for (const item of shuffle(LEVEL_POOLS[level])) {
+    const key = `${item.article}-${item.word}`;
+    if (seenWords.has(key)) {
+      continue;
+    }
+
+    seenWords.add(key);
+    uniqueRound.push(item);
+
+    if (uniqueRound.length === ROUND_LENGTH) {
+      break;
+    }
+  }
+
+  return uniqueRound;
+};
 
 function FloatingArticlesBackground() {
   const animatedValues = useRef(
@@ -477,13 +554,157 @@ function FloatingArticlesBackground() {
   );
 }
 
+function GradientButton({
+  label,
+  onPress,
+  variant = 'blue',
+  small = false,
+  square = false,
+  animated = false,
+}: {
+  label: string;
+  onPress: () => void;
+  variant?: GradientButtonVariant;
+  small?: boolean;
+  square?: boolean;
+  animated?: boolean;
+}) {
+  const theme = BUTTON_GRADIENTS[variant];
+  const gradientShift = useRef(new Animated.Value(0)).current;
+  const directionRef = useRef(Math.random() > 0.5 ? 1 : -1);
+
+  useEffect(() => {
+    if (!animated) {
+      return;
+    }
+
+    const loop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(gradientShift, {
+          toValue: 1,
+          duration: 2600,
+          easing: Easing.linear,
+          useNativeDriver: true,
+        }),
+        Animated.timing(gradientShift, {
+          toValue: 0,
+          duration: 2600,
+          easing: Easing.linear,
+          useNativeDriver: true,
+        }),
+      ]),
+    );
+
+    loop.start();
+    return () => loop.stop();
+  }, [animated, gradientShift]);
+
+  const animatedTranslate = gradientShift.interpolate({
+    inputRange: [0, 1],
+    outputRange:
+      directionRef.current === 1
+        ? [-120, 0]
+        : [0, -120],
+  });
+
+  return (
+    <Pressable
+      style={[styles.gradientButtonShell, small && styles.gradientButtonShellSmall, square && styles.gradientButtonShellSquare]}
+      onPress={onPress}
+    >
+      {animated ? (
+        <View style={[styles.gradientButtonFill, styles.gradientButtonAnimatedWrap, small && styles.gradientButtonFillSmall, square && styles.gradientButtonFillSquare]}>
+          <Animated.View
+            style={[
+              styles.gradientButtonAnimatedTrack,
+              { transform: [{ translateX: animatedTranslate }] },
+            ]}
+          >
+            <LinearGradient
+              colors={[theme.colors[0], theme.colors[1], theme.colors[2], theme.colors[1], theme.colors[0]]}
+              start={{ x: 0, y: 0.5 }}
+              end={{ x: 1, y: 0.5 }}
+              style={styles.gradientButtonAnimatedFill}
+            />
+          </Animated.View>
+          <Text
+            style={[
+              styles.gradientButtonText,
+              styles.gradientButtonTextOverlay,
+              { color: theme.textColor },
+              small && styles.gradientButtonTextSmall,
+              square && styles.gradientButtonTextSquare,
+            ]}
+          >
+            {label}
+          </Text>
+        </View>
+      ) : (
+        <LinearGradient
+          colors={theme.colors}
+          start={{ x: 0, y: 0.5 }}
+          end={{ x: 1, y: 0.5 }}
+          style={[styles.gradientButtonFill, small && styles.gradientButtonFillSmall, square && styles.gradientButtonFillSquare]}
+        >
+          <Text
+            style={[
+              styles.gradientButtonText,
+              { color: theme.textColor },
+              small && styles.gradientButtonTextSmall,
+              square && styles.gradientButtonTextSquare,
+            ]}
+          >
+            {label}
+          </Text>
+        </LinearGradient>
+      )}
+    </Pressable>
+  );
+}
+
+function RotatingWordBadge({ label }: { label: string }) {
+  const spin = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const loop = Animated.loop(
+      Animated.timing(spin, {
+        toValue: 1,
+        duration: 5000,
+        easing: Easing.linear,
+        useNativeDriver: true,
+      }),
+    );
+
+    loop.start();
+    return () => loop.stop();
+  }, [spin]);
+
+  const rotate = spin.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
+  });
+
+  return (
+    <View style={styles.wordBadgeWrap}>
+      <Animated.View style={[styles.wordBadgeStar, { transform: [{ rotate }] }]}>
+        <Text style={styles.wordBadgeStarText}>✷</Text>
+      </Animated.View>
+      <Text style={styles.wordBadgeLabelTop}>{label.split(' ')[0]}</Text>
+      <Text style={styles.wordBadgeLabelBottom}>{label.split(' ').slice(1).join(' ')}</Text>
+    </View>
+  );
+}
+
 export default function App() {
   const [screen, setScreen] = useState<Screen>('home');
   const [isReady, setIsReady] = useState(false);
   const [stats, setStats] = useState<AppStats>(createEmptyStats);
   const [settings, setSettings] = useState<Settings>(defaultSettings);
   const [selectedLevel, setSelectedLevel] = useState<LevelId>('A1');
-  const [selectedWordListLevel, setSelectedWordListLevel] = useState<WordListLevel>('A1');
+  const [wordListPage, setWordListPage] = useState(0);
+  const [wordListMode, setWordListMode] = useState<WordListMode>('menu');
+  const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
+  const [selectedArticleFilter, setSelectedArticleFilter] = useState<Article | null>(null);
   const [currentRound, setCurrentRound] = useState<WordSeed[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -495,6 +716,7 @@ export default function App() {
   const [answerState, setAnswerState] = useState<{ selected: Article; correct: boolean } | null>(null);
   const [selectedWrongArticle, setSelectedWrongArticle] = useState<Article | null>(null);
   const [lastSummary, setLastSummary] = useState<RoundSummary | null>(null);
+  const [confettiSeeds, setConfettiSeeds] = useState<ConfettiSeed[]>(() => buildConfettiSeeds());
 
   const truePlayer = useMemo(() => createAudioPlayer(require('./assets/sounds/true.wav')), []);
   const falsePlayer = useMemo(() => createAudioPlayer(require('./assets/sounds/false.wav')), []);
@@ -505,7 +727,36 @@ export default function App() {
   const confettiValue = useRef(new Animated.Value(0)).current;
   const currentQuestion = currentRound[currentIndex];
   const t = COPY[settings.language];
-  const currentWordList = WORD_LISTS[selectedWordListLevel];
+  const allWordListItems = useMemo<WordListItem[]>(
+    () =>
+      LEVELS.flatMap((level) =>
+        WORD_LISTS[level].map((item) => ({
+          ...item,
+          level,
+        })),
+      ).sort((a, b) => a.word.localeCompare(b.word, 'de')),
+    [],
+  );
+  const wordListLetters = useMemo(
+    () => Array.from(new Set(allWordListItems.map((item) => item.word.charAt(0).toUpperCase()))).sort((a, b) => a.localeCompare(b, 'de')),
+    [allWordListItems],
+  );
+  const totalWordPages = Math.ceil(allWordListItems.length / WORDS_PER_PAGE);
+  const currentWordListPageItems = useMemo(
+    () => allWordListItems.slice(wordListPage * WORDS_PER_PAGE, (wordListPage + 1) * WORDS_PER_PAGE),
+    [allWordListItems, wordListPage],
+  );
+  const filteredWordListItems = useMemo(() => {
+    if (wordListMode === 'letters' && selectedLetter) {
+      return allWordListItems.filter((item) => item.word.toUpperCase().startsWith(selectedLetter));
+    }
+
+    if (wordListMode === 'articles' && selectedArticleFilter) {
+      return allWordListItems.filter((item) => item.article === selectedArticleFilter);
+    }
+
+    return [];
+  }, [allWordListItems, selectedArticleFilter, selectedLetter, wordListMode]);
 
   const accuracy =
     stats.totalAnswers === 0 ? 0 : Math.round((stats.correctAnswers / stats.totalAnswers) * 100);
@@ -517,18 +768,26 @@ export default function App() {
 
   const confettiPieces = useMemo(
     () =>
-      CONFETTI_PIECES.map((piece, index) => {
+      confettiSeeds.map((piece, index) => {
+        const translateX = confettiValue.interpolate({
+          inputRange: [0, 0.18, 1],
+          outputRange: [0, piece.dx * 0.35, piece.dx],
+        });
         const translateY = confettiValue.interpolate({
-          inputRange: [0, 1],
-          outputRange: [0, 180 + index * 10],
+          inputRange: [0, 0.18, 1],
+          outputRange: [0, piece.dy * 0.35, piece.dy],
         });
         const scale = confettiValue.interpolate({
           inputRange: [0, 0.15, 1],
           outputRange: [0.4, 1, 0.7],
         });
-        return { ...piece, translateY, scale };
+        const spin = confettiValue.interpolate({
+          inputRange: [0, 1],
+          outputRange: ['0deg', piece.rotate],
+        });
+        return { ...piece, translateX, translateY, scale, spin };
       }),
-    [confettiValue],
+    [confettiSeeds, confettiValue],
   );
 
   useEffect(() => {
@@ -613,6 +872,7 @@ export default function App() {
   };
 
   const startConfetti = () => {
+    setConfettiSeeds(buildConfettiSeeds());
     confettiValue.setValue(0);
     Animated.timing(confettiValue, {
       toValue: 1,
@@ -827,32 +1087,37 @@ export default function App() {
 
       {screen === 'home' && (
         <View style={styles.screen}>
-          <View style={styles.heroCard}>
-            <Text style={styles.eyebrow}>{t.heroEyebrow}</Text>
-            <Text style={styles.heroTitle}>Der Die Das</Text>
-            <Text style={styles.heroSubtitle}>{t.heroSubtitle}</Text>
+          <View style={styles.logoWrap}>
+            <Image
+              source={require('./assets/logo/logo.png')}
+              style={styles.homeLogo}
+              resizeMode="contain"
+            />
           </View>
 
-          <View style={styles.menuColumn}>
-            <Pressable style={styles.primaryButton} onPress={() => handleButtonPress(() => setScreen('levels'))}>
-              <Text style={styles.primaryButtonText}>{t.start}</Text>
-            </Pressable>
+          <View style={styles.homeStartWrap}>
+            <View style={styles.homeStartButton}>
+              <GradientButton animated label={t.start} variant="gold" onPress={() => handleButtonPress(() => setScreen('levels'))} />
+            </View>
+          </View>
 
-            <Pressable style={styles.secondaryButton} onPress={() => handleButtonPress(() => setScreen('stats'))}>
-              <Text style={styles.secondaryButtonText}>{t.statistics}</Text>
-            </Pressable>
-
-            <Pressable style={styles.secondaryButton} onPress={() => handleButtonPress(() => setScreen('wordListLevels'))}>
-              <Text style={styles.secondaryButtonText}>{t.wordList}</Text>
-            </Pressable>
-
-            <Pressable style={styles.secondaryButton} onPress={() => handleButtonPress(() => setScreen('settings'))}>
-              <Text style={styles.secondaryButtonText}>{t.settings}</Text>
-            </Pressable>
-
-            <Pressable style={styles.secondaryButton} onPress={() => handleButtonPress(handleExit)}>
-              <Text style={styles.secondaryButtonText}>{t.exit}</Text>
-            </Pressable>
+          <View style={styles.homeMenuGrid}>
+            <GradientButton square label={t.statistics} variant="blue" onPress={() => handleButtonPress(() => setScreen('stats'))} />
+            <GradientButton
+              square
+              label={t.wordList}
+              variant="teal"
+              onPress={() =>
+                handleButtonPress(() => {
+                  setWordListMode('menu');
+                  setSelectedLetter(null);
+                  setSelectedArticleFilter(null);
+                  setScreen('wordList');
+                })
+              }
+            />
+            <GradientButton square label={t.settings} variant="berry" onPress={() => handleButtonPress(() => setScreen('settings'))} />
+            <GradientButton square label={t.exit} variant="slate" onPress={() => handleButtonPress(handleExit)} />
           </View>
         </View>
       )}
@@ -860,7 +1125,10 @@ export default function App() {
       {screen === 'levels' && (
         <View style={styles.levelsScreen}>
           <ScrollView contentContainerStyle={styles.levelsScrollContent}>
-            <Text style={styles.sectionTitle}>{t.chooseLevel}</Text>
+            <View style={styles.levelHeaderRow}>
+              <Text style={styles.sectionTitle}>{t.chooseLevel}</Text>
+              <RotatingWordBadge label={t.totalWords} />
+            </View>
 
             {LEVELS.map((level) => (
               <Pressable key={level} style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(level))}>
@@ -876,118 +1144,195 @@ export default function App() {
                       {LEVEL_META[settings.language][level].subtitle}
                     </Text>
                   </View>
-                  <Text style={[styles.levelMeta, { color: LEVEL_GRADIENTS[level].metaColor }]}>
-                    {t.poolLabel}
-                  </Text>
                 </LinearGradient>
               </Pressable>
             ))}
 
-            <Pressable style={styles.secondaryButton} onPress={() => handleButtonPress(() => setScreen('home'))}>
-              <Text style={styles.secondaryButtonText}>{t.home}</Text>
-            </Pressable>
-          </ScrollView>
-        </View>
-      )}
-
-      {screen === 'wordListLevels' && (
-        <View style={styles.levelsScreen}>
-          <ScrollView contentContainerStyle={styles.levelsScrollContent}>
-            <Text style={styles.sectionTitle}>{t.chooseWordListLevel}</Text>
-
-            {LEVELS.map((level) => (
-              <Pressable
-                key={`word-list-${level}`}
-                style={styles.levelCard}
-                onPress={() =>
-                  handleButtonPress(() => {
-                    setSelectedWordListLevel(level);
-                    setScreen('wordList');
-                  })
-                }
-              >
-                <LinearGradient
-                  colors={LEVEL_GRADIENTS[level].colors}
-                  start={{ x: 0, y: 0.5 }}
-                  end={{ x: 1, y: 0.5 }}
-                  style={styles.levelGradient}
-                >
-                  <View>
-                    <Text style={[styles.levelTitle, { color: LEVEL_GRADIENTS[level].textColor }]}>{level}</Text>
-                    <Text style={[styles.levelSubtitle, { color: LEVEL_GRADIENTS[level].textColor }]}>
-                      {LEVEL_META[settings.language][level].subtitle}
-                    </Text>
-                  </View>
-                  <Text style={[styles.levelMeta, { color: LEVEL_GRADIENTS[level].metaColor }]}>
-                    {t.wordList}
-                  </Text>
-                </LinearGradient>
-              </Pressable>
-            ))}
-
-            <Pressable style={styles.secondaryButton} onPress={() => handleButtonPress(() => setScreen('home'))}>
-              <Text style={styles.secondaryButtonText}>{t.home}</Text>
-            </Pressable>
+            <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
           </ScrollView>
         </View>
       )}
 
       {screen === 'wordList' && (
-        <ScrollView contentContainerStyle={styles.scrollContent}>
-          <View style={styles.heroCard}>
-            <Text style={styles.eyebrow}>{t.wordList}</Text>
-            <Text style={styles.heroTitle}>{selectedWordListLevel}</Text>
-            <Text style={styles.heroSubtitle}>{t.wordListHint}</Text>
+        <ScrollView
+          bounces={false}
+          alwaysBounceVertical={false}
+          overScrollMode="never"
+          contentContainerStyle={styles.wordListScrollContent}
+        >
+          <View style={styles.wordListTopActions}>
+            {wordListMode !== 'menu' && (
+              <GradientButton
+                label={t.back}
+                variant="blue"
+                onPress={() =>
+                  handleButtonPress(() => {
+                    if (wordListMode === 'letters' && selectedLetter) {
+                      setSelectedLetter(null);
+                      return;
+                    }
+
+                    if (wordListMode === 'articles' && selectedArticleFilter) {
+                      setSelectedArticleFilter(null);
+                      return;
+                    }
+
+                    setWordListMode('menu');
+                  })
+                }
+              />
+            )}
+            <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
           </View>
 
-          <View style={styles.wordGrid}>
-            {currentWordList.map((item, index) => (
-              <View key={`${item.article}-${item.word}-${index}`} style={styles.wordCard}>
-                <Text style={styles.wordCardArticle}>{item.article}</Text>
-                <Text style={styles.wordCardWord}>{item.word}</Text>
+          {wordListMode === 'menu' && (
+            <View style={styles.wordListModeGrid}>
+              <GradientButton square label={t.sortByLetter} variant="blue" onPress={() => handleButtonPress(() => setWordListMode('letters'))} />
+              <GradientButton square label={t.sortByArticle} variant="berry" onPress={() => handleButtonPress(() => setWordListMode('articles'))} />
+            </View>
+          )}
+
+          {wordListMode === 'letters' && !selectedLetter && (
+            <>
+              <Text style={styles.sectionTitle}>{t.chooseLetter}</Text>
+              <View style={styles.wordFilterGrid}>
+                {wordListLetters.map((letter) => (
+                  <Pressable key={letter} style={styles.wordFilterCardShell} onPress={() => handleButtonPress(() => setSelectedLetter(letter))}>
+                    <LinearGradient colors={BUTTON_GRADIENTS.blue.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.wordFilterCard}>
+                      <Text style={styles.wordFilterCardText}>{letter}</Text>
+                    </LinearGradient>
+                  </Pressable>
+                ))}
               </View>
-            ))}
-          </View>
+            </>
+          )}
 
-          <Pressable style={styles.secondaryButton} onPress={() => handleButtonPress(() => setScreen('wordListLevels'))}>
-            <Text style={styles.secondaryButtonText}>{t.levels}</Text>
-          </Pressable>
+          {wordListMode === 'articles' && !selectedArticleFilter && (
+            <>
+              <Text style={styles.sectionTitle}>{t.chooseArticle}</Text>
+              <View style={styles.wordFilterGrid}>
+                {ARTICLES.map((article) => (
+                  <Pressable key={article} style={styles.wordFilterCardShell} onPress={() => handleButtonPress(() => setSelectedArticleFilter(article))}>
+                    <LinearGradient colors={ARTICLE_CARD_GRADIENTS[article]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.wordFilterCard}>
+                      <Text style={styles.wordFilterCardText}>{article}</Text>
+                    </LinearGradient>
+                  </Pressable>
+                ))}
+              </View>
+            </>
+          )}
 
-          <Pressable style={styles.secondaryButton} onPress={() => handleButtonPress(() => setScreen('home'))}>
-            <Text style={styles.secondaryButtonText}>{t.home}</Text>
-          </Pressable>
+          {filteredWordListItems.length > 0 && (
+            <>
+              <LinearGradient
+                colors={BUTTON_GRADIENTS.slate.colors}
+                start={{ x: 0, y: 0.5 }}
+                end={{ x: 1, y: 0.5 }}
+                style={styles.wordListPageBadge}
+              >
+                <Text style={styles.wordListPageText}>
+                  {selectedLetter ?? selectedArticleFilter} • {filteredWordListItems.length}
+                </Text>
+              </LinearGradient>
+
+              <View style={styles.wordGrid}>
+                {filteredWordListItems.map((item, index) => (
+                  <LinearGradient
+                    key={`${item.level}-${item.article}-${item.word}-${index}`}
+                    colors={ARTICLE_CARD_GRADIENTS[item.article]}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                    style={[styles.wordCard, { borderColor: `${ARTICLE_COLORS[item.article]}88` }]}
+                  >
+                    <Text style={styles.wordCardLevelText}>{item.level}</Text>
+                    <Text style={styles.wordCardArticle}>{item.article}</Text>
+                    <Text style={styles.wordCardWord}>{item.word}</Text>
+                  </LinearGradient>
+                ))}
+              </View>
+            </>
+          )}
+
+          {false && <View style={styles.wordGrid}>
+            {currentWordListPageItems.map((item, index) => {
+              return (
+                <LinearGradient
+                  key={`${item.level}-${item.article}-${item.word}-${index}`}
+                  colors={ARTICLE_CARD_GRADIENTS[item.article]}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 1 }}
+                  style={[styles.wordCard, { borderColor: `${ARTICLE_COLORS[item.article]}88` }]}
+                >
+                  <Text style={styles.wordCardLevelText}>{item.level}</Text>
+                  <Text style={styles.wordCardArticle}>{item.article}</Text>
+                  <Text style={styles.wordCardWord}>{item.word}</Text>
+                </LinearGradient>
+              );
+            })}
+            <Pressable style={styles.wordCardBack} onPress={() => handleButtonPress(() => setScreen('home'))}>
+              <Text style={styles.backArrowText}>←</Text>
+            </Pressable>
+          </View>}
+
+          {false && <View style={styles.wordListPagination}>
+            <GradientButton
+              small
+              label={t.previous}
+              variant="blue"
+              onPress={() => handleButtonPress(() => setWordListPage((prev) => Math.max(prev - 1, 0)))}
+            />
+            <LinearGradient
+              colors={BUTTON_GRADIENTS.slate.colors}
+              start={{ x: 0, y: 0.5 }}
+              end={{ x: 1, y: 0.5 }}
+              style={styles.wordListPageBadge}
+            >
+              <Text style={styles.wordListPageText}>
+                {t.page} {wordListPage + 1}/{totalWordPages}
+              </Text>
+            </LinearGradient>
+            <GradientButton
+              small
+              label={t.next}
+              variant="teal"
+              onPress={() => handleButtonPress(() => setWordListPage((prev) => Math.min(prev + 1, totalWordPages - 1)))}
+            />
+          </View>}
         </ScrollView>
       )}
 
       {screen === 'game' && currentQuestion && (
         <View style={styles.screen}>
-          <View style={styles.gameHeaderRow}>
-            <Pressable style={styles.menuSmallButton} onPress={() => handleButtonPress(confirmReturnHome)}>
-              <Text style={styles.menuSmallButtonText}>{t.home}</Text>
-            </Pressable>
+          <View style={styles.gameTopBar}>
+            <GradientButton label={t.home} variant="slate" small onPress={() => handleButtonPress(confirmReturnHome)} />
+          </View>
 
-            <View style={styles.gameMetaBlock}>
-              <Text style={styles.topMetaLabel}>{t.level}</Text>
-              <Text style={styles.topMetaValue}>{selectedLevel}</Text>
+          <View style={styles.gameInfoRow}>
+            <View style={styles.gameInfoCard}>
+              <Text style={styles.gameInfoLabel}>{t.level}</Text>
+              <Text style={styles.gameInfoValue}>{selectedLevel}</Text>
             </View>
 
-            <View style={styles.gameMetaBlock}>
-              <Text style={styles.topMetaLabel}>{t.progress}</Text>
-              <Text style={styles.topMetaValue}>
+            <View style={styles.gameInfoCard}>
+              <Text style={styles.gameInfoLabel}>{t.progress}</Text>
+              <Text style={styles.gameInfoValue}>
                 {currentIndex + 1}/{currentRound.length}
               </Text>
             </View>
           </View>
 
           <View style={styles.gameStatsRow}>
-            <View style={styles.gameStatPill}>
-              <Text style={styles.gameStatText}>{t.score} {score}</Text>
+            <View style={[styles.gameStatCard, styles.gameStatCardBlue]}>
+              <Text style={styles.gameStatLabel}>{t.score}</Text>
+              <Text style={styles.gameStatValue}>{score}</Text>
             </View>
-            <View style={styles.gameStatPill}>
-              <Text style={styles.gameStatText}>{t.streak} {currentStreak}</Text>
+            <View style={[styles.gameStatCard, styles.gameStatCardGold]}>
+              <Text style={styles.gameStatLabel}>{t.streak}</Text>
+              <Text style={styles.gameStatValue}>{currentStreak}</Text>
             </View>
-            <View style={styles.gameStatPill}>
-              <Text style={styles.gameStatText}>{t.lives} {'❤'.repeat(lives)}</Text>
+            <View style={[styles.gameStatCard, styles.gameStatCardRose]}>
+              <Text style={styles.gameStatLabel}>{t.lives}</Text>
+              <Text style={styles.gameStatValue}>{'\u2665'.repeat(lives)}</Text>
             </View>
           </View>
 
@@ -1001,9 +1346,9 @@ export default function App() {
                     {
                       backgroundColor: piece.color,
                       transform: [
-                        { translateX: piece.x },
+                        { translateX: piece.translateX },
                         { translateY: piece.translateY },
-                        { rotate: piece.rotate },
+                        { rotate: piece.spin },
                         { scale: piece.scale },
                       ],
                     },
@@ -1013,24 +1358,26 @@ export default function App() {
             </Animated.View>
 
             <View style={styles.questionCard}>
-              <Text style={styles.translationLabel}>{currentQuestion.translation[settings.language]}</Text>
-              <Text style={styles.wordText}>{currentQuestion.word}</Text>
-              <Text style={styles.helperText}>{t.pickArticle}</Text>
+              {currentQuestion.translation[settings.language] ? (
+                <View style={styles.translationBadge}>
+                  <Text style={styles.translationLabel}>{currentQuestion.translation[settings.language]}</Text>
+                </View>
+              ) : null}
 
               {answerState && (
                 <View
                   style={[
-                    styles.feedbackBox,
-                    answerState.correct ? styles.feedbackCorrect : styles.feedbackWrong,
+                    styles.articleRevealBadge,
+                    { backgroundColor: `${ARTICLE_COLORS[currentQuestion.article]}18`, borderColor: ARTICLE_COLORS[currentQuestion.article] },
                   ]}
                 >
-                  <Text style={styles.feedbackText}>
-                    {answerState.correct
-                      ? t.correctAnswer
-                      : `${t.correctIs} ${currentQuestion.article} ${currentQuestion.word}`}
+                  <Text style={[styles.articleRevealText, { color: ARTICLE_COLORS[currentQuestion.article] }]}>
+                    {currentQuestion.article}
                   </Text>
                 </View>
               )}
+
+              <Text style={styles.wordText}>{currentQuestion.word}</Text>
             </View>
           </View>
 
@@ -1076,17 +1423,9 @@ export default function App() {
             </View>
           </View>
 
-          <Pressable style={styles.primaryButton} onPress={() => handleButtonPress(() => startGame(lastSummary.level))}>
-            <Text style={styles.primaryButtonText}>{t.replayLevel}</Text>
-          </Pressable>
-
-          <Pressable style={styles.secondaryButton} onPress={() => handleButtonPress(() => setScreen('levels'))}>
-            <Text style={styles.secondaryButtonText}>{t.levels}</Text>
-          </Pressable>
-
-          <Pressable style={styles.secondaryButton} onPress={() => handleButtonPress(() => setScreen('home'))}>
-            <Text style={styles.secondaryButtonText}>{t.home}</Text>
-          </Pressable>
+          <GradientButton label={t.replayLevel} variant="gold" onPress={() => handleButtonPress(() => startGame(lastSummary.level))} />
+          <GradientButton label={t.levels} variant="blue" onPress={() => handleButtonPress(() => setScreen('levels'))} />
+          <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
         </ScrollView>
       )}
 
@@ -1126,13 +1465,8 @@ export default function App() {
             })}
           </View>
 
-          <Pressable style={styles.secondaryButton} onPress={() => handleButtonPress(resetProgress)}>
-            <Text style={styles.secondaryButtonText}>{t.resetStats}</Text>
-          </Pressable>
-
-          <Pressable style={styles.secondaryButton} onPress={() => handleButtonPress(() => setScreen('home'))}>
-            <Text style={styles.secondaryButtonText}>{t.home}</Text>
-          </Pressable>
+          <GradientButton label={t.resetStats} variant="berry" onPress={() => handleButtonPress(resetProgress)} />
+          <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
         </ScrollView>
       )}
 
@@ -1153,22 +1487,8 @@ export default function App() {
               <Text style={styles.panelTitleNoMargin}>{t.soundEffects}</Text>
             </View>
             <View style={styles.toggleRow}>
-              <Pressable
-                style={[styles.optionButton, settings.soundEnabled && styles.optionButtonActive]}
-                onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, soundEnabled: true })))}
-              >
-                <Text style={[styles.optionButtonText, settings.soundEnabled && styles.optionButtonTextActive]}>
-                  {t.on}
-                </Text>
-              </Pressable>
-              <Pressable
-                style={[styles.optionButton, !settings.soundEnabled && styles.optionButtonActive]}
-                onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, soundEnabled: false })))}
-              >
-                <Text style={[styles.optionButtonText, !settings.soundEnabled && styles.optionButtonTextActive]}>
-                  {t.off}
-                </Text>
-              </Pressable>
+              <GradientButton label={t.on} variant={settings.soundEnabled ? 'gold' : 'slate'} onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, soundEnabled: true })))} />
+              <GradientButton label={t.off} variant={!settings.soundEnabled ? 'berry' : 'slate'} onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, soundEnabled: false })))} />
             </View>
           </View>
 
@@ -1180,22 +1500,8 @@ export default function App() {
               <Text style={styles.panelTitleNoMargin}>{t.vibration}</Text>
             </View>
             <View style={styles.toggleRow}>
-              <Pressable
-                style={[styles.optionButton, settings.vibrationEnabled && styles.optionButtonActive]}
-                onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, vibrationEnabled: true })))}
-              >
-                <Text style={[styles.optionButtonText, settings.vibrationEnabled && styles.optionButtonTextActive]}>
-                  {t.on}
-                </Text>
-              </Pressable>
-              <Pressable
-                style={[styles.optionButton, !settings.vibrationEnabled && styles.optionButtonActive]}
-                onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, vibrationEnabled: false })))}
-              >
-                <Text style={[styles.optionButtonText, !settings.vibrationEnabled && styles.optionButtonTextActive]}>
-                  {t.off}
-                </Text>
-              </Pressable>
+              <GradientButton label={t.on} variant={settings.vibrationEnabled ? 'teal' : 'slate'} onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, vibrationEnabled: true })))} />
+              <GradientButton label={t.off} variant={!settings.vibrationEnabled ? 'berry' : 'slate'} onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, vibrationEnabled: false })))} />
             </View>
           </View>
 
@@ -1207,28 +1513,12 @@ export default function App() {
               <Text style={styles.panelTitleNoMargin}>{t.language}</Text>
             </View>
             <View style={styles.toggleRow}>
-              <Pressable
-                style={[styles.optionButton, settings.language === 'tr' && styles.optionButtonActive]}
-                onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, language: 'tr' })))}
-              >
-                <Text style={[styles.optionButtonText, settings.language === 'tr' && styles.optionButtonTextActive]}>
-                  {t.turkish}
-                </Text>
-              </Pressable>
-              <Pressable
-                style={[styles.optionButton, settings.language === 'en' && styles.optionButtonActive]}
-                onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, language: 'en' })))}
-              >
-                <Text style={[styles.optionButtonText, settings.language === 'en' && styles.optionButtonTextActive]}>
-                  {t.english}
-                </Text>
-              </Pressable>
+              <GradientButton label={t.turkish} variant={settings.language === 'tr' ? 'teal' : 'slate'} onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, language: 'tr' })))} />
+              <GradientButton label={t.english} variant={settings.language === 'en' ? 'blue' : 'slate'} onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, language: 'en' })))} />
             </View>
           </View>
 
-          <Pressable style={styles.secondaryButton} onPress={() => handleButtonPress(() => setScreen('home'))}>
-            <Text style={styles.secondaryButtonText}>{t.home}</Text>
-          </Pressable>
+          <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
         </ScrollView>
       )}
     </SafeAreaView>
@@ -1254,6 +1544,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 24,
     gap: 16,
+    backgroundColor: 'transparent',
+  },
+  wordListScrollContent: {
+    paddingHorizontal: 20,
+    paddingTop: 24,
+    paddingBottom: 0,
+    gap: 10,
     backgroundColor: 'transparent',
   },
   levelsScreen: {
@@ -1336,10 +1633,92 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
   },
+  logoWrap: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 0,
+    marginBottom: 4,
+  },
+  homeLogo: {
+    width: '100%',
+    height: 284,
+  },
   menuColumn: {
     flex: 1,
     justifyContent: 'center',
     gap: 14,
+  },
+  homeMenuGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 14,
+    alignContent: 'flex-start',
+  },
+  homeStartWrap: {
+    marginBottom: 14,
+  },
+  homeStartButton: {
+    minHeight: 72,
+  },
+  gradientButtonShell: {
+    borderRadius: 22,
+    overflow: 'hidden',
+    shadowColor: '#a89b8a',
+    shadowOpacity: 0.2,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 3,
+  },
+  gradientButtonShellSmall: {
+    minWidth: 118,
+  },
+  gradientButtonShellSquare: {
+    width: '47.7%',
+    aspectRatio: 1,
+  },
+  gradientButtonFill: {
+    paddingVertical: 19,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  gradientButtonAnimatedWrap: {
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  gradientButtonAnimatedTrack: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: '-60%',
+    width: '220%',
+  },
+  gradientButtonAnimatedFill: {
+    width: '100%',
+    height: '100%',
+  },
+  gradientButtonFillSmall: {
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+  },
+  gradientButtonFillSquare: {
+    flex: 1,
+    paddingVertical: 16,
+    paddingHorizontal: 14,
+  },
+  gradientButtonText: {
+    fontSize: 16,
+    fontWeight: '800',
+    textAlign: 'center',
+  },
+  gradientButtonTextOverlay: {
+    zIndex: 1,
+  },
+  gradientButtonTextSmall: {
+    fontSize: 12,
+  },
+  gradientButtonTextSquare: {
+    fontSize: 20,
   },
   primaryButton: {
     borderRadius: 22,
@@ -1377,6 +1756,14 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '800',
   },
+  levelHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+    marginTop: -10,
+    marginBottom: -18,
+  },
   levelCard: {
     borderRadius: 24,
     overflow: 'hidden',
@@ -1406,12 +1793,76 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '700',
   },
-  gameHeaderRow: {
-    flexDirection: 'row',
+  wordBadgeWrap: {
+    width: 132,
+    height: 132,
     alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 18,
-    gap: 10,
+    justifyContent: 'center',
+    marginVertical: -18,
+  },
+  wordBadgeStar: {
+    position: 'absolute',
+    width: 132,
+    height: 132,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#f0b429',
+    shadowOpacity: 0.18,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 2,
+  },
+  wordBadgeStarText: {
+    color: '#f59e0b',
+    fontSize: 106,
+    lineHeight: 108,
+    fontWeight: '800',
+  },
+  wordBadgeLabelTop: {
+    color: '#8a5a00',
+    fontSize: 20,
+    fontWeight: '900',
+    textAlign: 'center',
+    lineHeight: 22,
+  },
+  wordBadgeLabelBottom: {
+    color: '#8a5a00',
+    fontSize: 13,
+    fontWeight: '800',
+    textAlign: 'center',
+    lineHeight: 15,
+  },
+  wordListLevelGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 16,
+  },
+  wordListLevelCard: {
+    width: '47.5%',
+    aspectRatio: 1,
+    borderRadius: 24,
+    overflow: 'hidden',
+    shadowColor: '#d1c1ae',
+    shadowOpacity: 0.18,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 3,
+  },
+  wordListLevelGradient: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 16,
+  },
+  wordListLevelTitle: {
+    fontSize: 34,
+    fontWeight: '800',
+    letterSpacing: 1,
+  },
+  gameTopBar: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginBottom: 12,
   },
   menuSmallButton: {
     borderRadius: 16,
@@ -1426,48 +1877,90 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 12,
   },
-  gameMetaBlock: {
-    alignItems: 'flex-end',
+  gameInfoRow: {
+    flexDirection: 'row',
+    gap: 12,
+    marginBottom: 14,
   },
-  topMetaLabel: {
+  gameInfoCard: {
+    flex: 1,
+    borderRadius: 22,
+    backgroundColor: '#ffffff',
+    borderWidth: 1,
+    borderColor: '#eadcc8',
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    shadowColor: '#d1c1ae',
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 2,
+  },
+  gameInfoLabel: {
     color: '#8b5e34',
-    fontSize: 12,
+    fontSize: 11,
     textTransform: 'uppercase',
-    fontWeight: '700',
-  },
-  topMetaValue: {
-    marginTop: 4,
-    color: '#1f2937',
-    fontSize: 18,
     fontWeight: '800',
+    letterSpacing: 0.7,
+  },
+  gameInfoValue: {
+    marginTop: 6,
+    color: '#111827',
+    fontSize: 24,
+    fontWeight: '900',
   },
   gameStatsRow: {
     flexDirection: 'row',
-    gap: 8,
+    gap: 10,
     marginBottom: 18,
   },
-  gameStatPill: {
+  gameStatCard: {
     flex: 1,
-    borderRadius: 16,
-    paddingVertical: 12,
-    backgroundColor: '#fffaf3',
+    borderRadius: 20,
+    paddingVertical: 14,
+    paddingHorizontal: 12,
     borderWidth: 1,
-    borderColor: '#eadcc8',
     alignItems: 'center',
+    shadowColor: '#d1c1ae',
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 2,
   },
-  gameStatText: {
-    color: '#1f2937',
-    fontWeight: '700',
+  gameStatCardBlue: {
+    backgroundColor: '#eef6ff',
+    borderColor: '#bfdbfe',
+  },
+  gameStatCardGold: {
+    backgroundColor: '#fff7e6',
+    borderColor: '#fde68a',
+  },
+  gameStatCardRose: {
+    backgroundColor: '#fff1f2',
+    borderColor: '#fecdd3',
+  },
+  gameStatLabel: {
+    color: '#6b7280',
+    fontSize: 11,
+    fontWeight: '800',
+    textTransform: 'uppercase',
+    letterSpacing: 0.6,
+  },
+  gameStatValue: {
+    marginTop: 6,
+    color: '#111827',
+    fontSize: 24,
+    fontWeight: '900',
   },
   questionArea: {
     position: 'relative',
   },
   confettiLayer: {
     position: 'absolute',
-    top: -10,
+    top: '50%',
     left: '50%',
     width: 0,
-    height: 250,
+    height: 0,
     zIndex: 2,
   },
   confettiPiece: {
@@ -1487,11 +1980,31 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#eadcc8',
   },
+  translationBadge: {
+    borderRadius: 999,
+    backgroundColor: '#fff7e6',
+    borderWidth: 1,
+    borderColor: '#f5d9a8',
+    paddingHorizontal: 14,
+    paddingVertical: 7,
+  },
   translationLabel: {
     color: '#8b5e34',
-    fontSize: 14,
-    fontWeight: '700',
-    textTransform: 'uppercase',
+    fontSize: 15,
+    fontWeight: '800',
+    textAlign: 'center',
+  },
+  articleRevealBadge: {
+    marginTop: 12,
+    borderRadius: 999,
+    paddingHorizontal: 18,
+    paddingVertical: 7,
+    borderWidth: 1,
+  },
+  articleRevealText: {
+    fontSize: 22,
+    fontWeight: '900',
+    textTransform: 'lowercase',
   },
   wordText: {
     marginTop: 12,
@@ -1499,27 +2012,6 @@ const styles = StyleSheet.create({
     fontSize: 42,
     fontWeight: '800',
     textAlign: 'center',
-  },
-  helperText: {
-    marginTop: 10,
-    color: '#6b7280',
-    fontSize: 16,
-  },
-  feedbackBox: {
-    marginTop: 18,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderRadius: 16,
-  },
-  feedbackCorrect: {
-    backgroundColor: '#dcfce7',
-  },
-  feedbackWrong: {
-    backgroundColor: '#ffe4e6',
-  },
-  feedbackText: {
-    color: '#1f2937',
-    fontWeight: '700',
   },
   answerColumn: {
     gap: 12,
@@ -1545,31 +2037,134 @@ const styles = StyleSheet.create({
   wordGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 8,
+    gap: 10,
+  },
+  wordListModeGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 16,
+  },
+  wordListTopActions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  wordFilterGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 12,
+  },
+  wordFilterCardShell: {
+    width: '23%',
+    aspectRatio: 1,
+    borderRadius: 20,
+    overflow: 'hidden',
+    shadowColor: '#cbd5e1',
+    shadowOpacity: 0.18,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 2,
+  },
+  wordFilterCard: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+  },
+  wordFilterCardText: {
+    color: '#ffffff',
+    fontSize: 22,
+    fontWeight: '900',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+  },
+  wordListPagination: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 10,
+  },
+  wordListPageBadge: {
+    flex: 1,
+    minHeight: 54,
+    borderRadius: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 14,
+    shadowColor: '#94a3b8',
+    shadowOpacity: 0.18,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 2,
+  },
+  wordListPageText: {
+    color: '#ffffff',
+    fontSize: 15,
+    fontWeight: '800',
+    textAlign: 'center',
   },
   wordCard: {
-    width: '18.4%',
+    width: '23%',
     aspectRatio: 1,
-    borderRadius: 14,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#eadcc8',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+    overflow: 'hidden',
+    shadowColor: '#cbd5e1',
+    shadowOpacity: 0.18,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 2,
+  },
+  wordCardBack: {
+    width: '23%',
+    aspectRatio: 1,
+    borderRadius: 16,
     backgroundColor: '#ffffff',
     borderWidth: 1,
     borderColor: '#eadcc8',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 6,
+    shadowColor: '#d1c1ae',
+    shadowOpacity: 0.12,
+    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 2,
+  },
+  wordCardLevelText: {
+    color: '#ffffff',
+    fontSize: 10,
+    fontWeight: '900',
+    marginBottom: 6,
+    opacity: 0.95,
   },
   wordCardArticle: {
-    color: '#a16207',
-    fontSize: 12,
-    fontWeight: '800',
+    fontSize: 14,
+    fontWeight: '900',
     textTransform: 'lowercase',
+    color: '#ffffff',
+    textShadowColor: 'rgba(0, 0, 0, 0.12)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
   },
   wordCardWord: {
     marginTop: 4,
-    color: '#1f2937',
-    fontSize: 11,
-    fontWeight: '700',
+    color: '#ffffff',
+    fontSize: 12,
+    fontWeight: '800',
     textAlign: 'center',
+    textShadowColor: 'rgba(0, 0, 0, 0.14)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+  },
+  backArrowText: {
+    color: '#1f2937',
+    fontSize: 28,
+    fontWeight: '800',
+    lineHeight: 30,
   },
   statGrid: {
     flexDirection: 'row',

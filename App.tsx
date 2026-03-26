@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+﻿import AsyncStorage from '@react-native-async-storage/async-storage';
 import { BlurView } from 'expo-blur';
 import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -23,7 +23,7 @@ import {
 
 type Article = 'der' | 'die' | 'das';
 type LevelId = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
-type Screen = 'home' | 'levels' | 'game' | 'results' | 'stats' | 'settings' | 'wordList';
+type Screen = 'home' | 'levels' | 'gameModes' | 'game' | 'results' | 'stats' | 'settings' | 'wordList';
 type Language = 'tr' | 'en';
 
 type WordSeed = {
@@ -34,6 +34,8 @@ type WordSeed = {
   level: LevelId;
 };
 
+type GameMode = 'classic' | 'timed' | 'one_life' | 'review';
+
 type LevelStats = Record<LevelId, { correct: number; wrong: number }>;
 
 type Settings = {
@@ -42,7 +44,7 @@ type Settings = {
   language: Language;
 };
 
-type WordListMode = 'menu' | 'letters' | 'articles';
+type WordListMode = 'menu' | 'letters' | 'articles' | 'levels';
 
 type AppStats = {
   totalRounds: number;
@@ -57,6 +59,7 @@ type AppStats = {
 type AppData = {
   stats: AppStats;
   settings: Settings;
+  mistakes?: WordSeed[];
 };
 
 type RoundSummary = {
@@ -65,6 +68,7 @@ type RoundSummary = {
   wrong: number;
   bestStreak: number;
   level: LevelId;
+  mode: GameMode;
 };
 
 type FloatingArticleConfig = {
@@ -102,6 +106,7 @@ const ANSWER_DELAY_MS = 1850;
 const ARTICLES: Article[] = ['der', 'die', 'das'];
 const LEVELS: LevelId[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 const WORDS_PER_PAGE = 100;
+const TIMED_MODE_SECONDS = 60;
 
 const ARTICLE_COLORS: Record<Article, string> = {
   der: '#3498db',
@@ -117,20 +122,20 @@ const ARTICLE_CARD_GRADIENTS: Record<Article, [string, string, string]> = {
 
 const LEVEL_META: Record<Language, Record<LevelId, { subtitle: string }>> = {
   tr: {
-    A1: { subtitle: 'En temel isimler' },
-    A2: { subtitle: 'Günlük hayatta sık geçen kelimeler' },
-    B1: { subtitle: 'Daha geniş kelime hazinesi' },
-    B2: { subtitle: 'Orta-ileri seviye isimler' },
-    C1: { subtitle: 'İleri seviye kavramlar' },
-    C2: { subtitle: 'En ileri seviye isimler' },
+    A1: { subtitle: 'Başlangıç' },
+    A2: { subtitle: 'Temel' },
+    B1: { subtitle: 'Orta' },
+    B2: { subtitle: 'Orta-Üstü' },
+    C1: { subtitle: 'İleri' },
+    C2: { subtitle: 'Anadile yakın' },
   },
   en: {
-    A1: { subtitle: 'Most basic nouns' },
-    A2: { subtitle: 'Common everyday words' },
-    B1: { subtitle: 'Broader vocabulary' },
-    B2: { subtitle: 'Upper-intermediate nouns' },
-    C1: { subtitle: 'Advanced concepts' },
-    C2: { subtitle: 'Near-native level nouns' },
+    A1: { subtitle: 'Beginner' },
+    A2: { subtitle: 'Elementary' },
+    B1: { subtitle: 'Intermediate' },
+    B2: { subtitle: 'Upper-Intermediate' },
+    C1: { subtitle: 'Advanced' },
+    C2: { subtitle: 'Near-Native' },
   },
 };
 
@@ -163,9 +168,24 @@ const COPY = {
     wordList: 'KELİME LİSTESİ',
     sortByLetter: 'HARFE GÖRE SIRALA',
     sortByArticle: 'ARTİKELE GÖRE SIRALA',
+    sortByLevel: 'SEVİYEYE GÖRE SIRALA',
     chooseLetter: 'Harf seç',
     chooseArticle: 'Artikel seç',
+    chooseLevelForWords: 'Seviye seç',
+    chooseGameMode: 'Oyun türü seç',
+    modeClassic: '3 Can 10 Soru',
+    modeClassicHint: 'Klasik mod. 3 canla 10 soruyu bitir.',
+    modeTimed: 'Süreye Karşı',
+    modeTimedHint: '60 saniyede en yüksek skoru yap.',
+    modeOneLife: 'Tek Can',
+    modeOneLifeHint: 'Tek hata hakkın var.',
+    modeReview: 'Tekrar Modu',
+    modeReviewHint: 'Yanlış yaptığın kelimeleri çalış.',
+    time: 'Süre',
+    noReviewWords: 'Bu seviye için tekrar kelimesi henüz yok.',
     backToWordList: 'KELİME LİSTESİNE DÖN',
+    wordSourceTitle: 'Kelime Kaynağı',
+    wordSourceBody: 'Bu uygulamadaki kelime havuzu, Almanca isim listeleri ve CEFR seviye mantığı temel alınarak derlenmiş ve uygulama için düzenlenmiştir.',
     settings: 'AYARLAR',
     exit: 'ÇIKIŞ',
     chooseLevel: 'Dil seviyesi seç',
@@ -224,9 +244,24 @@ const COPY = {
     wordList: 'WORD LIST',
     sortByLetter: 'SORT BY LETTER',
     sortByArticle: 'SORT BY ARTICLE',
+    sortByLevel: 'SORT BY LEVEL',
     chooseLetter: 'Choose a letter',
     chooseArticle: 'Choose an article',
+    chooseLevelForWords: 'Choose a level',
+    chooseGameMode: 'Choose a game mode',
+    modeClassic: '3 Lives 10 Questions',
+    modeClassicHint: 'Classic mode. Finish 10 questions with 3 lives.',
+    modeTimed: 'Time Attack',
+    modeTimedHint: 'Score as much as you can in 60 seconds.',
+    modeOneLife: 'One Life',
+    modeOneLifeHint: 'You only have one mistake chance.',
+    modeReview: 'Review Mode',
+    modeReviewHint: 'Practice the words you got wrong.',
+    time: 'Time',
+    noReviewWords: 'There are no review words for this level yet.',
     backToWordList: 'BACK TO WORD LIST',
+    wordSourceTitle: 'Word Source',
+    wordSourceBody: 'The word pool in this app was compiled from German noun lists and CEFR-style level groupings, then adapted for this app.',
     settings: 'SETTINGS',
     exit: 'EXIT',
     chooseLevel: 'Choose a level',
@@ -305,7 +340,7 @@ const WORD_SEEDS: WordSeed[] = [
   { id: 'a1-key', word: 'Schlüssel', article: 'der', translation: { tr: 'anahtar', en: 'key' }, level: 'A1' },
   { id: 'a1-bag', word: 'Tasche', article: 'die', translation: { tr: 'çanta', en: 'bag' }, level: 'A1' },
   { id: 'a1-phone', word: 'Handy', article: 'das', translation: { tr: 'telefon', en: 'phone' }, level: 'A1' },
-  { id: 'a1-bird', word: 'Vogel', article: 'der', translation: { tr: 'kuş', en: 'bird' }, level: 'A1' },
+  { id: 'a1-bird', word: 'Vogel', article: 'der', translation: { tr: 'kus', en: 'bird' }, level: 'A1' },
   { id: 'a2-window', word: 'Fenster', article: 'das', translation: { tr: 'pencere', en: 'window' }, level: 'A2' },
   { id: 'a2-door', word: 'Tür', article: 'die', translation: { tr: 'kapı', en: 'door' }, level: 'A2' },
   { id: 'a2-mirror', word: 'Spiegel', article: 'der', translation: { tr: 'ayna', en: 'mirror' }, level: 'A2' },
@@ -320,7 +355,7 @@ const WORD_SEEDS: WordSeed[] = [
   { id: 'b1-couch', word: 'Couch', article: 'die', translation: { tr: 'koltuk', en: 'couch' }, level: 'B1' },
   { id: 'b1-sheep', word: 'Schaf', article: 'das', translation: { tr: 'koyun', en: 'sheep' }, level: 'B1' },
   { id: 'b1-lion', word: 'Löwe', article: 'der', translation: { tr: 'aslan', en: 'lion' }, level: 'B1' },
-  { id: 'b1-snake', word: 'Schlange', article: 'die', translation: { tr: 'yılan', en: 'snake' }, level: 'B1' },
+  { id: 'b1-snake', word: 'Schlange', article: 'die', translation: { tr: 'yilan', en: 'snake' }, level: 'B1' },
   { id: 'b1-insect', word: 'Insekt', article: 'das', translation: { tr: 'böcek', en: 'insect' }, level: 'B1' },
   { id: 'b1-rice', word: 'Reis', article: 'der', translation: { tr: 'pirinç', en: 'rice' }, level: 'B1' },
   { id: 'b1-soup', word: 'Suppe', article: 'die', translation: { tr: 'çorba', en: 'soup' }, level: 'B1' },
@@ -333,7 +368,7 @@ const WORD_SEEDS: WordSeed[] = [
   { id: 'b2-freedom', word: 'Freiheit', article: 'die', translation: { tr: 'özgürlük', en: 'freedom' }, level: 'B2' },
   { id: 'b2-office', word: 'Büro', article: 'das', translation: { tr: 'ofis', en: 'office' }, level: 'B2' },
   { id: 'b2-forest', word: 'Wald', article: 'der', translation: { tr: 'orman', en: 'forest' }, level: 'B2' },
-  { id: 'b2-health', word: 'Gesundheit', article: 'die', translation: { tr: 'sağlık', en: 'health' }, level: 'B2' },
+  { id: 'b2-health', word: 'Gesundheit', article: 'die', translation: { tr: 'saglik', en: 'health' }, level: 'B2' },
   { id: 'b2-system', word: 'System', article: 'das', translation: { tr: 'sistem', en: 'system' }, level: 'B2' },
   { id: 'b2-market', word: 'Markt', article: 'der', translation: { tr: 'pazar', en: 'market' }, level: 'B2' },
   { id: 'c1-progress', word: 'Fortschritt', article: 'der', translation: { tr: 'ilerleme', en: 'progress' }, level: 'C1' },
@@ -341,18 +376,18 @@ const WORD_SEEDS: WordSeed[] = [
   { id: 'c1-document', word: 'Dokument', article: 'das', translation: { tr: 'doküman', en: 'document' }, level: 'C1' },
   { id: 'c1-knowledge', word: 'Kenntnis', article: 'die', translation: { tr: 'bilgi birikimi', en: 'knowledge' }, level: 'C1' },
   { id: 'c1-discourse', word: 'Diskurs', article: 'der', translation: { tr: 'söylem', en: 'discourse' }, level: 'C1' },
-  { id: 'c1-behavior', word: 'Verhalten', article: 'das', translation: { tr: 'davranış', en: 'behavior' }, level: 'C1' },
-  { id: 'c1-perception', word: 'Wahrnehmung', article: 'die', translation: { tr: 'algılama', en: 'perception' }, level: 'C1' },
+  { id: 'c1-behavior', word: 'Verhalten', article: 'das', translation: { tr: 'davranis', en: 'behavior' }, level: 'C1' },
+  { id: 'c1-perception', word: 'Wahrnehmung', article: 'die', translation: { tr: 'algilama', en: 'perception' }, level: 'C1' },
   { id: 'c1-viewpoint', word: 'Standpunkt', article: 'der', translation: { tr: 'bakış açısı', en: 'viewpoint' }, level: 'C1' },
   { id: 'c1-method', word: 'Verfahren', article: 'das', translation: { tr: 'yöntem', en: 'method' }, level: 'C1' },
   { id: 'c1-environment', word: 'Umgebung', article: 'die', translation: { tr: 'çevre', en: 'environment' }, level: 'C1' },
-  { id: 'c2-consensus', word: 'Konsens', article: 'der', translation: { tr: 'uzlaşı', en: 'consensus' }, level: 'C2' },
+  { id: 'c2-consensus', word: 'Konsens', article: 'der', translation: { tr: 'uzlasi', en: 'consensus' }, level: 'C2' },
   { id: 'c2-consequence', word: 'Konsequenz', article: 'die', translation: { tr: 'sonuç', en: 'consequence' }, level: 'C2' },
   { id: 'c2-paradigm', word: 'Paradigma', article: 'das', translation: { tr: 'paradigma', en: 'paradigm' }, level: 'C2' },
   { id: 'c2-contradiction', word: 'Widerspruch', article: 'der', translation: { tr: 'çelişki', en: 'contradiction' }, level: 'C2' },
-  { id: 'c2-interaction', word: 'Interaktion', article: 'die', translation: { tr: 'etkileşim', en: 'interaction' }, level: 'C2' },
+  { id: 'c2-interaction', word: 'Interaktion', article: 'die', translation: { tr: 'etkilesim', en: 'interaction' }, level: 'C2' },
   { id: 'c2-phenomenon', word: 'Phänomen', article: 'das', translation: { tr: 'fenomen', en: 'phenomenon' }, level: 'C2' },
-  { id: 'c2-exchange', word: 'Austausch', article: 'der', translation: { tr: 'fikir alışverişi', en: 'exchange' }, level: 'C2' },
+  { id: 'c2-exchange', word: 'Austausch', article: 'der', translation: { tr: 'fikir alisverisi', en: 'exchange' }, level: 'C2' },
   { id: 'c2-justification', word: 'Begründung', article: 'die', translation: { tr: 'gerekçelendirme', en: 'justification' }, level: 'C2' },
   { id: 'c2-structure', word: 'Gefüge', article: 'das', translation: { tr: 'yapı', en: 'structure' }, level: 'C2' },
   { id: 'c2-impulse', word: 'Anstoß', article: 'der', translation: { tr: 'itki', en: 'impulse' }, level: 'C2' },
@@ -449,6 +484,25 @@ const buildRound = (level: LevelId) => {
     uniqueRound.push(item);
 
     if (uniqueRound.length === ROUND_LENGTH) {
+      break;
+    }
+  }
+
+  return uniqueRound;
+};
+
+const buildRoundFromPool = (pool: WordSeed[], count: number) => {
+  const uniqueRound: WordSeed[] = [];
+  const seenWords = new Set<string>();
+
+  for (const item of shuffle(pool)) {
+    const key = `${item.article}-${item.word}`;
+    if (seenWords.has(key)) {
+      continue;
+    }
+    seenWords.add(key);
+    uniqueRound.push(item);
+    if (uniqueRound.length === count) {
       break;
     }
   }
@@ -701,10 +755,12 @@ export default function App() {
   const [stats, setStats] = useState<AppStats>(createEmptyStats);
   const [settings, setSettings] = useState<Settings>(defaultSettings);
   const [selectedLevel, setSelectedLevel] = useState<LevelId>('A1');
+  const [selectedGameMode, setSelectedGameMode] = useState<GameMode>('classic');
   const [wordListPage, setWordListPage] = useState(0);
   const [wordListMode, setWordListMode] = useState<WordListMode>('menu');
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [selectedArticleFilter, setSelectedArticleFilter] = useState<Article | null>(null);
+  const [selectedWordLevel, setSelectedWordLevel] = useState<LevelId | null>(null);
   const [currentRound, setCurrentRound] = useState<WordSeed[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -716,6 +772,8 @@ export default function App() {
   const [answerState, setAnswerState] = useState<{ selected: Article; correct: boolean } | null>(null);
   const [selectedWrongArticle, setSelectedWrongArticle] = useState<Article | null>(null);
   const [lastSummary, setLastSummary] = useState<RoundSummary | null>(null);
+  const [mistakes, setMistakes] = useState<WordSeed[]>([]);
+  const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const [confettiSeeds, setConfettiSeeds] = useState<ConfettiSeed[]>(() => buildConfettiSeeds());
 
   const truePlayer = useMemo(() => createAudioPlayer(require('./assets/sounds/true.wav')), []);
@@ -755,8 +813,24 @@ export default function App() {
       return allWordListItems.filter((item) => item.article === selectedArticleFilter);
     }
 
+    if (wordListMode === 'levels' && selectedWordLevel) {
+      return allWordListItems.filter((item) => item.level === selectedWordLevel);
+    }
+
     return [];
-  }, [allWordListItems, selectedArticleFilter, selectedLetter, wordListMode]);
+  }, [allWordListItems, selectedArticleFilter, selectedLetter, selectedWordLevel, wordListMode]);
+  const wordListSelectionLabel = selectedLetter ?? selectedArticleFilter ?? selectedWordLevel ?? '';
+  const paginatedWordListTotalPages =
+    (wordListMode === 'levels' && selectedWordLevel) || (wordListMode === 'articles' && selectedArticleFilter)
+      ? Math.max(1, Math.ceil(filteredWordListItems.length / WORDS_PER_PAGE))
+      : 0;
+  const visibleWordListItems =
+    ((wordListMode === 'levels' && selectedWordLevel) || (wordListMode === 'articles' && selectedArticleFilter))
+      ? filteredWordListItems.slice(wordListPage * WORDS_PER_PAGE, (wordListPage + 1) * WORDS_PER_PAGE)
+      : filteredWordListItems;
+  const showPaginatedNavigation =
+    (((wordListMode === 'levels' && selectedWordLevel) || (wordListMode === 'articles' && selectedArticleFilter))
+      && paginatedWordListTotalPages > 1);
 
   const accuracy =
     stats.totalAnswers === 0 ? 0 : Math.round((stats.correctAnswers / stats.totalAnswers) * 100);
@@ -800,6 +874,7 @@ export default function App() {
           const parsed = JSON.parse(raw) as Partial<AppData>;
           setStats(parsed.stats ? { ...createEmptyStats(), ...parsed.stats } : createEmptyStats());
           setSettings(parsed.settings ? { ...defaultSettings, ...parsed.settings } : defaultSettings);
+          setMistakes(parsed.mistakes ?? []);
         }
       } finally {
         setIsReady(true);
@@ -822,8 +897,8 @@ export default function App() {
       return;
     }
 
-    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({ stats, settings })).catch(() => null);
-  }, [isReady, settings, stats]);
+    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({ stats, settings, mistakes })).catch(() => null);
+  }, [isReady, mistakes, settings, stats]);
 
   const playFeedbackSound = (kind: 'true' | 'false') => {
     if (!settings.soundEnabled) {
@@ -866,6 +941,24 @@ export default function App() {
     }
   };
 
+  useEffect(() => {
+    if (screen !== 'game' || selectedGameMode !== 'timed' || timeLeft === null) {
+      return;
+    }
+
+    if (timeLeft <= 0) {
+      playRoundEndSound('complete');
+      finishRound(score, correctCount, wrongCount, roundBestStreak);
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      setTimeLeft((previous) => (previous === null ? previous : previous - 1));
+    }, 1000);
+
+    return () => clearTimeout(timeoutId);
+  }, [correctCount, roundBestStreak, score, screen, selectedGameMode, timeLeft, wrongCount]);
+
   const handleButtonPress = (action: () => void) => {
     playButtonSound();
     action();
@@ -893,18 +986,36 @@ export default function App() {
     ]).start();
   };
 
-  const startGame = (level: LevelId) => {
+  const startGame = (level: LevelId, mode: GameMode = 'classic') => {
+    const reviewPool =
+      mode === 'review'
+        ? mistakes.filter((item) => item.level === level)
+        : [];
+    const nextRound =
+      mode === 'timed'
+        ? buildRoundFromPool(LEVEL_POOLS[level], LEVEL_POOLS[level].length)
+        : mode === 'review'
+          ? buildRoundFromPool(reviewPool, ROUND_LENGTH)
+          : buildRound(level);
+
+    if (mode === 'review' && nextRound.length === 0) {
+      Alert.alert(t.info, t.noReviewWords);
+      return;
+    }
+
     setSelectedLevel(level);
-    setCurrentRound(buildRound(level));
+    setSelectedGameMode(mode);
+    setCurrentRound(nextRound);
     setCurrentIndex(0);
     setScore(0);
-    setLives(STARTING_LIVES);
+    setLives(mode === 'one_life' ? 1 : STARTING_LIVES);
     setCurrentStreak(0);
     setRoundBestStreak(0);
     setCorrectCount(0);
     setWrongCount(0);
     setAnswerState(null);
     setSelectedWrongArticle(null);
+    setTimeLeft(mode === 'timed' ? TIMED_MODE_SECONDS : null);
     setScreen('game');
   };
 
@@ -920,6 +1031,7 @@ export default function App() {
       wrong: finalWrong,
       bestStreak: finalBestStreak,
       level: selectedLevel,
+      mode: selectedGameMode,
     });
 
     setStats((previous) => ({
@@ -939,6 +1051,7 @@ export default function App() {
       },
     }));
 
+    setTimeLeft(null);
     setScreen('results');
   };
 
@@ -968,6 +1081,13 @@ export default function App() {
     } else {
       playFeedbackSound('false');
       setSelectedWrongArticle(selected);
+      setMistakes((previous) => {
+        const exists = previous.some((item) => item.level === currentQuestion.level && item.word === currentQuestion.word && item.article === currentQuestion.article);
+        if (exists) {
+          return previous;
+        }
+        return [currentQuestion, ...previous].slice(0, 250);
+      });
       if (settings.vibrationEnabled) {
         Vibration.vibrate(120);
       }
@@ -1020,10 +1140,11 @@ export default function App() {
         onPress: async () => {
           const empty = createEmptyStats();
           setStats(empty);
+          setMistakes([]);
           setLastSummary(null);
           await AsyncStorage.setItem(
             STORAGE_KEY,
-            JSON.stringify({ stats: empty, settings }),
+            JSON.stringify({ stats: empty, settings, mistakes: [] }),
           );
         },
       },
@@ -1131,7 +1252,16 @@ export default function App() {
             </View>
 
             {LEVELS.map((level) => (
-              <Pressable key={level} style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(level))}>
+              <Pressable
+                key={level}
+                style={styles.levelCard}
+                onPress={() =>
+                  handleButtonPress(() => {
+                    setSelectedLevel(level);
+                    setScreen('gameModes');
+                  })
+                }
+              >
                 <LinearGradient
                   colors={LEVEL_GRADIENTS[level].colors}
                   start={{ x: 0, y: 0.5 }}
@@ -1148,6 +1278,60 @@ export default function App() {
               </Pressable>
             ))}
 
+            <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
+          </ScrollView>
+        </View>
+      )}
+
+      {screen === 'gameModes' && (
+        <View style={styles.levelsScreen}>
+          <ScrollView contentContainerStyle={styles.levelsScrollContent}>
+            <Text style={styles.sectionTitle}>{t.chooseGameMode}</Text>
+
+            <Pressable key="classic-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'classic'))}>
+              <LinearGradient
+                colors={BUTTON_GRADIENTS.gold.colors}
+                start={{ x: 0, y: 0.5 }}
+                end={{ x: 1, y: 0.5 }}
+                style={styles.levelGradient}
+              >
+                <View>
+                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>{t.modeClassic}</Text>
+                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>
+                    {t.modeClassicHint}
+                  </Text>
+                </View>
+              </LinearGradient>
+            </Pressable>
+
+            <Pressable key="timed-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'timed'))}>
+              <LinearGradient colors={BUTTON_GRADIENTS.blue.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
+                <View>
+                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.blue.textColor }]}>{t.modeTimed}</Text>
+                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.blue.textColor }]}>{t.modeTimedHint}</Text>
+                </View>
+              </LinearGradient>
+            </Pressable>
+
+            <Pressable key="one-life-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'one_life'))}>
+              <LinearGradient colors={BUTTON_GRADIENTS.berry.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
+                <View>
+                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.berry.textColor }]}>{t.modeOneLife}</Text>
+                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.berry.textColor }]}>{t.modeOneLifeHint}</Text>
+                </View>
+              </LinearGradient>
+            </Pressable>
+
+            <Pressable key="review-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'review'))}>
+              <LinearGradient colors={BUTTON_GRADIENTS.teal.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
+                <View>
+                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.teal.textColor }]}>{t.modeReview}</Text>
+                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.teal.textColor }]}>{t.modeReviewHint}</Text>
+                </View>
+              </LinearGradient>
+            </Pressable>
+
+            <GradientButton label={t.levels} variant="blue" onPress={() => handleButtonPress(() => setScreen('levels'))} />
             <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
           </ScrollView>
         </View>
@@ -1177,6 +1361,11 @@ export default function App() {
                       return;
                     }
 
+                    if (wordListMode === 'levels' && selectedWordLevel) {
+                      setSelectedWordLevel(null);
+                      return;
+                    }
+
                     setWordListMode('menu');
                   })
                 }
@@ -1189,6 +1378,17 @@ export default function App() {
             <View style={styles.wordListModeGrid}>
               <GradientButton square label={t.sortByLetter} variant="blue" onPress={() => handleButtonPress(() => setWordListMode('letters'))} />
               <GradientButton square label={t.sortByArticle} variant="berry" onPress={() => handleButtonPress(() => setWordListMode('articles'))} />
+              <GradientButton
+                square
+                label={t.sortByLevel}
+                variant="teal"
+                onPress={() =>
+                  handleButtonPress(() => {
+                    setWordListPage(0);
+                    setWordListMode('levels');
+                  })
+                }
+              />
             </View>
           )}
 
@@ -1203,6 +1403,16 @@ export default function App() {
                     </LinearGradient>
                   </Pressable>
                 ))}
+                <Pressable
+                  style={styles.wordFilterCardShell}
+                  onPress={() => handleButtonPress(() => Alert.alert(t.wordSourceTitle, t.wordSourceBody))}
+                >
+                  <LinearGradient colors={BUTTON_GRADIENTS.slate.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.wordFilterCard}>
+                    <View style={styles.wordFilterInfoBadge}>
+                      <Text style={styles.wordFilterInfoText}>i</Text>
+                    </View>
+                  </LinearGradient>
+                </Pressable>
               </View>
             </>
           )}
@@ -1210,11 +1420,44 @@ export default function App() {
           {wordListMode === 'articles' && !selectedArticleFilter && (
             <>
               <Text style={styles.sectionTitle}>{t.chooseArticle}</Text>
-              <View style={styles.wordFilterGrid}>
+              <View style={styles.wordArticleFilterGrid}>
                 {ARTICLES.map((article) => (
-                  <Pressable key={article} style={styles.wordFilterCardShell} onPress={() => handleButtonPress(() => setSelectedArticleFilter(article))}>
+                  <Pressable
+                    key={article}
+                    style={styles.wordArticleFilterCardShell}
+                    onPress={() =>
+                      handleButtonPress(() => {
+                        setWordListPage(0);
+                        setSelectedArticleFilter(article);
+                      })
+                    }
+                  >
                     <LinearGradient colors={ARTICLE_CARD_GRADIENTS[article]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.wordFilterCard}>
                       <Text style={styles.wordFilterCardText}>{article}</Text>
+                    </LinearGradient>
+                  </Pressable>
+                ))}
+              </View>
+            </>
+          )}
+
+          {wordListMode === 'levels' && !selectedWordLevel && (
+            <>
+              <Text style={styles.sectionTitle}>{t.chooseLevelForWords}</Text>
+              <View style={styles.wordLevelFilterGrid}>
+                {LEVELS.map((level) => (
+                  <Pressable
+                    key={level}
+                    style={styles.wordLevelFilterCardShell}
+                    onPress={() =>
+                      handleButtonPress(() => {
+                        setWordListPage(0);
+                        setSelectedWordLevel(level);
+                      })
+                    }
+                  >
+                    <LinearGradient colors={LEVEL_GRADIENTS[level].colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.wordFilterCard}>
+                      <Text style={styles.wordFilterCardText}>{level}</Text>
                     </LinearGradient>
                   </Pressable>
                 ))}
@@ -1231,12 +1474,39 @@ export default function App() {
                 style={styles.wordListPageBadge}
               >
                 <Text style={styles.wordListPageText}>
-                  {selectedLetter ?? selectedArticleFilter} • {filteredWordListItems.length}
+                  {wordListSelectionLabel} • {filteredWordListItems.length}
                 </Text>
               </LinearGradient>
 
+              {showPaginatedNavigation && (
+                <View style={styles.wordListPagination}>
+                  <GradientButton
+                    small
+                    label={t.previous}
+                    variant="blue"
+                    onPress={() => handleButtonPress(() => setWordListPage((prev) => Math.max(prev - 1, 0)))}
+                  />
+                  <LinearGradient
+                    colors={BUTTON_GRADIENTS.slate.colors}
+                    start={{ x: 0, y: 0.5 }}
+                    end={{ x: 1, y: 0.5 }}
+                    style={styles.wordListPageBadge}
+                  >
+                    <Text style={styles.wordListPageText}>
+                      {t.page} {wordListPage + 1}/{paginatedWordListTotalPages}
+                    </Text>
+                  </LinearGradient>
+                  <GradientButton
+                    small
+                    label={t.next}
+                    variant="teal"
+                    onPress={() => handleButtonPress(() => setWordListPage((prev) => Math.min(prev + 1, paginatedWordListTotalPages - 1)))}
+                  />
+                </View>
+              )}
+
               <View style={styles.wordGrid}>
-                {filteredWordListItems.map((item, index) => (
+                {visibleWordListItems.map((item, index) => (
                   <LinearGradient
                     key={`${item.level}-${item.article}-${item.word}-${index}`}
                     colors={ARTICLE_CARD_GRADIENTS[item.article]}
@@ -1250,6 +1520,33 @@ export default function App() {
                   </LinearGradient>
                 ))}
               </View>
+
+              {showPaginatedNavigation && (
+                <View style={styles.wordListPagination}>
+                  <GradientButton
+                    small
+                    label={t.previous}
+                    variant="blue"
+                    onPress={() => handleButtonPress(() => setWordListPage((prev) => Math.max(prev - 1, 0)))}
+                  />
+                  <LinearGradient
+                    colors={BUTTON_GRADIENTS.slate.colors}
+                    start={{ x: 0, y: 0.5 }}
+                    end={{ x: 1, y: 0.5 }}
+                    style={styles.wordListPageBadge}
+                  >
+                    <Text style={styles.wordListPageText}>
+                      {t.page} {wordListPage + 1}/{paginatedWordListTotalPages}
+                    </Text>
+                  </LinearGradient>
+                  <GradientButton
+                    small
+                    label={t.next}
+                    variant="teal"
+                    onPress={() => handleButtonPress(() => setWordListPage((prev) => Math.min(prev + 1, paginatedWordListTotalPages - 1)))}
+                  />
+                </View>
+              )}
             </>
           )}
 
@@ -1334,6 +1631,12 @@ export default function App() {
               <Text style={styles.gameStatLabel}>{t.lives}</Text>
               <Text style={styles.gameStatValue}>{'\u2665'.repeat(lives)}</Text>
             </View>
+            {selectedGameMode === 'timed' && (
+              <View style={[styles.gameStatCard, styles.gameStatCardTeal]}>
+                <Text style={styles.gameStatLabel}>{t.time}</Text>
+                <Text style={styles.gameStatValue}>{timeLeft ?? TIMED_MODE_SECONDS}</Text>
+              </View>
+            )}
           </View>
 
           <View style={styles.questionArea}>
@@ -1423,7 +1726,7 @@ export default function App() {
             </View>
           </View>
 
-          <GradientButton label={t.replayLevel} variant="gold" onPress={() => handleButtonPress(() => startGame(lastSummary.level))} />
+          <GradientButton label={t.replayLevel} variant="gold" onPress={() => handleButtonPress(() => startGame(lastSummary.level, lastSummary.mode))} />
           <GradientButton label={t.levels} variant="blue" onPress={() => handleButtonPress(() => setScreen('levels'))} />
           <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
         </ScrollView>
@@ -1508,7 +1811,7 @@ export default function App() {
           <View style={styles.panel}>
             <View style={styles.settingHeaderRow}>
               <View style={styles.settingIconBadge}>
-                <Text style={styles.settingIconText}>文</Text>
+                <Text style={styles.settingIconText}>æ–‡</Text>
               </View>
               <Text style={styles.panelTitleNoMargin}>{t.language}</Text>
             </View>
@@ -1659,15 +1962,16 @@ const styles = StyleSheet.create({
   },
   homeStartButton: {
     minHeight: 72,
+    borderRadius: 22,
   },
   gradientButtonShell: {
     borderRadius: 22,
     overflow: 'hidden',
     shadowColor: '#a89b8a',
-    shadowOpacity: 0.2,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 3,
+    shadowOpacity: 0.16,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 0 },
+    elevation: 0,
   },
   gradientButtonShellSmall: {
     minWidth: 118,
@@ -1939,6 +2243,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff1f2',
     borderColor: '#fecdd3',
   },
+  gameStatCardTeal: {
+    backgroundColor: '#ecfeff',
+    borderColor: '#99f6e4',
+  },
   gameStatLabel: {
     color: '#6b7280',
     fontSize: 11,
@@ -2052,12 +2360,45 @@ const styles = StyleSheet.create({
   wordFilterGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    gap: 8,
+  },
+  wordArticleFilterGrid: {
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    justifyContent: 'space-between',
+    gap: 8,
+  },
+  wordLevelFilterGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: 12,
   },
   wordFilterCardShell: {
     width: '23%',
     aspectRatio: 1,
-    borderRadius: 20,
+    borderRadius: 18,
+    overflow: 'hidden',
+    shadowColor: '#cbd5e1',
+    shadowOpacity: 0.18,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 2,
+  },
+  wordArticleFilterCardShell: {
+    width: '31%',
+    aspectRatio: 1,
+    borderRadius: 18,
+    overflow: 'hidden',
+    shadowColor: '#cbd5e1',
+    shadowOpacity: 0.18,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 2,
+  },
+  wordLevelFilterCardShell: {
+    width: '48%',
+    aspectRatio: 1,
+    borderRadius: 18,
     overflow: 'hidden',
     shadowColor: '#cbd5e1',
     shadowOpacity: 0.18,
@@ -2069,20 +2410,37 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 10,
+    padding: 8,
   },
   wordFilterCardText: {
+    color: '#ffffff',
+    fontSize: 20,
+    fontWeight: '900',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+  },
+  wordFilterInfoBadge: {
+    width: 40,
+    height: 40,
+    borderRadius: 999,
+    backgroundColor: 'rgba(255,255,255,0.18)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.45)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  wordFilterInfoText: {
     color: '#ffffff',
     fontSize: 22,
     fontWeight: '900',
     textAlign: 'center',
-    textTransform: 'uppercase',
   },
   wordListPagination: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: 10,
+    marginVertical: 4,
   },
   wordListPageBadge: {
     flex: 1,
@@ -2262,3 +2620,5 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
 });
+
+

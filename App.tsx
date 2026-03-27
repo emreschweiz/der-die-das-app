@@ -219,7 +219,7 @@ const COPY = {
     confirmHomeTitle: 'Ana menüye dön',
     confirmHomeBody: 'Bu turdan çıkıp ana menüye dönmek istiyor musunuz?',
     cancel: 'Vazgeç',
-    back: 'Dön',
+    back: 'Geri',
     confirmResetTitle: 'İstatistikleri sıfırla',
     confirmResetBody: 'Gerçekten sıfırlamak istiyor musunuz?',
     reset: 'Sıfırla',
@@ -454,7 +454,7 @@ const buildLevelPool = (level: LevelId) => {
     article: item.article,
     level,
     translation:
-      WORD_SEED_TRANSLATIONS.get(`${level}-${item.article}-${item.word}`) ?? {
+      item.translation ?? WORD_SEED_TRANSLATIONS.get(`${level}-${item.article}-${item.word}`) ?? {
         tr: '',
         en: '',
       },
@@ -615,6 +615,7 @@ function GradientButton({
   small = false,
   square = false,
   animated = false,
+  tall = false,
 }: {
   label: string;
   onPress: () => void;
@@ -622,6 +623,7 @@ function GradientButton({
   small?: boolean;
   square?: boolean;
   animated?: boolean;
+  tall?: boolean;
 }) {
   const theme = BUTTON_GRADIENTS[variant];
   const gradientShift = useRef(new Animated.Value(0)).current;
@@ -636,13 +638,13 @@ function GradientButton({
       Animated.sequence([
         Animated.timing(gradientShift, {
           toValue: 1,
-          duration: 2600,
+          duration: 1900,
           easing: Easing.linear,
           useNativeDriver: true,
         }),
         Animated.timing(gradientShift, {
           toValue: 0,
-          duration: 2600,
+          duration: 1900,
           easing: Easing.linear,
           useNativeDriver: true,
         }),
@@ -657,8 +659,8 @@ function GradientButton({
     inputRange: [0, 1],
     outputRange:
       directionRef.current === 1
-        ? [-120, 0]
-        : [0, -120],
+        ? [-90, 30]
+        : [30, -90],
   });
 
   return (
@@ -667,7 +669,7 @@ function GradientButton({
       onPress={onPress}
     >
       {animated ? (
-        <View style={[styles.gradientButtonFill, styles.gradientButtonAnimatedWrap, small && styles.gradientButtonFillSmall, square && styles.gradientButtonFillSquare]}>
+        <View style={[styles.gradientButtonFill, styles.gradientButtonAnimatedWrap, small && styles.gradientButtonFillSmall, square && styles.gradientButtonFillSquare, tall && styles.gradientButtonFillTall]}>
           <Animated.View
             style={[
               styles.gradientButtonAnimatedTrack,
@@ -688,6 +690,7 @@ function GradientButton({
               { color: theme.textColor },
               small && styles.gradientButtonTextSmall,
               square && styles.gradientButtonTextSquare,
+              tall && styles.gradientButtonTextTall,
             ]}
           >
             {label}
@@ -698,7 +701,7 @@ function GradientButton({
           colors={theme.colors}
           start={{ x: 0, y: 0.5 }}
           end={{ x: 1, y: 0.5 }}
-          style={[styles.gradientButtonFill, small && styles.gradientButtonFillSmall, square && styles.gradientButtonFillSquare]}
+          style={[styles.gradientButtonFill, small && styles.gradientButtonFillSmall, square && styles.gradientButtonFillSquare, tall && styles.gradientButtonFillTall]}
         >
           <Text
             style={[
@@ -706,6 +709,7 @@ function GradientButton({
               { color: theme.textColor },
               small && styles.gradientButtonTextSmall,
               square && styles.gradientButtonTextSquare,
+              tall && styles.gradientButtonTextTall,
             ]}
           >
             {label}
@@ -747,6 +751,60 @@ function RotatingWordBadge({ label }: { label: string }) {
       <Text style={styles.wordBadgeLabelBottom}>{label.split(' ').slice(1).join(' ')}</Text>
     </View>
   );
+}
+
+function hexToRgb(hex: string) {
+  const normalized = hex.replace('#', '');
+  const value = normalized.length === 3
+    ? normalized.split('').map((char) => char + char).join('')
+    : normalized;
+
+  return {
+    r: Number.parseInt(value.slice(0, 2), 16),
+    g: Number.parseInt(value.slice(2, 4), 16),
+    b: Number.parseInt(value.slice(4, 6), 16),
+  };
+}
+
+function rgbToHex(r: number, g: number, b: number) {
+  return `#${[r, g, b]
+    .map((channel) => Math.max(0, Math.min(255, Math.round(channel))).toString(16).padStart(2, '0'))
+    .join('')}`;
+}
+
+function interpolateColor(startHex: string, endHex: string, amount: number) {
+  const start = hexToRgb(startHex);
+  const end = hexToRgb(endHex);
+
+  return rgbToHex(
+    start.r + (end.r - start.r) * amount,
+    start.g + (end.g - start.g) * amount,
+    start.b + (end.b - start.b) * amount,
+  );
+}
+
+function getPerformanceColor(ratio: number) {
+  const safeRatio = Math.max(0, Math.min(100, ratio));
+  const colorStops = [
+    { stop: 0, color: '#dc2626' },
+    { stop: 45, color: '#f97316' },
+    { stop: 70, color: '#eab308' },
+    { stop: 85, color: '#84cc16' },
+    { stop: 100, color: '#15803d' },
+  ];
+
+  for (let index = 0; index < colorStops.length - 1; index += 1) {
+    const current = colorStops[index];
+    const next = colorStops[index + 1];
+
+    if (safeRatio <= next.stop) {
+      const range = next.stop - current.stop;
+      const amount = range === 0 ? 0 : (safeRatio - current.stop) / range;
+      return interpolateColor(current.color, next.color, amount);
+    }
+  }
+
+  return colorStops[colorStops.length - 1].color;
 }
 
 export default function App() {
@@ -834,6 +892,12 @@ export default function App() {
 
   const accuracy =
     stats.totalAnswers === 0 ? 0 : Math.round((stats.correctAnswers / stats.totalAnswers) * 100);
+  const statsCards = [
+    { key: 'rounds', label: t.totalRounds, value: String(stats.totalRounds), color: '#2563eb', bg: '#eff6ff', border: '#bfdbfe' },
+    { key: 'answers', label: t.totalAnswers, value: String(stats.totalAnswers), color: '#0f766e', bg: '#ecfdf5', border: '#99f6e4' },
+    { key: 'accuracy', label: t.accuracy, value: `%${accuracy}`, color: '#ca8a04', bg: '#fffbeb', border: '#fde68a' },
+    { key: 'score', label: t.bestScore, value: String(stats.bestScore), color: '#c2410c', bg: '#fff7ed', border: '#fdba74' },
+  ];
 
   const confettiOpacity = confettiValue.interpolate({
     inputRange: [0, 0.2, 1],
@@ -1008,7 +1072,7 @@ export default function App() {
     setCurrentRound(nextRound);
     setCurrentIndex(0);
     setScore(0);
-    setLives(mode === 'one_life' ? 1 : STARTING_LIVES);
+    setLives(mode === 'timed' ? 0 : mode === 'one_life' ? 1 : STARTING_LIVES);
     setCurrentStreak(0);
     setRoundBestStreak(0);
     setCorrectCount(0);
@@ -1065,7 +1129,7 @@ export default function App() {
     const nextWrong = isCorrect ? wrongCount : wrongCount + 1;
     const nextStreak = isCorrect ? currentStreak + 1 : 0;
     const nextBestStreak = Math.max(roundBestStreak, nextStreak);
-    const nextLives = isCorrect ? lives : lives - 1;
+    const nextLives = selectedGameMode === 'timed' ? lives : isCorrect ? lives : lives - 1;
     const nextScore = isCorrect ? score + 10 + currentStreak * 2 : Math.max(0, score - 4);
 
     setAnswerState({ selected, correct: isCorrect });
@@ -1096,9 +1160,9 @@ export default function App() {
 
     setTimeout(() => {
       const roundFinished = currentIndex + 1 >= currentRound.length;
-      const noLivesLeft = !isCorrect && nextLives <= 0;
+      const noLivesLeft = selectedGameMode !== 'timed' && !isCorrect && nextLives <= 0;
 
-      if (!isCorrect) {
+      if (!isCorrect && selectedGameMode !== 'timed') {
         setLives(nextLives);
       }
 
@@ -1218,7 +1282,7 @@ export default function App() {
 
           <View style={styles.homeStartWrap}>
             <View style={styles.homeStartButton}>
-              <GradientButton animated label={t.start} variant="gold" onPress={() => handleButtonPress(() => setScreen('levels'))} />
+              <GradientButton tall animated label={t.start} variant="gold" onPress={() => handleButtonPress(() => setScreen('levels'))} />
             </View>
           </View>
 
@@ -1627,10 +1691,12 @@ export default function App() {
               <Text style={styles.gameStatLabel}>{t.streak}</Text>
               <Text style={styles.gameStatValue}>{currentStreak}</Text>
             </View>
-            <View style={[styles.gameStatCard, styles.gameStatCardRose]}>
-              <Text style={styles.gameStatLabel}>{t.lives}</Text>
-              <Text style={styles.gameStatValue}>{'\u2665'.repeat(lives)}</Text>
-            </View>
+            {selectedGameMode !== 'timed' && (
+              <View style={[styles.gameStatCard, styles.gameStatCardRose]}>
+                <Text style={styles.gameStatLabel}>{t.lives}</Text>
+                <Text style={styles.gameStatValue}>{'\u2665'.repeat(lives)}</Text>
+              </View>
+            )}
             {selectedGameMode === 'timed' && (
               <View style={[styles.gameStatCard, styles.gameStatCardTeal]}>
                 <Text style={styles.gameStatLabel}>{t.time}</Text>
@@ -1661,12 +1727,6 @@ export default function App() {
             </Animated.View>
 
             <View style={styles.questionCard}>
-              {currentQuestion.translation[settings.language] ? (
-                <View style={styles.translationBadge}>
-                  <Text style={styles.translationLabel}>{currentQuestion.translation[settings.language]}</Text>
-                </View>
-              ) : null}
-
               {answerState && (
                 <View
                   style={[
@@ -1681,6 +1741,11 @@ export default function App() {
               )}
 
               <Text style={styles.wordText}>{currentQuestion.word}</Text>
+              {currentQuestion.translation[settings.language] ? (
+                <Text style={styles.questionTranslation}>
+                  {currentQuestion.translation[settings.language]}
+                </Text>
+              ) : null}
             </View>
           </View>
 
@@ -1715,11 +1780,17 @@ export default function App() {
 
           <View style={styles.statGrid}>
             <View style={styles.statCard}>
-              <Text style={styles.statLabel}>{t.bestStreak}</Text>
+              <View style={styles.statMetaRow}>
+                <View style={[styles.statAccentDot, { backgroundColor: '#8b5cf6' }]} />
+                <Text style={styles.statLabel}>{t.bestStreak}</Text>
+              </View>
               <Text style={styles.statValue}>{lastSummary.bestStreak}</Text>
             </View>
             <View style={styles.statCard}>
-              <Text style={styles.statLabel}>{t.accuracy}</Text>
+              <View style={styles.statMetaRow}>
+                <View style={[styles.statAccentDot, { backgroundColor: '#ca8a04' }]} />
+                <Text style={styles.statLabel}>{t.accuracy}</Text>
+              </View>
               <Text style={styles.statValue}>
                 %{Math.round((lastSummary.correct / Math.max(lastSummary.correct + lastSummary.wrong, 1)) * 100)}
               </Text>
@@ -1734,25 +1805,35 @@ export default function App() {
 
       {screen === 'stats' && (
         <ScrollView contentContainerStyle={styles.scrollContent}>
-          <Text style={styles.sectionTitle}>{t.statistics}</Text>
+          <View style={styles.sectionHeaderRow}>
+            <View style={styles.sectionHeaderBackWrap}>
+              <GradientButton small label={t.back} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
+            </View>
+            <Text style={styles.sectionTitle}>{t.statistics}</Text>
+          </View>
 
           <View style={styles.statGrid}>
-            <View style={styles.statCard}>
-              <Text style={styles.statLabel}>{t.totalRounds}</Text>
-              <Text style={styles.statValue}>{stats.totalRounds}</Text>
-            </View>
-            <View style={styles.statCard}>
-              <Text style={styles.statLabel}>{t.totalAnswers}</Text>
-              <Text style={styles.statValue}>{stats.totalAnswers}</Text>
-            </View>
-            <View style={styles.statCard}>
-              <Text style={styles.statLabel}>{t.accuracy}</Text>
-              <Text style={styles.statValue}>%{accuracy}</Text>
-            </View>
-            <View style={styles.statCard}>
-              <Text style={styles.statLabel}>{t.bestScore}</Text>
-              <Text style={styles.statValue}>{stats.bestScore}</Text>
-            </View>
+            {statsCards.map((card) => (
+              <View
+                key={card.key}
+                style={[
+                  styles.statCard,
+                  {
+                    backgroundColor: card.bg,
+                    borderColor: card.border,
+                  },
+                ]}
+              >
+                <View style={[styles.statCardTopBar, { backgroundColor: card.color }]} />
+                <View style={styles.statMetaRow}>
+                  <View style={[styles.statAccentDot, { backgroundColor: card.color }]} />
+                  <Text style={styles.statLabel}>{card.label}</Text>
+                </View>
+                <View style={styles.statValueWrap}>
+                  <Text style={[styles.statValue, { color: card.color }]}>{card.value}</Text>
+                </View>
+              </View>
+            ))}
           </View>
 
           <View style={styles.panel}>
@@ -1760,16 +1841,27 @@ export default function App() {
             {LEVELS.map((level) => {
               const total = stats.levelStats[level].correct + stats.levelStats[level].wrong;
               const ratio = total === 0 ? 0 : Math.round((stats.levelStats[level].correct / total) * 100);
+              const performanceColor = getPerformanceColor(ratio);
               return (
-                <Text key={level} style={styles.panelText}>
-                  {level}: %{ratio} ({stats.levelStats[level].correct}/{total})
-                </Text>
+                <View key={level} style={styles.levelPerformanceRow}>
+                  <View style={styles.levelPerformanceHeader}>
+                    <View style={styles.levelPerformanceTitleWrap}>
+                      <Text style={styles.levelPerformanceLevel}>{level}</Text>
+                      <Text style={styles.levelPerformanceMeta}>
+                        {stats.levelStats[level].correct}/{total || 0}
+                      </Text>
+                    </View>
+                    <Text style={[styles.levelPerformanceRatio, { color: performanceColor }]}>%{ratio}</Text>
+                  </View>
+                  <View style={styles.levelPerformanceTrack}>
+                    <View style={[styles.levelPerformanceFill, { width: `${ratio}%`, backgroundColor: performanceColor }]} />
+                  </View>
+                </View>
               );
             })}
           </View>
 
           <GradientButton label={t.resetStats} variant="berry" onPress={() => handleButtonPress(resetProgress)} />
-          <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
         </ScrollView>
       )}
 
@@ -1778,41 +1870,76 @@ export default function App() {
           <Text style={styles.sectionTitle}>{t.settings}</Text>
 
           <View style={styles.panel}>
-            <Text style={styles.panelTitle}>{t.settingsHint}</Text>
-            <Text style={styles.panelText}>Der Die Das</Text>
-          </View>
-
-          <View style={styles.panel}>
             <View style={styles.settingHeaderRow}>
-              <View style={styles.settingIconBadge}>
-                <Text style={styles.settingIconText}>♪</Text>
-              </View>
+              <Text style={styles.settingIconText}>♪</Text>
               <Text style={styles.panelTitleNoMargin}>{t.soundEffects}</Text>
             </View>
-            <View style={styles.toggleRow}>
-              <GradientButton label={t.on} variant={settings.soundEnabled ? 'gold' : 'slate'} onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, soundEnabled: true })))} />
-              <GradientButton label={t.off} variant={!settings.soundEnabled ? 'berry' : 'slate'} onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, soundEnabled: false })))} />
+            <View style={styles.modernSwitchRow}>
+              <Pressable
+                onPress={() => {
+                  playButtonSound();
+                  setSettings((previous) => ({ ...previous, soundEnabled: !previous.soundEnabled }));
+                }}
+                style={[
+                  styles.modernToggle,
+                  settings.soundEnabled ? styles.modernToggleOn : styles.modernToggleOff,
+                ]}
+              >
+                <View
+                  style={[
+                    styles.modernToggleThumb,
+                    settings.soundEnabled ? styles.modernToggleThumbOn : styles.modernToggleThumbOff,
+                  ]}
+                />
+                <Text
+                  style={[
+                    styles.modernToggleLabel,
+                    settings.soundEnabled ? styles.modernToggleLabelOn : styles.modernToggleLabelOff,
+                  ]}
+                >
+                  {settings.soundEnabled ? t.on : t.off}
+                </Text>
+              </Pressable>
             </View>
           </View>
 
           <View style={styles.panel}>
             <View style={styles.settingHeaderRow}>
-              <View style={styles.settingIconBadge}>
-                <Text style={styles.settingIconText}>≈</Text>
-              </View>
+              <Text style={styles.settingIconText}>≈</Text>
               <Text style={styles.panelTitleNoMargin}>{t.vibration}</Text>
             </View>
-            <View style={styles.toggleRow}>
-              <GradientButton label={t.on} variant={settings.vibrationEnabled ? 'teal' : 'slate'} onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, vibrationEnabled: true })))} />
-              <GradientButton label={t.off} variant={!settings.vibrationEnabled ? 'berry' : 'slate'} onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, vibrationEnabled: false })))} />
+            <View style={styles.modernSwitchRow}>
+              <Pressable
+                onPress={() => {
+                  playButtonSound();
+                  setSettings((previous) => ({ ...previous, vibrationEnabled: !previous.vibrationEnabled }));
+                }}
+                style={[
+                  styles.modernToggle,
+                  settings.vibrationEnabled ? styles.modernToggleOn : styles.modernToggleOff,
+                ]}
+              >
+                <View
+                  style={[
+                    styles.modernToggleThumb,
+                    settings.vibrationEnabled ? styles.modernToggleThumbOn : styles.modernToggleThumbOff,
+                  ]}
+                />
+                <Text
+                  style={[
+                    styles.modernToggleLabel,
+                    settings.vibrationEnabled ? styles.modernToggleLabelOn : styles.modernToggleLabelOff,
+                  ]}
+                >
+                  {settings.vibrationEnabled ? t.on : t.off}
+                </Text>
+              </Pressable>
             </View>
           </View>
 
           <View style={styles.panel}>
             <View style={styles.settingHeaderRow}>
-              <View style={styles.settingIconBadge}>
-                <Text style={styles.settingIconText}>æ–‡</Text>
-              </View>
+              <Text style={styles.settingIconText}>Aa</Text>
               <Text style={styles.panelTitleNoMargin}>{t.language}</Text>
             </View>
             <View style={styles.toggleRow}>
@@ -1958,20 +2085,19 @@ const styles = StyleSheet.create({
     alignContent: 'flex-start',
   },
   homeStartWrap: {
-    marginBottom: 14,
+    marginBottom: 12,
   },
   homeStartButton: {
-    minHeight: 72,
     borderRadius: 22,
   },
   gradientButtonShell: {
     borderRadius: 22,
     overflow: 'hidden',
-    shadowColor: '#a89b8a',
-    shadowOpacity: 0.16,
+    shadowColor: 'rgba(22, 24, 29, 0.95)',
+    shadowOpacity: 0.24,
     shadowRadius: 10,
-    shadowOffset: { width: 0, height: 0 },
-    elevation: 0,
+    shadowOffset: { width: -5, height: 5 },
+    elevation: 4,
   },
   gradientButtonShellSmall: {
     minWidth: 118,
@@ -2005,6 +2131,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 14,
   },
+  gradientButtonFillTall: {
+    paddingVertical: 28,
+  },
   gradientButtonFillSquare: {
     flex: 1,
     paddingVertical: 16,
@@ -2023,6 +2152,9 @@ const styles = StyleSheet.create({
   },
   gradientButtonTextSquare: {
     fontSize: 20,
+  },
+  gradientButtonTextTall: {
+    fontSize: 18,
   },
   primaryButton: {
     borderRadius: 22,
@@ -2059,6 +2191,14 @@ const styles = StyleSheet.create({
     color: '#1f2937',
     fontSize: 30,
     fontWeight: '800',
+  },
+  sectionHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  sectionHeaderBackWrap: {
+    minWidth: 104,
   },
   levelHeaderRow: {
     flexDirection: 'row',
@@ -2288,20 +2428,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#eadcc8',
   },
-  translationBadge: {
-    borderRadius: 999,
-    backgroundColor: '#fff7e6',
-    borderWidth: 1,
-    borderColor: '#f5d9a8',
-    paddingHorizontal: 14,
-    paddingVertical: 7,
-  },
-  translationLabel: {
-    color: '#8b5e34',
-    fontSize: 15,
-    fontWeight: '800',
-    textAlign: 'center',
-  },
   articleRevealBadge: {
     marginTop: 12,
     borderRadius: 999,
@@ -2313,6 +2439,13 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '900',
     textTransform: 'lowercase',
+  },
+  questionTranslation: {
+    marginTop: 4,
+    color: '#4b5563',
+    fontSize: 15,
+    fontWeight: '700',
+    textAlign: 'center',
   },
   wordText: {
     marginTop: 12,
@@ -2527,28 +2660,59 @@ const styles = StyleSheet.create({
   statGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 12,
+    gap: 14,
   },
   statCard: {
     flexBasis: '48%',
     flexGrow: 1,
-    borderRadius: 22,
+    borderRadius: 24,
     padding: 18,
-    backgroundColor: '#ffffff',
+    paddingTop: 22,
+    backgroundColor: 'rgba(255, 255, 255, 0.94)',
     borderWidth: 1,
-    borderColor: '#eadcc8',
+    borderColor: '#efe1cf',
+    shadowColor: 'rgba(96, 73, 42, 0.14)',
+    shadowOpacity: 0.18,
+    shadowRadius: 14,
+    shadowOffset: { width: 0, height: 8 },
+    elevation: 3,
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  statCardTopBar: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 6,
+  },
+  statMetaRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  statAccentDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 999,
   },
   statLabel: {
-    color: '#8b5e34',
-    fontSize: 13,
-    fontWeight: '700',
+    color: '#7c5b34',
+    fontSize: 12,
+    fontWeight: '800',
+    letterSpacing: 0.7,
     textTransform: 'uppercase',
   },
   statValue: {
-    marginTop: 8,
-    color: '#1f2937',
-    fontSize: 28,
+    fontSize: 30,
     fontWeight: '800',
+  },
+  statValueWrap: {
+    marginTop: 14,
+    borderRadius: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    backgroundColor: 'rgba(255, 255, 255, 0.72)',
   },
   panel: {
     borderRadius: 22,
@@ -2559,19 +2723,60 @@ const styles = StyleSheet.create({
   },
   panelTitle: {
     color: '#1f2937',
-    fontSize: 18,
-    fontWeight: '700',
+    fontSize: 20,
+    fontWeight: '800',
     marginBottom: 8,
   },
   panelTitleNoMargin: {
     color: '#1f2937',
-    fontSize: 18,
-    fontWeight: '700',
+    fontSize: 20,
+    fontWeight: '800',
   },
   panelText: {
     color: '#4b5563',
     fontSize: 15,
     lineHeight: 24,
+  },
+  levelPerformanceRow: {
+    marginTop: 14,
+    paddingBottom: 2,
+  },
+  levelPerformanceHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+  levelPerformanceTitleWrap: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
+    gap: 10,
+  },
+  levelPerformanceLevel: {
+    color: '#1f2937',
+    fontSize: 17,
+    fontWeight: '800',
+  },
+  levelPerformanceMeta: {
+    color: '#7c6a55',
+    fontSize: 13,
+    fontWeight: '700',
+  },
+  levelPerformanceRatio: {
+    color: '#8b5e34',
+    fontSize: 15,
+    fontWeight: '800',
+  },
+  levelPerformanceTrack: {
+    height: 12,
+    borderRadius: 999,
+    backgroundColor: '#f4eadb',
+    overflow: 'hidden',
+  },
+  levelPerformanceFill: {
+    height: '100%',
+    borderRadius: 999,
+    backgroundColor: '#f59e0b',
   },
   settingHeaderRow: {
     flexDirection: 'row',
@@ -2579,25 +2784,75 @@ const styles = StyleSheet.create({
     gap: 10,
     marginBottom: 10,
   },
-  settingIconBadge: {
-    width: 34,
-    height: 34,
-    borderRadius: 999,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff4da',
-    borderWidth: 1,
-    borderColor: '#f0d79f',
-  },
   settingIconText: {
     color: '#a16207',
-    fontSize: 16,
+    fontSize: 22,
     fontWeight: '800',
   },
   toggleRow: {
     flexDirection: 'row',
     gap: 12,
     marginTop: 8,
+  },
+  modernSwitchRow: {
+    marginTop: 12,
+    alignItems: 'stretch',
+  },
+  modernToggle: {
+    height: 64,
+    borderRadius: 999,
+    paddingHorizontal: 16,
+    justifyContent: 'center',
+    position: 'relative',
+    borderWidth: 1,
+    overflow: 'hidden',
+    shadowColor: '#c7b8a2',
+    shadowOpacity: 0.14,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 2,
+  },
+  modernToggleOn: {
+    backgroundColor: '#e9f9ee',
+    borderColor: '#bfe8ca',
+  },
+  modernToggleOff: {
+    backgroundColor: '#fdeeee',
+    borderColor: '#f2caca',
+  },
+  modernToggleThumb: {
+    position: 'absolute',
+    top: 7,
+    width: 92,
+    height: 48,
+    borderRadius: 999,
+    backgroundColor: '#ffffff',
+    shadowColor: 'rgba(31, 41, 55, 0.18)',
+    shadowOpacity: 0.18,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 2,
+  },
+  modernToggleThumbOn: {
+    left: 8,
+  },
+  modernToggleThumbOff: {
+    right: 8,
+  },
+  modernToggleLabel: {
+    fontSize: 16,
+    fontWeight: '800',
+    zIndex: 1,
+  },
+  modernToggleLabelOn: {
+    color: '#15803d',
+    textAlign: 'left',
+    paddingLeft: 22,
+  },
+  modernToggleLabelOff: {
+    color: '#b91c1c',
+    textAlign: 'right',
+    paddingRight: 22,
   },
   optionButton: {
     flex: 1,

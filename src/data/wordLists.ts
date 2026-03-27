@@ -3,12019 +3,24023 @@ export type WordListLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
 export type WordListEntry = {
   article: 'der' | 'die' | 'das';
   word: string;
+  translation: {
+    tr: string;
+    en: string;
+  };
 };
 
 export const WORD_LISTS: Record<WordListLevel, WordListEntry[]> = {
   "A1": [
     {
       "article": "der",
-      "word": "Abend"
+      "word": "Abend",
+      "translation": {
+        "tr": "akşam",
+        "en": "evening"
+      }
     },
     {
       "article": "das",
-      "word": "Abendessen"
+      "word": "Abendessen",
+      "translation": {
+        "tr": "Akşam Yemeği",
+        "en": "Dinner"
+      }
     },
     {
       "article": "das",
-      "word": "Abenteuer"
+      "word": "Abenteuer",
+      "translation": {
+        "tr": "Macera",
+        "en": "Adventure"
+      }
     },
     {
       "article": "der",
-      "word": "Abfall"
+      "word": "Abfall",
+      "translation": {
+        "tr": "Atık",
+        "en": "Waste"
+      }
     },
     {
       "article": "das",
-      "word": "Abitur"
+      "word": "Abitur",
+      "translation": {
+        "tr": "Lise diploması",
+        "en": "High school diploma"
+      }
     },
     {
       "article": "die",
-      "word": "Absicht"
+      "word": "Absicht",
+      "translation": {
+        "tr": "Niyet",
+        "en": "Intention"
+      }
     },
     {
       "article": "der",
-      "word": "Abstand"
+      "word": "Abstand",
+      "translation": {
+        "tr": "Mesafe",
+        "en": "Distance"
+      }
     },
     {
       "article": "der",
-      "word": "Adler"
+      "word": "Adler",
+      "translation": {
+        "tr": "Kartal",
+        "en": "Eagle"
+      }
     },
     {
       "article": "die",
-      "word": "Adresse"
+      "word": "Adresse",
+      "translation": {
+        "tr": "Adres",
+        "en": "Address"
+      }
     },
     {
       "article": "der",
-      "word": "Affe"
+      "word": "Affe",
+      "translation": {
+        "tr": "Maymun",
+        "en": "Monkey"
+      }
     },
     {
       "article": "die",
-      "word": "Ahnung"
+      "word": "Ahnung",
+      "translation": {
+        "tr": "Önsezi",
+        "en": "Hunch"
+      }
     },
     {
       "article": "das",
-      "word": "Album"
+      "word": "Album",
+      "translation": {
+        "tr": "albüm",
+        "en": "album"
+      }
     },
     {
       "article": "der",
-      "word": "Alkohol"
+      "word": "Alkohol",
+      "translation": {
+        "tr": "Alkol",
+        "en": "Alcohol"
+      }
     },
     {
       "article": "der",
-      "word": "Alltag"
+      "word": "Alltag",
+      "translation": {
+        "tr": "Günlük yaşam",
+        "en": "Everyday life"
+      }
     },
     {
       "article": "das",
-      "word": "Alphabet"
+      "word": "Alphabet",
+      "translation": {
+        "tr": "alfabe",
+        "en": "Alphabet"
+      }
     },
     {
       "article": "das",
-      "word": "Alter"
+      "word": "Alter",
+      "translation": {
+        "tr": "dostum",
+        "en": "Dude"
+      }
     },
     {
       "article": "die",
-      "word": "Alternative"
+      "word": "Alternative",
+      "translation": {
+        "tr": "Alternatif",
+        "en": "Alternative"
+      }
     },
     {
       "article": "der",
-      "word": "Amerikaner"
+      "word": "Amerikaner",
+      "translation": {
+        "tr": "Amerikan",
+        "en": "American"
+      }
     },
     {
       "article": "die",
-      "word": "Ampel"
+      "word": "Ampel",
+      "translation": {
+        "tr": "Trafik ışığı",
+        "en": "Traffic light"
+      }
     },
     {
       "article": "das",
-      "word": "Amt"
+      "word": "Amt",
+      "translation": {
+        "tr": "ofis",
+        "en": "office"
+      }
     },
     {
       "article": "die",
-      "word": "Ananas"
+      "word": "Ananas",
+      "translation": {
+        "tr": "Ananas",
+        "en": "Pineapple"
+      }
     },
     {
       "article": "der",
-      "word": "Anfang"
+      "word": "Anfang",
+      "translation": {
+        "tr": "başlangıç",
+        "en": "beginning"
+      }
     },
     {
       "article": "das",
-      "word": "Angebot"
+      "word": "Angebot",
+      "translation": {
+        "tr": "Teklif",
+        "en": "Offer"
+      }
     },
     {
       "article": "die",
-      "word": "Angst"
+      "word": "Angst",
+      "translation": {
+        "tr": "Korku",
+        "en": "Fear"
+      }
     },
     {
       "article": "die",
-      "word": "Ankunft"
+      "word": "Ankunft",
+      "translation": {
+        "tr": "Varış",
+        "en": "Arrival"
+      }
     },
     {
       "article": "der",
-      "word": "Anruf"
+      "word": "Anruf",
+      "translation": {
+        "tr": "Ara",
+        "en": "Call"
+      }
     },
     {
       "article": "die",
-      "word": "Ansage"
+      "word": "Ansage",
+      "translation": {
+        "tr": "Duyuru",
+        "en": "Announcement"
+      }
     },
     {
       "article": "der",
-      "word": "Anstieg"
+      "word": "Anstieg",
+      "translation": {
+        "tr": "artış",
+        "en": "increase"
+      }
     },
     {
       "article": "die",
-      "word": "Antwort"
+      "word": "Antwort",
+      "translation": {
+        "tr": "Cevap",
+        "en": "Answer"
+      }
     },
     {
       "article": "der",
-      "word": "Anwalt"
+      "word": "Anwalt",
+      "translation": {
+        "tr": "Avukat",
+        "en": "Lawyer"
+      }
     },
     {
       "article": "die",
-      "word": "Anzeige"
+      "word": "Anzeige",
+      "translation": {
+        "tr": "Reklam",
+        "en": "Advertisement"
+      }
     },
     {
       "article": "der",
-      "word": "Anzug"
+      "word": "Anzug",
+      "translation": {
+        "tr": "takım elbise",
+        "en": "suit"
+      }
     },
     {
       "article": "der",
-      "word": "Apfel"
+      "word": "Apfel",
+      "translation": {
+        "tr": "elma",
+        "en": "Apple"
+      }
     },
     {
       "article": "die",
-      "word": "Apotheke"
+      "word": "Apotheke",
+      "translation": {
+        "tr": "Eczane",
+        "en": "Pharmacy"
+      }
     },
     {
       "article": "der",
-      "word": "Apparat"
+      "word": "Apparat",
+      "translation": {
+        "tr": "aparat",
+        "en": "apparatus"
+      }
     },
     {
       "article": "der",
-      "word": "Appetit"
+      "word": "Appetit",
+      "translation": {
+        "tr": "iştah",
+        "en": "appetite"
+      }
     },
     {
       "article": "der",
-      "word": "Applaus"
+      "word": "Applaus",
+      "translation": {
+        "tr": "Alkış",
+        "en": "Applause"
+      }
     },
     {
       "article": "der",
-      "word": "April"
+      "word": "April",
+      "translation": {
+        "tr": "Nisan",
+        "en": "April"
+      }
     },
     {
       "article": "die",
-      "word": "Arbeit"
+      "word": "Arbeit",
+      "translation": {
+        "tr": "iş",
+        "en": "work"
+      }
     },
     {
       "article": "der",
-      "word": "Arbeiter"
+      "word": "Arbeiter",
+      "translation": {
+        "tr": "işçiler",
+        "en": "workers"
+      }
     },
     {
       "article": "der",
-      "word": "Arm"
+      "word": "Arm",
+      "translation": {
+        "tr": "Zayıf",
+        "en": "Poor"
+      }
     },
     {
       "article": "die",
-      "word": "Art"
+      "word": "Art",
+      "translation": {
+        "tr": "Sanat",
+        "en": "Art"
+      }
     },
     {
       "article": "der",
-      "word": "Artikel"
+      "word": "Artikel",
+      "translation": {
+        "tr": "Makale",
+        "en": "Article"
+      }
     },
     {
       "article": "der",
-      "word": "Arzt"
+      "word": "Arzt",
+      "translation": {
+        "tr": "doktor",
+        "en": "doctor"
+      }
     },
     {
       "article": "die",
-      "word": "Asche"
+      "word": "Asche",
+      "translation": {
+        "tr": "kül",
+        "en": "Ash"
+      }
     },
     {
       "article": "der",
-      "word": "Assistent"
+      "word": "Assistent",
+      "translation": {
+        "tr": "Asistan",
+        "en": "Assistant"
+      }
     },
     {
       "article": "der",
-      "word": "Ast"
+      "word": "Ast",
+      "translation": {
+        "tr": "şube",
+        "en": "branch"
+      }
     },
     {
       "article": "die",
-      "word": "Aufgabe"
+      "word": "Aufgabe",
+      "translation": {
+        "tr": "görev",
+        "en": "task"
+      }
     },
     {
       "article": "der",
-      "word": "Aufsatz"
+      "word": "Aufsatz",
+      "translation": {
+        "tr": "Deneme",
+        "en": "Essay"
+      }
     },
     {
       "article": "das",
-      "word": "Auge"
+      "word": "Auge",
+      "translation": {
+        "tr": "göz",
+        "en": "eye"
+      }
     },
     {
       "article": "der",
-      "word": "Augenblick"
+      "word": "Augenblick",
+      "translation": {
+        "tr": "an",
+        "en": "moment"
+      }
     },
     {
       "article": "der",
-      "word": "August"
+      "word": "August",
+      "translation": {
+        "tr": "Ağustos",
+        "en": "Aug"
+      }
     },
     {
       "article": "die",
-      "word": "Ausbildung"
+      "word": "Ausbildung",
+      "translation": {
+        "tr": "Eğitim",
+        "en": "Training"
+      }
     },
     {
       "article": "der",
-      "word": "Ausflug"
+      "word": "Ausflug",
+      "translation": {
+        "tr": "gezi",
+        "en": "excursion"
+      }
     },
     {
       "article": "die",
-      "word": "Ausgabe"
+      "word": "Ausgabe",
+      "translation": {
+        "tr": "Sürüm",
+        "en": "Edition"
+      }
     },
     {
       "article": "der",
-      "word": "Ausgang"
+      "word": "Ausgang",
+      "translation": {
+        "tr": "çıkış",
+        "en": "exit"
+      }
     },
     {
       "article": "das",
-      "word": "Ausland"
+      "word": "Ausland",
+      "translation": {
+        "tr": "Yurtdışında",
+        "en": "Abroad"
+      }
     },
     {
       "article": "der",
-      "word": "Ausländer"
+      "word": "Ausländer",
+      "translation": {
+        "tr": "Yabancılar",
+        "en": "Foreigners"
+      }
     },
     {
       "article": "die",
-      "word": "Ausnahme"
+      "word": "Ausnahme",
+      "translation": {
+        "tr": "İstisna",
+        "en": "Exception"
+      }
     },
     {
       "article": "das",
-      "word": "Aussehen"
+      "word": "Aussehen",
+      "translation": {
+        "tr": "Görünüm",
+        "en": "Appearance"
+      }
     },
     {
       "article": "das",
-      "word": "Auto"
+      "word": "Auto",
+      "translation": {
+        "tr": "araba",
+        "en": "car"
+      }
     },
     {
       "article": "die",
-      "word": "Autobahn"
+      "word": "Autobahn",
+      "translation": {
+        "tr": "otoyol",
+        "en": "highway"
+      }
     },
     {
       "article": "der",
-      "word": "Autofahrer"
+      "word": "Autofahrer",
+      "translation": {
+        "tr": "Sürücü",
+        "en": "Driver"
+      }
     },
     {
       "article": "der",
-      "word": "Autor"
+      "word": "Autor",
+      "translation": {
+        "tr": "Yazar",
+        "en": "Author"
+      }
     },
     {
       "article": "das",
-      "word": "Baby"
+      "word": "Baby",
+      "translation": {
+        "tr": "Bebek",
+        "en": "Baby"
+      }
     },
     {
       "article": "der",
-      "word": "Bäcker"
+      "word": "Bäcker",
+      "translation": {
+        "tr": "Fırıncı",
+        "en": "Baker"
+      }
     },
     {
       "article": "die",
-      "word": "Bäckerei"
+      "word": "Bäckerei",
+      "translation": {
+        "tr": "Fırın",
+        "en": "Bakery"
+      }
     },
     {
       "article": "der",
-      "word": "Backofen"
+      "word": "Backofen",
+      "translation": {
+        "tr": "Fırın",
+        "en": "Oven"
+      }
     },
     {
       "article": "das",
-      "word": "Bad"
+      "word": "Bad",
+      "translation": {
+        "tr": "banyo",
+        "en": "bathroom"
+      }
     },
     {
       "article": "die",
-      "word": "Bahn"
+      "word": "Bahn",
+      "translation": {
+        "tr": "tren",
+        "en": "train"
+      }
     },
     {
       "article": "der",
-      "word": "Bahnhof"
+      "word": "Bahnhof",
+      "translation": {
+        "tr": "Tren istasyonu",
+        "en": "Train station"
+      }
     },
     {
       "article": "der",
-      "word": "Balkon"
+      "word": "Balkon",
+      "translation": {
+        "tr": "Balkon",
+        "en": "Balcony"
+      }
     },
     {
       "article": "der",
-      "word": "Ball"
+      "word": "Ball",
+      "translation": {
+        "tr": "Top",
+        "en": "Ball"
+      }
     },
     {
       "article": "die",
-      "word": "Banane"
+      "word": "Banane",
+      "translation": {
+        "tr": "Muz",
+        "en": "Banana"
+      }
     },
     {
       "article": "die",
-      "word": "Bank"
+      "word": "Bank",
+      "translation": {
+        "tr": "Bank",
+        "en": "Bench"
+      }
     },
     {
       "article": "die",
-      "word": "Bar"
+      "word": "Bar",
+      "translation": {
+        "tr": "Bar",
+        "en": "Bar"
+      }
     },
     {
       "article": "der",
-      "word": "Bär"
+      "word": "Bär",
+      "translation": {
+        "tr": "Ayı",
+        "en": "Bear"
+      }
     },
     {
       "article": "der",
-      "word": "Bart"
+      "word": "Bart",
+      "translation": {
+        "tr": "Sakal",
+        "en": "Beard"
+      }
     },
     {
       "article": "der",
-      "word": "Baseball"
+      "word": "Baseball",
+      "translation": {
+        "tr": "Beyzbol",
+        "en": "Baseball"
+      }
     },
     {
       "article": "der",
-      "word": "Basketball"
+      "word": "Basketball",
+      "translation": {
+        "tr": "Basketbol",
+        "en": "Basketball"
+      }
     },
     {
       "article": "die",
-      "word": "Batterie"
+      "word": "Batterie",
+      "translation": {
+        "tr": "Pil",
+        "en": "Battery"
+      }
     },
     {
       "article": "der",
-      "word": "Bauch"
+      "word": "Bauch",
+      "translation": {
+        "tr": "göbek",
+        "en": "belly"
+      }
     },
     {
       "article": "der",
-      "word": "Bauer"
+      "word": "Bauer",
+      "translation": {
+        "tr": "çiftçi",
+        "en": "farmer"
+      }
     },
     {
       "article": "der",
-      "word": "Bauernhof"
+      "word": "Bauernhof",
+      "translation": {
+        "tr": "Çiftlik",
+        "en": "Farm"
+      }
     },
     {
       "article": "der",
-      "word": "Baum"
+      "word": "Baum",
+      "translation": {
+        "tr": "ağaç",
+        "en": "tree"
+      }
     },
     {
       "article": "der",
-      "word": "Becher"
+      "word": "Becher",
+      "translation": {
+        "tr": "Kupa",
+        "en": "Mug"
+      }
     },
     {
       "article": "die",
-      "word": "Bedingung"
+      "word": "Bedingung",
+      "translation": {
+        "tr": "Durum",
+        "en": "Condition"
+      }
     },
     {
       "article": "der",
-      "word": "Beginn"
+      "word": "Beginn",
+      "translation": {
+        "tr": "başlangıç",
+        "en": "beginning"
+      }
     },
     {
       "article": "der",
-      "word": "Beifall"
+      "word": "Beifall",
+      "translation": {
+        "tr": "Alkış",
+        "en": "Applause"
+      }
     },
     {
       "article": "das",
-      "word": "Bein"
+      "word": "Bein",
+      "translation": {
+        "tr": "bacak",
+        "en": "leg"
+      }
     },
     {
       "article": "das",
-      "word": "Beispiel"
+      "word": "Beispiel",
+      "translation": {
+        "tr": "Örnek",
+        "en": "Example"
+      }
     },
     {
       "article": "die",
-      "word": "Bekleidung"
+      "word": "Bekleidung",
+      "translation": {
+        "tr": "Giyim",
+        "en": "Clothing"
+      }
     },
     {
       "article": "das",
-      "word": "Benzin"
+      "word": "Benzin",
+      "translation": {
+        "tr": "Benzin",
+        "en": "Gasoline"
+      }
     },
     {
       "article": "der",
-      "word": "Berg"
+      "word": "Berg",
+      "translation": {
+        "tr": "dağ",
+        "en": "Mt"
+      }
     },
     {
       "article": "der",
-      "word": "Berliner"
+      "word": "Berliner",
+      "translation": {
+        "tr": "Berlinli",
+        "en": "Berliner"
+      }
     },
     {
       "article": "der",
-      "word": "Beruf"
+      "word": "Beruf",
+      "translation": {
+        "tr": "Meslek",
+        "en": "Profession"
+      }
     },
     {
       "article": "der",
-      "word": "Besen"
+      "word": "Besen",
+      "translation": {
+        "tr": "Süpürge",
+        "en": "Broom"
+      }
     },
     {
       "article": "die",
-      "word": "Bestellung"
+      "word": "Bestellung",
+      "translation": {
+        "tr": "Sipariş",
+        "en": "Order"
+      }
     },
     {
       "article": "der",
-      "word": "Besuch"
+      "word": "Besuch",
+      "translation": {
+        "tr": "Ziyaret edin",
+        "en": "Visit"
+      }
     },
     {
       "article": "der",
-      "word": "Besucher"
+      "word": "Besucher",
+      "translation": {
+        "tr": "Ziyaretçiler",
+        "en": "Visitors"
+      }
     },
     {
       "article": "der",
-      "word": "Beton"
+      "word": "Beton",
+      "translation": {
+        "tr": "Beton",
+        "en": "Concrete"
+      }
     },
     {
       "article": "das",
-      "word": "Bett"
+      "word": "Bett",
+      "translation": {
+        "tr": "yatak",
+        "en": "bed"
+      }
     },
     {
       "article": "die",
-      "word": "Bibliothek"
+      "word": "Bibliothek",
+      "translation": {
+        "tr": "Kütüphane",
+        "en": "Library"
+      }
     },
     {
       "article": "die",
-      "word": "Biene"
+      "word": "Biene",
+      "translation": {
+        "tr": "Arı",
+        "en": "Bee"
+      }
     },
     {
       "article": "das",
-      "word": "Bier"
+      "word": "Bier",
+      "translation": {
+        "tr": "Bira",
+        "en": "Beer"
+      }
     },
     {
       "article": "das",
-      "word": "Bild"
+      "word": "Bild",
+      "translation": {
+        "tr": "Resim",
+        "en": "Image"
+      }
     },
     {
       "article": "der",
-      "word": "Bildschirm"
+      "word": "Bildschirm",
+      "translation": {
+        "tr": "ekran",
+        "en": "screen"
+      }
     },
     {
       "article": "die",
-      "word": "Birke"
+      "word": "Birke",
+      "translation": {
+        "tr": "Huş ağacı",
+        "en": "Birch"
+      }
     },
     {
       "article": "die",
-      "word": "Birne"
+      "word": "Birne",
+      "translation": {
+        "tr": "Armut",
+        "en": "Pear"
+      }
     },
     {
       "article": "der",
-      "word": "Bischof"
+      "word": "Bischof",
+      "translation": {
+        "tr": "Piskopos",
+        "en": "Bishop"
+      }
     },
     {
       "article": "die",
-      "word": "Bitte"
+      "word": "Bitte",
+      "translation": {
+        "tr": "lütfen",
+        "en": "Please"
+      }
     },
     {
       "article": "das",
-      "word": "Blatt"
+      "word": "Blatt",
+      "translation": {
+        "tr": "levha",
+        "en": "sheet"
+      }
     },
     {
       "article": "der",
-      "word": "Bleistift"
+      "word": "Bleistift",
+      "translation": {
+        "tr": "kalem",
+        "en": "pencil"
+      }
     },
     {
       "article": "der",
-      "word": "Blick"
+      "word": "Blick",
+      "translation": {
+        "tr": "Bak",
+        "en": "Look"
+      }
     },
     {
       "article": "der",
-      "word": "Blitz"
+      "word": "Blitz",
+      "translation": {
+        "tr": "Yıldırım",
+        "en": "Lightning"
+      }
     },
     {
       "article": "der",
-      "word": "Block"
+      "word": "Block",
+      "translation": {
+        "tr": "blok",
+        "en": "block"
+      }
     },
     {
       "article": "die",
-      "word": "Blume"
+      "word": "Blume",
+      "translation": {
+        "tr": "çiçek",
+        "en": "flower"
+      }
     },
     {
       "article": "die",
-      "word": "Bluse"
+      "word": "Bluse",
+      "translation": {
+        "tr": "bluz",
+        "en": "blouse"
+      }
     },
     {
       "article": "das",
-      "word": "Blut"
+      "word": "Blut",
+      "translation": {
+        "tr": "Kan",
+        "en": "Blood"
+      }
     },
     {
       "article": "der",
-      "word": "Bock"
+      "word": "Bock",
+      "translation": {
+        "tr": "Buck",
+        "en": "Buck"
+      }
     },
     {
       "article": "der",
-      "word": "Boden"
+      "word": "Boden",
+      "translation": {
+        "tr": "kat",
+        "en": "floor"
+      }
     },
     {
       "article": "der",
-      "word": "Bogen"
+      "word": "Bogen",
+      "translation": {
+        "tr": "yay",
+        "en": "bow"
+      }
     },
     {
       "article": "die",
-      "word": "Bombe"
+      "word": "Bombe",
+      "translation": {
+        "tr": "Bomba",
+        "en": "Bomb"
+      }
     },
     {
       "article": "das",
-      "word": "Bonbon"
+      "word": "Bonbon",
+      "translation": {
+        "tr": "Şeker",
+        "en": "Candy"
+      }
     },
     {
       "article": "das",
-      "word": "Boot"
+      "word": "Boot",
+      "translation": {
+        "tr": "tekne",
+        "en": "boat"
+      }
     },
     {
       "article": "der",
-      "word": "Bote"
+      "word": "Bote",
+      "translation": {
+        "tr": "haberci",
+        "en": "messenger"
+      }
     },
     {
       "article": "die",
-      "word": "Box"
+      "word": "Box",
+      "translation": {
+        "tr": "kutu",
+        "en": "box"
+      }
     },
     {
       "article": "der",
-      "word": "Brand"
+      "word": "Brand",
+      "translation": {
+        "tr": "Marka",
+        "en": "Brand"
+      }
     },
     {
       "article": "der",
-      "word": "Braten"
+      "word": "Braten",
+      "translation": {
+        "tr": "kızartma",
+        "en": "Roast"
+      }
     },
     {
       "article": "die",
-      "word": "Brauerei"
+      "word": "Brauerei",
+      "translation": {
+        "tr": "Bira fabrikası",
+        "en": "Brewery"
+      }
     },
     {
       "article": "die",
-      "word": "Braut"
+      "word": "Braut",
+      "translation": {
+        "tr": "gelin",
+        "en": "bride"
+      }
     },
     {
       "article": "der",
-      "word": "Brei"
+      "word": "Brei",
+      "translation": {
+        "tr": "yulaf lapası",
+        "en": "Porridge"
+      }
     },
     {
       "article": "die",
-      "word": "Breite"
+      "word": "Breite",
+      "translation": {
+        "tr": "genişlik",
+        "en": "width"
+      }
     },
     {
       "article": "die",
-      "word": "Bremse"
+      "word": "Bremse",
+      "translation": {
+        "tr": "fren",
+        "en": "brake"
+      }
     },
     {
       "article": "das",
-      "word": "Brett"
+      "word": "Brett",
+      "translation": {
+        "tr": "tahta",
+        "en": "board"
+      }
     },
     {
       "article": "der",
-      "word": "Brief"
+      "word": "Brief",
+      "translation": {
+        "tr": "mektup",
+        "en": "letter"
+      }
     },
     {
       "article": "die",
-      "word": "Brille"
+      "word": "Brille",
+      "translation": {
+        "tr": "Gözlük",
+        "en": "Glasses"
+      }
     },
     {
       "article": "das",
-      "word": "Brot"
+      "word": "Brot",
+      "translation": {
+        "tr": "Ekmek",
+        "en": "Bread"
+      }
     },
     {
       "article": "das",
-      "word": "Brötchen"
+      "word": "Brötchen",
+      "translation": {
+        "tr": "Çörekler",
+        "en": "Buns"
+      }
     },
     {
       "article": "die",
-      "word": "Brücke"
+      "word": "Brücke",
+      "translation": {
+        "tr": "Köprü",
+        "en": "Bridge"
+      }
     },
     {
       "article": "der",
-      "word": "Bruder"
+      "word": "Bruder",
+      "translation": {
+        "tr": "erkek kardeş",
+        "en": "Brother"
+      }
     },
     {
       "article": "die",
-      "word": "Brust"
+      "word": "Brust",
+      "translation": {
+        "tr": "göğüs",
+        "en": "chest"
+      }
     },
     {
       "article": "das",
-      "word": "Buch"
+      "word": "Buch",
+      "translation": {
+        "tr": "kitap",
+        "en": "book"
+      }
     },
     {
       "article": "der",
-      "word": "Buchstabe"
+      "word": "Buchstabe",
+      "translation": {
+        "tr": "mektup",
+        "en": "letter"
+      }
     },
     {
       "article": "die",
-      "word": "Burg"
+      "word": "Burg",
+      "translation": {
+        "tr": "Kale",
+        "en": "Castle"
+      }
     },
     {
       "article": "das",
-      "word": "Büro"
+      "word": "Büro",
+      "translation": {
+        "tr": "ofis",
+        "en": "office"
+      }
     },
     {
       "article": "der",
-      "word": "Bus"
+      "word": "Bus",
+      "translation": {
+        "tr": "otobüs",
+        "en": "bus"
+      }
     },
     {
       "article": "der",
-      "word": "Busch"
+      "word": "Busch",
+      "translation": {
+        "tr": "Çalı",
+        "en": "Bush"
+      }
     },
     {
       "article": "die",
-      "word": "Butter"
+      "word": "Butter",
+      "translation": {
+        "tr": "tereyağı",
+        "en": "butter"
+      }
     },
     {
       "article": "der",
-      "word": "Cent"
+      "word": "Cent",
+      "translation": {
+        "tr": "sent",
+        "en": "cents"
+      }
     },
     {
       "article": "der",
-      "word": "Chef"
+      "word": "Chef",
+      "translation": {
+        "tr": "Patron",
+        "en": "Boss"
+      }
     },
     {
       "article": "die",
-      "word": "Cola"
+      "word": "Cola",
+      "translation": {
+        "tr": "Kola",
+        "en": "Cola"
+      }
     },
     {
       "article": "der",
-      "word": "Computer"
+      "word": "Computer",
+      "translation": {
+        "tr": "Bilgisayarlar",
+        "en": "Computers"
+      }
     },
     {
       "article": "der",
-      "word": "Cousin"
+      "word": "Cousin",
+      "translation": {
+        "tr": "kuzen",
+        "en": "cousin"
+      }
     },
     {
       "article": "das",
-      "word": "Dach"
+      "word": "Dach",
+      "translation": {
+        "tr": "çatı",
+        "en": "roof"
+      }
     },
     {
       "article": "die",
-      "word": "Dame"
+      "word": "Dame",
+      "translation": {
+        "tr": "Bayan",
+        "en": "lady"
+      }
     },
     {
       "article": "der",
-      "word": "Dampf"
+      "word": "Dampf",
+      "translation": {
+        "tr": "buhar",
+        "en": "steam"
+      }
     },
     {
       "article": "das",
-      "word": "Datum"
+      "word": "Datum",
+      "translation": {
+        "tr": "Tarih",
+        "en": "Date"
+      }
     },
     {
       "article": "der",
-      "word": "Daumen"
+      "word": "Daumen",
+      "translation": {
+        "tr": "Başparmak",
+        "en": "Thumb"
+      }
     },
     {
       "article": "die",
-      "word": "Decke"
+      "word": "Decke",
+      "translation": {
+        "tr": "battaniye",
+        "en": "blanket"
+      }
     },
     {
       "article": "der",
-      "word": "Dezember"
+      "word": "Dezember",
+      "translation": {
+        "tr": "Aralık",
+        "en": "December"
+      }
     },
     {
       "article": "der",
-      "word": "Dienstag"
+      "word": "Dienstag",
+      "translation": {
+        "tr": "Salı",
+        "en": "Tuesday"
+      }
     },
     {
       "article": "das",
-      "word": "Ding"
+      "word": "Ding",
+      "translation": {
+        "tr": "şey",
+        "en": "thing"
+      }
     },
     {
       "article": "die",
-      "word": "Diskussion"
+      "word": "Diskussion",
+      "translation": {
+        "tr": "Tartışma",
+        "en": "Discussion"
+      }
     },
     {
       "article": "der",
-      "word": "Doktor"
+      "word": "Doktor",
+      "translation": {
+        "tr": "Doktor",
+        "en": "Doctor"
+      }
     },
     {
       "article": "das",
-      "word": "Dokument"
+      "word": "Dokument",
+      "translation": {
+        "tr": "belge",
+        "en": "document"
+      }
     },
     {
       "article": "der",
-      "word": "Dollar"
+      "word": "Dollar",
+      "translation": {
+        "tr": "dolar",
+        "en": "dollars"
+      }
     },
     {
       "article": "der",
-      "word": "Donner"
+      "word": "Donner",
+      "translation": {
+        "tr": "Gök gürültüsü",
+        "en": "Thunder"
+      }
     },
     {
       "article": "der",
-      "word": "Donnerstag"
+      "word": "Donnerstag",
+      "translation": {
+        "tr": "perşembe",
+        "en": "Thursday"
+      }
     },
     {
       "article": "das",
-      "word": "Doppelzimmer"
+      "word": "Doppelzimmer",
+      "translation": {
+        "tr": "Çift kişilik oda",
+        "en": "Double room"
+      }
     },
     {
       "article": "das",
-      "word": "Dorf"
+      "word": "Dorf",
+      "translation": {
+        "tr": "Köy",
+        "en": "Village"
+      }
     },
     {
       "article": "die",
-      "word": "Dose"
+      "word": "Dose",
+      "translation": {
+        "tr": "yapabilir",
+        "en": "can"
+      }
     },
     {
       "article": "der",
-      "word": "Drache"
+      "word": "Drache",
+      "translation": {
+        "tr": "Ejderha",
+        "en": "Dragon"
+      }
     },
     {
       "article": "die",
-      "word": "Drogerie"
+      "word": "Drogerie",
+      "translation": {
+        "tr": "eczane",
+        "en": "drugstore"
+      }
     },
     {
       "article": "der",
-      "word": "Drucker"
+      "word": "Drucker",
+      "translation": {
+        "tr": "Yazıcı",
+        "en": "Printer"
+      }
     },
     {
       "article": "der",
-      "word": "Durst"
+      "word": "Durst",
+      "translation": {
+        "tr": "susuzluk",
+        "en": "Thirst"
+      }
     },
     {
       "article": "die",
-      "word": "Dusche"
+      "word": "Dusche",
+      "translation": {
+        "tr": "duş",
+        "en": "shower"
+      }
     },
     {
       "article": "das",
-      "word": "Dutzend"
+      "word": "Dutzend",
+      "translation": {
+        "tr": "düzine",
+        "en": "dozen"
+      }
     },
     {
       "article": "die",
-      "word": "Ecke"
+      "word": "Ecke",
+      "translation": {
+        "tr": "köşe",
+        "en": "corner"
+      }
     },
     {
       "article": "die",
-      "word": "Ehe"
+      "word": "Ehe",
+      "translation": {
+        "tr": "Evlilik",
+        "en": "Marriage"
+      }
     },
     {
       "article": "die",
-      "word": "Ehefrau"
+      "word": "Ehefrau",
+      "translation": {
+        "tr": "eş",
+        "en": "wife"
+      }
     },
     {
       "article": "der",
-      "word": "Ehemann"
+      "word": "Ehemann",
+      "translation": {
+        "tr": "koca",
+        "en": "husband"
+      }
     },
     {
       "article": "das",
-      "word": "Ehepaar"
+      "word": "Ehepaar",
+      "translation": {
+        "tr": "evli çift",
+        "en": "married couple"
+      }
     },
     {
       "article": "das",
-      "word": "Ei"
+      "word": "Ei",
+      "translation": {
+        "tr": "Yumurta",
+        "en": "Egg"
+      }
     },
     {
       "article": "das",
-      "word": "Eichhörnchen"
+      "word": "Eichhörnchen",
+      "translation": {
+        "tr": "sincap",
+        "en": "Squirrel"
+      }
     },
     {
       "article": "der",
-      "word": "Einkauf"
+      "word": "Einkauf",
+      "translation": {
+        "tr": "Satın alma",
+        "en": "Purchasing"
+      }
     },
     {
       "article": "das",
-      "word": "Einkaufszentrum"
+      "word": "Einkaufszentrum",
+      "translation": {
+        "tr": "Alışveriş merkezi",
+        "en": "Shopping center"
+      }
     },
     {
       "article": "das",
-      "word": "Einkommen"
+      "word": "Einkommen",
+      "translation": {
+        "tr": "Gelir",
+        "en": "Income"
+      }
     },
     {
       "article": "die",
-      "word": "Einladung"
+      "word": "Einladung",
+      "translation": {
+        "tr": "Davet",
+        "en": "Invitation"
+      }
     },
     {
       "article": "die",
-      "word": "Eins"
+      "word": "Eins",
+      "translation": {
+        "tr": "Bir",
+        "en": "One"
+      }
     },
     {
       "article": "der",
-      "word": "Einwohner"
+      "word": "Einwohner",
+      "translation": {
+        "tr": "sakinleri",
+        "en": "residents"
+      }
     },
     {
       "article": "das",
-      "word": "Eis"
+      "word": "Eis",
+      "translation": {
+        "tr": "Dondurma",
+        "en": "Ice cream"
+      }
     },
     {
       "article": "der",
-      "word": "Eisbär"
+      "word": "Eisbär",
+      "translation": {
+        "tr": "Kutup ayısı",
+        "en": "Polar bear"
+      }
     },
     {
       "article": "das",
-      "word": "Eisen"
+      "word": "Eisen",
+      "translation": {
+        "tr": "Demir",
+        "en": "Iron"
+      }
     },
     {
       "article": "der",
-      "word": "Elefant"
+      "word": "Elefant",
+      "translation": {
+        "tr": "Fil",
+        "en": "Elephant"
+      }
     },
     {
       "article": "der",
-      "word": "Elektriker"
+      "word": "Elektriker",
+      "translation": {
+        "tr": "Elektrikçi",
+        "en": "Electrician"
+      }
     },
     {
       "article": "das",
-      "word": "Element"
+      "word": "Element",
+      "translation": {
+        "tr": "Öğe",
+        "en": "Element"
+      }
     },
     {
       "article": "das",
-      "word": "Ende"
+      "word": "Ende",
+      "translation": {
+        "tr": "son",
+        "en": "end"
+      }
     },
     {
       "article": "die",
-      "word": "Energie"
+      "word": "Energie",
+      "translation": {
+        "tr": "Enerji",
+        "en": "Energy"
+      }
     },
     {
       "article": "der",
-      "word": "Engel"
+      "word": "Engel",
+      "translation": {
+        "tr": "Melek",
+        "en": "Angel"
+      }
     },
     {
       "article": "der",
-      "word": "Enkel"
+      "word": "Enkel",
+      "translation": {
+        "tr": "Torunlar",
+        "en": "Grandchildren"
+      }
     },
     {
       "article": "die",
-      "word": "Ente"
+      "word": "Ente",
+      "translation": {
+        "tr": "Ördek",
+        "en": "Duck"
+      }
     },
     {
       "article": "die",
-      "word": "Entschuldigung"
+      "word": "Entschuldigung",
+      "translation": {
+        "tr": "Üzgünüm",
+        "en": "Sorry"
+      }
     },
     {
       "article": "die",
-      "word": "Erde"
+      "word": "Erde",
+      "translation": {
+        "tr": "Dünya",
+        "en": "Earth"
+      }
     },
     {
       "article": "der",
-      "word": "Erfolg"
+      "word": "Erfolg",
+      "translation": {
+        "tr": "Başarı",
+        "en": "Success"
+      }
     },
     {
       "article": "das",
-      "word": "Ergebnis"
+      "word": "Ergebnis",
+      "translation": {
+        "tr": "Sonuç",
+        "en": "Result"
+      }
     },
     {
       "article": "die",
-      "word": "Erkältung"
+      "word": "Erkältung",
+      "translation": {
+        "tr": "soğuk",
+        "en": "cold"
+      }
     },
     {
       "article": "der",
-      "word": "Erste"
+      "word": "Erste",
+      "translation": {
+        "tr": "İlk",
+        "en": "First"
+      }
     },
     {
       "article": "der",
-      "word": "Erwachsene"
+      "word": "Erwachsene",
+      "translation": {
+        "tr": "Yetişkinler",
+        "en": "adults"
+      }
     },
     {
       "article": "der",
-      "word": "Espresso"
+      "word": "Espresso",
+      "translation": {
+        "tr": "Espresso",
+        "en": "Espresso"
+      }
     },
     {
       "article": "das",
-      "word": "Essen"
+      "word": "Essen",
+      "translation": {
+        "tr": "Gıda",
+        "en": "Food"
+      }
     },
     {
       "article": "der",
-      "word": "Essig"
+      "word": "Essig",
+      "translation": {
+        "tr": "Sirke",
+        "en": "Vinegar"
+      }
     },
     {
       "article": "die",
-      "word": "Etage"
+      "word": "Etage",
+      "translation": {
+        "tr": "kat",
+        "en": "floor"
+      }
     },
     {
       "article": "das",
-      "word": "Etikett"
+      "word": "Etikett",
+      "translation": {
+        "tr": "Etiket",
+        "en": "Label"
+      }
     },
     {
       "article": "der",
-      "word": "Euro"
+      "word": "Euro",
+      "translation": {
+        "tr": "euro",
+        "en": "euros"
+      }
     },
     {
       "article": "das",
-      "word": "Fahrrad"
+      "word": "Fahrrad",
+      "translation": {
+        "tr": "Bisiklet",
+        "en": "Bicycle"
+      }
     },
     {
       "article": "die",
-      "word": "Familie"
+      "word": "Familie",
+      "translation": {
+        "tr": "aile",
+        "en": "family"
+      }
     },
     {
       "article": "die",
-      "word": "Farbe"
+      "word": "Farbe",
+      "translation": {
+        "tr": "renk",
+        "en": "color"
+      }
     },
     {
       "article": "der",
-      "word": "Februar"
+      "word": "Februar",
+      "translation": {
+        "tr": "Şubat",
+        "en": "February"
+      }
     },
     {
       "article": "der",
-      "word": "Fehler"
+      "word": "Fehler",
+      "translation": {
+        "tr": "Hata",
+        "en": "Error"
+      }
     },
     {
       "article": "der",
-      "word": "Feiertag"
+      "word": "Feiertag",
+      "translation": {
+        "tr": "Tatil",
+        "en": "Holiday"
+      }
     },
     {
       "article": "das",
-      "word": "Feld"
+      "word": "Feld",
+      "translation": {
+        "tr": "alan",
+        "en": "field"
+      }
     },
     {
       "article": "das",
-      "word": "Fenster"
+      "word": "Fenster",
+      "translation": {
+        "tr": "pencere",
+        "en": "window"
+      }
     },
     {
       "article": "das",
-      "word": "Fett"
+      "word": "Fett",
+      "translation": {
+        "tr": "Şişman",
+        "en": "Fat"
+      }
     },
     {
       "article": "das",
-      "word": "Feuer"
+      "word": "Feuer",
+      "translation": {
+        "tr": "Ateş",
+        "en": "Fire"
+      }
     },
     {
       "article": "der",
-      "word": "Film"
+      "word": "Film",
+      "translation": {
+        "tr": "Film",
+        "en": "Movie"
+      }
     },
     {
       "article": "der",
-      "word": "Finger"
+      "word": "Finger",
+      "translation": {
+        "tr": "parmaklar",
+        "en": "fingers"
+      }
     },
     {
       "article": "der",
-      "word": "Fisch"
+      "word": "Fisch",
+      "translation": {
+        "tr": "Balık",
+        "en": "Fish"
+      }
     },
     {
       "article": "die",
-      "word": "Flasche"
+      "word": "Flasche",
+      "translation": {
+        "tr": "şişe",
+        "en": "bottle"
+      }
     },
     {
       "article": "das",
-      "word": "Fleisch"
+      "word": "Fleisch",
+      "translation": {
+        "tr": "et",
+        "en": "meat"
+      }
     },
     {
       "article": "der",
-      "word": "Flug"
+      "word": "Flug",
+      "translation": {
+        "tr": "uçuş",
+        "en": "flight"
+      }
     },
     {
       "article": "das",
-      "word": "Flugzeug"
+      "word": "Flugzeug",
+      "translation": {
+        "tr": "Uçak",
+        "en": "Airplane"
+      }
     },
     {
       "article": "der",
-      "word": "Fluss"
+      "word": "Fluss",
+      "translation": {
+        "tr": "nehir",
+        "en": "river"
+      }
     },
     {
       "article": "das",
-      "word": "Foto"
+      "word": "Foto",
+      "translation": {
+        "tr": "Fotoğraf",
+        "en": "Photo"
+      }
     },
     {
       "article": "die",
-      "word": "Frage"
+      "word": "Frage",
+      "translation": {
+        "tr": "Soru",
+        "en": "Question"
+      }
     },
     {
       "article": "die",
-      "word": "Frau"
+      "word": "Frau",
+      "translation": {
+        "tr": "Bayan",
+        "en": "Ms"
+      }
     },
     {
       "article": "der",
-      "word": "Freitag"
+      "word": "Freitag",
+      "translation": {
+        "tr": "Cuma",
+        "en": "Friday"
+      }
     },
     {
       "article": "der",
-      "word": "Freund"
+      "word": "Freund",
+      "translation": {
+        "tr": "arkadaş",
+        "en": "friend"
+      }
     },
     {
       "article": "die",
-      "word": "Freundin"
+      "word": "Freundin",
+      "translation": {
+        "tr": "kız arkadaş",
+        "en": "girlfriend"
+      }
     },
     {
       "article": "der",
-      "word": "Friseur"
+      "word": "Friseur",
+      "translation": {
+        "tr": "Kuaför",
+        "en": "Hairdresser"
+      }
     },
     {
       "article": "der",
-      "word": "Frosch"
+      "word": "Frosch",
+      "translation": {
+        "tr": "Kurbağa",
+        "en": "Frog"
+      }
     },
     {
       "article": "der",
-      "word": "Frühling"
+      "word": "Frühling",
+      "translation": {
+        "tr": "Bahar",
+        "en": "Spring"
+      }
     },
     {
       "article": "das",
-      "word": "Frühstück"
+      "word": "Frühstück",
+      "translation": {
+        "tr": "Kahvaltı",
+        "en": "Breakfast"
+      }
     },
     {
       "article": "der",
-      "word": "Fuchs"
+      "word": "Fuchs",
+      "translation": {
+        "tr": "Tilki",
+        "en": "Fox"
+      }
     },
     {
       "article": "der",
-      "word": "Fuß"
+      "word": "Fuß",
+      "translation": {
+        "tr": "ayak",
+        "en": "foot"
+      }
     },
     {
       "article": "der",
-      "word": "Fußball"
+      "word": "Fußball",
+      "translation": {
+        "tr": "Futbol",
+        "en": "Football"
+      }
     },
     {
       "article": "die",
-      "word": "Gabel"
+      "word": "Gabel",
+      "translation": {
+        "tr": "çatal",
+        "en": "fork"
+      }
     },
     {
       "article": "die",
-      "word": "Gans"
+      "word": "Gans",
+      "translation": {
+        "tr": "Kaz",
+        "en": "Goose"
+      }
     },
     {
       "article": "der",
-      "word": "Garten"
+      "word": "Garten",
+      "translation": {
+        "tr": "Bahçe",
+        "en": "Garden"
+      }
     },
     {
       "article": "der",
-      "word": "Gast"
+      "word": "Gast",
+      "translation": {
+        "tr": "Misafir",
+        "en": "Guest"
+      }
     },
     {
       "article": "der",
-      "word": "Geburtstag"
+      "word": "Geburtstag",
+      "translation": {
+        "tr": "doğum günü",
+        "en": "birthday"
+      }
     },
     {
       "article": "das",
-      "word": "Geld"
+      "word": "Geld",
+      "translation": {
+        "tr": "para",
+        "en": "money"
+      }
     },
     {
       "article": "das",
-      "word": "Gemüse"
+      "word": "Gemüse",
+      "translation": {
+        "tr": "sebzeler",
+        "en": "vegetables"
+      }
     },
     {
       "article": "das",
-      "word": "Geschenk"
+      "word": "Geschenk",
+      "translation": {
+        "tr": "Hediye",
+        "en": "Gift"
+      }
     },
     {
       "article": "das",
-      "word": "Gesicht"
+      "word": "Gesicht",
+      "translation": {
+        "tr": "yüz",
+        "en": "face"
+      }
     },
     {
       "article": "die",
-      "word": "Gitarre"
+      "word": "Gitarre",
+      "translation": {
+        "tr": "gitar",
+        "en": "guitar"
+      }
     },
     {
       "article": "das",
-      "word": "Glas"
+      "word": "Glas",
+      "translation": {
+        "tr": "Cam",
+        "en": "Glass"
+      }
     },
     {
       "article": "der",
-      "word": "Gott"
+      "word": "Gott",
+      "translation": {
+        "tr": "Tanrı",
+        "en": "God"
+      }
     },
     {
       "article": "die",
-      "word": "Großmutter"
+      "word": "Großmutter",
+      "translation": {
+        "tr": "büyükanne",
+        "en": "Grandmother"
+      }
     },
     {
       "article": "der",
-      "word": "Großvater"
+      "word": "Großvater",
+      "translation": {
+        "tr": "Büyükbaba",
+        "en": "Grandfather"
+      }
     },
     {
       "article": "die",
-      "word": "Grundschule"
+      "word": "Grundschule",
+      "translation": {
+        "tr": "İlkokul",
+        "en": "Elementary school"
+      }
     },
     {
       "article": "das",
-      "word": "Haar"
+      "word": "Haar",
+      "translation": {
+        "tr": "saç",
+        "en": "hair"
+      }
     },
     {
       "article": "der",
-      "word": "Hals"
+      "word": "Hals",
+      "translation": {
+        "tr": "boyun",
+        "en": "neck"
+      }
     },
     {
       "article": "der",
-      "word": "Hammer"
+      "word": "Hammer",
+      "translation": {
+        "tr": "Çekiç",
+        "en": "Hammer"
+      }
     },
     {
       "article": "die",
-      "word": "Hand"
+      "word": "Hand",
+      "translation": {
+        "tr": "el",
+        "en": "hand"
+      }
     },
     {
       "article": "das",
-      "word": "Handtuch"
+      "word": "Handtuch",
+      "translation": {
+        "tr": "havlu",
+        "en": "towel"
+      }
     },
     {
       "article": "das",
-      "word": "Handy"
+      "word": "Handy",
+      "translation": {
+        "tr": "cep telefonu",
+        "en": "cell phone"
+      }
     },
     {
       "article": "der",
-      "word": "Hase"
+      "word": "Hase",
+      "translation": {
+        "tr": "tavşan",
+        "en": "Bunny"
+      }
     },
     {
       "article": "das",
-      "word": "Haus"
+      "word": "Haus",
+      "translation": {
+        "tr": "ev",
+        "en": "house"
+      }
     },
     {
       "article": "das",
-      "word": "Haustier"
+      "word": "Haustier",
+      "translation": {
+        "tr": "evcil hayvan",
+        "en": "pet"
+      }
     },
     {
       "article": "das",
-      "word": "Hemd"
+      "word": "Hemd",
+      "translation": {
+        "tr": "gömlek",
+        "en": "shirt"
+      }
     },
     {
       "article": "der",
-      "word": "Herbst"
+      "word": "Herbst",
+      "translation": {
+        "tr": "Sonbahar",
+        "en": "Autumn"
+      }
     },
     {
       "article": "der",
-      "word": "Herr"
+      "word": "Herr",
+      "translation": {
+        "tr": "Efendim",
+        "en": "Sir"
+      }
     },
     {
       "article": "das",
-      "word": "Herz"
+      "word": "Herz",
+      "translation": {
+        "tr": "kalp",
+        "en": "heart"
+      }
     },
     {
       "article": "der",
-      "word": "Himmel"
+      "word": "Himmel",
+      "translation": {
+        "tr": "Cennet",
+        "en": "Heaven"
+      }
     },
     {
       "article": "das",
-      "word": "Holz"
+      "word": "Holz",
+      "translation": {
+        "tr": "Ahşap",
+        "en": "Wood"
+      }
     },
     {
       "article": "der",
-      "word": "Honig"
+      "word": "Honig",
+      "translation": {
+        "tr": "tatlım",
+        "en": "honey"
+      }
     },
     {
       "article": "die",
-      "word": "Hose"
+      "word": "Hose",
+      "translation": {
+        "tr": "Pantolon",
+        "en": "Pants"
+      }
     },
     {
       "article": "das",
-      "word": "Hotel"
+      "word": "Hotel",
+      "translation": {
+        "tr": "Otel",
+        "en": "Hotel"
+      }
     },
     {
       "article": "das",
-      "word": "Huhn"
+      "word": "Huhn",
+      "translation": {
+        "tr": "tavuk",
+        "en": "chicken"
+      }
     },
     {
       "article": "der",
-      "word": "Hund"
+      "word": "Hund",
+      "translation": {
+        "tr": "Köpek",
+        "en": "Dog"
+      }
     },
     {
       "article": "der",
-      "word": "Hut"
+      "word": "Hut",
+      "translation": {
+        "tr": "şapka",
+        "en": "hat"
+      }
     },
     {
       "article": "der",
-      "word": "Igel"
+      "word": "Igel",
+      "translation": {
+        "tr": "kirpi",
+        "en": "hedgehog"
+      }
     },
     {
       "article": "das",
-      "word": "Insekt"
+      "word": "Insekt",
+      "translation": {
+        "tr": "böcek",
+        "en": "insect"
+      }
     },
     {
       "article": "das",
-      "word": "Interesse"
+      "word": "Interesse",
+      "translation": {
+        "tr": "faiz",
+        "en": "interest"
+      }
     },
     {
       "article": "das",
-      "word": "Internet"
+      "word": "Internet",
+      "translation": {
+        "tr": "internet",
+        "en": "Internet"
+      }
     },
     {
       "article": "die",
-      "word": "Jacke"
+      "word": "Jacke",
+      "translation": {
+        "tr": "ceket",
+        "en": "jacket"
+      }
     },
     {
       "article": "das",
-      "word": "Jahr"
+      "word": "Jahr",
+      "translation": {
+        "tr": "yıl",
+        "en": "year"
+      }
     },
     {
       "article": "der",
-      "word": "Januar"
+      "word": "Januar",
+      "translation": {
+        "tr": "Ocak",
+        "en": "January"
+      }
     },
     {
       "article": "der",
-      "word": "Juli"
+      "word": "Juli",
+      "translation": {
+        "tr": "Temmuz",
+        "en": "July"
+      }
     },
     {
       "article": "der",
-      "word": "Junge"
+      "word": "Junge",
+      "translation": {
+        "tr": "oğlan",
+        "en": "Boy"
+      }
     },
     {
       "article": "der",
-      "word": "Juni"
+      "word": "Juni",
+      "translation": {
+        "tr": "Haziran",
+        "en": "June"
+      }
     },
     {
       "article": "der",
-      "word": "Kaffee"
+      "word": "Kaffee",
+      "translation": {
+        "tr": "Kahve",
+        "en": "Coffee"
+      }
     },
     {
       "article": "das",
-      "word": "Kaninchen"
+      "word": "Kaninchen",
+      "translation": {
+        "tr": "Tavşan",
+        "en": "Rabbit"
+      }
     },
     {
       "article": "die",
-      "word": "Karte"
+      "word": "Karte",
+      "translation": {
+        "tr": "Harita",
+        "en": "Map"
+      }
     },
     {
       "article": "die",
-      "word": "Kartoffel"
+      "word": "Kartoffel",
+      "translation": {
+        "tr": "Patates",
+        "en": "Potato"
+      }
     },
     {
       "article": "der",
-      "word": "Käse"
+      "word": "Käse",
+      "translation": {
+        "tr": "Peynir",
+        "en": "Cheese"
+      }
     },
     {
       "article": "die",
-      "word": "Katze"
+      "word": "Katze",
+      "translation": {
+        "tr": "kedi",
+        "en": "cat"
+      }
     },
     {
       "article": "die",
-      "word": "Kerze"
+      "word": "Kerze",
+      "translation": {
+        "tr": "mum",
+        "en": "candle"
+      }
     },
     {
       "article": "das",
-      "word": "Kind"
+      "word": "Kind",
+      "translation": {
+        "tr": "çocuk",
+        "en": "child"
+      }
     },
     {
       "article": "der",
-      "word": "Kindergarten"
+      "word": "Kindergarten",
+      "translation": {
+        "tr": "Anaokulu",
+        "en": "Kindergarten"
+      }
     },
     {
       "article": "das",
-      "word": "Kino"
+      "word": "Kino",
+      "translation": {
+        "tr": "Sinema",
+        "en": "Cinema"
+      }
     },
     {
       "article": "die",
-      "word": "Kirche"
+      "word": "Kirche",
+      "translation": {
+        "tr": "Kilise",
+        "en": "Church"
+      }
     },
     {
       "article": "das",
-      "word": "Kissen"
+      "word": "Kissen",
+      "translation": {
+        "tr": "Yastık",
+        "en": "Pillow"
+      }
     },
     {
       "article": "das",
-      "word": "Kleid"
+      "word": "Kleid",
+      "translation": {
+        "tr": "elbise",
+        "en": "dress"
+      }
     },
     {
       "article": "das",
-      "word": "Klo"
+      "word": "Klo",
+      "translation": {
+        "tr": "Tuvalet",
+        "en": "Loo"
+      }
     },
     {
       "article": "der",
-      "word": "Koch"
+      "word": "Koch",
+      "translation": {
+        "tr": "Aşçı",
+        "en": "Cook"
+      }
     },
     {
       "article": "der",
-      "word": "Koffer"
+      "word": "Koffer",
+      "translation": {
+        "tr": "bavul",
+        "en": "suitcase"
+      }
     },
     {
       "article": "der",
-      "word": "König"
+      "word": "König",
+      "translation": {
+        "tr": "Kral",
+        "en": "King"
+      }
     },
     {
       "article": "die",
-      "word": "Königin"
+      "word": "Königin",
+      "translation": {
+        "tr": "Kraliçe",
+        "en": "Queen"
+      }
     },
     {
       "article": "der",
-      "word": "Kopf"
+      "word": "Kopf",
+      "translation": {
+        "tr": "kafa",
+        "en": "head"
+      }
     },
     {
       "article": "der",
-      "word": "Körper"
+      "word": "Körper",
+      "translation": {
+        "tr": "vücut",
+        "en": "body"
+      }
     },
     {
       "article": "das",
-      "word": "Krokodil"
+      "word": "Krokodil",
+      "translation": {
+        "tr": "Timsah",
+        "en": "Crocodile"
+      }
     },
     {
       "article": "die",
-      "word": "Küche"
+      "word": "Küche",
+      "translation": {
+        "tr": "Mutfak",
+        "en": "Kitchen"
+      }
     },
     {
       "article": "der",
-      "word": "Kuchen"
+      "word": "Kuchen",
+      "translation": {
+        "tr": "Kek",
+        "en": "Cake"
+      }
     },
     {
       "article": "der",
-      "word": "Kugelschreiber"
+      "word": "Kugelschreiber",
+      "translation": {
+        "tr": "Tükenmez kalem",
+        "en": "Ballpoint pen"
+      }
     },
     {
       "article": "die",
-      "word": "Kuh"
+      "word": "Kuh",
+      "translation": {
+        "tr": "İnek",
+        "en": "Cow"
+      }
     },
     {
       "article": "der",
-      "word": "Kühlschrank"
+      "word": "Kühlschrank",
+      "translation": {
+        "tr": "Buzdolabı",
+        "en": "Refrigerator"
+      }
     },
     {
       "article": "die",
-      "word": "Lampe"
+      "word": "Lampe",
+      "translation": {
+        "tr": "lamba",
+        "en": "lamp"
+      }
     },
     {
       "article": "das",
-      "word": "Land"
+      "word": "Land",
+      "translation": {
+        "tr": "ülke",
+        "en": "country"
+      }
     },
     {
       "article": "das",
-      "word": "Leben"
+      "word": "Leben",
+      "translation": {
+        "tr": "hayat",
+        "en": "life"
+      }
     },
     {
       "article": "das",
-      "word": "Lebensmittel"
+      "word": "Lebensmittel",
+      "translation": {
+        "tr": "Gıda",
+        "en": "Food"
+      }
     },
     {
       "article": "der",
-      "word": "Lehrer"
+      "word": "Lehrer",
+      "translation": {
+        "tr": "öğretmen",
+        "en": "teacher"
+      }
     },
     {
       "article": "die",
-      "word": "Lehrerin"
+      "word": "Lehrerin",
+      "translation": {
+        "tr": "öğretmen",
+        "en": "teacher"
+      }
     },
     {
       "article": "das",
-      "word": "Licht"
+      "word": "Licht",
+      "translation": {
+        "tr": "Işık",
+        "en": "Light"
+      }
     },
     {
       "article": "die",
-      "word": "Liebe"
+      "word": "Liebe",
+      "translation": {
+        "tr": "aşk",
+        "en": "Love"
+      }
     },
     {
       "article": "das",
-      "word": "Lied"
+      "word": "Lied",
+      "translation": {
+        "tr": "şarkı",
+        "en": "song"
+      }
     },
     {
       "article": "die",
-      "word": "Lippe"
+      "word": "Lippe",
+      "translation": {
+        "tr": "Dudak",
+        "en": "Lip"
+      }
     },
     {
       "article": "der",
-      "word": "Liter"
+      "word": "Liter",
+      "translation": {
+        "tr": "litre",
+        "en": "liters"
+      }
     },
     {
       "article": "das",
-      "word": "Loch"
+      "word": "Loch",
+      "translation": {
+        "tr": "delik",
+        "en": "hole"
+      }
     },
     {
       "article": "der",
-      "word": "Löffel"
+      "word": "Löffel",
+      "translation": {
+        "tr": "kaşık",
+        "en": "spoon"
+      }
     },
     {
       "article": "der",
-      "word": "Löwe"
+      "word": "Löwe",
+      "translation": {
+        "tr": "Aslan",
+        "en": "Leo"
+      }
     },
     {
       "article": "die",
-      "word": "Luft"
+      "word": "Luft",
+      "translation": {
+        "tr": "hava",
+        "en": "air"
+      }
     },
     {
       "article": "das",
-      "word": "Mädchen"
+      "word": "Mädchen",
+      "translation": {
+        "tr": "Kızlar",
+        "en": "Girls"
+      }
     },
     {
       "article": "der",
-      "word": "Magen"
+      "word": "Magen",
+      "translation": {
+        "tr": "mide",
+        "en": "stomach"
+      }
     },
     {
       "article": "die",
-      "word": "Mahlzeit"
+      "word": "Mahlzeit",
+      "translation": {
+        "tr": "yemek",
+        "en": "meal"
+      }
     },
     {
       "article": "der",
-      "word": "Mai"
+      "word": "Mai",
+      "translation": {
+        "tr": "Mayıs",
+        "en": "May"
+      }
     },
     {
       "article": "die",
-      "word": "Mama"
+      "word": "Mama",
+      "translation": {
+        "tr": "Anne",
+        "en": "Mom"
+      }
     },
     {
       "article": "der",
-      "word": "Mann"
+      "word": "Mann",
+      "translation": {
+        "tr": "adam",
+        "en": "Man"
+      }
     },
     {
       "article": "das",
-      "word": "Märchen"
+      "word": "Märchen",
+      "translation": {
+        "tr": "peri masalları",
+        "en": "fairy tales"
+      }
     },
     {
       "article": "der",
-      "word": "Markt"
+      "word": "Markt",
+      "translation": {
+        "tr": "pazar",
+        "en": "market"
+      }
     },
     {
       "article": "der",
-      "word": "März"
+      "word": "März",
+      "translation": {
+        "tr": "Mart",
+        "en": "March"
+      }
     },
     {
       "article": "die",
-      "word": "Maus"
+      "word": "Maus",
+      "translation": {
+        "tr": "Fare",
+        "en": "Mouse"
+      }
     },
     {
       "article": "das",
-      "word": "Meer"
+      "word": "Meer",
+      "translation": {
+        "tr": "deniz",
+        "en": "sea"
+      }
     },
     {
       "article": "das",
-      "word": "Mehl"
+      "word": "Mehl",
+      "translation": {
+        "tr": "un",
+        "en": "flour"
+      }
     },
     {
       "article": "der",
-      "word": "Mensch"
+      "word": "Mensch",
+      "translation": {
+        "tr": "İnsan",
+        "en": "Human"
+      }
     },
     {
       "article": "das",
-      "word": "Messer"
+      "word": "Messer",
+      "translation": {
+        "tr": "Bıçak",
+        "en": "Knife"
+      }
     },
     {
       "article": "die",
-      "word": "Milch"
+      "word": "Milch",
+      "translation": {
+        "tr": "süt",
+        "en": "milk"
+      }
     },
     {
       "article": "das",
-      "word": "Mineralwasser"
+      "word": "Mineralwasser",
+      "translation": {
+        "tr": "Maden suyu",
+        "en": "Mineral water"
+      }
     },
     {
       "article": "die",
-      "word": "Minute"
+      "word": "Minute",
+      "translation": {
+        "tr": "dakika",
+        "en": "minute"
+      }
     },
     {
       "article": "der",
-      "word": "Mittwoch"
+      "word": "Mittwoch",
+      "translation": {
+        "tr": "Çarşamba",
+        "en": "Wednesday"
+      }
     },
     {
       "article": "der",
-      "word": "Mond"
+      "word": "Mond",
+      "translation": {
+        "tr": "Ay",
+        "en": "Moon"
+      }
     },
     {
       "article": "der",
-      "word": "Montag"
+      "word": "Montag",
+      "translation": {
+        "tr": "Pazartesi",
+        "en": "Monday"
+      }
     },
     {
       "article": "der",
-      "word": "Morgen"
+      "word": "Morgen",
+      "translation": {
+        "tr": "Yarın",
+        "en": "Tomorrow"
+      }
     },
     {
       "article": "der",
-      "word": "Mund"
+      "word": "Mund",
+      "translation": {
+        "tr": "ağız",
+        "en": "mouth"
+      }
     },
     {
       "article": "die",
-      "word": "Musik"
+      "word": "Musik",
+      "translation": {
+        "tr": "Müzik",
+        "en": "Music"
+      }
     },
     {
       "article": "die",
-      "word": "Mutter"
+      "word": "Mutter",
+      "translation": {
+        "tr": "anne",
+        "en": "mother"
+      }
     },
     {
       "article": "die",
-      "word": "Mütze"
+      "word": "Mütze",
+      "translation": {
+        "tr": "Şapka",
+        "en": "Hat"
+      }
     },
     {
       "article": "der",
-      "word": "Nachbar"
+      "word": "Nachbar",
+      "translation": {
+        "tr": "komşu",
+        "en": "neighbor"
+      }
     },
     {
       "article": "der",
-      "word": "Nachmittag"
+      "word": "Nachmittag",
+      "translation": {
+        "tr": "öğleden sonra",
+        "en": "afternoon"
+      }
     },
     {
       "article": "die",
-      "word": "Nachricht"
+      "word": "Nachricht",
+      "translation": {
+        "tr": "Mesaj",
+        "en": "Message"
+      }
     },
     {
       "article": "die",
-      "word": "Nacht"
+      "word": "Nacht",
+      "translation": {
+        "tr": "gece",
+        "en": "night"
+      }
     },
     {
       "article": "der",
-      "word": "Nagel"
+      "word": "Nagel",
+      "translation": {
+        "tr": "Çivi",
+        "en": "Nail"
+      }
     },
     {
       "article": "der",
-      "word": "Name"
+      "word": "Name",
+      "translation": {
+        "tr": "isim",
+        "en": "name"
+      }
     },
     {
       "article": "die",
-      "word": "Nase"
+      "word": "Nase",
+      "translation": {
+        "tr": "burun",
+        "en": "nose"
+      }
     },
     {
       "article": "das",
-      "word": "Nest"
+      "word": "Nest",
+      "translation": {
+        "tr": "yuva",
+        "en": "nest"
+      }
     },
     {
       "article": "der",
-      "word": "Norden"
+      "word": "Norden",
+      "translation": {
+        "tr": "Kuzey",
+        "en": "North"
+      }
     },
     {
       "article": "der",
-      "word": "November"
+      "word": "November",
+      "translation": {
+        "tr": "Kasım",
+        "en": "November"
+      }
     },
     {
       "article": "die",
-      "word": "Null"
+      "word": "Null",
+      "translation": {
+        "tr": "Sıfır",
+        "en": "Zero"
+      }
     },
     {
       "article": "das",
-      "word": "Obst"
+      "word": "Obst",
+      "translation": {
+        "tr": "meyve",
+        "en": "fruit"
+      }
     },
     {
       "article": "der",
-      "word": "Ofen"
+      "word": "Ofen",
+      "translation": {
+        "tr": "Fırın",
+        "en": "Oven"
+      }
     },
     {
       "article": "das",
-      "word": "Ohr"
+      "word": "Ohr",
+      "translation": {
+        "tr": "kulak",
+        "en": "ear"
+      }
     },
     {
       "article": "der",
-      "word": "Oktober"
+      "word": "Oktober",
+      "translation": {
+        "tr": "Ekim",
+        "en": "October"
+      }
     },
     {
       "article": "das",
-      "word": "Öl"
+      "word": "Öl",
+      "translation": {
+        "tr": "yağ",
+        "en": "oil"
+      }
     },
     {
       "article": "die",
-      "word": "Oma"
+      "word": "Oma",
+      "translation": {
+        "tr": "büyükanne",
+        "en": "Grandma"
+      }
     },
     {
       "article": "der",
-      "word": "Onkel"
+      "word": "Onkel",
+      "translation": {
+        "tr": "amca",
+        "en": "Uncle"
+      }
     },
     {
       "article": "der",
-      "word": "Opa"
+      "word": "Opa",
+      "translation": {
+        "tr": "büyükbaba",
+        "en": "Grandpa"
+      }
     },
     {
       "article": "die",
-      "word": "Orange"
+      "word": "Orange",
+      "translation": {
+        "tr": "Turuncu",
+        "en": "Orange"
+      }
     },
     {
       "article": "der",
-      "word": "Ort"
+      "word": "Ort",
+      "translation": {
+        "tr": "Konum",
+        "en": "Location"
+      }
     },
     {
       "article": "der",
-      "word": "Osten"
+      "word": "Osten",
+      "translation": {
+        "tr": "Doğu",
+        "en": "East"
+      }
     },
     {
       "article": "der",
-      "word": "Papa"
+      "word": "Papa",
+      "translation": {
+        "tr": "baba",
+        "en": "Dad"
+      }
     },
     {
       "article": "das",
-      "word": "Papier"
+      "word": "Papier",
+      "translation": {
+        "tr": "kağıt",
+        "en": "paper"
+      }
     },
     {
       "article": "die",
-      "word": "Pause"
+      "word": "Pause",
+      "translation": {
+        "tr": "Mola",
+        "en": "Break"
+      }
     },
     {
       "article": "das",
-      "word": "Pferd"
+      "word": "Pferd",
+      "translation": {
+        "tr": "at",
+        "en": "horse"
+      }
     },
     {
       "article": "die",
-      "word": "Pflanze"
+      "word": "Pflanze",
+      "translation": {
+        "tr": "bitki",
+        "en": "plant"
+      }
     },
     {
       "article": "die",
-      "word": "Pizza"
+      "word": "Pizza",
+      "translation": {
+        "tr": "pizza",
+        "en": "Pizza"
+      }
     },
     {
       "article": "der",
-      "word": "Platz"
+      "word": "Platz",
+      "translation": {
+        "tr": "yer",
+        "en": "place"
+      }
     },
     {
       "article": "die",
-      "word": "Polizei"
+      "word": "Polizei",
+      "translation": {
+        "tr": "Polis",
+        "en": "Police"
+      }
     },
     {
       "article": "der",
-      "word": "Polizist"
+      "word": "Polizist",
+      "translation": {
+        "tr": "Polis",
+        "en": "Policeman"
+      }
     },
     {
       "article": "der",
-      "word": "Punkt"
+      "word": "Punkt",
+      "translation": {
+        "tr": "Dönem",
+        "en": "Period"
+      }
     },
     {
       "article": "die",
-      "word": "Puppe"
+      "word": "Puppe",
+      "translation": {
+        "tr": "oyuncak bebek",
+        "en": "doll"
+      }
     },
     {
       "article": "das",
-      "word": "Rad"
+      "word": "Rad",
+      "translation": {
+        "tr": "tekerlek",
+        "en": "wheel"
+      }
     },
     {
       "article": "der",
-      "word": "Raum"
+      "word": "Raum",
+      "translation": {
+        "tr": "uzay",
+        "en": "space"
+      }
     },
     {
       "article": "das",
-      "word": "Regal"
+      "word": "Regal",
+      "translation": {
+        "tr": "Raf",
+        "en": "Shelf"
+      }
     },
     {
       "article": "der",
-      "word": "Regen"
+      "word": "Regen",
+      "translation": {
+        "tr": "Yağmur",
+        "en": "Rain"
+      }
     },
     {
       "article": "der",
-      "word": "Reis"
+      "word": "Reis",
+      "translation": {
+        "tr": "Pirinç",
+        "en": "Rice"
+      }
     },
     {
       "article": "die",
-      "word": "Reise"
+      "word": "Reise",
+      "translation": {
+        "tr": "gezi",
+        "en": "trip"
+      }
     },
     {
       "article": "der",
-      "word": "Saft"
+      "word": "Saft",
+      "translation": {
+        "tr": "meyve suyu",
+        "en": "Juice"
+      }
     },
     {
       "article": "der",
-      "word": "Salat"
+      "word": "Salat",
+      "translation": {
+        "tr": "Salata",
+        "en": "Salad"
+      }
     },
     {
       "article": "das",
-      "word": "Salz"
+      "word": "Salz",
+      "translation": {
+        "tr": "Tuz",
+        "en": "Salt"
+      }
     },
     {
       "article": "der",
-      "word": "Samstag"
+      "word": "Samstag",
+      "translation": {
+        "tr": "cumartesi",
+        "en": "Saturday"
+      }
     },
     {
       "article": "das",
-      "word": "Schaf"
+      "word": "Schaf",
+      "translation": {
+        "tr": "Koyun",
+        "en": "Sheep"
+      }
     },
     {
       "article": "das",
-      "word": "Schiff"
+      "word": "Schiff",
+      "translation": {
+        "tr": "gemi",
+        "en": "ship"
+      }
     },
     {
       "article": "der",
-      "word": "Schirm"
+      "word": "Schirm",
+      "translation": {
+        "tr": "Ekran",
+        "en": "Screen"
+      }
     },
     {
       "article": "der",
-      "word": "Schlaf"
+      "word": "Schlaf",
+      "translation": {
+        "tr": "Uyku",
+        "en": "Sleep"
+      }
     },
     {
       "article": "das",
-      "word": "Schlafzimmer"
+      "word": "Schlafzimmer",
+      "translation": {
+        "tr": "yatak odası",
+        "en": "bedroom"
+      }
     },
     {
       "article": "die",
-      "word": "Schlange"
+      "word": "Schlange",
+      "translation": {
+        "tr": "Yılan",
+        "en": "Snake"
+      }
     },
     {
       "article": "das",
-      "word": "Schloss"
+      "word": "Schloss",
+      "translation": {
+        "tr": "Kale",
+        "en": "Castle"
+      }
     },
     {
       "article": "der",
-      "word": "Schlüssel"
+      "word": "Schlüssel",
+      "translation": {
+        "tr": "anahtar",
+        "en": "key"
+      }
     },
     {
       "article": "der",
-      "word": "Schmetterling"
+      "word": "Schmetterling",
+      "translation": {
+        "tr": "Kelebek",
+        "en": "Butterfly"
+      }
     },
     {
       "article": "der",
-      "word": "Schnee"
+      "word": "Schnee",
+      "translation": {
+        "tr": "kar",
+        "en": "snow"
+      }
     },
     {
       "article": "die",
-      "word": "Schokolade"
+      "word": "Schokolade",
+      "translation": {
+        "tr": "Çikolata",
+        "en": "Chocolate"
+      }
     },
     {
       "article": "der",
-      "word": "Schuh"
+      "word": "Schuh",
+      "translation": {
+        "tr": "Ayakkabı",
+        "en": "Shoe"
+      }
     },
     {
       "article": "die",
-      "word": "Schule"
+      "word": "Schule",
+      "translation": {
+        "tr": "okul",
+        "en": "school"
+      }
     },
     {
       "article": "der",
-      "word": "Schüler"
+      "word": "Schüler",
+      "translation": {
+        "tr": "öğrenci",
+        "en": "student"
+      }
     },
     {
       "article": "die",
-      "word": "Schülerin"
+      "word": "Schülerin",
+      "translation": {
+        "tr": "öğrenci",
+        "en": "student"
+      }
     },
     {
       "article": "die",
-      "word": "Schulter"
+      "word": "Schulter",
+      "translation": {
+        "tr": "omuz",
+        "en": "shoulder"
+      }
     },
     {
       "article": "das",
-      "word": "Schwein"
+      "word": "Schwein",
+      "translation": {
+        "tr": "Domuz",
+        "en": "Pig"
+      }
     },
     {
       "article": "die",
-      "word": "Schwester"
+      "word": "Schwester",
+      "translation": {
+        "tr": "kız kardeş",
+        "en": "Sister"
+      }
     },
     {
       "article": "die",
-      "word": "Seife"
+      "word": "Seife",
+      "translation": {
+        "tr": "sabun",
+        "en": "soap"
+      }
     },
     {
       "article": "die",
-      "word": "Seite"
+      "word": "Seite",
+      "translation": {
+        "tr": "Sayfa",
+        "en": "Page"
+      }
     },
     {
       "article": "die",
-      "word": "Sekunde"
+      "word": "Sekunde",
+      "translation": {
+        "tr": "ikinci",
+        "en": "second"
+      }
     },
     {
       "article": "der",
-      "word": "September"
+      "word": "September",
+      "translation": {
+        "tr": "Eylül",
+        "en": "September"
+      }
     },
     {
       "article": "das",
-      "word": "Sofa"
+      "word": "Sofa",
+      "translation": {
+        "tr": "Kanepe",
+        "en": "Sofa"
+      }
     },
     {
       "article": "der",
-      "word": "Sohn"
+      "word": "Sohn",
+      "translation": {
+        "tr": "oğul",
+        "en": "son"
+      }
     },
     {
       "article": "der",
-      "word": "Sommer"
+      "word": "Sommer",
+      "translation": {
+        "tr": "Yaz",
+        "en": "Summer"
+      }
     },
     {
       "article": "der",
-      "word": "Sonntag"
+      "word": "Sonntag",
+      "translation": {
+        "tr": "Pazar",
+        "en": "Sunday"
+      }
     },
     {
       "article": "der",
-      "word": "Spiegel"
+      "word": "Spiegel",
+      "translation": {
+        "tr": "Ayna",
+        "en": "Mirror"
+      }
     },
     {
       "article": "das",
-      "word": "Spiel"
+      "word": "Spiel",
+      "translation": {
+        "tr": "oyun",
+        "en": "game"
+      }
     },
     {
       "article": "der",
-      "word": "Spieler"
+      "word": "Spieler",
+      "translation": {
+        "tr": "Oyuncu",
+        "en": "Player"
+      }
     },
     {
       "article": "das",
-      "word": "Spielzeug"
+      "word": "Spielzeug",
+      "translation": {
+        "tr": "oyuncaklar",
+        "en": "toys"
+      }
     },
     {
       "article": "die",
-      "word": "Sprache"
+      "word": "Sprache",
+      "translation": {
+        "tr": "dil",
+        "en": "language"
+      }
     },
     {
       "article": "die",
-      "word": "Stadt"
+      "word": "Stadt",
+      "translation": {
+        "tr": "şehir",
+        "en": "city"
+      }
     },
     {
       "article": "der",
-      "word": "Staub"
+      "word": "Staub",
+      "translation": {
+        "tr": "toz",
+        "en": "dust"
+      }
     },
     {
       "article": "der",
-      "word": "Stern"
+      "word": "Stern",
+      "translation": {
+        "tr": "yıldız",
+        "en": "star"
+      }
     },
     {
       "article": "der",
-      "word": "Stift"
+      "word": "Stift",
+      "translation": {
+        "tr": "Kalem",
+        "en": "Pen"
+      }
     },
     {
       "article": "die",
-      "word": "Stimme"
+      "word": "Stimme",
+      "translation": {
+        "tr": "ses",
+        "en": "voice"
+      }
     },
     {
       "article": "die",
-      "word": "Straße"
+      "word": "Straße",
+      "translation": {
+        "tr": "sokak",
+        "en": "street"
+      }
     },
     {
       "article": "das",
-      "word": "Stück"
+      "word": "Stück",
+      "translation": {
+        "tr": "parça",
+        "en": "piece"
+      }
     },
     {
       "article": "der",
-      "word": "Student"
+      "word": "Student",
+      "translation": {
+        "tr": "öğrenci",
+        "en": "student"
+      }
     },
     {
       "article": "der",
-      "word": "Stuhl"
+      "word": "Stuhl",
+      "translation": {
+        "tr": "sandalye",
+        "en": "chair"
+      }
     },
     {
       "article": "die",
-      "word": "Stunde"
+      "word": "Stunde",
+      "translation": {
+        "tr": "saat",
+        "en": "hour"
+      }
     },
     {
       "article": "die",
-      "word": "Suppe"
+      "word": "Suppe",
+      "translation": {
+        "tr": "Çorba",
+        "en": "Soup"
+      }
     },
     {
       "article": "der",
-      "word": "Tag"
+      "word": "Tag",
+      "translation": {
+        "tr": "gün",
+        "en": "day"
+      }
     },
     {
       "article": "die",
-      "word": "Tante"
+      "word": "Tante",
+      "translation": {
+        "tr": "Teyze",
+        "en": "Aunt"
+      }
     },
     {
       "article": "der",
-      "word": "Tanz"
+      "word": "Tanz",
+      "translation": {
+        "tr": "Dans",
+        "en": "Dance"
+      }
     },
     {
       "article": "die",
-      "word": "Tasche"
+      "word": "Tasche",
+      "translation": {
+        "tr": "çanta",
+        "en": "bag"
+      }
     },
     {
       "article": "die",
-      "word": "Tasse"
+      "word": "Tasse",
+      "translation": {
+        "tr": "fincan",
+        "en": "cup"
+      }
     },
     {
       "article": "die",
-      "word": "Tastatur"
+      "word": "Tastatur",
+      "translation": {
+        "tr": "Klavye",
+        "en": "Keyboard"
+      }
     },
     {
       "article": "das",
-      "word": "Taxi"
+      "word": "Taxi",
+      "translation": {
+        "tr": "Taksi",
+        "en": "Taxi"
+      }
     },
     {
       "article": "der",
-      "word": "Tee"
+      "word": "Tee",
+      "translation": {
+        "tr": "Çay",
+        "en": "Tea"
+      }
     },
     {
       "article": "das",
-      "word": "Telefon"
+      "word": "Telefon",
+      "translation": {
+        "tr": "Telefon",
+        "en": "Telephone"
+      }
     },
     {
       "article": "das",
-      "word": "Tennis"
+      "word": "Tennis",
+      "translation": {
+        "tr": "Tenis",
+        "en": "Tennis"
+      }
     },
     {
       "article": "der",
-      "word": "Teppich"
+      "word": "Teppich",
+      "translation": {
+        "tr": "Halı",
+        "en": "Carpet"
+      }
     },
     {
       "article": "das",
-      "word": "Ticket"
+      "word": "Ticket",
+      "translation": {
+        "tr": "bilet",
+        "en": "ticket"
+      }
     },
     {
       "article": "das",
-      "word": "Tier"
+      "word": "Tier",
+      "translation": {
+        "tr": "hayvan",
+        "en": "animal"
+      }
     },
     {
       "article": "die",
-      "word": "Tinte"
+      "word": "Tinte",
+      "translation": {
+        "tr": "Mürekkep",
+        "en": "Ink"
+      }
     },
     {
       "article": "der",
-      "word": "Tisch"
+      "word": "Tisch",
+      "translation": {
+        "tr": "masa",
+        "en": "table"
+      }
     },
     {
       "article": "die",
-      "word": "Tochter"
+      "word": "Tochter",
+      "translation": {
+        "tr": "kızı",
+        "en": "daughter"
+      }
     },
     {
       "article": "die",
-      "word": "Toilette"
+      "word": "Toilette",
+      "translation": {
+        "tr": "tuvalet",
+        "en": "toilet"
+      }
     },
     {
       "article": "der",
-      "word": "Tourist"
+      "word": "Tourist",
+      "translation": {
+        "tr": "Turist",
+        "en": "Tourist"
+      }
     },
     {
       "article": "die",
-      "word": "Träne"
+      "word": "Träne",
+      "translation": {
+        "tr": "Gözyaşı",
+        "en": "Tear"
+      }
     },
     {
       "article": "der",
-      "word": "Traum"
+      "word": "Traum",
+      "translation": {
+        "tr": "rüya",
+        "en": "dream"
+      }
     },
     {
       "article": "das",
-      "word": "Tuch"
+      "word": "Tuch",
+      "translation": {
+        "tr": "kumaş",
+        "en": "cloth"
+      }
     },
     {
       "article": "der",
-      "word": "Tunnel"
+      "word": "Tunnel",
+      "translation": {
+        "tr": "tüneller",
+        "en": "tunnels"
+      }
     },
     {
       "article": "die",
-      "word": "Tür"
+      "word": "Tür",
+      "translation": {
+        "tr": "kapı",
+        "en": "door"
+      }
     },
     {
       "article": "der",
-      "word": "Turm"
+      "word": "Turm",
+      "translation": {
+        "tr": "kule",
+        "en": "tower"
+      }
     },
     {
       "article": "die",
-      "word": "Uhr"
+      "word": "Uhr",
+      "translation": {
+        "tr": "saat",
+        "en": "clock"
+      }
     },
     {
       "article": "der",
-      "word": "Unterricht"
+      "word": "Unterricht",
+      "translation": {
+        "tr": "dersler",
+        "en": "lessons"
+      }
     },
     {
       "article": "der",
-      "word": "Vater"
+      "word": "Vater",
+      "translation": {
+        "tr": "baba",
+        "en": "Father"
+      }
     },
     {
       "article": "der",
-      "word": "Vogel"
+      "word": "Vogel",
+      "translation": {
+        "tr": "kuş",
+        "en": "bird"
+      }
     },
     {
       "article": "der",
-      "word": "Wald"
+      "word": "Wald",
+      "translation": {
+        "tr": "Orman",
+        "en": "Forest"
+      }
     },
     {
       "article": "die",
-      "word": "Wand"
+      "word": "Wand",
+      "translation": {
+        "tr": "duvar",
+        "en": "wall"
+      }
     },
     {
       "article": "das",
-      "word": "Wasser"
+      "word": "Wasser",
+      "translation": {
+        "tr": "su",
+        "en": "water"
+      }
     },
     {
       "article": "der",
-      "word": "Weg"
+      "word": "Weg",
+      "translation": {
+        "tr": "yol",
+        "en": "way"
+      }
     },
     {
       "article": "das",
-      "word": "Weihnachten"
+      "word": "Weihnachten",
+      "translation": {
+        "tr": "Noel",
+        "en": "Christmas"
+      }
     },
     {
       "article": "die",
-      "word": "Welt"
+      "word": "Welt",
+      "translation": {
+        "tr": "dünya",
+        "en": "world"
+      }
     },
     {
       "article": "das",
-      "word": "Wetter"
+      "word": "Wetter",
+      "translation": {
+        "tr": "Hava Durumu",
+        "en": "Weather"
+      }
     },
     {
       "article": "der",
-      "word": "Winter"
+      "word": "Winter",
+      "translation": {
+        "tr": "Kış",
+        "en": "Winter"
+      }
     },
     {
       "article": "die",
-      "word": "Woche"
+      "word": "Woche",
+      "translation": {
+        "tr": "hafta",
+        "en": "week"
+      }
     },
     {
       "article": "das",
-      "word": "Wochenende"
+      "word": "Wochenende",
+      "translation": {
+        "tr": "hafta sonu",
+        "en": "weekend"
+      }
     },
     {
       "article": "das",
-      "word": "Wohnzimmer"
+      "word": "Wohnzimmer",
+      "translation": {
+        "tr": "Oturma odası",
+        "en": "Living room"
+      }
     },
     {
       "article": "der",
-      "word": "Wolf"
+      "word": "Wolf",
+      "translation": {
+        "tr": "Kurt",
+        "en": "Wolf"
+      }
     },
     {
       "article": "die",
-      "word": "Wolke"
+      "word": "Wolke",
+      "translation": {
+        "tr": "bulut",
+        "en": "cloud"
+      }
     },
     {
       "article": "das",
-      "word": "Wort"
+      "word": "Wort",
+      "translation": {
+        "tr": "kelime",
+        "en": "word"
+      }
     },
     {
       "article": "das",
-      "word": "Wörterbuch"
+      "word": "Wörterbuch",
+      "translation": {
+        "tr": "Sözlük",
+        "en": "Dictionary"
+      }
     },
     {
       "article": "die",
-      "word": "Wunde"
+      "word": "Wunde",
+      "translation": {
+        "tr": "yara",
+        "en": "wound"
+      }
     },
     {
       "article": "das",
-      "word": "Wunder"
+      "word": "Wunder",
+      "translation": {
+        "tr": "Mucize",
+        "en": "Miracle"
+      }
     },
     {
       "article": "der",
-      "word": "Wunsch"
+      "word": "Wunsch",
+      "translation": {
+        "tr": "arzu",
+        "en": "desire"
+      }
     },
     {
       "article": "die",
-      "word": "Wurst"
+      "word": "Wurst",
+      "translation": {
+        "tr": "Sosis",
+        "en": "Sausage"
+      }
     },
     {
       "article": "die",
-      "word": "Zahl"
+      "word": "Zahl",
+      "translation": {
+        "tr": "sayı",
+        "en": "number"
+      }
     },
     {
       "article": "der",
-      "word": "Zahn"
+      "word": "Zahn",
+      "translation": {
+        "tr": "diş",
+        "en": "tooth"
+      }
     },
     {
       "article": "das",
-      "word": "Zeichen"
+      "word": "Zeichen",
+      "translation": {
+        "tr": "karakterler",
+        "en": "characters"
+      }
     },
     {
       "article": "die",
-      "word": "Zeit"
+      "word": "Zeit",
+      "translation": {
+        "tr": "zaman",
+        "en": "time"
+      }
     },
     {
       "article": "das",
-      "word": "Zimmer"
+      "word": "Zimmer",
+      "translation": {
+        "tr": "Oda",
+        "en": "Room"
+      }
     },
     {
       "article": "die",
-      "word": "Zitrone"
+      "word": "Zitrone",
+      "translation": {
+        "tr": "Limon",
+        "en": "Lemon"
+      }
     },
     {
       "article": "der",
-      "word": "Zoo"
+      "word": "Zoo",
+      "translation": {
+        "tr": "Hayvanat Bahçesi",
+        "en": "Zoo"
+      }
     },
     {
       "article": "der",
-      "word": "Zucker"
+      "word": "Zucker",
+      "translation": {
+        "tr": "şeker",
+        "en": "sugar"
+      }
     },
     {
       "article": "der",
-      "word": "Zug"
+      "word": "Zug",
+      "translation": {
+        "tr": "tren",
+        "en": "train"
+      }
     },
     {
       "article": "die",
-      "word": "Zunge"
+      "word": "Zunge",
+      "translation": {
+        "tr": "dil",
+        "en": "tongue"
+      }
     }
   ],
   "A2": [
     {
       "article": "der",
-      "word": "Europäer"
+      "word": "Europäer",
+      "translation": {
+        "tr": "Avrupalılar",
+        "en": "Europeans"
+      }
     },
     {
       "article": "die",
-      "word": "Fabrik"
+      "word": "Fabrik",
+      "translation": {
+        "tr": "Fabrika",
+        "en": "Factory"
+      }
     },
     {
       "article": "das",
-      "word": "Fach"
+      "word": "Fach",
+      "translation": {
+        "tr": "bölme",
+        "en": "compartment"
+      }
     },
     {
       "article": "der",
-      "word": "Faden"
+      "word": "Faden",
+      "translation": {
+        "tr": "iplik",
+        "en": "thread"
+      }
     },
     {
       "article": "die",
-      "word": "Fahne"
+      "word": "Fahne",
+      "translation": {
+        "tr": "bayrak",
+        "en": "flag"
+      }
     },
     {
       "article": "die",
-      "word": "Fähre"
+      "word": "Fähre",
+      "translation": {
+        "tr": "Feribot",
+        "en": "Ferry"
+      }
     },
     {
       "article": "das",
-      "word": "Fahren"
+      "word": "Fahren",
+      "translation": {
+        "tr": "Araba kullanmak",
+        "en": "Driving"
+      }
     },
     {
       "article": "der",
-      "word": "Fahrer"
+      "word": "Fahrer",
+      "translation": {
+        "tr": "Sürücü",
+        "en": "Driver"
+      }
     },
     {
       "article": "der",
-      "word": "Fahrplan"
+      "word": "Fahrplan",
+      "translation": {
+        "tr": "Zaman çizelgesi",
+        "en": "Timetable"
+      }
     },
     {
       "article": "der",
-      "word": "Fahrpreis"
+      "word": "Fahrpreis",
+      "translation": {
+        "tr": "Ücret",
+        "en": "Fare"
+      }
     },
     {
       "article": "die",
-      "word": "Fahrt"
+      "word": "Fahrt",
+      "translation": {
+        "tr": "binmek",
+        "en": "ride"
+      }
     },
     {
       "article": "das",
-      "word": "Fahrzeug"
+      "word": "Fahrzeug",
+      "translation": {
+        "tr": "araç",
+        "en": "vehicle"
+      }
     },
     {
       "article": "der",
-      "word": "Fall"
+      "word": "Fall",
+      "translation": {
+        "tr": "dava",
+        "en": "case"
+      }
     },
     {
       "article": "der",
-      "word": "Fan"
+      "word": "Fan",
+      "translation": {
+        "tr": "hayran",
+        "en": "Fan"
+      }
     },
     {
       "article": "das",
-      "word": "Fass"
+      "word": "Fass",
+      "translation": {
+        "tr": "varil",
+        "en": "barrel"
+      }
     },
     {
       "article": "die",
-      "word": "Faust"
+      "word": "Faust",
+      "translation": {
+        "tr": "Yumruk",
+        "en": "Fist"
+      }
     },
     {
       "article": "das",
-      "word": "Fax"
+      "word": "Fax",
+      "translation": {
+        "tr": "Faks",
+        "en": "Fax"
+      }
     },
     {
       "article": "die",
-      "word": "Feder"
+      "word": "Feder",
+      "translation": {
+        "tr": "tüy",
+        "en": "Feather"
+      }
     },
     {
       "article": "die",
-      "word": "Fee"
+      "word": "Fee",
+      "translation": {
+        "tr": "Peri",
+        "en": "Fairy"
+      }
     },
     {
       "article": "die",
-      "word": "Feier"
+      "word": "Feier",
+      "translation": {
+        "tr": "kutlama",
+        "en": "celebration"
+      }
     },
     {
       "article": "die",
-      "word": "Feige"
+      "word": "Feige",
+      "translation": {
+        "tr": "incir",
+        "en": "Fig"
+      }
     },
     {
       "article": "der",
-      "word": "Feind"
+      "word": "Feind",
+      "translation": {
+        "tr": "düşman",
+        "en": "enemy"
+      }
     },
     {
       "article": "das",
-      "word": "Fell"
+      "word": "Fell",
+      "translation": {
+        "tr": "kürk",
+        "en": "fur"
+      }
     },
     {
       "article": "der",
-      "word": "Fernseher"
+      "word": "Fernseher",
+      "translation": {
+        "tr": "televizyon",
+        "en": "TV"
+      }
     },
     {
       "article": "das",
-      "word": "Fest"
+      "word": "Fest",
+      "translation": {
+        "tr": "Katı",
+        "en": "Solid"
+      }
     },
     {
       "article": "der",
-      "word": "Feuerwehrmann"
+      "word": "Feuerwehrmann",
+      "translation": {
+        "tr": "İtfaiyeci",
+        "en": "Firefighter"
+      }
     },
     {
       "article": "das",
-      "word": "Feuerwerk"
+      "word": "Feuerwerk",
+      "translation": {
+        "tr": "havai fişek",
+        "en": "Fireworks"
+      }
     },
     {
       "article": "das",
-      "word": "Fieber"
+      "word": "Fieber",
+      "translation": {
+        "tr": "Ateş",
+        "en": "Fever"
+      }
     },
     {
       "article": "die",
-      "word": "Figur"
+      "word": "Figur",
+      "translation": {
+        "tr": "şekil",
+        "en": "figure"
+      }
     },
     {
       "article": "die",
-      "word": "Firma"
+      "word": "Firma",
+      "translation": {
+        "tr": "şirket",
+        "en": "company"
+      }
     },
     {
       "article": "der",
-      "word": "Fischer"
+      "word": "Fischer",
+      "translation": {
+        "tr": "Balıkçı",
+        "en": "Fisherman"
+      }
     },
     {
       "article": "die",
-      "word": "Flagge"
+      "word": "Flagge",
+      "translation": {
+        "tr": "Bayrak",
+        "en": "Flag"
+      }
     },
     {
       "article": "die",
-      "word": "Flamme"
+      "word": "Flamme",
+      "translation": {
+        "tr": "Alev",
+        "en": "Flame"
+      }
     },
     {
       "article": "der",
-      "word": "Fleck"
+      "word": "Fleck",
+      "translation": {
+        "tr": "leke",
+        "en": "stain"
+      }
     },
     {
       "article": "die",
-      "word": "Fledermaus"
+      "word": "Fledermaus",
+      "translation": {
+        "tr": "Yarasa",
+        "en": "Bat"
+      }
     },
     {
       "article": "die",
-      "word": "Fliege"
+      "word": "Fliege",
+      "translation": {
+        "tr": "Uçmak",
+        "en": "Fly"
+      }
     },
     {
       "article": "die",
-      "word": "Flöte"
+      "word": "Flöte",
+      "translation": {
+        "tr": "flüt",
+        "en": "flute"
+      }
     },
     {
       "article": "der",
-      "word": "Flügel"
+      "word": "Flügel",
+      "translation": {
+        "tr": "Kanatlar",
+        "en": "Wings"
+      }
     },
     {
       "article": "der",
-      "word": "Flughafen"
+      "word": "Flughafen",
+      "translation": {
+        "tr": "Havaalanı",
+        "en": "Airport"
+      }
     },
     {
       "article": "die",
-      "word": "Folie"
+      "word": "Folie",
+      "translation": {
+        "tr": "Folyo",
+        "en": "Foil"
+      }
     },
     {
       "article": "die",
-      "word": "Form"
+      "word": "Form",
+      "translation": {
+        "tr": "şekil",
+        "en": "shape"
+      }
     },
     {
       "article": "das",
-      "word": "Format"
+      "word": "Format",
+      "translation": {
+        "tr": "biçim",
+        "en": "format"
+      }
     },
     {
       "article": "das",
-      "word": "Formular"
+      "word": "Formular",
+      "translation": {
+        "tr": "formu",
+        "en": "Form"
+      }
     },
     {
       "article": "der",
-      "word": "Fotograf"
+      "word": "Fotograf",
+      "translation": {
+        "tr": "Fotoğrafçı",
+        "en": "Photographer"
+      }
     },
     {
       "article": "das",
-      "word": "Französisch"
+      "word": "Französisch",
+      "translation": {
+        "tr": "Fransızca",
+        "en": "French"
+      }
     },
     {
       "article": "die",
-      "word": "Freiheit"
+      "word": "Freiheit",
+      "translation": {
+        "tr": "Özgürlük",
+        "en": "Freedom"
+      }
     },
     {
       "article": "die",
-      "word": "Freizeit"
+      "word": "Freizeit",
+      "translation": {
+        "tr": "Boş zaman",
+        "en": "Leisure"
+      }
     },
     {
       "article": "die",
-      "word": "Fremdsprache"
+      "word": "Fremdsprache",
+      "translation": {
+        "tr": "Yabancı dil",
+        "en": "Foreign language"
+      }
     },
     {
       "article": "die",
-      "word": "Freude"
+      "word": "Freude",
+      "translation": {
+        "tr": "sevinç",
+        "en": "joy"
+      }
     },
     {
       "article": "die",
-      "word": "Freundschaft"
+      "word": "Freundschaft",
+      "translation": {
+        "tr": "Dostluk",
+        "en": "Friendship"
+      }
     },
     {
       "article": "der",
-      "word": "Friedhof"
+      "word": "Friedhof",
+      "translation": {
+        "tr": "Mezarlık",
+        "en": "Cemetery"
+      }
     },
     {
       "article": "die",
-      "word": "Frucht"
+      "word": "Frucht",
+      "translation": {
+        "tr": "meyve",
+        "en": "fruit"
+      }
     },
     {
       "article": "das",
-      "word": "Frühjahr"
+      "word": "Frühjahr",
+      "translation": {
+        "tr": "Bahar",
+        "en": "Spring"
+      }
     },
     {
       "article": "der",
-      "word": "Führer"
+      "word": "Führer",
+      "translation": {
+        "tr": "Lider",
+        "en": "Leader"
+      }
     },
     {
       "article": "der",
-      "word": "Fußgänger"
+      "word": "Fußgänger",
+      "translation": {
+        "tr": "Yayalar",
+        "en": "Pedestrians"
+      }
     },
     {
       "article": "das",
-      "word": "Futter"
+      "word": "Futter",
+      "translation": {
+        "tr": "beslemek",
+        "en": "feed"
+      }
     },
     {
       "article": "die",
-      "word": "Garage"
+      "word": "Garage",
+      "translation": {
+        "tr": "Garaj",
+        "en": "Garage"
+      }
     },
     {
       "article": "der",
-      "word": "Gärtner"
+      "word": "Gärtner",
+      "translation": {
+        "tr": "bahçıvan",
+        "en": "gardener"
+      }
     },
     {
       "article": "das",
-      "word": "Gas"
+      "word": "Gas",
+      "translation": {
+        "tr": "gaz",
+        "en": "gas"
+      }
     },
     {
       "article": "die",
-      "word": "Gasse"
+      "word": "Gasse",
+      "translation": {
+        "tr": "Sokak",
+        "en": "Alley"
+      }
     },
     {
       "article": "das",
-      "word": "Gebäude"
+      "word": "Gebäude",
+      "translation": {
+        "tr": "Bina",
+        "en": "Building"
+      }
     },
     {
       "article": "das",
-      "word": "Gebet"
+      "word": "Gebet",
+      "translation": {
+        "tr": "Dua",
+        "en": "Prayer"
+      }
     },
     {
       "article": "die",
-      "word": "Gegend"
+      "word": "Gegend",
+      "translation": {
+        "tr": "alan",
+        "en": "area"
+      }
     },
     {
       "article": "der",
-      "word": "Gegenstand"
+      "word": "Gegenstand",
+      "translation": {
+        "tr": "konu",
+        "en": "subject"
+      }
     },
     {
       "article": "das",
-      "word": "Gegenteil"
+      "word": "Gegenteil",
+      "translation": {
+        "tr": "Karşıt",
+        "en": "Opposite"
+      }
     },
     {
       "article": "der",
-      "word": "Gegner"
+      "word": "Gegner",
+      "translation": {
+        "tr": "Rakip",
+        "en": "Opponent"
+      }
     },
     {
       "article": "das",
-      "word": "Gehalt"
+      "word": "Gehalt",
+      "translation": {
+        "tr": "Maaş",
+        "en": "Salary"
+      }
     },
     {
       "article": "das",
-      "word": "Geheimnis"
+      "word": "Geheimnis",
+      "translation": {
+        "tr": "Gizli",
+        "en": "Secret"
+      }
     },
     {
       "article": "das",
-      "word": "Gehirn"
+      "word": "Gehirn",
+      "translation": {
+        "tr": "Beyin",
+        "en": "Brain"
+      }
     },
     {
       "article": "der",
-      "word": "Geist"
+      "word": "Geist",
+      "translation": {
+        "tr": "Ruh",
+        "en": "Spirit"
+      }
     },
     {
       "article": "das",
-      "word": "Gepäck"
+      "word": "Gepäck",
+      "translation": {
+        "tr": "Bagaj",
+        "en": "Luggage"
+      }
     },
     {
       "article": "das",
-      "word": "Gerät"
+      "word": "Gerät",
+      "translation": {
+        "tr": "cihaz",
+        "en": "device"
+      }
     },
     {
       "article": "das",
-      "word": "Geräusch"
+      "word": "Geräusch",
+      "translation": {
+        "tr": "gürültü",
+        "en": "noise"
+      }
     },
     {
       "article": "der",
-      "word": "Geruch"
+      "word": "Geruch",
+      "translation": {
+        "tr": "koku",
+        "en": "smell"
+      }
     },
     {
       "article": "das",
-      "word": "Geschäft"
+      "word": "Geschäft",
+      "translation": {
+        "tr": "iş",
+        "en": "business"
+      }
     },
     {
       "article": "die",
-      "word": "Geschichte"
+      "word": "Geschichte",
+      "translation": {
+        "tr": "hikaye",
+        "en": "story"
+      }
     },
     {
       "article": "das",
-      "word": "Geschirr"
+      "word": "Geschirr",
+      "translation": {
+        "tr": "Yemekler",
+        "en": "Dishes"
+      }
     },
     {
       "article": "der",
-      "word": "Geschmack"
+      "word": "Geschmack",
+      "translation": {
+        "tr": "tat",
+        "en": "taste"
+      }
     },
     {
       "article": "das",
-      "word": "Gesetz"
+      "word": "Gesetz",
+      "translation": {
+        "tr": "Hukuk",
+        "en": "Law"
+      }
     },
     {
       "article": "das",
-      "word": "Gespenst"
+      "word": "Gespenst",
+      "translation": {
+        "tr": "Hayalet",
+        "en": "Ghost"
+      }
     },
     {
       "article": "das",
-      "word": "Gespräch"
+      "word": "Gespräch",
+      "translation": {
+        "tr": "konuşma",
+        "en": "conversation"
+      }
     },
     {
       "article": "die",
-      "word": "Geste"
+      "word": "Geste",
+      "translation": {
+        "tr": "jest",
+        "en": "gesture"
+      }
     },
     {
       "article": "die",
-      "word": "Gesundheit"
+      "word": "Gesundheit",
+      "translation": {
+        "tr": "Sağlık",
+        "en": "Health"
+      }
     },
     {
       "article": "das",
-      "word": "Getränk"
+      "word": "Getränk",
+      "translation": {
+        "tr": "içki",
+        "en": "drink"
+      }
     },
     {
       "article": "das",
-      "word": "Gewicht"
+      "word": "Gewicht",
+      "translation": {
+        "tr": "Ağırlık",
+        "en": "Weight"
+      }
     },
     {
       "article": "das",
-      "word": "Gewitter"
+      "word": "Gewitter",
+      "translation": {
+        "tr": "Fırtına",
+        "en": "Thunderstorm"
+      }
     },
     {
       "article": "das",
-      "word": "Gift"
+      "word": "Gift",
+      "translation": {
+        "tr": "Zehir",
+        "en": "Poison"
+      }
     },
     {
       "article": "das",
-      "word": "Gitter"
+      "word": "Gitter",
+      "translation": {
+        "tr": "Izgara",
+        "en": "Grid"
+      }
     },
     {
       "article": "das",
-      "word": "Gleis"
+      "word": "Gleis",
+      "translation": {
+        "tr": "Parça",
+        "en": "Track"
+      }
     },
     {
       "article": "der",
-      "word": "Globus"
+      "word": "Globus",
+      "translation": {
+        "tr": "Küre",
+        "en": "Globe"
+      }
     },
     {
       "article": "die",
-      "word": "Glocke"
+      "word": "Glocke",
+      "translation": {
+        "tr": "Çan",
+        "en": "Bell"
+      }
     },
     {
       "article": "die",
-      "word": "Glotze"
+      "word": "Glotze",
+      "translation": {
+        "tr": "televizyon",
+        "en": "telly"
+      }
     },
     {
       "article": "das",
-      "word": "Glück"
+      "word": "Glück",
+      "translation": {
+        "tr": "Mutluluk",
+        "en": "Happiness"
+      }
     },
     {
       "article": "das",
-      "word": "Gold"
+      "word": "Gold",
+      "translation": {
+        "tr": "Altın",
+        "en": "Gold"
+      }
     },
     {
       "article": "der",
-      "word": "Golf"
+      "word": "Golf",
+      "translation": {
+        "tr": "golf",
+        "en": "Golf"
+      }
     },
     {
       "article": "das",
-      "word": "Grab"
+      "word": "Grab",
+      "translation": {
+        "tr": "Mezar",
+        "en": "Grave"
+      }
     },
     {
       "article": "der",
-      "word": "Grad"
+      "word": "Grad",
+      "translation": {
+        "tr": "derece",
+        "en": "degree"
+      }
     },
     {
       "article": "das",
-      "word": "Gramm"
+      "word": "Gramm",
+      "translation": {
+        "tr": "gram",
+        "en": "grams"
+      }
     },
     {
       "article": "das",
-      "word": "Gras"
+      "word": "Gras",
+      "translation": {
+        "tr": "Çim",
+        "en": "Grass"
+      }
     },
     {
       "article": "die",
-      "word": "Grenze"
+      "word": "Grenze",
+      "translation": {
+        "tr": "sınır",
+        "en": "border"
+      }
     },
     {
       "article": "die",
-      "word": "Großstadt"
+      "word": "Großstadt",
+      "translation": {
+        "tr": "Büyük şehir",
+        "en": "Big city"
+      }
     },
     {
       "article": "das",
-      "word": "Grün"
+      "word": "Grün",
+      "translation": {
+        "tr": "Yeşil",
+        "en": "Green"
+      }
     },
     {
       "article": "der",
-      "word": "Grund"
+      "word": "Grund",
+      "translation": {
+        "tr": "sebep",
+        "en": "reason"
+      }
     },
     {
       "article": "die",
-      "word": "Grundlage"
+      "word": "Grundlage",
+      "translation": {
+        "tr": "Vakıf",
+        "en": "Foundation"
+      }
     },
     {
       "article": "die",
-      "word": "Gruppe"
+      "word": "Gruppe",
+      "translation": {
+        "tr": "grup",
+        "en": "group"
+      }
     },
     {
       "article": "der",
-      "word": "Gruß"
+      "word": "Gruß",
+      "translation": {
+        "tr": "selamlar",
+        "en": "Greetings"
+      }
     },
     {
       "article": "der",
-      "word": "Gurt"
+      "word": "Gurt",
+      "translation": {
+        "tr": "Kemer",
+        "en": "Belt"
+      }
     },
     {
       "article": "der",
-      "word": "Gürtel"
+      "word": "Gürtel",
+      "translation": {
+        "tr": "Kemer",
+        "en": "Belt"
+      }
     },
     {
       "article": "das",
-      "word": "Gut"
+      "word": "Gut",
+      "translation": {
+        "tr": "iyi",
+        "en": "Good"
+      }
     },
     {
       "article": "das",
-      "word": "Gymnasium"
+      "word": "Gymnasium",
+      "translation": {
+        "tr": "Lise",
+        "en": "High school"
+      }
     },
     {
       "article": "der",
-      "word": "Hafen"
+      "word": "Hafen",
+      "translation": {
+        "tr": "Liman",
+        "en": "Port"
+      }
     },
     {
       "article": "der",
-      "word": "Hahn"
+      "word": "Hahn",
+      "translation": {
+        "tr": "Horoz",
+        "en": "Rooster"
+      }
     },
     {
       "article": "der",
-      "word": "Hai"
+      "word": "Hai",
+      "translation": {
+        "tr": "Merhaba",
+        "en": "Hai"
+      }
     },
     {
       "article": "der",
-      "word": "Haken"
+      "word": "Haken",
+      "translation": {
+        "tr": "Kanca",
+        "en": "Hook"
+      }
     },
     {
       "article": "die",
-      "word": "Hälfte"
+      "word": "Hälfte",
+      "translation": {
+        "tr": "yarım",
+        "en": "half"
+      }
     },
     {
       "article": "die",
-      "word": "Halle"
+      "word": "Halle",
+      "translation": {
+        "tr": "Salon",
+        "en": "Hall"
+      }
     },
     {
       "article": "der",
-      "word": "Hamster"
+      "word": "Hamster",
+      "translation": {
+        "tr": "Hamsterler",
+        "en": "Hamsters"
+      }
     },
     {
       "article": "das",
-      "word": "Handgelenk"
+      "word": "Handgelenk",
+      "translation": {
+        "tr": "bilek",
+        "en": "wrist"
+      }
     },
     {
       "article": "die",
-      "word": "Handschrift"
+      "word": "Handschrift",
+      "translation": {
+        "tr": "El yazısı",
+        "en": "Handwriting"
+      }
     },
     {
       "article": "der",
-      "word": "Handwerker"
+      "word": "Handwerker",
+      "translation": {
+        "tr": "Zanaatkar",
+        "en": "Craftsman"
+      }
     },
     {
       "article": "die",
-      "word": "Hauptstadt"
+      "word": "Hauptstadt",
+      "translation": {
+        "tr": "Sermaye",
+        "en": "Capital"
+      }
     },
     {
       "article": "die",
-      "word": "Hausfrau"
+      "word": "Hausfrau",
+      "translation": {
+        "tr": "ev hanımı",
+        "en": "housewife"
+      }
     },
     {
       "article": "der",
-      "word": "Hausmeister"
+      "word": "Hausmeister",
+      "translation": {
+        "tr": "bekçi",
+        "en": "caretaker"
+      }
     },
     {
       "article": "die",
-      "word": "Haustür"
+      "word": "Haustür",
+      "translation": {
+        "tr": "Ön kapı",
+        "en": "Front door"
+      }
     },
     {
       "article": "die",
-      "word": "Haut"
+      "word": "Haut",
+      "translation": {
+        "tr": "cilt",
+        "en": "skin"
+      }
     },
     {
       "article": "das",
-      "word": "Heft"
+      "word": "Heft",
+      "translation": {
+        "tr": "Kitapçık",
+        "en": "Booklet"
+      }
     },
     {
       "article": "der",
-      "word": "Held"
+      "word": "Held",
+      "translation": {
+        "tr": "Kahraman",
+        "en": "Hero"
+      }
     },
     {
       "article": "der",
-      "word": "Helm"
+      "word": "Helm",
+      "translation": {
+        "tr": "Kask",
+        "en": "Helmet"
+      }
     },
     {
       "article": "der",
-      "word": "Herd"
+      "word": "Herd",
+      "translation": {
+        "tr": "Soba",
+        "en": "Stove"
+      }
     },
     {
       "article": "die",
-      "word": "Hilfe"
+      "word": "Hilfe",
+      "translation": {
+        "tr": "Yardım",
+        "en": "Help"
+      }
     },
     {
       "article": "der",
-      "word": "Hirsch"
+      "word": "Hirsch",
+      "translation": {
+        "tr": "Geyik",
+        "en": "Deer"
+      }
     },
     {
       "article": "der",
-      "word": "Hit"
+      "word": "Hit",
+      "translation": {
+        "tr": "Vur",
+        "en": "Hit"
+      }
     },
     {
       "article": "die",
-      "word": "Hitze"
+      "word": "Hitze",
+      "translation": {
+        "tr": "Isı",
+        "en": "Heat"
+      }
     },
     {
       "article": "das",
-      "word": "Hobby"
+      "word": "Hobby",
+      "translation": {
+        "tr": "hobi",
+        "en": "hobby"
+      }
     },
     {
       "article": "die",
-      "word": "Hochzeit"
+      "word": "Hochzeit",
+      "translation": {
+        "tr": "düğün",
+        "en": "wedding"
+      }
     },
     {
       "article": "das",
-      "word": "Hockey"
+      "word": "Hockey",
+      "translation": {
+        "tr": "Hokey",
+        "en": "Hockey"
+      }
     },
     {
       "article": "der",
-      "word": "Hof"
+      "word": "Hof",
+      "translation": {
+        "tr": "avlu",
+        "en": "yard"
+      }
     },
     {
       "article": "die",
-      "word": "Hoffnung"
+      "word": "Hoffnung",
+      "translation": {
+        "tr": "umut",
+        "en": "Hope"
+      }
     },
     {
       "article": "die",
-      "word": "Höhe"
+      "word": "Höhe",
+      "translation": {
+        "tr": "Yükseklik",
+        "en": "Height"
+      }
     },
     {
       "article": "die",
-      "word": "Höhle"
+      "word": "Höhle",
+      "translation": {
+        "tr": "mağara",
+        "en": "cave"
+      }
     },
     {
       "article": "das",
-      "word": "Horn"
+      "word": "Horn",
+      "translation": {
+        "tr": "boynuz",
+        "en": "horn"
+      }
     },
     {
       "article": "das",
-      "word": "Hotelzimmer"
+      "word": "Hotelzimmer",
+      "translation": {
+        "tr": "Otel odası",
+        "en": "Hotel room"
+      }
     },
     {
       "article": "der",
-      "word": "Hubschrauber"
+      "word": "Hubschrauber",
+      "translation": {
+        "tr": "helikopter",
+        "en": "Helicopter"
+      }
     },
     {
       "article": "der",
-      "word": "Hügel"
+      "word": "Hügel",
+      "translation": {
+        "tr": "tepe",
+        "en": "hill"
+      }
     },
     {
       "article": "der",
-      "word": "Hunger"
+      "word": "Hunger",
+      "translation": {
+        "tr": "Açlık",
+        "en": "Hunger"
+      }
     },
     {
       "article": "die",
-      "word": "Hütte"
+      "word": "Hütte",
+      "translation": {
+        "tr": "kulübe",
+        "en": "Hut"
+      }
     },
     {
       "article": "die",
-      "word": "Idee"
+      "word": "Idee",
+      "translation": {
+        "tr": "fikir",
+        "en": "idea"
+      }
     },
     {
       "article": "der",
-      "word": "Idiot"
+      "word": "Idiot",
+      "translation": {
+        "tr": "Aptal",
+        "en": "Idiot"
+      }
     },
     {
       "article": "der",
-      "word": "Imbiss"
+      "word": "Imbiss",
+      "translation": {
+        "tr": "Aperatif",
+        "en": "Snack"
+      }
     },
     {
       "article": "die",
-      "word": "Information"
+      "word": "Information",
+      "translation": {
+        "tr": "bilgi",
+        "en": "information"
+      }
     },
     {
       "article": "die",
-      "word": "Insel"
+      "word": "Insel",
+      "translation": {
+        "tr": "ada",
+        "en": "island"
+      }
     },
     {
       "article": "das",
-      "word": "Instrument"
+      "word": "Instrument",
+      "translation": {
+        "tr": "enstrüman",
+        "en": "instrument"
+      }
     },
     {
       "article": "die",
-      "word": "Jahreszeit"
+      "word": "Jahreszeit",
+      "translation": {
+        "tr": "sezon",
+        "en": "season"
+      }
     },
     {
       "article": "die",
-      "word": "Jeans"
+      "word": "Jeans",
+      "translation": {
+        "tr": "Kot pantolon",
+        "en": "Jeans"
+      }
     },
     {
       "article": "der",
-      "word": "Job"
+      "word": "Job",
+      "translation": {
+        "tr": "İş",
+        "en": "Job"
+      }
     },
     {
       "article": "das",
-      "word": "Kabel"
+      "word": "Kabel",
+      "translation": {
+        "tr": "Kablo",
+        "en": "Cable"
+      }
     },
     {
       "article": "die",
-      "word": "Kabine"
+      "word": "Kabine",
+      "translation": {
+        "tr": "kabin",
+        "en": "cabin"
+      }
     },
     {
       "article": "der",
-      "word": "Käfer"
+      "word": "Käfer",
+      "translation": {
+        "tr": "Böcek",
+        "en": "Beetle"
+      }
     },
     {
       "article": "der",
-      "word": "Kalender"
+      "word": "Kalender",
+      "translation": {
+        "tr": "Takvim",
+        "en": "Calendar"
+      }
     },
     {
       "article": "die",
-      "word": "Kälte"
+      "word": "Kälte",
+      "translation": {
+        "tr": "Soğuk",
+        "en": "Cold"
+      }
     },
     {
       "article": "die",
-      "word": "Kamera"
+      "word": "Kamera",
+      "translation": {
+        "tr": "Kamera",
+        "en": "Camera"
+      }
     },
     {
       "article": "der",
-      "word": "Kamin"
+      "word": "Kamin",
+      "translation": {
+        "tr": "Şömine",
+        "en": "Fireplace"
+      }
     },
     {
       "article": "die",
-      "word": "Kammer"
+      "word": "Kammer",
+      "translation": {
+        "tr": "Oda",
+        "en": "Chamber"
+      }
     },
     {
       "article": "der",
-      "word": "Kampf"
+      "word": "Kampf",
+      "translation": {
+        "tr": "kavga",
+        "en": "fight"
+      }
     },
     {
       "article": "der",
-      "word": "Kanal"
+      "word": "Kanal",
+      "translation": {
+        "tr": "Kanal",
+        "en": "Channel"
+      }
     },
     {
       "article": "die",
-      "word": "Kanne"
+      "word": "Kanne",
+      "translation": {
+        "tr": "saksı",
+        "en": "pot"
+      }
     },
     {
       "article": "die",
-      "word": "Kante"
+      "word": "Kante",
+      "translation": {
+        "tr": "Kenar",
+        "en": "Edge"
+      }
     },
     {
       "article": "die",
-      "word": "Kantine"
+      "word": "Kantine",
+      "translation": {
+        "tr": "kantin",
+        "en": "Canteen"
+      }
     },
     {
       "article": "das",
-      "word": "Kapitel"
+      "word": "Kapitel",
+      "translation": {
+        "tr": "Bölüm",
+        "en": "Chapter"
+      }
     },
     {
       "article": "die",
-      "word": "Kappe"
+      "word": "Kappe",
+      "translation": {
+        "tr": "kap",
+        "en": "cap"
+      }
     },
     {
       "article": "der",
-      "word": "Karton"
+      "word": "Karton",
+      "translation": {
+        "tr": "karton",
+        "en": "Cardboard"
+      }
     },
     {
       "article": "die",
-      "word": "Kasse"
+      "word": "Kasse",
+      "translation": {
+        "tr": "Ödeme",
+        "en": "Checkout"
+      }
     },
     {
       "article": "die",
-      "word": "Kassette"
+      "word": "Kassette",
+      "translation": {
+        "tr": "kaset",
+        "en": "cassette"
+      }
     },
     {
       "article": "der",
-      "word": "Kasten"
+      "word": "Kasten",
+      "translation": {
+        "tr": "kutu",
+        "en": "box"
+      }
     },
     {
       "article": "das",
-      "word": "Kätzchen"
+      "word": "Kätzchen",
+      "translation": {
+        "tr": "yavru kedi",
+        "en": "kitten"
+      }
     },
     {
       "article": "der",
-      "word": "Käufer"
+      "word": "Käufer",
+      "translation": {
+        "tr": "Alıcı",
+        "en": "Buyer"
+      }
     },
     {
       "article": "der",
-      "word": "Keks"
+      "word": "Keks",
+      "translation": {
+        "tr": "Çerez",
+        "en": "Cookie"
+      }
     },
     {
       "article": "der",
-      "word": "Keller"
+      "word": "Keller",
+      "translation": {
+        "tr": "Bodrum",
+        "en": "Basement"
+      }
     },
     {
       "article": "der",
-      "word": "Kellner"
+      "word": "Kellner",
+      "translation": {
+        "tr": "Garson",
+        "en": "Waiter"
+      }
     },
     {
       "article": "die",
-      "word": "Kette"
+      "word": "Kette",
+      "translation": {
+        "tr": "zincir",
+        "en": "chain"
+      }
     },
     {
       "article": "das",
-      "word": "Kinderzimmer"
+      "word": "Kinderzimmer",
+      "translation": {
+        "tr": "Çocuk odası",
+        "en": "Children's room"
+      }
     },
     {
       "article": "das",
-      "word": "Kinn"
+      "word": "Kinn",
+      "translation": {
+        "tr": "Çene",
+        "en": "Chin"
+      }
     },
     {
       "article": "der",
-      "word": "Kiosk"
+      "word": "Kiosk",
+      "translation": {
+        "tr": "kiosk",
+        "en": "kiosk"
+      }
     },
     {
       "article": "die",
-      "word": "Kirsche"
+      "word": "Kirsche",
+      "translation": {
+        "tr": "Kiraz",
+        "en": "Cherry"
+      }
     },
     {
       "article": "die",
-      "word": "Kiste"
+      "word": "Kiste",
+      "translation": {
+        "tr": "kutu",
+        "en": "box"
+      }
     },
     {
       "article": "die",
-      "word": "Klasse"
+      "word": "Klasse",
+      "translation": {
+        "tr": "sınıf",
+        "en": "class"
+      }
     },
     {
       "article": "das",
-      "word": "Klassenzimmer"
+      "word": "Klassenzimmer",
+      "translation": {
+        "tr": "sınıf",
+        "en": "classroom"
+      }
     },
     {
       "article": "das",
-      "word": "Klavier"
+      "word": "Klavier",
+      "translation": {
+        "tr": "Piyano",
+        "en": "Piano"
+      }
     },
     {
       "article": "die",
-      "word": "Kleidung"
+      "word": "Kleidung",
+      "translation": {
+        "tr": "Giyim",
+        "en": "Clothing"
+      }
     },
     {
       "article": "die",
-      "word": "Klingel"
+      "word": "Klingel",
+      "translation": {
+        "tr": "Çan",
+        "en": "Bell"
+      }
     },
     {
       "article": "die",
-      "word": "Klinik"
+      "word": "Klinik",
+      "translation": {
+        "tr": "Klinik",
+        "en": "Clinic"
+      }
     },
     {
       "article": "die",
-      "word": "Kneipe"
+      "word": "Kneipe",
+      "translation": {
+        "tr": "birahane",
+        "en": "pub"
+      }
     },
     {
       "article": "das",
-      "word": "Knie"
+      "word": "Knie",
+      "translation": {
+        "tr": "Dizler",
+        "en": "Knees"
+      }
     },
     {
       "article": "der",
-      "word": "Knoblauch"
+      "word": "Knoblauch",
+      "translation": {
+        "tr": "Sarımsak",
+        "en": "Garlic"
+      }
     },
     {
       "article": "der",
-      "word": "Knochen"
+      "word": "Knochen",
+      "translation": {
+        "tr": "Kemikler",
+        "en": "Bones"
+      }
     },
     {
       "article": "der",
-      "word": "Knopf"
+      "word": "Knopf",
+      "translation": {
+        "tr": "düğme",
+        "en": "button"
+      }
     },
     {
       "article": "das",
-      "word": "Kochen"
+      "word": "Kochen",
+      "translation": {
+        "tr": "Yemek Pişirme",
+        "en": "Cooking"
+      }
     },
     {
       "article": "der",
-      "word": "Kollege"
+      "word": "Kollege",
+      "translation": {
+        "tr": "meslektaş",
+        "en": "colleague"
+      }
     },
     {
       "article": "die",
-      "word": "Kollegin"
+      "word": "Kollegin",
+      "translation": {
+        "tr": "meslektaş",
+        "en": "colleague"
+      }
     },
     {
       "article": "das",
-      "word": "Komma"
+      "word": "Komma",
+      "translation": {
+        "tr": "Virgül",
+        "en": "Comma"
+      }
     },
     {
       "article": "der",
-      "word": "Kompass"
+      "word": "Kompass",
+      "translation": {
+        "tr": "Pusula",
+        "en": "Compass"
+      }
     },
     {
       "article": "der",
-      "word": "Kontakt"
+      "word": "Kontakt",
+      "translation": {
+        "tr": "İletişim",
+        "en": "Contact"
+      }
     },
     {
       "article": "der",
-      "word": "Kontinent"
+      "word": "Kontinent",
+      "translation": {
+        "tr": "kıta",
+        "en": "continent"
+      }
     },
     {
       "article": "das",
-      "word": "Konto"
+      "word": "Konto",
+      "translation": {
+        "tr": "hesap",
+        "en": "account"
+      }
     },
     {
       "article": "die",
-      "word": "Kontrolle"
+      "word": "Kontrolle",
+      "translation": {
+        "tr": "Kontrol",
+        "en": "Control"
+      }
     },
     {
       "article": "das",
-      "word": "Konzert"
+      "word": "Konzert",
+      "translation": {
+        "tr": "Konser",
+        "en": "Concert"
+      }
     },
     {
       "article": "die",
-      "word": "Kopie"
+      "word": "Kopie",
+      "translation": {
+        "tr": "Kopyala",
+        "en": "Copy"
+      }
     },
     {
       "article": "der",
-      "word": "Korb"
+      "word": "Korb",
+      "translation": {
+        "tr": "sepet",
+        "en": "basket"
+      }
     },
     {
       "article": "das",
-      "word": "Korn"
+      "word": "Korn",
+      "translation": {
+        "tr": "tahıl",
+        "en": "grain"
+      }
     },
     {
       "article": "das",
-      "word": "Kostüm"
+      "word": "Kostüm",
+      "translation": {
+        "tr": "kostüm",
+        "en": "costume"
+      }
     },
     {
       "article": "die",
-      "word": "Kraft"
+      "word": "Kraft",
+      "translation": {
+        "tr": "Güç",
+        "en": "Strength"
+      }
     },
     {
       "article": "der",
-      "word": "Kran"
+      "word": "Kran",
+      "translation": {
+        "tr": "vinç",
+        "en": "crane"
+      }
     },
     {
       "article": "das",
-      "word": "Krankenhaus"
+      "word": "Krankenhaus",
+      "translation": {
+        "tr": "Hastane",
+        "en": "Hospital"
+      }
     },
     {
       "article": "die",
-      "word": "Krankenkasse"
+      "word": "Krankenkasse",
+      "translation": {
+        "tr": "Sağlık sigortası",
+        "en": "Health insurance"
+      }
     },
     {
       "article": "die",
-      "word": "Krankenschwester"
+      "word": "Krankenschwester",
+      "translation": {
+        "tr": "Hemşire",
+        "en": "Nurse"
+      }
     },
     {
       "article": "der",
-      "word": "Krankenwagen"
+      "word": "Krankenwagen",
+      "translation": {
+        "tr": "Ambulans",
+        "en": "Ambulance"
+      }
     },
     {
       "article": "die",
-      "word": "Krankheit"
+      "word": "Krankheit",
+      "translation": {
+        "tr": "hastalık",
+        "en": "disease"
+      }
     },
     {
       "article": "das",
-      "word": "Kraut"
+      "word": "Kraut",
+      "translation": {
+        "tr": "bitki",
+        "en": "herb"
+      }
     },
     {
       "article": "die",
-      "word": "Krawatte"
+      "word": "Krawatte",
+      "translation": {
+        "tr": "Kravat",
+        "en": "Tie"
+      }
     },
     {
       "article": "der",
-      "word": "Kreis"
+      "word": "Kreis",
+      "translation": {
+        "tr": "daire",
+        "en": "circle"
+      }
     },
     {
       "article": "das",
-      "word": "Kreuz"
+      "word": "Kreuz",
+      "translation": {
+        "tr": "Çapraz",
+        "en": "Cross"
+      }
     },
     {
       "article": "die",
-      "word": "Kreuzung"
+      "word": "Kreuzung",
+      "translation": {
+        "tr": "kavşak",
+        "en": "intersection"
+      }
     },
     {
       "article": "der",
-      "word": "Krieg"
+      "word": "Krieg",
+      "translation": {
+        "tr": "savaş",
+        "en": "war"
+      }
     },
     {
       "article": "die",
-      "word": "Krone"
+      "word": "Krone",
+      "translation": {
+        "tr": "Taç",
+        "en": "Crown"
+      }
     },
     {
       "article": "die",
-      "word": "Kugel"
+      "word": "Kugel",
+      "translation": {
+        "tr": "top",
+        "en": "ball"
+      }
     },
     {
       "article": "das",
-      "word": "Küken"
+      "word": "Küken",
+      "translation": {
+        "tr": "Civcivler",
+        "en": "Chicks"
+      }
     },
     {
       "article": "der",
-      "word": "Kunde"
+      "word": "Kunde",
+      "translation": {
+        "tr": "müşteri",
+        "en": "customer"
+      }
     },
     {
       "article": "der",
-      "word": "Kurs"
+      "word": "Kurs",
+      "translation": {
+        "tr": "Kurs",
+        "en": "Course"
+      }
     },
     {
       "article": "die",
-      "word": "Kurve"
+      "word": "Kurve",
+      "translation": {
+        "tr": "eğri",
+        "en": "curve"
+      }
     },
     {
       "article": "der",
-      "word": "Kuss"
+      "word": "Kuss",
+      "translation": {
+        "tr": "Öpücük",
+        "en": "Kiss"
+      }
     },
     {
       "article": "die",
-      "word": "Küste"
+      "word": "Küste",
+      "translation": {
+        "tr": "sahil",
+        "en": "coast"
+      }
     },
     {
       "article": "das",
-      "word": "Lachen"
+      "word": "Lachen",
+      "translation": {
+        "tr": "Gülmek",
+        "en": "Laugh"
+      }
     },
     {
       "article": "der",
-      "word": "Lachs"
+      "word": "Lachs",
+      "translation": {
+        "tr": "Somon",
+        "en": "Salmon"
+      }
     },
     {
       "article": "der",
-      "word": "Laden"
+      "word": "Laden",
+      "translation": {
+        "tr": "Yükleniyor",
+        "en": "Loading"
+      }
     },
     {
       "article": "das",
-      "word": "Lamm"
+      "word": "Lamm",
+      "translation": {
+        "tr": "Kuzu",
+        "en": "Lamb"
+      }
     },
     {
       "article": "die",
-      "word": "Landung"
+      "word": "Landung",
+      "translation": {
+        "tr": "iniş",
+        "en": "landing"
+      }
     },
     {
       "article": "die",
-      "word": "Länge"
+      "word": "Länge",
+      "translation": {
+        "tr": "Uzunluk",
+        "en": "Length"
+      }
     },
     {
       "article": "der",
-      "word": "Laptop"
+      "word": "Laptop",
+      "translation": {
+        "tr": "Dizüstü bilgisayar",
+        "en": "Laptop"
+      }
     },
     {
       "article": "der",
-      "word": "Lastwagen"
+      "word": "Lastwagen",
+      "translation": {
+        "tr": "Kamyonlar",
+        "en": "Trucks"
+      }
     },
     {
       "article": "die",
-      "word": "Laterne"
+      "word": "Laterne",
+      "translation": {
+        "tr": "fener",
+        "en": "lantern"
+      }
     },
     {
       "article": "der",
-      "word": "Lauf"
+      "word": "Lauf",
+      "translation": {
+        "tr": "Çalıştır",
+        "en": "Run"
+      }
     },
     {
       "article": "die",
-      "word": "Laune"
+      "word": "Laune",
+      "translation": {
+        "tr": "Ruh hali",
+        "en": "Mood"
+      }
     },
     {
       "article": "der",
-      "word": "Laut"
+      "word": "Laut",
+      "translation": {
+        "tr": "Yüksek sesle",
+        "en": "Loud"
+      }
     },
     {
       "article": "der",
-      "word": "Lautsprecher"
+      "word": "Lautsprecher",
+      "translation": {
+        "tr": "Hoparlörler",
+        "en": "Speakers"
+      }
     },
     {
       "article": "die",
-      "word": "Leber"
+      "word": "Leber",
+      "translation": {
+        "tr": "Karaciğer",
+        "en": "Liver"
+      }
     },
     {
       "article": "das",
-      "word": "Leder"
+      "word": "Leder",
+      "translation": {
+        "tr": "Deri",
+        "en": "Leather"
+      }
     },
     {
       "article": "das",
-      "word": "Lehrbuch"
+      "word": "Lehrbuch",
+      "translation": {
+        "tr": "Ders Kitabı",
+        "en": "Textbook"
+      }
     },
     {
       "article": "der",
-      "word": "Leim"
+      "word": "Leim",
+      "translation": {
+        "tr": "tutkal",
+        "en": "glue"
+      }
     },
     {
       "article": "die",
-      "word": "Leinwand"
+      "word": "Leinwand",
+      "translation": {
+        "tr": "tuval",
+        "en": "canvas"
+      }
     },
     {
       "article": "die",
-      "word": "Leistung"
+      "word": "Leistung",
+      "translation": {
+        "tr": "Performans",
+        "en": "Performance"
+      }
     },
     {
       "article": "der",
-      "word": "Leser"
+      "word": "Leser",
+      "translation": {
+        "tr": "Okuyucu",
+        "en": "Reader"
+      }
     },
     {
       "article": "der",
-      "word": "Liebling"
+      "word": "Liebling",
+      "translation": {
+        "tr": "sevgilim",
+        "en": "Darling"
+      }
     },
     {
       "article": "die",
-      "word": "Lieferung"
+      "word": "Lieferung",
+      "translation": {
+        "tr": "Teslimat",
+        "en": "Delivery"
+      }
     },
     {
       "article": "der",
-      "word": "Lift"
+      "word": "Lift",
+      "translation": {
+        "tr": "Asansör",
+        "en": "Elevator"
+      }
     },
     {
       "article": "das",
-      "word": "Lila"
+      "word": "Lila",
+      "translation": {
+        "tr": "Mor",
+        "en": "Purple"
+      }
     },
     {
       "article": "die",
-      "word": "Linie"
+      "word": "Linie",
+      "translation": {
+        "tr": "çizgi",
+        "en": "line"
+      }
     },
     {
       "article": "die",
-      "word": "Linse"
+      "word": "Linse",
+      "translation": {
+        "tr": "mercek",
+        "en": "lens"
+      }
     },
     {
       "article": "die",
-      "word": "Liste"
+      "word": "Liste",
+      "translation": {
+        "tr": "Liste",
+        "en": "List"
+      }
     },
     {
       "article": "das",
-      "word": "Lob"
+      "word": "Lob",
+      "translation": {
+        "tr": "Övgü",
+        "en": "Praise"
+      }
     },
     {
       "article": "das",
-      "word": "Logo"
+      "word": "Logo",
+      "translation": {
+        "tr": "logo",
+        "en": "Logo"
+      }
     },
     {
       "article": "der",
-      "word": "Lohn"
+      "word": "Lohn",
+      "translation": {
+        "tr": "ücretler",
+        "en": "wages"
+      }
     },
     {
       "article": "das",
-      "word": "Lokal"
+      "word": "Lokal",
+      "translation": {
+        "tr": "Yerel",
+        "en": "Local"
+      }
     },
     {
       "article": "das",
-      "word": "Los"
+      "word": "Los",
+      "translation": {
+        "tr": "Git",
+        "en": "Go"
+      }
     },
     {
       "article": "das",
-      "word": "Lotto"
+      "word": "Lotto",
+      "translation": {
+        "tr": "Piyango",
+        "en": "Lottery"
+      }
     },
     {
       "article": "die",
-      "word": "Lücke"
+      "word": "Lücke",
+      "translation": {
+        "tr": "boşluk",
+        "en": "gap"
+      }
     },
     {
       "article": "die",
-      "word": "Lüge"
+      "word": "Lüge",
+      "translation": {
+        "tr": "yalan söylemek",
+        "en": "lie"
+      }
     },
     {
       "article": "der",
-      "word": "Lügner"
+      "word": "Lügner",
+      "translation": {
+        "tr": "Yalancı",
+        "en": "Liar"
+      }
     },
     {
       "article": "die",
-      "word": "Lunge"
+      "word": "Lunge",
+      "translation": {
+        "tr": "akciğerler",
+        "en": "lungs"
+      }
     },
     {
       "article": "die",
-      "word": "Lust"
+      "word": "Lust",
+      "translation": {
+        "tr": "Şehvet",
+        "en": "Lust"
+      }
     },
     {
       "article": "das",
-      "word": "Magazin"
+      "word": "Magazin",
+      "translation": {
+        "tr": "Dergi",
+        "en": "Magazine"
+      }
     },
     {
       "article": "das",
-      "word": "Mal"
+      "word": "Mal",
+      "translation": {
+        "tr": "kez",
+        "en": "times"
+      }
     },
     {
       "article": "der",
-      "word": "Maler"
+      "word": "Maler",
+      "translation": {
+        "tr": "Ressam",
+        "en": "Painter"
+      }
     },
     {
       "article": "der",
-      "word": "Mantel"
+      "word": "Mantel",
+      "translation": {
+        "tr": "ceket",
+        "en": "coat"
+      }
     },
     {
       "article": "die",
-      "word": "Marke"
+      "word": "Marke",
+      "translation": {
+        "tr": "Marka",
+        "en": "Brand"
+      }
     },
     {
       "article": "die",
-      "word": "Marmelade"
+      "word": "Marmelade",
+      "translation": {
+        "tr": "reçel",
+        "en": "jam"
+      }
     },
     {
       "article": "die",
-      "word": "Maschine"
+      "word": "Maschine",
+      "translation": {
+        "tr": "makine",
+        "en": "machine"
+      }
     },
     {
       "article": "die",
-      "word": "Maske"
+      "word": "Maske",
+      "translation": {
+        "tr": "Maske",
+        "en": "Mask"
+      }
     },
     {
       "article": "das",
-      "word": "Material"
+      "word": "Material",
+      "translation": {
+        "tr": "malzeme",
+        "en": "material"
+      }
     },
     {
       "article": "die",
-      "word": "Matte"
+      "word": "Matte",
+      "translation": {
+        "tr": "mat",
+        "en": "mat"
+      }
     },
     {
       "article": "die",
-      "word": "Mauer"
+      "word": "Mauer",
+      "translation": {
+        "tr": "duvar",
+        "en": "wall"
+      }
     },
     {
       "article": "das",
-      "word": "Maul"
+      "word": "Maul",
+      "translation": {
+        "tr": "Ağız",
+        "en": "Mouth"
+      }
     },
     {
       "article": "die",
-      "word": "Medizin"
+      "word": "Medizin",
+      "translation": {
+        "tr": "Tıp",
+        "en": "Medicine"
+      }
     },
     {
       "article": "die",
-      "word": "Meinung"
+      "word": "Meinung",
+      "translation": {
+        "tr": "görüş",
+        "en": "opinion"
+      }
     },
     {
       "article": "der",
-      "word": "Meister"
+      "word": "Meister",
+      "translation": {
+        "tr": "usta",
+        "en": "Master"
+      }
     },
     {
       "article": "die",
-      "word": "Meldung"
+      "word": "Meldung",
+      "translation": {
+        "tr": "Mesaj",
+        "en": "Message"
+      }
     },
     {
       "article": "die",
-      "word": "Melodie"
+      "word": "Melodie",
+      "translation": {
+        "tr": "Melodi",
+        "en": "Melody"
+      }
     },
     {
       "article": "die",
-      "word": "Menge"
+      "word": "Menge",
+      "translation": {
+        "tr": "miktar",
+        "en": "quantity"
+      }
     },
     {
       "article": "das",
-      "word": "Menü"
+      "word": "Menü",
+      "translation": {
+        "tr": "Menü",
+        "en": "Menu"
+      }
     },
     {
       "article": "das",
-      "word": "Metall"
+      "word": "Metall",
+      "translation": {
+        "tr": "maden",
+        "en": "metal"
+      }
     },
     {
       "article": "die",
-      "word": "Miete"
+      "word": "Miete",
+      "translation": {
+        "tr": "Kiralık",
+        "en": "Rent"
+      }
     },
     {
       "article": "der",
-      "word": "Mieter"
+      "word": "Mieter",
+      "translation": {
+        "tr": "kiracı",
+        "en": "tenant"
+      }
     },
     {
       "article": "das",
-      "word": "Mikrofon"
+      "word": "Mikrofon",
+      "translation": {
+        "tr": "Mikrofon",
+        "en": "Microphone"
+      }
     },
     {
       "article": "die",
-      "word": "Mine"
+      "word": "Mine",
+      "translation": {
+        "tr": "benim",
+        "en": "mine"
+      }
     },
     {
       "article": "das",
-      "word": "Minus"
+      "word": "Minus",
+      "translation": {
+        "tr": "Eksi",
+        "en": "Minus"
+      }
     },
     {
       "article": "der",
-      "word": "Mist"
+      "word": "Mist",
+      "translation": {
+        "tr": "saçmalık",
+        "en": "Crap"
+      }
     },
     {
       "article": "der",
-      "word": "Mitarbeiter"
+      "word": "Mitarbeiter",
+      "translation": {
+        "tr": "Çalışanlar",
+        "en": "Employees"
+      }
     },
     {
       "article": "der",
-      "word": "Mittag"
+      "word": "Mittag",
+      "translation": {
+        "tr": "Öğlen",
+        "en": "Noon"
+      }
     },
     {
       "article": "das",
-      "word": "Mittagessen"
+      "word": "Mittagessen",
+      "translation": {
+        "tr": "Öğle yemeği",
+        "en": "Lunch"
+      }
     },
     {
       "article": "die",
-      "word": "Mitte"
+      "word": "Mitte",
+      "translation": {
+        "tr": "orta",
+        "en": "middle"
+      }
     },
     {
       "article": "das",
-      "word": "Möbel"
+      "word": "Möbel",
+      "translation": {
+        "tr": "Mobilya",
+        "en": "Furniture"
+      }
     },
     {
       "article": "die",
-      "word": "Mode"
+      "word": "Mode",
+      "translation": {
+        "tr": "Moda",
+        "en": "Fashion"
+      }
     },
     {
       "article": "der",
-      "word": "Moment"
+      "word": "Moment",
+      "translation": {
+        "tr": "Bekle",
+        "en": "Wait"
+      }
     },
     {
       "article": "das",
-      "word": "Monster"
+      "word": "Monster",
+      "translation": {
+        "tr": "Canavarlar",
+        "en": "Monsters"
+      }
     },
     {
       "article": "der",
-      "word": "Motor"
+      "word": "Motor",
+      "translation": {
+        "tr": "motor",
+        "en": "engine"
+      }
     },
     {
       "article": "das",
-      "word": "Motorrad"
+      "word": "Motorrad",
+      "translation": {
+        "tr": "Motosiklet",
+        "en": "Motorcycle"
+      }
     },
     {
       "article": "der",
-      "word": "Mülleimer"
+      "word": "Mülleimer",
+      "translation": {
+        "tr": "Çöp kutusu",
+        "en": "Trash can"
+      }
     },
     {
       "article": "das",
-      "word": "Museum"
+      "word": "Museum",
+      "translation": {
+        "tr": "Müze",
+        "en": "Museum"
+      }
     },
     {
       "article": "der",
-      "word": "Musiker"
+      "word": "Musiker",
+      "translation": {
+        "tr": "Müzisyen",
+        "en": "Musician"
+      }
     },
     {
       "article": "das",
-      "word": "Muster"
+      "word": "Muster",
+      "translation": {
+        "tr": "Desen",
+        "en": "Pattern"
+      }
     },
     {
       "article": "der",
-      "word": "Mut"
+      "word": "Mut",
+      "translation": {
+        "tr": "Cesaret",
+        "en": "Courage"
+      }
     },
     {
       "article": "der",
-      "word": "Nachteil"
+      "word": "Nachteil",
+      "translation": {
+        "tr": "Dezavantaj",
+        "en": "Disadvantage"
+      }
     },
     {
       "article": "der",
-      "word": "Nacken"
+      "word": "Nacken",
+      "translation": {
+        "tr": "Boyun",
+        "en": "Neck"
+      }
     },
     {
       "article": "die",
-      "word": "Nadel"
+      "word": "Nadel",
+      "translation": {
+        "tr": "iğne",
+        "en": "needle"
+      }
     },
     {
       "article": "die",
-      "word": "Nahrung"
+      "word": "Nahrung",
+      "translation": {
+        "tr": "yiyecek",
+        "en": "food"
+      }
     },
     {
       "article": "das",
-      "word": "Nahrungsmittel"
+      "word": "Nahrungsmittel",
+      "translation": {
+        "tr": "Gıda",
+        "en": "Food"
+      }
     },
     {
       "article": "die",
-      "word": "Natur"
+      "word": "Natur",
+      "translation": {
+        "tr": "Doğa",
+        "en": "Nature"
+      }
     },
     {
       "article": "der",
-      "word": "Nebel"
+      "word": "Nebel",
+      "translation": {
+        "tr": "Sis",
+        "en": "Fog"
+      }
     },
     {
       "article": "der",
-      "word": "Neffe"
+      "word": "Neffe",
+      "translation": {
+        "tr": "Yeğen",
+        "en": "Nephew"
+      }
     },
     {
       "article": "der",
-      "word": "Nerv"
+      "word": "Nerv",
+      "translation": {
+        "tr": "sinir",
+        "en": "nerve"
+      }
     },
     {
       "article": "die",
-      "word": "Nichte"
+      "word": "Nichte",
+      "translation": {
+        "tr": "yeğen",
+        "en": "niece"
+      }
     },
     {
       "article": "die",
-      "word": "Niere"
+      "word": "Niere",
+      "translation": {
+        "tr": "böbrek",
+        "en": "kidney"
+      }
     },
     {
       "article": "die",
-      "word": "Note"
+      "word": "Note",
+      "translation": {
+        "tr": "not",
+        "en": "grade"
+      }
     },
     {
       "article": "das",
-      "word": "Notebook"
+      "word": "Notebook",
+      "translation": {
+        "tr": "Defter",
+        "en": "Notebook"
+      }
     },
     {
       "article": "die",
-      "word": "Notiz"
+      "word": "Notiz",
+      "translation": {
+        "tr": "Not",
+        "en": "Note"
+      }
     },
     {
       "article": "der",
-      "word": "Notruf"
+      "word": "Notruf",
+      "translation": {
+        "tr": "Acil arama",
+        "en": "Emergency call"
+      }
     },
     {
       "article": "die",
-      "word": "Nummer"
+      "word": "Nummer",
+      "translation": {
+        "tr": "sayı",
+        "en": "number"
+      }
     },
     {
       "article": "die",
-      "word": "Nuss"
+      "word": "Nuss",
+      "translation": {
+        "tr": "Somun",
+        "en": "Nut"
+      }
     },
     {
       "article": "das",
-      "word": "Objekt"
+      "word": "Objekt",
+      "translation": {
+        "tr": "Nesne",
+        "en": "Object"
+      }
     },
     {
       "article": "die",
-      "word": "Option"
+      "word": "Option",
+      "translation": {
+        "tr": "seçenek",
+        "en": "option"
+      }
     },
     {
       "article": "der",
-      "word": "Ordner"
+      "word": "Ordner",
+      "translation": {
+        "tr": "klasör",
+        "en": "folder"
+      }
     },
     {
       "article": "die",
-      "word": "Ordnung"
+      "word": "Ordnung",
+      "translation": {
+        "tr": "tamam",
+        "en": "Okay"
+      }
     },
     {
       "article": "der",
-      "word": "Österreicher"
+      "word": "Österreicher",
+      "translation": {
+        "tr": "Avusturyalılar",
+        "en": "Austrians"
+      }
     },
     {
       "article": "der",
-      "word": "Ozean"
+      "word": "Ozean",
+      "translation": {
+        "tr": "Okyanus",
+        "en": "Ocean"
+      }
     },
     {
       "article": "das",
-      "word": "Paar"
+      "word": "Paar",
+      "translation": {
+        "tr": "Çift",
+        "en": "Couple"
+      }
     },
     {
       "article": "die",
-      "word": "Packung"
+      "word": "Packung",
+      "translation": {
+        "tr": "paket",
+        "en": "pack"
+      }
     },
     {
       "article": "das",
-      "word": "Paket"
+      "word": "Paket",
+      "translation": {
+        "tr": "paket",
+        "en": "package"
+      }
     },
     {
       "article": "die",
-      "word": "Palme"
+      "word": "Palme",
+      "translation": {
+        "tr": "palmiye ağacı",
+        "en": "palm tree"
+      }
     },
     {
       "article": "der",
-      "word": "Park"
+      "word": "Park",
+      "translation": {
+        "tr": "Parkı",
+        "en": "Park"
+      }
     },
     {
       "article": "der",
-      "word": "Parkplatz"
+      "word": "Parkplatz",
+      "translation": {
+        "tr": "Otopark",
+        "en": "Parking lot"
+      }
     },
     {
       "article": "der",
-      "word": "Partner"
+      "word": "Partner",
+      "translation": {
+        "tr": "Ortak",
+        "en": "Partner"
+      }
     },
     {
       "article": "die",
-      "word": "Party"
+      "word": "Party",
+      "translation": {
+        "tr": "Parti",
+        "en": "Party"
+      }
     },
     {
       "article": "der",
-      "word": "Pass"
+      "word": "Pass",
+      "translation": {
+        "tr": "Geçmek",
+        "en": "Pass"
+      }
     },
     {
       "article": "der",
-      "word": "Passagier"
+      "word": "Passagier",
+      "translation": {
+        "tr": "yolcu",
+        "en": "passenger"
+      }
     },
     {
       "article": "das",
-      "word": "Passwort"
+      "word": "Passwort",
+      "translation": {
+        "tr": "Şifre",
+        "en": "Password"
+      }
     },
     {
       "article": "der",
-      "word": "Patient"
+      "word": "Patient",
+      "translation": {
+        "tr": "hasta",
+        "en": "patient"
+      }
     },
     {
       "article": "das",
-      "word": "Pech"
+      "word": "Pech",
+      "translation": {
+        "tr": "Kötü şans",
+        "en": "Bad luck"
+      }
     },
     {
       "article": "die",
-      "word": "Person"
+      "word": "Person",
+      "translation": {
+        "tr": "kişi",
+        "en": "person"
+      }
     },
     {
       "article": "die",
-      "word": "Pfanne"
+      "word": "Pfanne",
+      "translation": {
+        "tr": "tava",
+        "en": "pan"
+      }
     },
     {
       "article": "der",
-      "word": "Pfeffer"
+      "word": "Pfeffer",
+      "translation": {
+        "tr": "biber",
+        "en": "pepper"
+      }
     },
     {
       "article": "der",
-      "word": "Pfeil"
+      "word": "Pfeil",
+      "translation": {
+        "tr": "Ok",
+        "en": "Arrow"
+      }
     },
     {
       "article": "das",
-      "word": "Pflaster"
+      "word": "Pflaster",
+      "translation": {
+        "tr": "Alçı",
+        "en": "Plaster"
+      }
     },
     {
       "article": "die",
-      "word": "Pille"
+      "word": "Pille",
+      "translation": {
+        "tr": "hap",
+        "en": "pill"
+      }
     },
     {
       "article": "der",
-      "word": "Pilz"
+      "word": "Pilz",
+      "translation": {
+        "tr": "Mantar",
+        "en": "Mushroom"
+      }
     },
     {
       "article": "die",
-      "word": "Pistole"
+      "word": "Pistole",
+      "translation": {
+        "tr": "Tabanca",
+        "en": "Pistol"
+      }
     },
     {
       "article": "das",
-      "word": "Plakat"
+      "word": "Plakat",
+      "translation": {
+        "tr": "Poster",
+        "en": "Poster"
+      }
     },
     {
       "article": "der",
-      "word": "Plan"
+      "word": "Plan",
+      "translation": {
+        "tr": "Planı",
+        "en": "Plan"
+      }
     },
     {
       "article": "der",
-      "word": "Planet"
+      "word": "Planet",
+      "translation": {
+        "tr": "Gezegen",
+        "en": "Planet"
+      }
     },
     {
       "article": "die",
-      "word": "Platte"
+      "word": "Platte",
+      "translation": {
+        "tr": "plaka",
+        "en": "plate"
+      }
     },
     {
       "article": "der",
-      "word": "Pokal"
+      "word": "Pokal",
+      "translation": {
+        "tr": "Fincan",
+        "en": "Cup"
+      }
     },
     {
       "article": "das",
-      "word": "Pony"
+      "word": "Pony",
+      "translation": {
+        "tr": "Patlama",
+        "en": "Bangs"
+      }
     },
     {
       "article": "der",
-      "word": "Pool"
+      "word": "Pool",
+      "translation": {
+        "tr": "Havuz",
+        "en": "Pool"
+      }
     },
     {
       "article": "die",
-      "word": "Portion"
+      "word": "Portion",
+      "translation": {
+        "tr": "porsiyon",
+        "en": "portion"
+      }
     },
     {
       "article": "die",
-      "word": "Position"
+      "word": "Position",
+      "translation": {
+        "tr": "konum",
+        "en": "position"
+      }
     },
     {
       "article": "das",
-      "word": "Poster"
+      "word": "Poster",
+      "translation": {
+        "tr": "Posterler",
+        "en": "Posters"
+      }
     },
     {
       "article": "das",
-      "word": "Praktikum"
+      "word": "Praktikum",
+      "translation": {
+        "tr": "Staj",
+        "en": "Internship"
+      }
     },
     {
       "article": "der",
-      "word": "Präsident"
+      "word": "Präsident",
+      "translation": {
+        "tr": "Başkan",
+        "en": "President"
+      }
     },
     {
       "article": "der",
-      "word": "Preis"
+      "word": "Preis",
+      "translation": {
+        "tr": "Fiyat",
+        "en": "Price"
+      }
     },
     {
       "article": "der",
-      "word": "Prinz"
+      "word": "Prinz",
+      "translation": {
+        "tr": "Prens",
+        "en": "Prince"
+      }
     },
     {
       "article": "die",
-      "word": "Prinzessin"
+      "word": "Prinzessin",
+      "translation": {
+        "tr": "Prenses",
+        "en": "Princess"
+      }
     },
     {
       "article": "das",
-      "word": "Problem"
+      "word": "Problem",
+      "translation": {
+        "tr": "sorun",
+        "en": "problem"
+      }
     },
     {
       "article": "das",
-      "word": "Produkt"
+      "word": "Produkt",
+      "translation": {
+        "tr": "ürün",
+        "en": "product"
+      }
     },
     {
       "article": "der",
-      "word": "Professor"
+      "word": "Professor",
+      "translation": {
+        "tr": "Profesör",
+        "en": "Professor"
+      }
     },
     {
       "article": "das",
-      "word": "Programm"
+      "word": "Programm",
+      "translation": {
+        "tr": "programı",
+        "en": "program"
+      }
     },
     {
       "article": "das",
-      "word": "Projekt"
+      "word": "Projekt",
+      "translation": {
+        "tr": "Proje",
+        "en": "Project"
+      }
     },
     {
       "article": "das",
-      "word": "Prozent"
+      "word": "Prozent",
+      "translation": {
+        "tr": "yüzde",
+        "en": "percent"
+      }
     },
     {
       "article": "der",
-      "word": "Pullover"
+      "word": "Pullover",
+      "translation": {
+        "tr": "Kazak",
+        "en": "Sweater"
+      }
     },
     {
       "article": "die",
-      "word": "Pumpe"
+      "word": "Pumpe",
+      "translation": {
+        "tr": "pompa",
+        "en": "pump"
+      }
     },
     {
       "article": "das",
-      "word": "Puzzle"
+      "word": "Puzzle",
+      "translation": {
+        "tr": "Bulmaca",
+        "en": "Puzzle"
+      }
     },
     {
       "article": "das",
-      "word": "Quadrat"
+      "word": "Quadrat",
+      "translation": {
+        "tr": "kare",
+        "en": "square"
+      }
     },
     {
       "article": "der",
-      "word": "Quark"
+      "word": "Quark",
+      "translation": {
+        "tr": "Kuark",
+        "en": "Quark"
+      }
     },
     {
       "article": "die",
-      "word": "Quelle"
+      "word": "Quelle",
+      "translation": {
+        "tr": "Kaynak",
+        "en": "Source"
+      }
     },
     {
       "article": "der",
-      "word": "Rabatt"
+      "word": "Rabatt",
+      "translation": {
+        "tr": "İndirim",
+        "en": "Discount"
+      }
     },
     {
       "article": "der",
-      "word": "Rabe"
+      "word": "Rabe",
+      "translation": {
+        "tr": "Kuzgun",
+        "en": "Raven"
+      }
     },
     {
       "article": "der",
-      "word": "Radfahrer"
+      "word": "Radfahrer",
+      "translation": {
+        "tr": "Bisikletçi",
+        "en": "Cyclist"
+      }
     },
     {
       "article": "die",
-      "word": "Rakete"
+      "word": "Rakete",
+      "translation": {
+        "tr": "roket",
+        "en": "rocket"
+      }
     },
     {
       "article": "der",
-      "word": "Rap"
+      "word": "Rap",
+      "translation": {
+        "tr": "rap",
+        "en": "Rap"
+      }
     },
     {
       "article": "der",
-      "word": "Rasen"
+      "word": "Rasen",
+      "translation": {
+        "tr": "çim",
+        "en": "lawn"
+      }
     },
     {
       "article": "das",
-      "word": "Rathaus"
+      "word": "Rathaus",
+      "translation": {
+        "tr": "Belediye Binası",
+        "en": "City Hall"
+      }
     },
     {
       "article": "das",
-      "word": "Rätsel"
+      "word": "Rätsel",
+      "translation": {
+        "tr": "Bulmacalar",
+        "en": "Puzzles"
+      }
     },
     {
       "article": "die",
-      "word": "Ratte"
+      "word": "Ratte",
+      "translation": {
+        "tr": "Sıçan",
+        "en": "Rat"
+      }
     },
     {
       "article": "der",
-      "word": "Rauch"
+      "word": "Rauch",
+      "translation": {
+        "tr": "duman",
+        "en": "smoke"
+      }
     },
     {
       "article": "die",
-      "word": "Reaktion"
+      "word": "Reaktion",
+      "translation": {
+        "tr": "tepki",
+        "en": "reaction"
+      }
     },
     {
       "article": "der",
-      "word": "Rechner"
+      "word": "Rechner",
+      "translation": {
+        "tr": "Hesap Makinesi",
+        "en": "Calculator"
+      }
     },
     {
       "article": "die",
-      "word": "Rechnung"
+      "word": "Rechnung",
+      "translation": {
+        "tr": "Fatura",
+        "en": "Invoice"
+      }
     },
     {
       "article": "das",
-      "word": "Recht"
+      "word": "Recht",
+      "translation": {
+        "tr": "Sağ",
+        "en": "Right"
+      }
     },
     {
       "article": "die",
-      "word": "Rede"
+      "word": "Rede",
+      "translation": {
+        "tr": "Konuşma",
+        "en": "Speech"
+      }
     },
     {
       "article": "die",
-      "word": "Regel"
+      "word": "Regel",
+      "translation": {
+        "tr": "Kural",
+        "en": "Rule"
+      }
     },
     {
       "article": "der",
-      "word": "Reifen"
+      "word": "Reifen",
+      "translation": {
+        "tr": "lastikler",
+        "en": "tires"
+      }
     },
     {
       "article": "die",
-      "word": "Reihe"
+      "word": "Reihe",
+      "translation": {
+        "tr": "sıra",
+        "en": "row"
+      }
     },
     {
       "article": "der",
-      "word": "Reiter"
+      "word": "Reiter",
+      "translation": {
+        "tr": "binici",
+        "en": "Rider"
+      }
     },
     {
       "article": "der",
-      "word": "Rekord"
+      "word": "Rekord",
+      "translation": {
+        "tr": "Kayıt",
+        "en": "Record"
+      }
     },
     {
       "article": "die",
-      "word": "Religion"
+      "word": "Religion",
+      "translation": {
+        "tr": "din",
+        "en": "religion"
+      }
     },
     {
       "article": "der",
-      "word": "Respekt"
+      "word": "Respekt",
+      "translation": {
+        "tr": "saygı",
+        "en": "Respect"
+      }
     },
     {
       "article": "der",
-      "word": "Rest"
+      "word": "Rest",
+      "translation": {
+        "tr": "Dinlenme",
+        "en": "Rest"
+      }
     },
     {
       "article": "das",
-      "word": "Restaurant"
+      "word": "Restaurant",
+      "translation": {
+        "tr": "Restoran",
+        "en": "Restaurant"
+      }
     },
     {
       "article": "das",
-      "word": "Rezept"
+      "word": "Rezept",
+      "translation": {
+        "tr": "Tarif",
+        "en": "Recipe"
+      }
     },
     {
       "article": "der",
-      "word": "Richter"
+      "word": "Richter",
+      "translation": {
+        "tr": "Yargıç",
+        "en": "Judge"
+      }
     },
     {
       "article": "die",
-      "word": "Richtung"
+      "word": "Richtung",
+      "translation": {
+        "tr": "yön",
+        "en": "direction"
+      }
     },
     {
       "article": "der",
-      "word": "Ring"
+      "word": "Ring",
+      "translation": {
+        "tr": "halka",
+        "en": "ring"
+      }
     },
     {
       "article": "der",
-      "word": "Roboter"
+      "word": "Roboter",
+      "translation": {
+        "tr": "robot",
+        "en": "Robot"
+      }
     },
     {
       "article": "der",
-      "word": "Rock"
+      "word": "Rock",
+      "translation": {
+        "tr": "Kaya",
+        "en": "Rock"
+      }
     },
     {
       "article": "das",
-      "word": "Rohr"
+      "word": "Rohr",
+      "translation": {
+        "tr": "boru",
+        "en": "pipe"
+      }
     },
     {
       "article": "die",
-      "word": "Röhre"
+      "word": "Röhre",
+      "translation": {
+        "tr": "tüp",
+        "en": "tube"
+      }
     },
     {
       "article": "die",
-      "word": "Rolle"
+      "word": "Rolle",
+      "translation": {
+        "tr": "rol",
+        "en": "role"
+      }
     },
     {
       "article": "der",
-      "word": "Roman"
+      "word": "Roman",
+      "translation": {
+        "tr": "roman",
+        "en": "novel"
+      }
     },
     {
       "article": "die",
-      "word": "Rose"
+      "word": "Rose",
+      "translation": {
+        "tr": "Gül",
+        "en": "Rose"
+      }
     },
     {
       "article": "der",
-      "word": "Rücken"
+      "word": "Rücken",
+      "translation": {
+        "tr": "geri",
+        "en": "back"
+      }
     },
     {
       "article": "der",
-      "word": "Rucksack"
+      "word": "Rucksack",
+      "translation": {
+        "tr": "Sırt çantası",
+        "en": "Backpack"
+      }
     },
     {
       "article": "das",
-      "word": "Ruder"
+      "word": "Ruder",
+      "translation": {
+        "tr": "Dümen",
+        "en": "Rudder"
+      }
     },
     {
       "article": "der",
-      "word": "Ruf"
+      "word": "Ruf",
+      "translation": {
+        "tr": "İtibar",
+        "en": "Reputation"
+      }
     },
     {
       "article": "die",
-      "word": "Sache"
+      "word": "Sache",
+      "translation": {
+        "tr": "şey",
+        "en": "thing"
+      }
     },
     {
       "article": "der",
-      "word": "Sack"
+      "word": "Sack",
+      "translation": {
+        "tr": "çuval",
+        "en": "sack"
+      }
     },
     {
       "article": "die",
-      "word": "Sahne"
+      "word": "Sahne",
+      "translation": {
+        "tr": "krem",
+        "en": "cream"
+      }
     },
     {
       "article": "der",
-      "word": "Sand"
+      "word": "Sand",
+      "translation": {
+        "tr": "Kum",
+        "en": "Sand"
+      }
     },
     {
       "article": "der",
-      "word": "Satz"
+      "word": "Satz",
+      "translation": {
+        "tr": "Cümle",
+        "en": "Sentence"
+      }
     },
     {
       "article": "die",
-      "word": "Schachtel"
+      "word": "Schachtel",
+      "translation": {
+        "tr": "Kutu",
+        "en": "Box"
+      }
     },
     {
       "article": "der",
-      "word": "Schaden"
+      "word": "Schaden",
+      "translation": {
+        "tr": "Hasar",
+        "en": "Damage"
+      }
     },
     {
       "article": "der",
-      "word": "Schal"
+      "word": "Schal",
+      "translation": {
+        "tr": "Eşarp",
+        "en": "Scarf"
+      }
     },
     {
       "article": "der",
-      "word": "Schalter"
+      "word": "Schalter",
+      "translation": {
+        "tr": "Anahtar",
+        "en": "Switch"
+      }
     },
     {
       "article": "der",
-      "word": "Schatten"
+      "word": "Schatten",
+      "translation": {
+        "tr": "Gölge",
+        "en": "Shadow"
+      }
     },
     {
       "article": "der",
-      "word": "Schatz"
+      "word": "Schatz",
+      "translation": {
+        "tr": "tatlım",
+        "en": "Sweetheart"
+      }
     },
     {
       "article": "das",
-      "word": "Schaufenster"
+      "word": "Schaufenster",
+      "translation": {
+        "tr": "Vitrin",
+        "en": "Shop window"
+      }
     },
     {
       "article": "die",
-      "word": "Schaukel"
+      "word": "Schaukel",
+      "translation": {
+        "tr": "salıncak",
+        "en": "swing"
+      }
     },
     {
       "article": "der",
-      "word": "Schauspieler"
+      "word": "Schauspieler",
+      "translation": {
+        "tr": "aktör",
+        "en": "actor"
+      }
     },
     {
       "article": "die",
-      "word": "Schauspielerin"
+      "word": "Schauspielerin",
+      "translation": {
+        "tr": "aktris",
+        "en": "actress"
+      }
     },
     {
       "article": "die",
-      "word": "Scheibe"
+      "word": "Scheibe",
+      "translation": {
+        "tr": "disk",
+        "en": "disc"
+      }
     },
     {
       "article": "die",
-      "word": "Schere"
+      "word": "Schere",
+      "translation": {
+        "tr": "Makas",
+        "en": "Scissors"
+      }
     },
     {
       "article": "die",
-      "word": "Schiene"
+      "word": "Schiene",
+      "translation": {
+        "tr": "demiryolu",
+        "en": "rail"
+      }
     },
     {
       "article": "das",
-      "word": "Schild"
+      "word": "Schild",
+      "translation": {
+        "tr": "Kalkan",
+        "en": "Shield"
+      }
     },
     {
       "article": "die",
-      "word": "Schildkröte"
+      "word": "Schildkröte",
+      "translation": {
+        "tr": "Kaplumbağa",
+        "en": "Turtle"
+      }
     },
     {
       "article": "der",
-      "word": "Schmerz"
+      "word": "Schmerz",
+      "translation": {
+        "tr": "ağrı",
+        "en": "pain"
+      }
     },
     {
       "article": "der",
-      "word": "Schmutz"
+      "word": "Schmutz",
+      "translation": {
+        "tr": "Kir",
+        "en": "Dirt"
+      }
     },
     {
       "article": "der",
-      "word": "Schnaps"
+      "word": "Schnaps",
+      "translation": {
+        "tr": "Likör",
+        "en": "Liquor"
+      }
     },
     {
       "article": "die",
-      "word": "Schnecke"
+      "word": "Schnecke",
+      "translation": {
+        "tr": "salyangoz",
+        "en": "snail"
+      }
     },
     {
       "article": "der",
-      "word": "Schrank"
+      "word": "Schrank",
+      "translation": {
+        "tr": "dolap",
+        "en": "closet"
+      }
     },
     {
       "article": "die",
-      "word": "Schraube"
+      "word": "Schraube",
+      "translation": {
+        "tr": "vida",
+        "en": "screw"
+      }
     },
     {
       "article": "der",
-      "word": "Schrei"
+      "word": "Schrei",
+      "translation": {
+        "tr": "Çığlık",
+        "en": "Scream"
+      }
     },
     {
       "article": "der",
-      "word": "Schreibtisch"
+      "word": "Schreibtisch",
+      "translation": {
+        "tr": "Çalışma masası",
+        "en": "Desk"
+      }
     },
     {
       "article": "der",
-      "word": "Schritt"
+      "word": "Schritt",
+      "translation": {
+        "tr": "adım",
+        "en": "step"
+      }
     },
     {
       "article": "die",
-      "word": "Schublade"
+      "word": "Schublade",
+      "translation": {
+        "tr": "çekmece",
+        "en": "drawer"
+      }
     },
     {
       "article": "der",
-      "word": "Schuss"
+      "word": "Schuss",
+      "translation": {
+        "tr": "atış",
+        "en": "Shot"
+      }
     },
     {
       "article": "die",
-      "word": "Schüssel"
+      "word": "Schüssel",
+      "translation": {
+        "tr": "kase",
+        "en": "bowl"
+      }
     },
     {
       "article": "der",
-      "word": "Schutz"
+      "word": "Schutz",
+      "translation": {
+        "tr": "Koruma",
+        "en": "Protection"
+      }
     },
     {
       "article": "der",
-      "word": "Schwan"
+      "word": "Schwan",
+      "translation": {
+        "tr": "Kuğu",
+        "en": "Swan"
+      }
     },
     {
       "article": "die",
-      "word": "Schwangerschaft"
+      "word": "Schwangerschaft",
+      "translation": {
+        "tr": "hamilelik",
+        "en": "pregnancy"
+      }
     },
     {
       "article": "der",
-      "word": "Schwanz"
+      "word": "Schwanz",
+      "translation": {
+        "tr": "kuyruk",
+        "en": "tail"
+      }
     },
     {
       "article": "das",
-      "word": "Schwert"
+      "word": "Schwert",
+      "translation": {
+        "tr": "Kılıç",
+        "en": "Sword"
+      }
     },
     {
       "article": "das",
-      "word": "Schwimmen"
+      "word": "Schwimmen",
+      "translation": {
+        "tr": "Yüzme",
+        "en": "Swimming"
+      }
     },
     {
       "article": "der",
-      "word": "See"
+      "word": "See",
+      "translation": {
+        "tr": "Göl",
+        "en": "Lake"
+      }
     },
     {
       "article": "das",
-      "word": "Segel"
+      "word": "Segel",
+      "translation": {
+        "tr": "yelken",
+        "en": "sail"
+      }
     },
     {
       "article": "das",
-      "word": "Seil"
+      "word": "Seil",
+      "translation": {
+        "tr": "halat",
+        "en": "rope"
+      }
     },
     {
       "article": "der",
-      "word": "Sekretär"
+      "word": "Sekretär",
+      "translation": {
+        "tr": "Sekreter",
+        "en": "Secretary"
+      }
     },
     {
       "article": "der",
-      "word": "Sekt"
+      "word": "Sekt",
+      "translation": {
+        "tr": "köpüklü şarap",
+        "en": "sparkling wine"
+      }
     },
     {
       "article": "das",
-      "word": "Semester"
+      "word": "Semester",
+      "translation": {
+        "tr": "dönem",
+        "en": "semester"
+      }
     },
     {
       "article": "das",
-      "word": "Seminar"
+      "word": "Seminar",
+      "translation": {
+        "tr": "Seminer",
+        "en": "Seminar"
+      }
     },
     {
       "article": "der",
-      "word": "Sender"
+      "word": "Sender",
+      "translation": {
+        "tr": "verici",
+        "en": "transmitter"
+      }
     },
     {
       "article": "der",
-      "word": "Sessel"
+      "word": "Sessel",
+      "translation": {
+        "tr": "Koltuk",
+        "en": "Armchair"
+      }
     },
     {
       "article": "die",
-      "word": "Sicherheit"
+      "word": "Sicherheit",
+      "translation": {
+        "tr": "Güvenlik",
+        "en": "Security"
+      }
     },
     {
       "article": "das",
-      "word": "Sieb"
+      "word": "Sieb",
+      "translation": {
+        "tr": "elek",
+        "en": "Sieve"
+      }
     },
     {
       "article": "der",
-      "word": "Sieg"
+      "word": "Sieg",
+      "translation": {
+        "tr": "Zafer",
+        "en": "Victory"
+      }
     },
     {
       "article": "das",
-      "word": "Signal"
+      "word": "Signal",
+      "translation": {
+        "tr": "sinyal",
+        "en": "signal"
+      }
     },
     {
       "article": "das",
-      "word": "Silber"
+      "word": "Silber",
+      "translation": {
+        "tr": "Gümüş",
+        "en": "Silver"
+      }
     },
     {
       "article": "der",
-      "word": "Sinn"
+      "word": "Sinn",
+      "translation": {
+        "tr": "Anlam",
+        "en": "sense"
+      }
     },
     {
       "article": "die",
-      "word": "Situation"
+      "word": "Situation",
+      "translation": {
+        "tr": "durum",
+        "en": "situation"
+      }
     },
     {
       "article": "der",
-      "word": "Sitz"
+      "word": "Sitz",
+      "translation": {
+        "tr": "Koltuk",
+        "en": "Seat"
+      }
     },
     {
       "article": "der",
-      "word": "Ski"
+      "word": "Ski",
+      "translation": {
+        "tr": "Kayaklar",
+        "en": "Skis"
+      }
     },
     {
       "article": "das",
-      "word": "Smartphone"
+      "word": "Smartphone",
+      "translation": {
+        "tr": "Akıllı telefon",
+        "en": "Smartphone"
+      }
     },
     {
       "article": "der",
-      "word": "Soldat"
+      "word": "Soldat",
+      "translation": {
+        "tr": "Asker",
+        "en": "Soldier"
+      }
     },
     {
       "article": "der",
-      "word": "Sonnenaufgang"
+      "word": "Sonnenaufgang",
+      "translation": {
+        "tr": "Gündoğumu",
+        "en": "Sunrise"
+      }
     },
     {
       "article": "die",
-      "word": "Soße"
+      "word": "Soße",
+      "translation": {
+        "tr": "Sos",
+        "en": "Sauce"
+      }
     },
     {
       "article": "der",
-      "word": "Spanier"
+      "word": "Spanier",
+      "translation": {
+        "tr": "İspanyollar",
+        "en": "Spaniards"
+      }
     },
     {
       "article": "das",
-      "word": "Spanisch"
+      "word": "Spanisch",
+      "translation": {
+        "tr": "İspanyolca",
+        "en": "Spanish"
+      }
     },
     {
       "article": "der",
-      "word": "Spargel"
+      "word": "Spargel",
+      "translation": {
+        "tr": "Kuşkonmaz",
+        "en": "Asparagus"
+      }
     },
     {
       "article": "der",
-      "word": "Spaziergang"
+      "word": "Spaziergang",
+      "translation": {
+        "tr": "Yürümek",
+        "en": "Walk"
+      }
     },
     {
       "article": "die",
-      "word": "Spende"
+      "word": "Spende",
+      "translation": {
+        "tr": "Bağış yap",
+        "en": "Donate"
+      }
     },
     {
       "article": "der",
-      "word": "Spinat"
+      "word": "Spinat",
+      "translation": {
+        "tr": "Ispanak",
+        "en": "Spinach"
+      }
     },
     {
       "article": "die",
-      "word": "Spinne"
+      "word": "Spinne",
+      "translation": {
+        "tr": "Örümcek",
+        "en": "Spider"
+      }
     },
     {
       "article": "der",
-      "word": "Sport"
+      "word": "Sport",
+      "translation": {
+        "tr": "Spor",
+        "en": "Sports"
+      }
     },
     {
       "article": "der",
-      "word": "Sportler"
+      "word": "Sportler",
+      "translation": {
+        "tr": "Atlet",
+        "en": "Athlete"
+      }
     },
     {
       "article": "der",
-      "word": "Sprecher"
+      "word": "Sprecher",
+      "translation": {
+        "tr": "Hoparlör",
+        "en": "Speaker"
+      }
     },
     {
       "article": "die",
-      "word": "Sprecherin"
+      "word": "Sprecherin",
+      "translation": {
+        "tr": "Hoparlör",
+        "en": "Speaker"
+      }
     },
     {
       "article": "die",
-      "word": "Spritze"
+      "word": "Spritze",
+      "translation": {
+        "tr": "Şırınga",
+        "en": "Syringe"
+      }
     },
     {
       "article": "das",
-      "word": "Stadion"
+      "word": "Stadion",
+      "translation": {
+        "tr": "Stadyum",
+        "en": "Stadium"
+      }
     },
     {
       "article": "der",
-      "word": "Stall"
+      "word": "Stall",
+      "translation": {
+        "tr": "istikrarlı",
+        "en": "stable"
+      }
     },
     {
       "article": "die",
-      "word": "Stange"
+      "word": "Stange",
+      "translation": {
+        "tr": "çubuk",
+        "en": "rod"
+      }
     },
     {
       "article": "der",
-      "word": "Stau"
+      "word": "Stau",
+      "translation": {
+        "tr": "trafik sıkışıklığı",
+        "en": "traffic jam"
+      }
     },
     {
       "article": "die",
-      "word": "Steckdose"
+      "word": "Steckdose",
+      "translation": {
+        "tr": "Soket",
+        "en": "Socket"
+      }
     },
     {
       "article": "der",
-      "word": "Stecker"
+      "word": "Stecker",
+      "translation": {
+        "tr": "Fiş",
+        "en": "Plug"
+      }
     },
     {
       "article": "der",
-      "word": "Stein"
+      "word": "Stein",
+      "translation": {
+        "tr": "Taş",
+        "en": "Stone"
+      }
     },
     {
       "article": "der",
-      "word": "Stiefel"
+      "word": "Stiefel",
+      "translation": {
+        "tr": "bot",
+        "en": "Boots"
+      }
     }
   ],
   "B1": [
     {
       "article": "der",
-      "word": "Aal"
+      "word": "Aal",
+      "translation": {
+        "tr": "Yılan balığı",
+        "en": "Eel"
+      }
     },
     {
       "article": "die",
-      "word": "Abfahrt"
+      "word": "Abfahrt",
+      "translation": {
+        "tr": "Kalkış",
+        "en": "Departure"
+      }
     },
     {
       "article": "der",
-      "word": "Abflug"
+      "word": "Abflug",
+      "translation": {
+        "tr": "Kalkış",
+        "en": "Departure"
+      }
     },
     {
       "article": "die",
-      "word": "Abgabe"
+      "word": "Abgabe",
+      "translation": {
+        "tr": "vergi",
+        "en": "levy"
+      }
     },
     {
       "article": "der",
-      "word": "Abgeordnete"
+      "word": "Abgeordnete",
+      "translation": {
+        "tr": "milletvekilleri",
+        "en": "MPs"
+      }
     },
     {
       "article": "die",
-      "word": "Abkürzung"
+      "word": "Abkürzung",
+      "translation": {
+        "tr": "Kısaltma",
+        "en": "Abbreviation"
+      }
     },
     {
       "article": "das",
-      "word": "Abonnement"
+      "word": "Abonnement",
+      "translation": {
+        "tr": "Abonelik",
+        "en": "Subscription"
+      }
     },
     {
       "article": "der",
-      "word": "Abschied"
+      "word": "Abschied",
+      "translation": {
+        "tr": "veda",
+        "en": "Farewell"
+      }
     },
     {
       "article": "der",
-      "word": "Abschluss"
+      "word": "Abschluss",
+      "translation": {
+        "tr": "Mezuniyet",
+        "en": "Graduation"
+      }
     },
     {
       "article": "der",
-      "word": "Abschnitt"
+      "word": "Abschnitt",
+      "translation": {
+        "tr": "Bölüm",
+        "en": "Section"
+      }
     },
     {
       "article": "der",
-      "word": "Absender"
+      "word": "Absender",
+      "translation": {
+        "tr": "Gönderen",
+        "en": "Sender"
+      }
     },
     {
       "article": "die",
-      "word": "Abstimmung"
+      "word": "Abstimmung",
+      "translation": {
+        "tr": "Oy ver",
+        "en": "Vote"
+      }
     },
     {
       "article": "die",
-      "word": "Abteilung"
+      "word": "Abteilung",
+      "translation": {
+        "tr": "Departman",
+        "en": "Department"
+      }
     },
     {
       "article": "die",
-      "word": "Abwesenheit"
+      "word": "Abwesenheit",
+      "translation": {
+        "tr": "devamsızlık",
+        "en": "Absence"
+      }
     },
     {
       "article": "die",
-      "word": "Achse"
+      "word": "Achse",
+      "translation": {
+        "tr": "eksen",
+        "en": "axis"
+      }
     },
     {
       "article": "die",
-      "word": "Achtung"
+      "word": "Achtung",
+      "translation": {
+        "tr": "Dikkat",
+        "en": "Attention"
+      }
     },
     {
       "article": "der",
-      "word": "Agent"
+      "word": "Agent",
+      "translation": {
+        "tr": "ajan",
+        "en": "agent"
+      }
     },
     {
       "article": "die",
-      "word": "Agentur"
+      "word": "Agentur",
+      "translation": {
+        "tr": "Ajans",
+        "en": "Agency"
+      }
     },
     {
       "article": "der",
-      "word": "Ägypter"
+      "word": "Ägypter",
+      "translation": {
+        "tr": "Mısırlılar",
+        "en": "Egyptians"
+      }
     },
     {
       "article": "der",
-      "word": "Alarm"
+      "word": "Alarm",
+      "translation": {
+        "tr": "uyarı",
+        "en": "Alert"
+      }
     },
     {
       "article": "der",
-      "word": "Albtraum"
+      "word": "Albtraum",
+      "translation": {
+        "tr": "Kabus",
+        "en": "Nightmare"
+      }
     },
     {
       "article": "die",
-      "word": "Altstadt"
+      "word": "Altstadt",
+      "translation": {
+        "tr": "Eski şehir",
+        "en": "Old town"
+      }
     },
     {
       "article": "der",
-      "word": "Amateur"
+      "word": "Amateur",
+      "translation": {
+        "tr": "amatör",
+        "en": "Amateur"
+      }
     },
     {
       "article": "der",
-      "word": "Anbieter"
+      "word": "Anbieter",
+      "translation": {
+        "tr": "sağlayıcı",
+        "en": "Provider"
+      }
     },
     {
       "article": "die",
-      "word": "Anfrage"
+      "word": "Anfrage",
+      "translation": {
+        "tr": "istek",
+        "en": "request"
+      }
     },
     {
       "article": "die",
-      "word": "Angelegenheit"
+      "word": "Angelegenheit",
+      "translation": {
+        "tr": "madde",
+        "en": "matter"
+      }
     },
     {
       "article": "der",
-      "word": "Angestellte"
+      "word": "Angestellte",
+      "translation": {
+        "tr": "çalışanlar",
+        "en": "employees"
+      }
     },
     {
       "article": "der",
-      "word": "Angriff"
+      "word": "Angriff",
+      "translation": {
+        "tr": "Saldırı",
+        "en": "Attack"
+      }
     },
     {
       "article": "der",
-      "word": "Anker"
+      "word": "Anker",
+      "translation": {
+        "tr": "Çapa",
+        "en": "Anchor"
+      }
     },
     {
       "article": "die",
-      "word": "Ankündigung"
+      "word": "Ankündigung",
+      "translation": {
+        "tr": "Duyuru",
+        "en": "Announcement"
+      }
     },
     {
       "article": "die",
-      "word": "Anlage"
+      "word": "Anlage",
+      "translation": {
+        "tr": "Tesis",
+        "en": "Facility"
+      }
     },
     {
       "article": "die",
-      "word": "Anleitung"
+      "word": "Anleitung",
+      "translation": {
+        "tr": "Talimatlar",
+        "en": "Instructions"
+      }
     },
     {
       "article": "der",
-      "word": "Anschluss"
+      "word": "Anschluss",
+      "translation": {
+        "tr": "Bağlantı",
+        "en": "Connection"
+      }
     },
     {
       "article": "das",
-      "word": "Antibiotikum"
+      "word": "Antibiotikum",
+      "translation": {
+        "tr": "antibiyotik",
+        "en": "antibiotic"
+      }
     },
     {
       "article": "der",
-      "word": "Antrag"
+      "word": "Antrag",
+      "translation": {
+        "tr": "Başvuru",
+        "en": "Application"
+      }
     },
     {
       "article": "die",
-      "word": "Anwesenheit"
+      "word": "Anwesenheit",
+      "translation": {
+        "tr": "Mevcudiyet",
+        "en": "Presence"
+      }
     },
     {
       "article": "die",
-      "word": "Anzahl"
+      "word": "Anzahl",
+      "translation": {
+        "tr": "sayı",
+        "en": "number"
+      }
     },
     {
       "article": "die",
-      "word": "Anzahlung"
+      "word": "Anzahlung",
+      "translation": {
+        "tr": "mevduat",
+        "en": "deposit"
+      }
     },
     {
       "article": "das",
-      "word": "Aquarium"
+      "word": "Aquarium",
+      "translation": {
+        "tr": "Akvaryum",
+        "en": "Aquarium"
+      }
     },
     {
       "article": "der",
-      "word": "Araber"
+      "word": "Araber",
+      "translation": {
+        "tr": "Araplar",
+        "en": "Arabs"
+      }
     },
     {
       "article": "der",
-      "word": "Arbeitgeber"
+      "word": "Arbeitgeber",
+      "translation": {
+        "tr": "İşveren",
+        "en": "Employer"
+      }
     },
     {
       "article": "der",
-      "word": "Arbeitnehmer"
+      "word": "Arbeitnehmer",
+      "translation": {
+        "tr": "çalışanlar",
+        "en": "employees"
+      }
     },
     {
       "article": "das",
-      "word": "Arbeitsamt"
+      "word": "Arbeitsamt",
+      "translation": {
+        "tr": "İstihdam ofisi",
+        "en": "Employment office"
+      }
     },
     {
       "article": "die",
-      "word": "Armee"
+      "word": "Armee",
+      "translation": {
+        "tr": "Ordu",
+        "en": "Army"
+      }
     },
     {
       "article": "die",
-      "word": "Armut"
+      "word": "Armut",
+      "translation": {
+        "tr": "Yoksulluk",
+        "en": "Poverty"
+      }
     },
     {
       "article": "das",
-      "word": "Aroma"
+      "word": "Aroma",
+      "translation": {
+        "tr": "aroma",
+        "en": "aroma"
+      }
     },
     {
       "article": "das",
-      "word": "Arzneimittel"
+      "word": "Arzneimittel",
+      "translation": {
+        "tr": "İlaçlar",
+        "en": "Medicines"
+      }
     },
     {
       "article": "der",
-      "word": "Atem"
+      "word": "Atem",
+      "translation": {
+        "tr": "Nefes",
+        "en": "Breath"
+      }
     },
     {
       "article": "der",
-      "word": "Athlet"
+      "word": "Athlet",
+      "translation": {
+        "tr": "Atlet",
+        "en": "Athlete"
+      }
     },
     {
       "article": "der",
-      "word": "Aufbau"
+      "word": "Aufbau",
+      "translation": {
+        "tr": "İnşaat",
+        "en": "Construction"
+      }
     },
     {
       "article": "der",
-      "word": "Aufenthalt"
+      "word": "Aufenthalt",
+      "translation": {
+        "tr": "Kal",
+        "en": "Stay"
+      }
     },
     {
       "article": "die",
-      "word": "Auflage"
+      "word": "Auflage",
+      "translation": {
+        "tr": "baskı",
+        "en": "edition"
+      }
     },
     {
       "article": "die",
-      "word": "Auflistung"
+      "word": "Auflistung",
+      "translation": {
+        "tr": "İlan",
+        "en": "Listing"
+      }
     },
     {
       "article": "die",
-      "word": "Aufmerksamkeit"
+      "word": "Aufmerksamkeit",
+      "translation": {
+        "tr": "dikkat",
+        "en": "attention"
+      }
     },
     {
       "article": "die",
-      "word": "Aufnahme"
+      "word": "Aufnahme",
+      "translation": {
+        "tr": "Kayıt",
+        "en": "Recording"
+      }
     },
     {
       "article": "der",
-      "word": "Aufprall"
+      "word": "Aufprall",
+      "translation": {
+        "tr": "Etki",
+        "en": "Impact"
+      }
     },
     {
       "article": "die",
-      "word": "Aufregung"
+      "word": "Aufregung",
+      "translation": {
+        "tr": "Heyecan",
+        "en": "Excitement"
+      }
     },
     {
       "article": "die",
-      "word": "Aufsicht"
+      "word": "Aufsicht",
+      "translation": {
+        "tr": "Denetim",
+        "en": "Supervision"
+      }
     },
     {
       "article": "die",
-      "word": "Aufstellung"
+      "word": "Aufstellung",
+      "translation": {
+        "tr": "Kadro",
+        "en": "Lineup"
+      }
     },
     {
       "article": "der",
-      "word": "Aufstieg"
+      "word": "Aufstieg",
+      "translation": {
+        "tr": "Yükseliş",
+        "en": "Ascension"
+      }
     },
     {
       "article": "der",
-      "word": "Auftakt"
+      "word": "Auftakt",
+      "translation": {
+        "tr": "Prelüd",
+        "en": "Prelude"
+      }
     },
     {
       "article": "die",
-      "word": "Ausdauer"
+      "word": "Ausdauer",
+      "translation": {
+        "tr": "Dayanıklılık",
+        "en": "Endurance"
+      }
     },
     {
       "article": "der",
-      "word": "Ausdruck"
+      "word": "Ausdruck",
+      "translation": {
+        "tr": "ifade",
+        "en": "expression"
+      }
     },
     {
       "article": "die",
-      "word": "Auskunft"
+      "word": "Auskunft",
+      "translation": {
+        "tr": "Bilgi",
+        "en": "Information"
+      }
     },
     {
       "article": "die",
-      "word": "Aussage"
+      "word": "Aussage",
+      "translation": {
+        "tr": "beyan",
+        "en": "statement"
+      }
     },
     {
       "article": "die",
-      "word": "Aussicht"
+      "word": "Aussicht",
+      "translation": {
+        "tr": "Görüntüle",
+        "en": "View"
+      }
     },
     {
       "article": "die",
-      "word": "Ausstellung"
+      "word": "Ausstellung",
+      "translation": {
+        "tr": "Sergi",
+        "en": "Exhibition"
+      }
     },
     {
       "article": "die",
-      "word": "Auswahl"
+      "word": "Auswahl",
+      "translation": {
+        "tr": "Seçim",
+        "en": "Selection"
+      }
     },
     {
       "article": "der",
-      "word": "Ausweis"
+      "word": "Ausweis",
+      "translation": {
+        "tr": "Kimlik kartı",
+        "en": "ID card"
+      }
     },
     {
       "article": "das",
-      "word": "Autogramm"
+      "word": "Autogramm",
+      "translation": {
+        "tr": "İmza",
+        "en": "Autograph"
+      }
     },
     {
       "article": "der",
-      "word": "Automat"
+      "word": "Automat",
+      "translation": {
+        "tr": "otomat",
+        "en": "automat"
+      }
     },
     {
       "article": "der",
-      "word": "Bach"
+      "word": "Bach",
+      "translation": {
+        "tr": "Bach",
+        "en": "Bach"
+      }
     },
     {
       "article": "der",
-      "word": "Ballon"
+      "word": "Ballon",
+      "translation": {
+        "tr": "Balon",
+        "en": "Balloon"
+      }
     },
     {
       "article": "das",
-      "word": "Bargeld"
+      "word": "Bargeld",
+      "translation": {
+        "tr": "Nakit",
+        "en": "Cash"
+      }
     },
     {
       "article": "der",
-      "word": "Bau"
+      "word": "Bau",
+      "translation": {
+        "tr": "İnşaat",
+        "en": "Construction"
+      }
     },
     {
       "article": "die",
-      "word": "Baumwolle"
+      "word": "Baumwolle",
+      "translation": {
+        "tr": "Pamuk",
+        "en": "Cotton"
+      }
     },
     {
       "article": "die",
-      "word": "Baustelle"
+      "word": "Baustelle",
+      "translation": {
+        "tr": "İnşaat alanı",
+        "en": "Construction site"
+      }
     },
     {
       "article": "die",
-      "word": "Bedeutung"
+      "word": "Bedeutung",
+      "translation": {
+        "tr": "Anlamı",
+        "en": "Meaning"
+      }
     },
     {
       "article": "das",
-      "word": "Bedürfnis"
+      "word": "Bedürfnis",
+      "translation": {
+        "tr": "ihtiyaç",
+        "en": "need"
+      }
     },
     {
       "article": "die",
-      "word": "Beerdigung"
+      "word": "Beerdigung",
+      "translation": {
+        "tr": "Cenaze",
+        "en": "Funeral"
+      }
     },
     {
       "article": "der",
-      "word": "Befehl"
+      "word": "Befehl",
+      "translation": {
+        "tr": "Komut",
+        "en": "Command"
+      }
     },
     {
       "article": "der",
-      "word": "Begriff"
+      "word": "Begriff",
+      "translation": {
+        "tr": "dönem",
+        "en": "term"
+      }
     },
     {
       "article": "die",
-      "word": "Behandlung"
+      "word": "Behandlung",
+      "translation": {
+        "tr": "Tedavi",
+        "en": "Treatment"
+      }
     },
     {
       "article": "die",
-      "word": "Behinderung"
+      "word": "Behinderung",
+      "translation": {
+        "tr": "Engellilik",
+        "en": "Disability"
+      }
     },
     {
       "article": "die",
-      "word": "Behörde"
+      "word": "Behörde",
+      "translation": {
+        "tr": "Yetki",
+        "en": "Authority"
+      }
     },
     {
       "article": "der",
-      "word": "Beitrag"
+      "word": "Beitrag",
+      "translation": {
+        "tr": "Gönderi",
+        "en": "Post"
+      }
     },
     {
       "article": "die",
-      "word": "Beleuchtung"
+      "word": "Beleuchtung",
+      "translation": {
+        "tr": "Aydınlatma",
+        "en": "Lighting"
+      }
     },
     {
       "article": "die",
-      "word": "Belohnung"
+      "word": "Belohnung",
+      "translation": {
+        "tr": "ödül",
+        "en": "reward"
+      }
     },
     {
       "article": "die",
-      "word": "Bemerkung"
+      "word": "Bemerkung",
+      "translation": {
+        "tr": "Açıklama",
+        "en": "Remark"
+      }
     },
     {
       "article": "der",
-      "word": "Benutzer"
+      "word": "Benutzer",
+      "translation": {
+        "tr": "Kullanıcı",
+        "en": "User"
+      }
     },
     {
       "article": "die",
-      "word": "Benutzung"
+      "word": "Benutzung",
+      "translation": {
+        "tr": "Kullanım",
+        "en": "Usage"
+      }
     },
     {
       "article": "der",
-      "word": "Berater"
+      "word": "Berater",
+      "translation": {
+        "tr": "Danışman",
+        "en": "Consultant"
+      }
     },
     {
       "article": "der",
-      "word": "Bereich"
+      "word": "Bereich",
+      "translation": {
+        "tr": "alan",
+        "en": "area"
+      }
     },
     {
       "article": "der",
-      "word": "Bericht"
+      "word": "Bericht",
+      "translation": {
+        "tr": "Rapor",
+        "en": "Report"
+      }
     },
     {
       "article": "der",
-      "word": "Besitz"
+      "word": "Besitz",
+      "translation": {
+        "tr": "Topa sahip olma",
+        "en": "Possession"
+      }
     },
     {
       "article": "der",
-      "word": "Besitzer"
+      "word": "Besitzer",
+      "translation": {
+        "tr": "Sahip",
+        "en": "Owner"
+      }
     },
     {
       "article": "der",
-      "word": "Beutel"
+      "word": "Beutel",
+      "translation": {
+        "tr": "kese",
+        "en": "pouch"
+      }
     },
     {
       "article": "die",
-      "word": "Bezahlung"
+      "word": "Bezahlung",
+      "translation": {
+        "tr": "Ödeme",
+        "en": "Payment"
+      }
     },
     {
       "article": "die",
-      "word": "Bibel"
+      "word": "Bibel",
+      "translation": {
+        "tr": "İncil",
+        "en": "Bible"
+      }
     },
     {
       "article": "der",
-      "word": "Biber"
+      "word": "Biber",
+      "translation": {
+        "tr": "kunduz",
+        "en": "Beaver"
+      }
     },
     {
       "article": "die",
-      "word": "Bildung"
+      "word": "Bildung",
+      "translation": {
+        "tr": "Eğitim",
+        "en": "Education"
+      }
     },
     {
       "article": "die",
-      "word": "Biologie"
+      "word": "Biologie",
+      "translation": {
+        "tr": "Biyoloji",
+        "en": "Biology"
+      }
     },
     {
       "article": "der",
-      "word": "Biss"
+      "word": "Biss",
+      "translation": {
+        "tr": "ısırık",
+        "en": "Bite"
+      }
     },
     {
       "article": "die",
-      "word": "Blase"
+      "word": "Blase",
+      "translation": {
+        "tr": "Kabarcık",
+        "en": "Bubble"
+      }
     },
     {
       "article": "das",
-      "word": "Blech"
+      "word": "Blech",
+      "translation": {
+        "tr": "metal levha",
+        "en": "sheet metal"
+      }
     },
     {
       "article": "das",
-      "word": "Blog"
+      "word": "Blog",
+      "translation": {
+        "tr": "Blog",
+        "en": "Blog"
+      }
     },
     {
       "article": "der",
-      "word": "Bonus"
+      "word": "Bonus",
+      "translation": {
+        "tr": "Bonus",
+        "en": "Bonus"
+      }
     },
     {
       "article": "die",
-      "word": "Börse"
+      "word": "Börse",
+      "translation": {
+        "tr": "Borsa",
+        "en": "Stock market"
+      }
     },
     {
       "article": "die",
-      "word": "Botschaft"
+      "word": "Botschaft",
+      "translation": {
+        "tr": "Elçilik",
+        "en": "Embassy"
+      }
     },
     {
       "article": "das",
-      "word": "Boxen"
+      "word": "Boxen",
+      "translation": {
+        "tr": "Boks",
+        "en": "Boxing"
+      }
     },
     {
       "article": "die",
-      "word": "Branche"
+      "word": "Branche",
+      "translation": {
+        "tr": "Endüstri",
+        "en": "Industry"
+      }
     },
     {
       "article": "der",
-      "word": "Brite"
+      "word": "Brite",
+      "translation": {
+        "tr": "İngiliz",
+        "en": "Brit"
+      }
     },
     {
       "article": "die",
-      "word": "Bücherei"
+      "word": "Bücherei",
+      "translation": {
+        "tr": "Kütüphane",
+        "en": "Library"
+      }
     },
     {
       "article": "die",
-      "word": "Bude"
+      "word": "Bude",
+      "translation": {
+        "tr": "Kabin",
+        "en": "Booth"
+      }
     },
     {
       "article": "der",
-      "word": "Bügel"
+      "word": "Bügel",
+      "translation": {
+        "tr": "Askı",
+        "en": "Hanger"
+      }
     },
     {
       "article": "die",
-      "word": "Bühne"
+      "word": "Bühne",
+      "translation": {
+        "tr": "sahne",
+        "en": "stage"
+      }
     },
     {
       "article": "der",
-      "word": "Bunker"
+      "word": "Bunker",
+      "translation": {
+        "tr": "Bunkerler",
+        "en": "Bunkers"
+      }
     },
     {
       "article": "der",
-      "word": "Bürger"
+      "word": "Bürger",
+      "translation": {
+        "tr": "Vatandaş",
+        "en": "Citizen"
+      }
     },
     {
       "article": "der",
-      "word": "Bürgermeister"
+      "word": "Bürgermeister",
+      "translation": {
+        "tr": "Belediye Başkanı",
+        "en": "Mayor"
+      }
     },
     {
       "article": "der",
-      "word": "Bursche"
+      "word": "Bursche",
+      "translation": {
+        "tr": "arkadaş",
+        "en": "fellow"
+      }
     },
     {
       "article": "das",
-      "word": "Café"
+      "word": "Café",
+      "translation": {
+        "tr": "Kafe",
+        "en": "Cafe"
+      }
     },
     {
       "article": "das",
-      "word": "Camp"
+      "word": "Camp",
+      "translation": {
+        "tr": "Kamp",
+        "en": "Camp"
+      }
     },
     {
       "article": "das",
-      "word": "Camping"
+      "word": "Camping",
+      "translation": {
+        "tr": "Kamp yapmak",
+        "en": "Camping"
+      }
     },
     {
       "article": "das",
-      "word": "Casino"
+      "word": "Casino",
+      "translation": {
+        "tr": "Kumarhane",
+        "en": "Casino"
+      }
     },
     {
       "article": "der",
-      "word": "Champion"
+      "word": "Champion",
+      "translation": {
+        "tr": "Şampiyon",
+        "en": "Champion"
+      }
     },
     {
       "article": "die",
-      "word": "Chance"
+      "word": "Chance",
+      "translation": {
+        "tr": "Şans",
+        "en": "Chance"
+      }
     },
     {
       "article": "der",
-      "word": "Check"
+      "word": "Check",
+      "translation": {
+        "tr": "Kontrol et",
+        "en": "Check"
+      }
     },
     {
       "article": "die",
-      "word": "Chefin"
+      "word": "Chefin",
+      "translation": {
+        "tr": "patron",
+        "en": "boss"
+      }
     },
     {
       "article": "der",
-      "word": "Chip"
+      "word": "Chip",
+      "translation": {
+        "tr": "çip",
+        "en": "chip"
+      }
     },
     {
       "article": "der",
-      "word": "Chor"
+      "word": "Chor",
+      "translation": {
+        "tr": "Koro",
+        "en": "Choir"
+      }
     },
     {
       "article": "der",
-      "word": "Clown"
+      "word": "Clown",
+      "translation": {
+        "tr": "palyaço",
+        "en": "clown"
+      }
     },
     {
       "article": "der",
-      "word": "Club"
+      "word": "Club",
+      "translation": {
+        "tr": "Kulüp",
+        "en": "Club"
+      }
     },
     {
       "article": "der",
-      "word": "Comic"
+      "word": "Comic",
+      "translation": {
+        "tr": "komik",
+        "en": "Comic"
+      }
     },
     {
       "article": "die",
-      "word": "Couch"
+      "word": "Couch",
+      "translation": {
+        "tr": "kanepe",
+        "en": "couch"
+      }
     },
     {
       "article": "der",
-      "word": "Damm"
+      "word": "Damm",
+      "translation": {
+        "tr": "Baraj",
+        "en": "Dam"
+      }
     },
     {
       "article": "der",
-      "word": "Dank"
+      "word": "Dank",
+      "translation": {
+        "tr": "teşekkürler",
+        "en": "Thanks"
+      }
     },
     {
       "article": "der",
-      "word": "Darm"
+      "word": "Darm",
+      "translation": {
+        "tr": "bağırsaklar",
+        "en": "intestines"
+      }
     },
     {
       "article": "der",
-      "word": "Darsteller"
+      "word": "Darsteller",
+      "translation": {
+        "tr": "Aktör",
+        "en": "Actor"
+      }
     },
     {
       "article": "die",
-      "word": "Datei"
+      "word": "Datei",
+      "translation": {
+        "tr": "dosya",
+        "en": "file"
+      }
     },
     {
       "article": "die",
-      "word": "Dauer"
+      "word": "Dauer",
+      "translation": {
+        "tr": "Süre",
+        "en": "Duration"
+      }
     },
     {
       "article": "das",
-      "word": "Deck"
+      "word": "Deck",
+      "translation": {
+        "tr": "güverte",
+        "en": "deck"
+      }
     },
     {
       "article": "der",
-      "word": "Defekt"
+      "word": "Defekt",
+      "translation": {
+        "tr": "Kusur",
+        "en": "Defect"
+      }
     },
     {
       "article": "die",
-      "word": "Demokratie"
+      "word": "Demokratie",
+      "translation": {
+        "tr": "Demokrasi",
+        "en": "Democracy"
+      }
     },
     {
       "article": "der",
-      "word": "Designer"
+      "word": "Designer",
+      "translation": {
+        "tr": "Tasarımcılar",
+        "en": "Designers"
+      }
     },
     {
       "article": "der",
-      "word": "Detektiv"
+      "word": "Detektiv",
+      "translation": {
+        "tr": "Dedektif",
+        "en": "Detective"
+      }
     },
     {
       "article": "das",
-      "word": "Deutsch"
+      "word": "Deutsch",
+      "translation": {
+        "tr": "Almanca",
+        "en": "German"
+      }
     },
     {
       "article": "der",
-      "word": "Deutsche"
+      "word": "Deutsche",
+      "translation": {
+        "tr": "Almanlar",
+        "en": "Germans"
+      }
     },
     {
       "article": "der",
-      "word": "Dialog"
+      "word": "Dialog",
+      "translation": {
+        "tr": "Diyalog",
+        "en": "Dialogue"
+      }
     },
     {
       "article": "der",
-      "word": "Dichter"
+      "word": "Dichter",
+      "translation": {
+        "tr": "Şair",
+        "en": "Poet"
+      }
     },
     {
       "article": "der",
-      "word": "Dieb"
+      "word": "Dieb",
+      "translation": {
+        "tr": "Hırsız",
+        "en": "Thief"
+      }
     },
     {
       "article": "der",
-      "word": "Diener"
+      "word": "Diener",
+      "translation": {
+        "tr": "hizmetçi",
+        "en": "servant"
+      }
     },
     {
       "article": "der",
-      "word": "Dienst"
+      "word": "Dienst",
+      "translation": {
+        "tr": "hizmet",
+        "en": "service"
+      }
     },
     {
       "article": "der",
-      "word": "Diktator"
+      "word": "Diktator",
+      "translation": {
+        "tr": "Diktatör",
+        "en": "Dictator"
+      }
     },
     {
       "article": "der",
-      "word": "Dinosaurier"
+      "word": "Dinosaurier",
+      "translation": {
+        "tr": "Dinozorlar",
+        "en": "Dinosaurs"
+      }
     },
     {
       "article": "das",
-      "word": "Diplom"
+      "word": "Diplom",
+      "translation": {
+        "tr": "Diploma",
+        "en": "Diploma"
+      }
     },
     {
       "article": "der",
-      "word": "Direktor"
+      "word": "Direktor",
+      "translation": {
+        "tr": "Direktör",
+        "en": "Director"
+      }
     },
     {
       "article": "die",
-      "word": "Disco"
+      "word": "Disco",
+      "translation": {
+        "tr": "Disko",
+        "en": "Disco"
+      }
     },
     {
       "article": "der",
-      "word": "Dom"
+      "word": "Dom",
+      "translation": {
+        "tr": "Katedral",
+        "en": "Cathedral"
+      }
     },
     {
       "article": "der",
-      "word": "Dorfbewohner"
+      "word": "Dorfbewohner",
+      "translation": {
+        "tr": "köylüler",
+        "en": "villagers"
+      }
     },
     {
       "article": "der",
-      "word": "Draht"
+      "word": "Draht",
+      "translation": {
+        "tr": "tel",
+        "en": "wire"
+      }
     },
     {
       "article": "das",
-      "word": "Drama"
+      "word": "Drama",
+      "translation": {
+        "tr": "dram",
+        "en": "drama"
+      }
     },
     {
       "article": "der",
-      "word": "Dreck"
+      "word": "Dreck",
+      "translation": {
+        "tr": "Kir",
+        "en": "Dirt"
+      }
     },
     {
       "article": "das",
-      "word": "Drittel"
+      "word": "Drittel",
+      "translation": {
+        "tr": "üçüncü",
+        "en": "third"
+      }
     },
     {
       "article": "die",
-      "word": "Droge"
+      "word": "Droge",
+      "translation": {
+        "tr": "ilaç",
+        "en": "drug"
+      }
     },
     {
       "article": "die",
-      "word": "Drohung"
+      "word": "Drohung",
+      "translation": {
+        "tr": "Tehdit",
+        "en": "Threat"
+      }
     },
     {
       "article": "der",
-      "word": "Duft"
+      "word": "Duft",
+      "translation": {
+        "tr": "Koku",
+        "en": "Fragrance"
+      }
     },
     {
       "article": "die",
-      "word": "Ebene"
+      "word": "Ebene",
+      "translation": {
+        "tr": "seviye",
+        "en": "level"
+      }
     },
     {
       "article": "die",
-      "word": "ec-Karte"
+      "word": "ec-Karte",
+      "translation": {
+        "tr": "EC kartı",
+        "en": "EC card"
+      }
     },
     {
       "article": "das",
-      "word": "Echo"
+      "word": "Echo",
+      "translation": {
+        "tr": "yankı",
+        "en": "Echo"
+      }
     },
     {
       "article": "der",
-      "word": "Effekt"
+      "word": "Effekt",
+      "translation": {
+        "tr": "Etki",
+        "en": "Effect"
+      }
     },
     {
       "article": "der",
-      "word": "Ehepartner"
+      "word": "Ehepartner",
+      "translation": {
+        "tr": "eş",
+        "en": "spouse"
+      }
     },
     {
       "article": "die",
-      "word": "Eiche"
+      "word": "Eiche",
+      "translation": {
+        "tr": "Meşe",
+        "en": "Oak"
+      }
     },
     {
       "article": "die",
-      "word": "Eigenschaft"
+      "word": "Eigenschaft",
+      "translation": {
+        "tr": "mülk",
+        "en": "property"
+      }
     },
     {
       "article": "das",
-      "word": "Eigentum"
+      "word": "Eigentum",
+      "translation": {
+        "tr": "mülk",
+        "en": "property"
+      }
     },
     {
       "article": "der",
-      "word": "Eigentümer"
+      "word": "Eigentümer",
+      "translation": {
+        "tr": "Sahip",
+        "en": "Owner"
+      }
     },
     {
       "article": "die",
-      "word": "Eile"
+      "word": "Eile",
+      "translation": {
+        "tr": "Acele et",
+        "en": "Hurry"
+      }
     },
     {
       "article": "die",
-      "word": "Einfahrt"
+      "word": "Einfahrt",
+      "translation": {
+        "tr": "Giriş",
+        "en": "Entrance"
+      }
     },
     {
       "article": "der",
-      "word": "Einfall"
+      "word": "Einfall",
+      "translation": {
+        "tr": "fikir",
+        "en": "idea"
+      }
     },
     {
       "article": "die",
-      "word": "Einführung"
+      "word": "Einführung",
+      "translation": {
+        "tr": "Giriş",
+        "en": "Introduction"
+      }
     },
     {
       "article": "die",
-      "word": "Eingabe"
+      "word": "Eingabe",
+      "translation": {
+        "tr": "Giriş",
+        "en": "Input"
+      }
     },
     {
       "article": "der",
-      "word": "Eingang"
+      "word": "Eingang",
+      "translation": {
+        "tr": "Giriş",
+        "en": "Entrance"
+      }
     },
     {
       "article": "die",
-      "word": "Einheit"
+      "word": "Einheit",
+      "translation": {
+        "tr": "Birlik",
+        "en": "Unity"
+      }
     },
     {
       "article": "die",
-      "word": "Einrichtung"
+      "word": "Einrichtung",
+      "translation": {
+        "tr": "Tesis",
+        "en": "Facility"
+      }
     },
     {
       "article": "der",
-      "word": "Einsatz"
+      "word": "Einsatz",
+      "translation": {
+        "tr": "Kullanım",
+        "en": "Use"
+      }
     },
     {
       "article": "die",
-      "word": "Einstellung"
+      "word": "Einstellung",
+      "translation": {
+        "tr": "Ayar",
+        "en": "Setting"
+      }
     },
     {
       "article": "der",
-      "word": "Eintritt"
+      "word": "Eintritt",
+      "translation": {
+        "tr": "Giriş",
+        "en": "Admission"
+      }
     },
     {
       "article": "die",
-      "word": "Einwanderung"
+      "word": "Einwanderung",
+      "translation": {
+        "tr": "Göçmenlik",
+        "en": "Immigration"
+      }
     },
     {
       "article": "der",
-      "word": "Einzelhandel"
+      "word": "Einzelhandel",
+      "translation": {
+        "tr": "Perakende",
+        "en": "Retail"
+      }
     },
     {
       "article": "das",
-      "word": "Einzelzimmer"
+      "word": "Einzelzimmer",
+      "translation": {
+        "tr": "Tek kişilik oda",
+        "en": "Single room"
+      }
     },
     {
       "article": "die",
-      "word": "Eisenbahn"
+      "word": "Eisenbahn",
+      "translation": {
+        "tr": "Demiryolu",
+        "en": "Railway"
+      }
     },
     {
       "article": "das",
-      "word": "Elektroauto"
+      "word": "Elektroauto",
+      "translation": {
+        "tr": "Elektrikli araba",
+        "en": "Electric car"
+      }
     },
     {
       "article": "der",
-      "word": "Ellbogen"
+      "word": "Ellbogen",
+      "translation": {
+        "tr": "Dirsek",
+        "en": "Elbow"
+      }
     },
     {
       "article": "der",
-      "word": "Empfang"
+      "word": "Empfang",
+      "translation": {
+        "tr": "Resepsiyon",
+        "en": "Reception"
+      }
     },
     {
       "article": "der",
-      "word": "Empfänger"
+      "word": "Empfänger",
+      "translation": {
+        "tr": "Alıcı",
+        "en": "Receiver"
+      }
     },
     {
       "article": "der",
-      "word": "Engländer"
+      "word": "Engländer",
+      "translation": {
+        "tr": "İngiliz",
+        "en": "Englishman"
+      }
     },
     {
       "article": "die",
-      "word": "Entdeckung"
+      "word": "Entdeckung",
+      "translation": {
+        "tr": "Keşif",
+        "en": "Discovery"
+      }
     },
     {
       "article": "die",
-      "word": "Entfernung"
+      "word": "Entfernung",
+      "translation": {
+        "tr": "Mesafe",
+        "en": "Distance"
+      }
     },
     {
       "article": "die",
-      "word": "Entscheidung"
+      "word": "Entscheidung",
+      "translation": {
+        "tr": "karar",
+        "en": "decision"
+      }
     },
     {
       "article": "die",
-      "word": "Enttäuschung"
+      "word": "Enttäuschung",
+      "translation": {
+        "tr": "Hayal kırıklığı",
+        "en": "Disappointment"
+      }
     },
     {
       "article": "die",
-      "word": "Entwicklung"
+      "word": "Entwicklung",
+      "translation": {
+        "tr": "Geliştirme",
+        "en": "Development"
+      }
     },
     {
       "article": "der",
-      "word": "Entwurf"
+      "word": "Entwurf",
+      "translation": {
+        "tr": "Taslak",
+        "en": "Draft"
+      }
     },
     {
       "article": "die",
-      "word": "Erfahrung"
+      "word": "Erfahrung",
+      "translation": {
+        "tr": "Deneyim",
+        "en": "Experience"
+      }
     },
     {
       "article": "der",
-      "word": "Erfinder"
+      "word": "Erfinder",
+      "translation": {
+        "tr": "Mucit",
+        "en": "Inventor"
+      }
     },
     {
       "article": "die",
-      "word": "Erfindung"
+      "word": "Erfindung",
+      "translation": {
+        "tr": "Buluş",
+        "en": "Invention"
+      }
     },
     {
       "article": "die",
-      "word": "Ergänzung"
+      "word": "Ergänzung",
+      "translation": {
+        "tr": "Ek",
+        "en": "Supplement"
+      }
     },
     {
       "article": "die",
-      "word": "Erinnerung"
+      "word": "Erinnerung",
+      "translation": {
+        "tr": "Bellek",
+        "en": "Memory"
+      }
     },
     {
       "article": "die",
-      "word": "Erklärung"
+      "word": "Erklärung",
+      "translation": {
+        "tr": "açıklama",
+        "en": "explanation"
+      }
     },
     {
       "article": "die",
-      "word": "Erlaubnis"
+      "word": "Erlaubnis",
+      "translation": {
+        "tr": "izin",
+        "en": "permission"
+      }
     },
     {
       "article": "das",
-      "word": "Erlebnis"
+      "word": "Erlebnis",
+      "translation": {
+        "tr": "Deneyim",
+        "en": "Experience"
+      }
     },
     {
       "article": "die",
-      "word": "Erleichterung"
+      "word": "Erleichterung",
+      "translation": {
+        "tr": "Rahatlama",
+        "en": "Relief"
+      }
     },
     {
       "article": "die",
-      "word": "Ernährung"
+      "word": "Ernährung",
+      "translation": {
+        "tr": "Beslenme",
+        "en": "Nutrition"
+      }
     },
     {
       "article": "die",
-      "word": "Ernte"
+      "word": "Ernte",
+      "translation": {
+        "tr": "Hasat",
+        "en": "Harvest"
+      }
     },
     {
       "article": "der",
-      "word": "Erzähler"
+      "word": "Erzähler",
+      "translation": {
+        "tr": "Anlatıcı",
+        "en": "Narrator"
+      }
     },
     {
       "article": "der",
-      "word": "Esel"
+      "word": "Esel",
+      "translation": {
+        "tr": "Eşek",
+        "en": "Donkey"
+      }
     },
     {
       "article": "das",
-      "word": "Experiment"
+      "word": "Experiment",
+      "translation": {
+        "tr": "Deney",
+        "en": "Experiment"
+      }
     },
     {
       "article": "der",
-      "word": "Export"
+      "word": "Export",
+      "translation": {
+        "tr": "İhracat",
+        "en": "Export"
+      }
     },
     {
       "article": "das",
-      "word": "Extra"
+      "word": "Extra",
+      "translation": {
+        "tr": "Ekstra",
+        "en": "Extra"
+      }
     },
     {
       "article": "der",
-      "word": "Fakt"
+      "word": "Fakt",
+      "translation": {
+        "tr": "Gerçek",
+        "en": "Fact"
+      }
     },
     {
       "article": "der",
-      "word": "Faktor"
+      "word": "Faktor",
+      "translation": {
+        "tr": "faktör",
+        "en": "factor"
+      }
     },
     {
       "article": "die",
-      "word": "Falle"
+      "word": "Falle",
+      "translation": {
+        "tr": "tuzak",
+        "en": "trap"
+      }
     },
     {
       "article": "die",
-      "word": "Fantasie"
+      "word": "Fantasie",
+      "translation": {
+        "tr": "fantezi",
+        "en": "fantasy"
+      }
     },
     {
       "article": "der",
-      "word": "Favorit"
+      "word": "Favorit",
+      "translation": {
+        "tr": "Favori",
+        "en": "Favorite"
+      }
     },
     {
       "article": "das",
-      "word": "Fernsehen"
+      "word": "Fernsehen",
+      "translation": {
+        "tr": "Televizyon",
+        "en": "Television"
+      }
     },
     {
       "article": "das",
-      "word": "Festival"
+      "word": "Festival",
+      "translation": {
+        "tr": "Festival",
+        "en": "Festival"
+      }
     },
     {
       "article": "die",
-      "word": "Feuerwehr"
+      "word": "Feuerwehr",
+      "translation": {
+        "tr": "İtfaiye",
+        "en": "Fire department"
+      }
     },
     {
       "article": "der",
-      "word": "Filter"
+      "word": "Filter",
+      "translation": {
+        "tr": "Filtreler",
+        "en": "Filters"
+      }
     },
     {
       "article": "die",
-      "word": "Fitness"
+      "word": "Fitness",
+      "translation": {
+        "tr": "Fitness",
+        "en": "Fitness"
+      }
     },
     {
       "article": "die",
-      "word": "Fläche"
+      "word": "Fläche",
+      "translation": {
+        "tr": "alan",
+        "en": "area"
+      }
     },
     {
       "article": "die",
-      "word": "Folge"
+      "word": "Folge",
+      "translation": {
+        "tr": "Bölüm",
+        "en": "Episode"
+      }
     },
     {
       "article": "die",
-      "word": "Formel"
+      "word": "Formel",
+      "translation": {
+        "tr": "Formül",
+        "en": "Formula"
+      }
     },
     {
       "article": "das",
-      "word": "Forum"
+      "word": "Forum",
+      "translation": {
+        "tr": "Forum",
+        "en": "Forum"
+      }
     },
     {
       "article": "die",
-      "word": "Fracht"
+      "word": "Fracht",
+      "translation": {
+        "tr": "Navlun",
+        "en": "Freight"
+      }
     },
     {
       "article": "der",
-      "word": "Fremde"
+      "word": "Fremde",
+      "translation": {
+        "tr": "Yabancılar",
+        "en": "Strangers"
+      }
     },
     {
       "article": "der",
-      "word": "Frieden"
+      "word": "Frieden",
+      "translation": {
+        "tr": "Barış",
+        "en": "Peace"
+      }
     },
     {
       "article": "die",
-      "word": "Frist"
+      "word": "Frist",
+      "translation": {
+        "tr": "son tarih",
+        "en": "deadline"
+      }
     },
     {
       "article": "die",
-      "word": "Front"
+      "word": "Front",
+      "translation": {
+        "tr": "ön",
+        "en": "front"
+      }
     },
     {
       "article": "der",
-      "word": "Fund"
+      "word": "Fund",
+      "translation": {
+        "tr": "Bul",
+        "en": "Find"
+      }
     },
     {
       "article": "der",
-      "word": "Funk"
+      "word": "Funk",
+      "translation": {
+        "tr": "Funk",
+        "en": "Funk"
+      }
     },
     {
       "article": "der",
-      "word": "Funke"
+      "word": "Funke",
+      "translation": {
+        "tr": "Kıvılcım",
+        "en": "Spark"
+      }
     },
     {
       "article": "die",
-      "word": "Funktion"
+      "word": "Funktion",
+      "translation": {
+        "tr": "İşlev",
+        "en": "Function"
+      }
     },
     {
       "article": "der",
-      "word": "Gang"
+      "word": "Gang",
+      "translation": {
+        "tr": "dişli",
+        "en": "gear"
+      }
     },
     {
       "article": "der",
-      "word": "Gastgeber"
+      "word": "Gastgeber",
+      "translation": {
+        "tr": "Sunucu",
+        "en": "Host"
+      }
     },
     {
       "article": "das",
-      "word": "Gebäck"
+      "word": "Gebäck",
+      "translation": {
+        "tr": "hamur işleri",
+        "en": "pastries"
+      }
     },
     {
       "article": "die",
-      "word": "Gebühr"
+      "word": "Gebühr",
+      "translation": {
+        "tr": "Ücret",
+        "en": "Fee"
+      }
     },
     {
       "article": "die",
-      "word": "Geburt"
+      "word": "Geburt",
+      "translation": {
+        "tr": "doğum",
+        "en": "birth"
+      }
     },
     {
       "article": "das",
-      "word": "Gedicht"
+      "word": "Gedicht",
+      "translation": {
+        "tr": "Şiir",
+        "en": "Poem"
+      }
     },
     {
       "article": "die",
-      "word": "Geduld"
+      "word": "Geduld",
+      "translation": {
+        "tr": "Sabır",
+        "en": "Patience"
+      }
     },
     {
       "article": "die",
-      "word": "Gefahr"
+      "word": "Gefahr",
+      "translation": {
+        "tr": "Tehlike",
+        "en": "Danger"
+      }
     },
     {
       "article": "das",
-      "word": "Gefängnis"
+      "word": "Gefängnis",
+      "translation": {
+        "tr": "Hapishane",
+        "en": "Prison"
+      }
     },
     {
       "article": "die",
-      "word": "Gegenwart"
+      "word": "Gegenwart",
+      "translation": {
+        "tr": "mevcut",
+        "en": "present"
+      }
     },
     {
       "article": "das",
-      "word": "Gehäuse"
+      "word": "Gehäuse",
+      "translation": {
+        "tr": "Konut",
+        "en": "Housing"
+      }
     },
     {
       "article": "das",
-      "word": "Gelände"
+      "word": "Gelände",
+      "translation": {
+        "tr": "Arazi",
+        "en": "Terrain"
+      }
     },
     {
       "article": "die",
-      "word": "Gelegenheit"
+      "word": "Gelegenheit",
+      "translation": {
+        "tr": "fırsat",
+        "en": "opportunity"
+      }
     },
     {
       "article": "der",
-      "word": "Geliebte"
+      "word": "Geliebte",
+      "translation": {
+        "tr": "sevgili",
+        "en": "Beloved"
+      }
     },
     {
       "article": "das",
-      "word": "Gemälde"
+      "word": "Gemälde",
+      "translation": {
+        "tr": "Tablolar",
+        "en": "Paintings"
+      }
     },
     {
       "article": "die",
-      "word": "Gemeinde"
+      "word": "Gemeinde",
+      "translation": {
+        "tr": "topluluk",
+        "en": "community"
+      }
     },
     {
       "article": "die",
-      "word": "Gemeinschaft"
+      "word": "Gemeinschaft",
+      "translation": {
+        "tr": "Topluluk",
+        "en": "Community"
+      }
     },
     {
       "article": "der",
-      "word": "General"
+      "word": "General",
+      "translation": {
+        "tr": "Genel",
+        "en": "General"
+      }
     },
     {
       "article": "das",
-      "word": "Gerücht"
+      "word": "Gerücht",
+      "translation": {
+        "tr": "Söylenti",
+        "en": "Rumor"
+      }
     },
     {
       "article": "das",
-      "word": "Gerüst"
+      "word": "Gerüst",
+      "translation": {
+        "tr": "iskele",
+        "en": "scaffolding"
+      }
     },
     {
       "article": "der",
-      "word": "Gesang"
+      "word": "Gesang",
+      "translation": {
+        "tr": "şarkı söylemek",
+        "en": "singing"
+      }
     },
     {
       "article": "die",
-      "word": "Gesellschaft"
+      "word": "Gesellschaft",
+      "translation": {
+        "tr": "Toplum",
+        "en": "Society"
+      }
     },
     {
       "article": "das",
-      "word": "Getreide"
+      "word": "Getreide",
+      "translation": {
+        "tr": "Tahıllar",
+        "en": "Cereals"
+      }
     },
     {
       "article": "das",
-      "word": "Gewächshaus"
+      "word": "Gewächshaus",
+      "translation": {
+        "tr": "sera",
+        "en": "greenhouse"
+      }
     },
     {
       "article": "das",
-      "word": "Gewehr"
+      "word": "Gewehr",
+      "translation": {
+        "tr": "tüfek",
+        "en": "rifle"
+      }
     },
     {
       "article": "das",
-      "word": "Gewerbe"
+      "word": "Gewerbe",
+      "translation": {
+        "tr": "Ticari",
+        "en": "Commercial"
+      }
     },
     {
       "article": "die",
-      "word": "Gewerkschaft"
+      "word": "Gewerkschaft",
+      "translation": {
+        "tr": "Birlik",
+        "en": "Union"
+      }
     },
     {
       "article": "die",
-      "word": "Gleichung"
+      "word": "Gleichung",
+      "translation": {
+        "tr": "Denklem",
+        "en": "Equation"
+      }
     },
     {
       "article": "der",
-      "word": "Griff"
+      "word": "Griff",
+      "translation": {
+        "tr": "sap",
+        "en": "handle"
+      }
     },
     {
       "article": "der",
-      "word": "Grill"
+      "word": "Grill",
+      "translation": {
+        "tr": "Izgara",
+        "en": "Grill"
+      }
     },
     {
       "article": "die",
-      "word": "Grippe"
+      "word": "Grippe",
+      "translation": {
+        "tr": "Grip",
+        "en": "Flu"
+      }
     },
     {
       "article": "die",
-      "word": "Größe"
+      "word": "Größe",
+      "translation": {
+        "tr": "boyut",
+        "en": "size"
+      }
     },
     {
       "article": "die",
-      "word": "Grube"
+      "word": "Grube",
+      "translation": {
+        "tr": "çukur",
+        "en": "pit"
+      }
     },
     {
       "article": "der",
-      "word": "Gründer"
+      "word": "Gründer",
+      "translation": {
+        "tr": "Kurucu",
+        "en": "Founder"
+      }
     },
     {
       "article": "das",
-      "word": "Grundgesetz"
+      "word": "Grundgesetz",
+      "translation": {
+        "tr": "Temel Hukuk",
+        "en": "Basic Law"
+      }
     },
     {
       "article": "der",
-      "word": "Hacker"
+      "word": "Hacker",
+      "translation": {
+        "tr": "Bilgisayar korsanları",
+        "en": "Hackers"
+      }
     },
     {
       "article": "der",
-      "word": "Hagel"
+      "word": "Hagel",
+      "translation": {
+        "tr": "dolu",
+        "en": "Hail"
+      }
     },
     {
       "article": "das",
-      "word": "Halbfinale"
+      "word": "Halbfinale",
+      "translation": {
+        "tr": "Yarı finaller",
+        "en": "Semifinals"
+      }
     },
     {
       "article": "die",
-      "word": "Halbzeit"
+      "word": "Halbzeit",
+      "translation": {
+        "tr": "İlk yarı",
+        "en": "Halftime"
+      }
     },
     {
       "article": "der",
-      "word": "Halt"
+      "word": "Halt",
+      "translation": {
+        "tr": "Durdur",
+        "en": "Stop"
+      }
     },
     {
       "article": "der",
-      "word": "Handel"
+      "word": "Handel",
+      "translation": {
+        "tr": "Ticaret",
+        "en": "Trade"
+      }
     },
     {
       "article": "der",
-      "word": "Händler"
+      "word": "Händler",
+      "translation": {
+        "tr": "Bayi",
+        "en": "Dealer"
+      }
     },
     {
       "article": "die",
-      "word": "Handlung"
+      "word": "Handlung",
+      "translation": {
+        "tr": "arsa",
+        "en": "plot"
+      }
     },
     {
       "article": "das",
-      "word": "Handwerk"
+      "word": "Handwerk",
+      "translation": {
+        "tr": "El sanatları",
+        "en": "Crafts"
+      }
     },
     {
       "article": "der",
-      "word": "Hanf"
+      "word": "Hanf",
+      "translation": {
+        "tr": "kenevir",
+        "en": "Hemp"
+      }
     },
     {
       "article": "der",
-      "word": "Hang"
+      "word": "Hang",
+      "translation": {
+        "tr": "Asın",
+        "en": "Hang"
+      }
     },
     {
       "article": "die",
-      "word": "Haube"
+      "word": "Haube",
+      "translation": {
+        "tr": "başlık",
+        "en": "hood"
+      }
     },
     {
       "article": "der",
-      "word": "Haufen"
+      "word": "Haufen",
+      "translation": {
+        "tr": "yığın",
+        "en": "Heap"
+      }
     },
     {
       "article": "die",
-      "word": "Hauptsache"
+      "word": "Hauptsache",
+      "translation": {
+        "tr": "Ana şey",
+        "en": "Main thing"
+      }
     },
     {
       "article": "der",
-      "word": "Haushalt"
+      "word": "Haushalt",
+      "translation": {
+        "tr": "ev",
+        "en": "household"
+      }
     },
     {
       "article": "das",
-      "word": "Heim"
+      "word": "Heim",
+      "translation": {
+        "tr": "Ana Sayfa",
+        "en": "Home"
+      }
     },
     {
       "article": "die",
-      "word": "Heimat"
+      "word": "Heimat",
+      "translation": {
+        "tr": "Vatan",
+        "en": "Homeland"
+      }
     },
     {
       "article": "die",
-      "word": "Heizung"
+      "word": "Heizung",
+      "translation": {
+        "tr": "Isıtma",
+        "en": "Heating"
+      }
     },
     {
       "article": "der",
-      "word": "Helfer"
+      "word": "Helfer",
+      "translation": {
+        "tr": "yardımcı",
+        "en": "helper"
+      }
     },
     {
       "article": "der",
-      "word": "Hersteller"
+      "word": "Hersteller",
+      "translation": {
+        "tr": "Üretici",
+        "en": "Manufacturer"
+      }
     },
     {
       "article": "das",
-      "word": "Heu"
+      "word": "Heu",
+      "translation": {
+        "tr": "Saman",
+        "en": "Hay"
+      }
     },
     {
       "article": "der",
-      "word": "Hintergrund"
+      "word": "Hintergrund",
+      "translation": {
+        "tr": "arka plan",
+        "en": "background"
+      }
     },
     {
       "article": "der",
-      "word": "Hinweis"
+      "word": "Hinweis",
+      "translation": {
+        "tr": "Not",
+        "en": "Note"
+      }
     },
     {
       "article": "das",
-      "word": "Hirn"
+      "word": "Hirn",
+      "translation": {
+        "tr": "beyin",
+        "en": "brain"
+      }
     },
     {
       "article": "die",
-      "word": "Höflichkeit"
+      "word": "Höflichkeit",
+      "translation": {
+        "tr": "Nezaket",
+        "en": "Courtesy"
+      }
     },
     {
       "article": "die",
-      "word": "Hölle"
+      "word": "Hölle",
+      "translation": {
+        "tr": "Cehennem",
+        "en": "Hell"
+      }
     },
     {
       "article": "der",
-      "word": "Hörer"
+      "word": "Hörer",
+      "translation": {
+        "tr": "dinleyici",
+        "en": "listener"
+      }
     },
     {
       "article": "der",
-      "word": "Horizont"
+      "word": "Horizont",
+      "translation": {
+        "tr": "ufuk",
+        "en": "horizon"
+      }
     },
     {
       "article": "das",
-      "word": "Hormon"
+      "word": "Hormon",
+      "translation": {
+        "tr": "hormon",
+        "en": "hormone"
+      }
     },
     {
       "article": "das",
-      "word": "Horoskop"
+      "word": "Horoskop",
+      "translation": {
+        "tr": "Burç",
+        "en": "Horoscope"
+      }
     },
     {
       "article": "der",
-      "word": "Horror"
+      "word": "Horror",
+      "translation": {
+        "tr": "Korku",
+        "en": "Horror"
+      }
     },
     {
       "article": "der",
-      "word": "Hörsaal"
+      "word": "Hörsaal",
+      "translation": {
+        "tr": "konferans salonu",
+        "en": "lecture hall"
+      }
     },
     {
       "article": "die",
-      "word": "Hüfte"
+      "word": "Hüfte",
+      "translation": {
+        "tr": "kalça",
+        "en": "hip"
+      }
     },
     {
       "article": "die",
-      "word": "Hülle"
+      "word": "Hülle",
+      "translation": {
+        "tr": "kapak",
+        "en": "cover"
+      }
     },
     {
       "article": "der",
-      "word": "Hummer"
+      "word": "Hummer",
+      "translation": {
+        "tr": "Istakoz",
+        "en": "Lobster"
+      }
     },
     {
       "article": "die",
-      "word": "Hürde"
+      "word": "Hürde",
+      "translation": {
+        "tr": "engel",
+        "en": "hurdle"
+      }
     },
     {
       "article": "das",
-      "word": "Idol"
+      "word": "Idol",
+      "translation": {
+        "tr": "İdol",
+        "en": "Idol"
+      }
     },
     {
       "article": "der",
-      "word": "Indianer"
+      "word": "Indianer",
+      "translation": {
+        "tr": "Hintliler",
+        "en": "Indians"
+      }
     },
     {
       "article": "die",
-      "word": "Industrie"
+      "word": "Industrie",
+      "translation": {
+        "tr": "Endüstri",
+        "en": "Industry"
+      }
     },
     {
       "article": "der",
-      "word": "Inhalt"
+      "word": "Inhalt",
+      "translation": {
+        "tr": "İçerik",
+        "en": "Content"
+      }
     },
     {
       "article": "das",
-      "word": "Interview"
+      "word": "Interview",
+      "translation": {
+        "tr": "Röportaj",
+        "en": "Interview"
+      }
     },
     {
       "article": "der",
-      "word": "Islam"
+      "word": "Islam",
+      "translation": {
+        "tr": "İslâm",
+        "en": "Islam"
+      }
     },
     {
       "article": "der",
-      "word": "Italiener"
+      "word": "Italiener",
+      "translation": {
+        "tr": "İtalyanlar",
+        "en": "Italians"
+      }
     },
     {
       "article": "der",
-      "word": "Jäger"
+      "word": "Jäger",
+      "translation": {
+        "tr": "avcı",
+        "en": "hunter"
+      }
     },
     {
       "article": "das",
-      "word": "Jahrhundert"
+      "word": "Jahrhundert",
+      "translation": {
+        "tr": "yüzyıl",
+        "en": "century"
+      }
     },
     {
       "article": "das",
-      "word": "Jahrzehnt"
+      "word": "Jahrzehnt",
+      "translation": {
+        "tr": "on yıl",
+        "en": "decade"
+      }
     },
     {
       "article": "das",
-      "word": "Japanisch"
+      "word": "Japanisch",
+      "translation": {
+        "tr": "Japonca",
+        "en": "Japanese"
+      }
     },
     {
       "article": "der",
-      "word": "Jet"
+      "word": "Jet",
+      "translation": {
+        "tr": "Jet",
+        "en": "Jet"
+      }
     },
     {
       "article": "der",
-      "word": "Journalist"
+      "word": "Journalist",
+      "translation": {
+        "tr": "Gazeteci",
+        "en": "Journalist"
+      }
     },
     {
       "article": "der",
-      "word": "Jugendliche"
+      "word": "Jugendliche",
+      "translation": {
+        "tr": "gençler",
+        "en": "teenagers"
+      }
     },
     {
       "article": "der",
-      "word": "Kandidat"
+      "word": "Kandidat",
+      "translation": {
+        "tr": "aday",
+        "en": "candidate"
+      }
     },
     {
       "article": "der",
-      "word": "Kanzler"
+      "word": "Kanzler",
+      "translation": {
+        "tr": "Şansölye",
+        "en": "Chancellor"
+      }
     },
     {
       "article": "der",
-      "word": "Kapitän"
+      "word": "Kapitän",
+      "translation": {
+        "tr": "Kaptan",
+        "en": "Captain"
+      }
     },
     {
       "article": "das",
-      "word": "Karate"
+      "word": "Karate",
+      "translation": {
+        "tr": "karate",
+        "en": "karate"
+      }
     },
     {
       "article": "der",
-      "word": "Katalog"
+      "word": "Katalog",
+      "translation": {
+        "tr": "Katalog",
+        "en": "Catalog"
+      }
     },
     {
       "article": "der",
-      "word": "Kauf"
+      "word": "Kauf",
+      "translation": {
+        "tr": "satın alma",
+        "en": "purchase"
+      }
     },
     {
       "article": "der",
-      "word": "Kegel"
+      "word": "Kegel",
+      "translation": {
+        "tr": "Koni",
+        "en": "Cone"
+      }
     },
     {
       "article": "die",
-      "word": "Kehle"
+      "word": "Kehle",
+      "translation": {
+        "tr": "boğaz",
+        "en": "throat"
+      }
     },
     {
       "article": "der",
-      "word": "Kerl"
+      "word": "Kerl",
+      "translation": {
+        "tr": "adam",
+        "en": "guy"
+      }
     },
     {
       "article": "der",
-      "word": "Kern"
+      "word": "Kern",
+      "translation": {
+        "tr": "çekirdek",
+        "en": "core"
+      }
     },
     {
       "article": "das",
-      "word": "Kilogramm"
+      "word": "Kilogramm",
+      "translation": {
+        "tr": "kilogram",
+        "en": "kilograms"
+      }
     },
     {
       "article": "die",
-      "word": "Kindheit"
+      "word": "Kindheit",
+      "translation": {
+        "tr": "çocukluk",
+        "en": "childhood"
+      }
     },
     {
       "article": "der",
-      "word": "Klang"
+      "word": "Klang",
+      "translation": {
+        "tr": "ses",
+        "en": "sound"
+      }
     },
     {
       "article": "der",
-      "word": "Klick"
+      "word": "Klick",
+      "translation": {
+        "tr": "Tıklayın",
+        "en": "Click"
+      }
     },
     {
       "article": "das",
-      "word": "Klima"
+      "word": "Klima",
+      "translation": {
+        "tr": "İklim",
+        "en": "Climate"
+      }
     },
     {
       "article": "die",
-      "word": "Klinge"
+      "word": "Klinge",
+      "translation": {
+        "tr": "Bıçak",
+        "en": "Blade"
+      }
     },
     {
       "article": "das",
-      "word": "Kloster"
+      "word": "Kloster",
+      "translation": {
+        "tr": "Manastır",
+        "en": "Monastery"
+      }
     },
     {
       "article": "der",
-      "word": "Klub"
+      "word": "Klub",
+      "translation": {
+        "tr": "Kulüp",
+        "en": "Club"
+      }
     },
     {
       "article": "der",
-      "word": "Knabe"
+      "word": "Knabe",
+      "translation": {
+        "tr": "oğlan",
+        "en": "boy"
+      }
     },
     {
       "article": "der",
-      "word": "Knall"
+      "word": "Knall",
+      "translation": {
+        "tr": "Patlama",
+        "en": "Bang"
+      }
     },
     {
       "article": "der",
-      "word": "Knast"
+      "word": "Knast",
+      "translation": {
+        "tr": "Hapishane",
+        "en": "Jail"
+      }
     },
     {
       "article": "der",
-      "word": "Knöchel"
+      "word": "Knöchel",
+      "translation": {
+        "tr": "ayak bileği",
+        "en": "ankle"
+      }
     },
     {
       "article": "die",
-      "word": "Kohle"
+      "word": "Kohle",
+      "translation": {
+        "tr": "Kömür",
+        "en": "Coal"
+      }
     },
     {
       "article": "die",
-      "word": "Kolonie"
+      "word": "Kolonie",
+      "translation": {
+        "tr": "koloni",
+        "en": "colony"
+      }
     },
     {
       "article": "der",
-      "word": "Komfort"
+      "word": "Komfort",
+      "translation": {
+        "tr": "Konfor",
+        "en": "Comfort"
+      }
     },
     {
       "article": "der",
-      "word": "Kommentar"
+      "word": "Kommentar",
+      "translation": {
+        "tr": "Yorum",
+        "en": "Comment"
+      }
     },
     {
       "article": "das",
-      "word": "Kondom"
+      "word": "Kondom",
+      "translation": {
+        "tr": "prezervatif",
+        "en": "condom"
+      }
     },
     {
       "article": "der",
-      "word": "Konflikt"
+      "word": "Konflikt",
+      "translation": {
+        "tr": "Çatışma",
+        "en": "Conflict"
+      }
     },
     {
       "article": "das",
-      "word": "Königreich"
+      "word": "Königreich",
+      "translation": {
+        "tr": "Krallık",
+        "en": "Kingdom"
+      }
     },
     {
       "article": "der",
-      "word": "Konsum"
+      "word": "Konsum",
+      "translation": {
+        "tr": "Tüketim",
+        "en": "Consumption"
+      }
     },
     {
       "article": "das",
-      "word": "Konzept"
+      "word": "Konzept",
+      "translation": {
+        "tr": "kavram",
+        "en": "concept"
+      }
     },
     {
       "article": "die",
-      "word": "Korrektur"
+      "word": "Korrektur",
+      "translation": {
+        "tr": "Düzeltme",
+        "en": "Correction"
+      }
     },
     {
       "article": "der",
-      "word": "Korridor"
+      "word": "Korridor",
+      "translation": {
+        "tr": "Koridor",
+        "en": "Corridor"
+      }
     },
     {
       "article": "das",
-      "word": "Kraftwerk"
+      "word": "Kraftwerk",
+      "translation": {
+        "tr": "enerji santrali",
+        "en": "power plant"
+      }
     },
     {
       "article": "der",
-      "word": "Krampf"
+      "word": "Krampf",
+      "translation": {
+        "tr": "kramp",
+        "en": "cramp"
+      }
     },
     {
       "article": "der",
-      "word": "Kranke"
+      "word": "Kranke",
+      "translation": {
+        "tr": "Hasta",
+        "en": "Sick"
+      }
     },
     {
       "article": "der",
-      "word": "Kredit"
+      "word": "Kredit",
+      "translation": {
+        "tr": "Kredi",
+        "en": "Credit"
+      }
     },
     {
       "article": "die",
-      "word": "Kreide"
+      "word": "Kreide",
+      "translation": {
+        "tr": "Tebeşir",
+        "en": "Chalk"
+      }
     },
     {
       "article": "der",
-      "word": "Krimi"
+      "word": "Krimi",
+      "translation": {
+        "tr": "Suç",
+        "en": "Crime"
+      }
     },
     {
       "article": "der",
-      "word": "Kriminelle"
+      "word": "Kriminelle",
+      "translation": {
+        "tr": "Suçlular",
+        "en": "Criminals"
+      }
     },
     {
       "article": "die",
-      "word": "Krise"
+      "word": "Krise",
+      "translation": {
+        "tr": "Kriz",
+        "en": "Crisis"
+      }
     },
     {
       "article": "die",
-      "word": "Kritik"
+      "word": "Kritik",
+      "translation": {
+        "tr": "Eleştiri",
+        "en": "Criticism"
+      }
     },
     {
       "article": "der",
-      "word": "Kritiker"
+      "word": "Kritiker",
+      "translation": {
+        "tr": "Eleştirmen",
+        "en": "Critic"
+      }
     },
     {
       "article": "die",
-      "word": "Kultur"
+      "word": "Kultur",
+      "translation": {
+        "tr": "Kültür",
+        "en": "Culture"
+      }
     },
     {
       "article": "der",
-      "word": "Kumpel"
+      "word": "Kumpel",
+      "translation": {
+        "tr": "dostum",
+        "en": "Buddy"
+      }
     },
     {
       "article": "die",
-      "word": "Kunst"
+      "word": "Kunst",
+      "translation": {
+        "tr": "Sanat",
+        "en": "Art"
+      }
     },
     {
       "article": "der",
-      "word": "Künstler"
+      "word": "Künstler",
+      "translation": {
+        "tr": "Sanatçı",
+        "en": "Artist"
+      }
     },
     {
       "article": "die",
-      "word": "Kur"
+      "word": "Kur",
+      "translation": {
+        "tr": "tedavi",
+        "en": "cure"
+      }
     },
     {
       "article": "das",
-      "word": "Labor"
+      "word": "Labor",
+      "translation": {
+        "tr": "Laboratuvar",
+        "en": "Laboratory"
+      }
     },
     {
       "article": "die",
-      "word": "Lage"
+      "word": "Lage",
+      "translation": {
+        "tr": "Konum",
+        "en": "Location"
+      }
     },
     {
       "article": "das",
-      "word": "Lager"
+      "word": "Lager",
+      "translation": {
+        "tr": "Depo",
+        "en": "Warehouse"
+      }
     },
     {
       "article": "die",
-      "word": "Landschaft"
+      "word": "Landschaft",
+      "translation": {
+        "tr": "manzara",
+        "en": "landscape"
+      }
     },
     {
       "article": "der",
-      "word": "Landwirt"
+      "word": "Landwirt",
+      "translation": {
+        "tr": "çiftçi",
+        "en": "farmer"
+      }
     },
     {
       "article": "die",
-      "word": "Landwirtschaft"
+      "word": "Landwirtschaft",
+      "translation": {
+        "tr": "Tarım",
+        "en": "Agriculture"
+      }
     },
     {
       "article": "der",
-      "word": "Lärm"
+      "word": "Lärm",
+      "translation": {
+        "tr": "gürültü",
+        "en": "noise"
+      }
     },
     {
       "article": "die",
-      "word": "Last"
+      "word": "Last",
+      "translation": {
+        "tr": "yük",
+        "en": "load"
+      }
     },
     {
       "article": "der",
-      "word": "Laster"
+      "word": "Laster",
+      "translation": {
+        "tr": "Yardımcısı",
+        "en": "Vice"
+      }
     },
     {
       "article": "die",
-      "word": "Latte"
+      "word": "Latte",
+      "translation": {
+        "tr": "Latte",
+        "en": "Latte"
+      }
     },
     {
       "article": "die",
-      "word": "Lautstärke"
+      "word": "Lautstärke",
+      "translation": {
+        "tr": "Hacim",
+        "en": "Volume"
+      }
     },
     {
       "article": "das",
-      "word": "Lebewesen"
+      "word": "Lebewesen",
+      "translation": {
+        "tr": "canlılar",
+        "en": "living beings"
+      }
     },
     {
       "article": "das",
-      "word": "Leck"
+      "word": "Leck",
+      "translation": {
+        "tr": "Sızıntı",
+        "en": "Leak"
+      }
     },
     {
       "article": "die",
-      "word": "Leere"
+      "word": "Leere",
+      "translation": {
+        "tr": "Boşluk",
+        "en": "Emptiness"
+      }
     },
     {
       "article": "die",
-      "word": "Lehre"
+      "word": "Lehre",
+      "translation": {
+        "tr": "öğretim",
+        "en": "teaching"
+      }
     },
     {
       "article": "das",
-      "word": "Leid"
+      "word": "Leid",
+      "translation": {
+        "tr": "Acı çekmek",
+        "en": "Suffering"
+      }
     },
     {
       "article": "die",
-      "word": "Leiter"
+      "word": "Leiter",
+      "translation": {
+        "tr": "Kafa",
+        "en": "Head"
+      }
     },
     {
       "article": "das",
-      "word": "Lesen"
+      "word": "Lesen",
+      "translation": {
+        "tr": "Oku",
+        "en": "Read"
+      }
     },
     {
       "article": "das",
-      "word": "Lexikon"
+      "word": "Lexikon",
+      "translation": {
+        "tr": "Sözlük",
+        "en": "Lexicon"
+      }
     },
     {
       "article": "der",
-      "word": "Lieferant"
+      "word": "Lieferant",
+      "translation": {
+        "tr": "Tedarikçi",
+        "en": "Supplier"
+      }
     },
     {
       "article": "die",
-      "word": "Liga"
+      "word": "Liga",
+      "translation": {
+        "tr": "Lig",
+        "en": "League"
+      }
     },
     {
       "article": "der",
-      "word": "Lkw"
+      "word": "Lkw",
+      "translation": {
+        "tr": "Kamyon",
+        "en": "Truck"
+      }
     },
     {
       "article": "der",
-      "word": "Lokführer"
+      "word": "Lokführer",
+      "translation": {
+        "tr": "Tren sürücüsü",
+        "en": "Train driver"
+      }
     },
     {
       "article": "die",
-      "word": "Lösung"
+      "word": "Lösung",
+      "translation": {
+        "tr": "Çözüm",
+        "en": "Solution"
+      }
     },
     {
       "article": "die",
-      "word": "Lotterie"
+      "word": "Lotterie",
+      "translation": {
+        "tr": "Piyango",
+        "en": "Lottery"
+      }
     },
     {
       "article": "die",
-      "word": "Macht"
+      "word": "Macht",
+      "translation": {
+        "tr": "Güç",
+        "en": "Power"
+      }
     },
     {
       "article": "das",
-      "word": "Make-up"
+      "word": "Make-up",
+      "translation": {
+        "tr": "makyaj",
+        "en": "makeup"
+      }
     },
     {
       "article": "der",
-      "word": "Manager"
+      "word": "Manager",
+      "translation": {
+        "tr": "Yöneticiler",
+        "en": "Managers"
+      }
     },
     {
       "article": "das",
-      "word": "Männchen"
+      "word": "Männchen",
+      "translation": {
+        "tr": "erkek",
+        "en": "male"
+      }
     },
     {
       "article": "die",
-      "word": "Mannschaft"
+      "word": "Mannschaft",
+      "translation": {
+        "tr": "takım",
+        "en": "team"
+      }
     },
     {
       "article": "der",
-      "word": "Marathon"
+      "word": "Marathon",
+      "translation": {
+        "tr": "Maraton",
+        "en": "Marathon"
+      }
     },
     {
       "article": "der",
-      "word": "Mars"
+      "word": "Mars",
+      "translation": {
+        "tr": "Mars",
+        "en": "Mars"
+      }
     },
     {
       "article": "die",
-      "word": "Maßnahme"
+      "word": "Maßnahme",
+      "translation": {
+        "tr": "Ölçü",
+        "en": "Measure"
+      }
     },
     {
       "article": "das",
-      "word": "Match"
+      "word": "Match",
+      "translation": {
+        "tr": "Maç",
+        "en": "Match"
+      }
     },
     {
       "article": "die",
-      "word": "Mathematik"
+      "word": "Mathematik",
+      "translation": {
+        "tr": "Matematik",
+        "en": "Mathematics"
+      }
     },
     {
       "article": "der",
-      "word": "Maulwurf"
+      "word": "Maulwurf",
+      "translation": {
+        "tr": "Köstebek",
+        "en": "Mole"
+      }
     },
     {
       "article": "der",
-      "word": "Mechaniker"
+      "word": "Mechaniker",
+      "translation": {
+        "tr": "Tamirci",
+        "en": "Mechanic"
+      }
     },
     {
       "article": "die",
-      "word": "Medaille"
+      "word": "Medaille",
+      "translation": {
+        "tr": "Madalya",
+        "en": "Medal"
+      }
     },
     {
       "article": "das",
-      "word": "Medikament"
+      "word": "Medikament",
+      "translation": {
+        "tr": "ilaç",
+        "en": "medication"
+      }
     },
     {
       "article": "die",
-      "word": "Mehrheit"
+      "word": "Mehrheit",
+      "translation": {
+        "tr": "Çoğunluk",
+        "en": "Majority"
+      }
     },
     {
       "article": "die",
-      "word": "Mehrwertsteuer"
+      "word": "Mehrwertsteuer",
+      "translation": {
+        "tr": "KDV",
+        "en": "VAT"
+      }
     },
     {
       "article": "das",
-      "word": "Merkmal"
+      "word": "Merkmal",
+      "translation": {
+        "tr": "özellik",
+        "en": "feature"
+      }
     },
     {
       "article": "die",
-      "word": "Messe"
+      "word": "Messe",
+      "translation": {
+        "tr": "Fuar",
+        "en": "Fair"
+      }
     },
     {
       "article": "die",
-      "word": "Messung"
+      "word": "Messung",
+      "translation": {
+        "tr": "Ölçüm",
+        "en": "Measurement"
+      }
     },
     {
       "article": "die",
-      "word": "Methode"
+      "word": "Methode",
+      "translation": {
+        "tr": "Yöntem",
+        "en": "Method"
+      }
     },
     {
       "article": "die",
-      "word": "Miene"
+      "word": "Miene",
+      "translation": {
+        "tr": "Mien",
+        "en": "Mien"
+      }
     },
     {
       "article": "das",
-      "word": "Mikroskop"
+      "word": "Mikroskop",
+      "translation": {
+        "tr": "Mikroskop",
+        "en": "Microscope"
+      }
     },
     {
       "article": "das",
-      "word": "Militär"
+      "word": "Militär",
+      "translation": {
+        "tr": "askeri",
+        "en": "military"
+      }
     },
     {
       "article": "die",
-      "word": "Milliarde"
+      "word": "Milliarde",
+      "translation": {
+        "tr": "milyar",
+        "en": "billion"
+      }
     },
     {
       "article": "die",
-      "word": "Million"
+      "word": "Million",
+      "translation": {
+        "tr": "milyon",
+        "en": "million"
+      }
     },
     {
       "article": "der",
-      "word": "Mindestlohn"
+      "word": "Mindestlohn",
+      "translation": {
+        "tr": "Asgari ücret",
+        "en": "Minimum wage"
+      }
     },
     {
       "article": "der",
-      "word": "Minister"
+      "word": "Minister",
+      "translation": {
+        "tr": "Bakan",
+        "en": "Minister"
+      }
     },
     {
       "article": "die",
-      "word": "Mischung"
+      "word": "Mischung",
+      "translation": {
+        "tr": "Karışım",
+        "en": "Mixture"
+      }
     },
     {
       "article": "die",
-      "word": "Mission"
+      "word": "Mission",
+      "translation": {
+        "tr": "Misyon",
+        "en": "Mission"
+      }
     },
     {
       "article": "das",
-      "word": "Mitglied"
+      "word": "Mitglied",
+      "translation": {
+        "tr": "üye",
+        "en": "member"
+      }
     },
     {
       "article": "die",
-      "word": "Möglichkeit"
+      "word": "Möglichkeit",
+      "translation": {
+        "tr": "olasılık",
+        "en": "possibility"
+      }
     },
     {
       "article": "der",
-      "word": "Monitor"
+      "word": "Monitor",
+      "translation": {
+        "tr": "monitör",
+        "en": "monitor"
+      }
     },
     {
       "article": "der",
-      "word": "Mord"
+      "word": "Mord",
+      "translation": {
+        "tr": "Cinayet",
+        "en": "Murder"
+      }
     },
     {
       "article": "der",
-      "word": "Mörder"
+      "word": "Mörder",
+      "translation": {
+        "tr": "Katil",
+        "en": "Murderer"
+      }
     },
     {
       "article": "die",
-      "word": "Moschee"
+      "word": "Moschee",
+      "translation": {
+        "tr": "Cami",
+        "en": "Mosque"
+      }
     },
     {
       "article": "das",
-      "word": "Motiv"
+      "word": "Motiv",
+      "translation": {
+        "tr": "Motif",
+        "en": "Motif"
+      }
     },
     {
       "article": "das",
-      "word": "Motto"
+      "word": "Motto",
+      "translation": {
+        "tr": "slogan",
+        "en": "motto"
+      }
     },
     {
       "article": "die",
-      "word": "Mühe"
+      "word": "Mühe",
+      "translation": {
+        "tr": "çaba",
+        "en": "effort"
+      }
     },
     {
       "article": "die",
-      "word": "Mühle"
+      "word": "Mühle",
+      "translation": {
+        "tr": "değirmen",
+        "en": "mill"
+      }
     },
     {
       "article": "der",
-      "word": "Müll"
+      "word": "Müll",
+      "translation": {
+        "tr": "Çöp",
+        "en": "Garbage"
+      }
     },
     {
       "article": "die",
-      "word": "Münze"
+      "word": "Münze",
+      "translation": {
+        "tr": "Madeni para",
+        "en": "Coin"
+      }
     },
     {
       "article": "die",
-      "word": "Muschel"
+      "word": "Muschel",
+      "translation": {
+        "tr": "Kabuk",
+        "en": "Shell"
+      }
     },
     {
       "article": "das",
-      "word": "Musical"
+      "word": "Musical",
+      "translation": {
+        "tr": "Müzikal",
+        "en": "Musical"
+      }
     },
     {
       "article": "die",
-      "word": "Nachfrage"
+      "word": "Nachfrage",
+      "translation": {
+        "tr": "talep",
+        "en": "demand"
+      }
     },
     {
       "article": "die",
-      "word": "Nation"
+      "word": "Nation",
+      "translation": {
+        "tr": "ulus",
+        "en": "nation"
+      }
     },
     {
       "article": "das",
-      "word": "Netz"
+      "word": "Netz",
+      "translation": {
+        "tr": "ağ",
+        "en": "Net"
+      }
     },
     {
       "article": "der",
-      "word": "Neubau"
+      "word": "Neubau",
+      "translation": {
+        "tr": "Yeni bina",
+        "en": "New building"
+      }
     },
     {
       "article": "der",
-      "word": "Nichtraucher"
+      "word": "Nichtraucher",
+      "translation": {
+        "tr": "Sigara içmeyen",
+        "en": "Non-smoker"
+      }
     },
     {
       "article": "die",
-      "word": "Niederlage"
+      "word": "Niederlage",
+      "translation": {
+        "tr": "Yenilgi",
+        "en": "Defeat"
+      }
     },
     {
       "article": "die",
-      "word": "Nische"
+      "word": "Nische",
+      "translation": {
+        "tr": "niş",
+        "en": "niche"
+      }
     },
     {
       "article": "die",
-      "word": "Not"
+      "word": "Not",
+      "translation": {
+        "tr": "sıkıntı",
+        "en": "distress"
+      }
     },
     {
       "article": "der",
-      "word": "Notfall"
+      "word": "Notfall",
+      "translation": {
+        "tr": "Acil Durum",
+        "en": "Emergency"
+      }
     },
     {
       "article": "der",
-      "word": "Nutzer"
+      "word": "Nutzer",
+      "translation": {
+        "tr": "Kullanıcı",
+        "en": "User"
+      }
     },
     {
       "article": "die",
-      "word": "Oase"
+      "word": "Oase",
+      "translation": {
+        "tr": "Vaha",
+        "en": "Oasis"
+      }
     },
     {
       "article": "die",
-      "word": "Oberfläche"
+      "word": "Oberfläche",
+      "translation": {
+        "tr": "yüzey",
+        "en": "surface"
+      }
     },
     {
       "article": "der",
-      "word": "Oberkörper"
+      "word": "Oberkörper",
+      "translation": {
+        "tr": "üst vücut",
+        "en": "upper body"
+      }
     },
     {
       "article": "der",
-      "word": "Oberschenkel"
+      "word": "Oberschenkel",
+      "translation": {
+        "tr": "Uyluk",
+        "en": "Thigh"
+      }
     },
     {
       "article": "der",
-      "word": "Offizier"
+      "word": "Offizier",
+      "translation": {
+        "tr": "memur",
+        "en": "officer"
+      }
     },
     {
       "article": "die",
-      "word": "Öffnung"
+      "word": "Öffnung",
+      "translation": {
+        "tr": "Açılış",
+        "en": "Opening"
+      }
     },
     {
       "article": "die",
-      "word": "Oper"
+      "word": "Oper",
+      "translation": {
+        "tr": "Opera",
+        "en": "Opera"
+      }
     },
     {
       "article": "das",
-      "word": "Opfer"
+      "word": "Opfer",
+      "translation": {
+        "tr": "Kurban",
+        "en": "Victim"
+      }
     },
     {
       "article": "das",
-      "word": "Orchester"
+      "word": "Orchester",
+      "translation": {
+        "tr": "Orkestra",
+        "en": "Orchestra"
+      }
     },
     {
       "article": "das",
-      "word": "Organ"
+      "word": "Organ",
+      "translation": {
+        "tr": "org",
+        "en": "organ"
+      }
     },
     {
       "article": "die",
-      "word": "Organisation"
+      "word": "Organisation",
+      "translation": {
+        "tr": "Organizasyon",
+        "en": "Organization"
+      }
     },
     {
       "article": "die",
-      "word": "Orgel"
+      "word": "Orgel",
+      "translation": {
+        "tr": "org",
+        "en": "organ"
+      }
     },
     {
       "article": "die",
-      "word": "Orientierung"
+      "word": "Orientierung",
+      "translation": {
+        "tr": "Oryantasyon",
+        "en": "Orientation"
+      }
     },
     {
       "article": "das",
-      "word": "Original"
+      "word": "Original",
+      "translation": {
+        "tr": "Orijinal",
+        "en": "Original"
+      }
     },
     {
       "article": "der",
-      "word": "Palast"
+      "word": "Palast",
+      "translation": {
+        "tr": "Saray",
+        "en": "Palace"
+      }
     },
     {
       "article": "die",
-      "word": "Panik"
+      "word": "Panik",
+      "translation": {
+        "tr": "Panik",
+        "en": "Panic"
+      }
     },
     {
       "article": "die",
-      "word": "Panne"
+      "word": "Panne",
+      "translation": {
+        "tr": "aksaklık",
+        "en": "glitch"
+      }
     },
     {
       "article": "der",
-      "word": "Panther"
+      "word": "Panther",
+      "translation": {
+        "tr": "Panterler",
+        "en": "Panthers"
+      }
     },
     {
       "article": "der",
-      "word": "Panzer"
+      "word": "Panzer",
+      "translation": {
+        "tr": "Tankı",
+        "en": "Tank"
+      }
     },
     {
       "article": "der",
-      "word": "Papagei"
+      "word": "Papagei",
+      "translation": {
+        "tr": "Papağan",
+        "en": "Parrot"
+      }
     },
     {
       "article": "die",
-      "word": "Pappe"
+      "word": "Pappe",
+      "translation": {
+        "tr": "karton",
+        "en": "cardboard"
+      }
     },
     {
       "article": "das",
-      "word": "Parlament"
+      "word": "Parlament",
+      "translation": {
+        "tr": "Parlamento",
+        "en": "Parliament"
+      }
     },
     {
       "article": "die",
-      "word": "Partei"
+      "word": "Partei",
+      "translation": {
+        "tr": "parti",
+        "en": "party"
+      }
     },
     {
       "article": "die",
-      "word": "Pasta"
+      "word": "Pasta",
+      "translation": {
+        "tr": "Makarna",
+        "en": "Pasta"
+      }
     },
     {
       "article": "die",
-      "word": "Pension"
+      "word": "Pension",
+      "translation": {
+        "tr": "Emeklilik",
+        "en": "Pension"
+      }
     },
     {
       "article": "der",
-      "word": "Pfarrer"
+      "word": "Pfarrer",
+      "translation": {
+        "tr": "papaz",
+        "en": "Pastor"
+      }
     },
     {
       "article": "die",
-      "word": "Pflege"
+      "word": "Pflege",
+      "translation": {
+        "tr": "Bakım",
+        "en": "Care"
+      }
     },
     {
       "article": "der",
-      "word": "Pfleger"
+      "word": "Pfleger",
+      "translation": {
+        "tr": "Hemşire",
+        "en": "Nurse"
+      }
     },
     {
       "article": "die",
-      "word": "Pflicht"
+      "word": "Pflicht",
+      "translation": {
+        "tr": "Görev",
+        "en": "Duty"
+      }
     },
     {
       "article": "das",
-      "word": "Pfund"
+      "word": "Pfund",
+      "translation": {
+        "tr": "pound",
+        "en": "pounds"
+      }
     },
     {
       "article": "der",
-      "word": "Pilot"
+      "word": "Pilot",
+      "translation": {
+        "tr": "pilot",
+        "en": "Pilot"
+      }
     },
     {
       "article": "der",
-      "word": "Pinguin"
+      "word": "Pinguin",
+      "translation": {
+        "tr": "Penguen",
+        "en": "Penguin"
+      }
     },
     {
       "article": "der",
-      "word": "Pinsel"
+      "word": "Pinsel",
+      "translation": {
+        "tr": "Fırça",
+        "en": "Brush"
+      }
     },
     {
       "article": "die",
-      "word": "Piste"
+      "word": "Piste",
+      "translation": {
+        "tr": "eğim",
+        "en": "slope"
+      }
     },
     {
       "article": "die",
-      "word": "Pleite"
+      "word": "Pleite",
+      "translation": {
+        "tr": "İflas",
+        "en": "Bankruptcy"
+      }
     },
     {
       "article": "das",
-      "word": "Plus"
+      "word": "Plus",
+      "translation": {
+        "tr": "Artı",
+        "en": "Plus"
+      }
     },
     {
       "article": "die",
-      "word": "Politik"
+      "word": "Politik",
+      "translation": {
+        "tr": "Politika",
+        "en": "Politics"
+      }
     },
     {
       "article": "das",
-      "word": "Portal"
+      "word": "Portal",
+      "translation": {
+        "tr": "Portal",
+        "en": "Portal"
+      }
     },
     {
       "article": "das",
-      "word": "Porzellan"
+      "word": "Porzellan",
+      "translation": {
+        "tr": "Porselen",
+        "en": "Porcelain"
+      }
     },
     {
       "article": "die",
-      "word": "Post"
+      "word": "Post",
+      "translation": {
+        "tr": "Gönderi",
+        "en": "Post"
+      }
     },
     {
       "article": "die",
-      "word": "Präsentation"
+      "word": "Präsentation",
+      "translation": {
+        "tr": "Sunum",
+        "en": "Presentation"
+      }
     },
     {
       "article": "der",
-      "word": "Priester"
+      "word": "Priester",
+      "translation": {
+        "tr": "Rahip",
+        "en": "Priest"
+      }
     },
     {
       "article": "das",
-      "word": "Prinzip"
+      "word": "Prinzip",
+      "translation": {
+        "tr": "Prensip",
+        "en": "Principle"
+      }
     },
     {
       "article": "die",
-      "word": "Probe"
+      "word": "Probe",
+      "translation": {
+        "tr": "Örnek",
+        "en": "Sample"
+      }
     },
     {
       "article": "die",
-      "word": "Produktion"
+      "word": "Produktion",
+      "translation": {
+        "tr": "Üretim",
+        "en": "Production"
+      }
     },
     {
       "article": "der",
-      "word": "Profi"
+      "word": "Profi",
+      "translation": {
+        "tr": "Profesyonel",
+        "en": "Professional"
+      }
     },
     {
       "article": "das",
-      "word": "Profil"
+      "word": "Profil",
+      "translation": {
+        "tr": "Profil",
+        "en": "Profile"
+      }
     },
     {
       "article": "der",
-      "word": "Protest"
+      "word": "Protest",
+      "translation": {
+        "tr": "protesto",
+        "en": "protest"
+      }
     },
     {
       "article": "das",
-      "word": "Protokoll"
+      "word": "Protokoll",
+      "translation": {
+        "tr": "Protokol",
+        "en": "Protocol"
+      }
     }
   ],
   "B2": [
     {
       "article": "die",
-      "word": "Abbildung"
+      "word": "Abbildung",
+      "translation": {
+        "tr": "İllüstrasyon",
+        "en": "Illustration"
+      }
     },
     {
       "article": "der",
-      "word": "Abbruch"
+      "word": "Abbruch",
+      "translation": {
+        "tr": "İptal et",
+        "en": "Abort"
+      }
     },
     {
       "article": "der",
-      "word": "Abfluss"
+      "word": "Abfluss",
+      "translation": {
+        "tr": "drenaj",
+        "en": "drain"
+      }
     },
     {
       "article": "die",
-      "word": "Abfrage"
+      "word": "Abfrage",
+      "translation": {
+        "tr": "sorgu",
+        "en": "query"
+      }
     },
     {
       "article": "der",
-      "word": "Abgrund"
-    },
-    {
-      "article": "das",
-      "word": "Abkommen"
-    },
-    {
-      "article": "die",
-      "word": "Ablage"
-    },
-    {
-      "article": "der",
-      "word": "Ablauf"
-    },
-    {
-      "article": "die",
-      "word": "Abneigung"
-    },
-    {
-      "article": "der",
-      "word": "Absatz"
-    },
-    {
-      "article": "der",
-      "word": "Abstieg"
-    },
-    {
-      "article": "der",
-      "word": "Absturz"
-    },
-    {
-      "article": "die",
-      "word": "Abtreibung"
-    },
-    {
-      "article": "die",
-      "word": "Abwehr"
-    },
-    {
-      "article": "die",
-      "word": "Acht"
-    },
-    {
-      "article": "die",
-      "word": "Addition"
-    },
-    {
-      "article": "der",
-      "word": "Administrator"
-    },
-    {
-      "article": "die",
-      "word": "Adoption"
-    },
-    {
-      "article": "die",
-      "word": "Affäre"
-    },
-    {
-      "article": "die",
-      "word": "Akademie"
-    },
-    {
-      "article": "der",
-      "word": "Akt"
-    },
-    {
-      "article": "die",
-      "word": "Akte"
-    },
-    {
-      "article": "der",
-      "word": "Akteur"
-    },
-    {
-      "article": "die",
-      "word": "Aktie"
-    },
-    {
-      "article": "die",
-      "word": "Aktion"
-    },
-    {
-      "article": "der",
-      "word": "Aktionär"
-    },
-    {
-      "article": "die",
-      "word": "Aktivität"
-    },
-    {
-      "article": "der",
-      "word": "Akzent"
-    },
-    {
-      "article": "die",
-      "word": "Akzeptanz"
-    },
-    {
-      "article": "der",
-      "word": "Algorithmus"
+      "word": "Abgrund",
+      "translation": {
+        "tr": "Uçurum",
+        "en": "Abyss"
+      }
     },
     {
       "article": "das",
-      "word": "All"
+      "word": "Abkommen",
+      "translation": {
+        "tr": "Anlaşma",
+        "en": "Agreement"
+      }
     },
     {
       "article": "die",
-      "word": "Allianz"
-    },
-    {
-      "article": "das",
-      "word": "Alpha"
-    },
-    {
-      "article": "das",
-      "word": "Aluminium"
+      "word": "Ablage",
+      "translation": {
+        "tr": "dosyalama",
+        "en": "filing"
+      }
     },
     {
       "article": "der",
-      "word": "Alzheimer"
+      "word": "Ablauf",
+      "translation": {
+        "tr": "Süreç",
+        "en": "Process"
+      }
     },
     {
       "article": "die",
-      "word": "Amtszeit"
+      "word": "Abneigung",
+      "translation": {
+        "tr": "Beğenmedim",
+        "en": "Dislike"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Absatz",
+      "translation": {
+        "tr": "paragraf",
+        "en": "paragraph"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Abstieg",
+      "translation": {
+        "tr": "İniş",
+        "en": "Descent"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Absturz",
+      "translation": {
+        "tr": "Kaza",
+        "en": "Crash"
+      }
     },
     {
       "article": "die",
-      "word": "Analyse"
-    },
-    {
-      "article": "der",
-      "word": "Analyst"
-    },
-    {
-      "article": "die",
-      "word": "Anatomie"
+      "word": "Abtreibung",
+      "translation": {
+        "tr": "Kürtaj",
+        "en": "Abortion"
+      }
     },
     {
       "article": "die",
-      "word": "Änderung"
-    },
-    {
-      "article": "der",
-      "word": "Andrang"
-    },
-    {
-      "article": "die",
-      "word": "Anforderung"
+      "word": "Abwehr",
+      "translation": {
+        "tr": "Savunma",
+        "en": "Defense"
+      }
     },
     {
       "article": "die",
-      "word": "Angabe"
-    },
-    {
-      "article": "der",
-      "word": "Angehörige"
-    },
-    {
-      "article": "der",
-      "word": "Angeklagte"
-    },
-    {
-      "article": "der",
-      "word": "Angreifer"
-    },
-    {
-      "article": "der",
-      "word": "Anhang"
-    },
-    {
-      "article": "der",
-      "word": "Anhänger"
+      "word": "Acht",
+      "translation": {
+        "tr": "sekiz",
+        "en": "Eight"
+      }
     },
     {
       "article": "die",
-      "word": "Animation"
+      "word": "Addition",
+      "translation": {
+        "tr": "ekleme",
+        "en": "addition"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Administrator",
+      "translation": {
+        "tr": "Yönetici",
+        "en": "Admin"
+      }
     },
     {
       "article": "die",
-      "word": "Anklage"
-    },
-    {
-      "article": "der",
-      "word": "Anlass"
-    },
-    {
-      "article": "der",
-      "word": "Anlauf"
-    },
-    {
-      "article": "der",
-      "word": "Anleger"
+      "word": "Adoption",
+      "translation": {
+        "tr": "Evlat edinme",
+        "en": "Adoption"
+      }
     },
     {
       "article": "die",
-      "word": "Anleihe"
-    },
-    {
-      "article": "das",
-      "word": "Anliegen"
-    },
-    {
-      "article": "die",
-      "word": "Anmerkung"
+      "word": "Affäre",
+      "translation": {
+        "tr": "ilişki",
+        "en": "affair"
+      }
     },
     {
       "article": "die",
-      "word": "Annahme"
+      "word": "Akademie",
+      "translation": {
+        "tr": "Akademi",
+        "en": "Academy"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Akt",
+      "translation": {
+        "tr": "eylem",
+        "en": "act"
+      }
     },
     {
       "article": "die",
-      "word": "Anrede"
+      "word": "Akte",
+      "translation": {
+        "tr": "dosya",
+        "en": "file"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Akteur",
+      "translation": {
+        "tr": "aktör",
+        "en": "actor"
+      }
     },
     {
       "article": "die",
-      "word": "Anregung"
-    },
-    {
-      "article": "der",
-      "word": "Anreiz"
-    },
-    {
-      "article": "der",
-      "word": "Ansatz"
-    },
-    {
-      "article": "der",
-      "word": "Anschlag"
+      "word": "Aktie",
+      "translation": {
+        "tr": "Paylaş",
+        "en": "Share"
+      }
     },
     {
       "article": "die",
-      "word": "Ansicht"
+      "word": "Aktion",
+      "translation": {
+        "tr": "Eylem",
+        "en": "Action"
+      }
     },
     {
       "article": "der",
-      "word": "Ansprechpartner"
-    },
-    {
-      "article": "der",
-      "word": "Anspruch"
-    },
-    {
-      "article": "der",
-      "word": "Anstand"
+      "word": "Aktionär",
+      "translation": {
+        "tr": "hissedar",
+        "en": "shareholder"
+      }
     },
     {
       "article": "die",
-      "word": "Anstellung"
+      "word": "Aktivität",
+      "translation": {
+        "tr": "Etkinlik",
+        "en": "Activity"
+      }
     },
     {
       "article": "der",
-      "word": "Ansturm"
+      "word": "Akzent",
+      "translation": {
+        "tr": "Aksan",
+        "en": "Accent"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Akzeptanz",
+      "translation": {
+        "tr": "Kabul",
+        "en": "Acceptance"
+      }
     },
     {
       "article": "der",
-      "word": "Anteil"
-    },
-    {
-      "article": "die",
-      "word": "Antike"
-    },
-    {
-      "article": "der",
-      "word": "Antrieb"
-    },
-    {
-      "article": "die",
-      "word": "Anweisung"
-    },
-    {
-      "article": "die",
-      "word": "Anwendung"
-    },
-    {
-      "article": "das",
-      "word": "Anwesen"
-    },
-    {
-      "article": "der",
-      "word": "Anwohner"
-    },
-    {
-      "article": "der",
-      "word": "Appell"
-    },
-    {
-      "article": "die",
-      "word": "Ära"
-    },
-    {
-      "article": "die",
-      "word": "Arbeitskraft"
-    },
-    {
-      "article": "die",
-      "word": "Arbeitslosigkeit"
-    },
-    {
-      "article": "der",
-      "word": "Arbeitsmarkt"
-    },
-    {
-      "article": "der",
-      "word": "Architekt"
-    },
-    {
-      "article": "die",
-      "word": "Architektur"
+      "word": "Algorithmus",
+      "translation": {
+        "tr": "Algoritma",
+        "en": "Algorithm"
+      }
     },
     {
       "article": "das",
-      "word": "Archiv"
+      "word": "All",
+      "translation": {
+        "tr": "Hepsi",
+        "en": "All"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Allianz",
+      "translation": {
+        "tr": "İttifak",
+        "en": "Alliance"
+      }
     },
     {
       "article": "das",
-      "word": "Areal"
-    },
-    {
-      "article": "die",
-      "word": "Arena"
-    },
-    {
-      "article": "der",
-      "word": "Ärger"
+      "word": "Alpha",
+      "translation": {
+        "tr": "Alfa",
+        "en": "Alpha"
+      }
     },
     {
       "article": "das",
-      "word": "Argument"
+      "word": "Aluminium",
+      "translation": {
+        "tr": "Alüminyum",
+        "en": "Aluminum"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Alzheimer",
+      "translation": {
+        "tr": "Alzheimer",
+        "en": "Alzheimer's"
+      }
     },
     {
       "article": "die",
-      "word": "Arroganz"
-    },
-    {
-      "article": "der",
-      "word": "Aspekt"
-    },
-    {
-      "article": "der",
-      "word": "Asphalt"
-    },
-    {
-      "article": "der",
-      "word": "Asteroid"
-    },
-    {
-      "article": "das",
-      "word": "Asyl"
-    },
-    {
-      "article": "das",
-      "word": "Atelier"
-    },
-    {
-      "article": "der",
-      "word": "Atemzug"
+      "word": "Amtszeit",
+      "translation": {
+        "tr": "Dönem",
+        "en": "Term"
+      }
     },
     {
       "article": "die",
-      "word": "Atmosphäre"
-    },
-    {
-      "article": "die",
-      "word": "Atmung"
-    },
-    {
-      "article": "die",
-      "word": "Attacke"
-    },
-    {
-      "article": "das",
-      "word": "Attentat"
-    },
-    {
-      "article": "die",
-      "word": "Attraktion"
-    },
-    {
-      "article": "das",
-      "word": "Attribut"
+      "word": "Analyse",
+      "translation": {
+        "tr": "Analiz",
+        "en": "Analysis"
+      }
     },
     {
       "article": "der",
-      "word": "Aufbruch"
+      "word": "Analyst",
+      "translation": {
+        "tr": "Analist",
+        "en": "Analyst"
+      }
     },
     {
       "article": "die",
-      "word": "Auffassung"
+      "word": "Anatomie",
+      "translation": {
+        "tr": "Anatomi",
+        "en": "Anatomy"
+      }
     },
     {
       "article": "die",
-      "word": "Aufführung"
+      "word": "Änderung",
+      "translation": {
+        "tr": "Değiştir",
+        "en": "Change"
+      }
     },
     {
       "article": "der",
-      "word": "Aufgang"
+      "word": "Andrang",
+      "translation": {
+        "tr": "acele",
+        "en": "Rush"
+      }
     },
     {
       "article": "die",
-      "word": "Aufklärung"
+      "word": "Anforderung",
+      "translation": {
+        "tr": "gereksinim",
+        "en": "requirement"
+      }
     },
     {
       "article": "die",
-      "word": "Auflösung"
-    },
-    {
-      "article": "das",
-      "word": "Aufsehen"
-    },
-    {
-      "article": "der",
-      "word": "Aufstand"
+      "word": "Angabe",
+      "translation": {
+        "tr": "Bilgi",
+        "en": "Information"
+      }
     },
     {
       "article": "der",
-      "word": "Auftrag"
-    },
-    {
-      "article": "das",
-      "word": "Auftreten"
-    },
-    {
-      "article": "der",
-      "word": "Auftritt"
+      "word": "Angehörige",
+      "translation": {
+        "tr": "akrabalar",
+        "en": "relatives"
+      }
     },
     {
       "article": "der",
-      "word": "Aufwand"
+      "word": "Angeklagte",
+      "translation": {
+        "tr": "Davalı",
+        "en": "Defendant"
+      }
     },
     {
       "article": "der",
-      "word": "Aufzug"
+      "word": "Angreifer",
+      "translation": {
+        "tr": "saldırgan",
+        "en": "attacker"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Anhang",
+      "translation": {
+        "tr": "Ek",
+        "en": "Appendix"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Anhänger",
+      "translation": {
+        "tr": "römork",
+        "en": "trailer"
+      }
     },
     {
       "article": "die",
-      "word": "Auktion"
+      "word": "Animation",
+      "translation": {
+        "tr": "animasyon",
+        "en": "animation"
+      }
     },
     {
       "article": "die",
-      "word": "Aula"
+      "word": "Anklage",
+      "translation": {
+        "tr": "suçlama",
+        "en": "Accusation"
+      }
     },
     {
       "article": "der",
-      "word": "Ausbau"
+      "word": "Anlass",
+      "translation": {
+        "tr": "fırsat",
+        "en": "occasion"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Anlauf",
+      "translation": {
+        "tr": "Başlangıç",
+        "en": "Start-up"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Anleger",
+      "translation": {
+        "tr": "yatırımcı",
+        "en": "investor"
+      }
     },
     {
       "article": "die",
-      "word": "Ausbeutung"
-    },
-    {
-      "article": "der",
-      "word": "Ausblick"
-    },
-    {
-      "article": "der",
-      "word": "Ausbruch"
-    },
-    {
-      "article": "die",
-      "word": "Ausfahrt"
-    },
-    {
-      "article": "der",
-      "word": "Ausfall"
-    },
-    {
-      "article": "die",
-      "word": "Ausfuhr"
-    },
-    {
-      "article": "die",
-      "word": "Ausführung"
-    },
-    {
-      "article": "der",
-      "word": "Ausgangspunkt"
-    },
-    {
-      "article": "der",
-      "word": "Auslöser"
-    },
-    {
-      "article": "das",
-      "word": "Ausmaß"
-    },
-    {
-      "article": "die",
-      "word": "Ausrichtung"
-    },
-    {
-      "article": "die",
-      "word": "Ausrüstung"
-    },
-    {
-      "article": "der",
-      "word": "Ausschluss"
-    },
-    {
-      "article": "der",
-      "word": "Ausschnitt"
-    },
-    {
-      "article": "der",
-      "word": "Ausschuss"
-    },
-    {
-      "article": "der",
-      "word": "Außenminister"
-    },
-    {
-      "article": "die",
-      "word": "Außenseite"
-    },
-    {
-      "article": "der",
-      "word": "Außenseiter"
-    },
-    {
-      "article": "die",
-      "word": "Äußerung"
-    },
-    {
-      "article": "die",
-      "word": "Ausstattung"
-    },
-    {
-      "article": "der",
-      "word": "Ausstoß"
-    },
-    {
-      "article": "der",
-      "word": "Austausch"
-    },
-    {
-      "article": "der",
-      "word": "Ausweg"
-    },
-    {
-      "article": "die",
-      "word": "Auswertung"
-    },
-    {
-      "article": "die",
-      "word": "Auswirkung"
-    },
-    {
-      "article": "die",
-      "word": "Auszeichnung"
-    },
-    {
-      "article": "die",
-      "word": "Auszeit"
-    },
-    {
-      "article": "der",
-      "word": "Auszug"
-    },
-    {
-      "article": "der",
-      "word": "Autobauer"
-    },
-    {
-      "article": "die",
-      "word": "Autorität"
-    },
-    {
-      "article": "die",
-      "word": "Balance"
+      "word": "Anleihe",
+      "translation": {
+        "tr": "Tahvil",
+        "en": "Bond"
+      }
     },
     {
       "article": "das",
-      "word": "Ballett"
+      "word": "Anliegen",
+      "translation": {
+        "tr": "endişeler",
+        "en": "concerns"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Anmerkung",
+      "translation": {
+        "tr": "Not",
+        "en": "Note"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Annahme",
+      "translation": {
+        "tr": "Kabul",
+        "en": "Acceptance"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Anrede",
+      "translation": {
+        "tr": "selamlama",
+        "en": "Salutation"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Anregung",
+      "translation": {
+        "tr": "Öneri",
+        "en": "Suggestion"
+      }
     },
     {
       "article": "der",
-      "word": "Bambus"
+      "word": "Anreiz",
+      "translation": {
+        "tr": "teşvik",
+        "en": "incentive"
+      }
     },
     {
       "article": "der",
-      "word": "Band"
-    },
-    {
-      "article": "die",
-      "word": "Bande"
-    },
-    {
-      "article": "das",
-      "word": "Banner"
-    },
-    {
-      "article": "die",
-      "word": "Barriere"
-    },
-    {
-      "article": "die",
-      "word": "Basis"
+      "word": "Ansatz",
+      "translation": {
+        "tr": "yaklaşma",
+        "en": "approach"
+      }
     },
     {
       "article": "der",
-      "word": "Bass"
-    },
-    {
-      "article": "das",
-      "word": "Bauwerk"
-    },
-    {
-      "article": "die",
-      "word": "Beachtung"
+      "word": "Anschlag",
+      "translation": {
+        "tr": "dur",
+        "en": "stop"
+      }
     },
     {
       "article": "die",
-      "word": "Bearbeitung"
+      "word": "Ansicht",
+      "translation": {
+        "tr": "Görüntüle",
+        "en": "View"
+      }
     },
     {
       "article": "der",
-      "word": "Beat"
-    },
-    {
-      "article": "das",
-      "word": "Becken"
-    },
-    {
-      "article": "der",
-      "word": "Bedarf"
-    },
-    {
-      "article": "das",
-      "word": "Bedauern"
-    },
-    {
-      "article": "die",
-      "word": "Bedrohung"
-    },
-    {
-      "article": "die",
-      "word": "Befragung"
-    },
-    {
-      "article": "die",
-      "word": "Befreiung"
+      "word": "Ansprechpartner",
+      "translation": {
+        "tr": "İrtibat kişisi",
+        "en": "Contact person"
+      }
     },
     {
       "article": "der",
-      "word": "Befund"
-    },
-    {
-      "article": "die",
-      "word": "Begabung"
-    },
-    {
-      "article": "die",
-      "word": "Begegnung"
-    },
-    {
-      "article": "die",
-      "word": "Begeisterung"
-    },
-    {
-      "article": "die",
-      "word": "Begründung"
+      "word": "Anspruch",
+      "translation": {
+        "tr": "iddia",
+        "en": "claim"
+      }
     },
     {
       "article": "der",
-      "word": "Beirat"
+      "word": "Anstand",
+      "translation": {
+        "tr": "Terbiye",
+        "en": "Decency"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Anstellung",
+      "translation": {
+        "tr": "İstihdam",
+        "en": "Employment"
+      }
     },
     {
       "article": "der",
-      "word": "Bekannte"
-    },
-    {
-      "article": "die",
-      "word": "Bekanntmachung"
-    },
-    {
-      "article": "die",
-      "word": "Belästigung"
-    },
-    {
-      "article": "die",
-      "word": "Belastung"
+      "word": "Ansturm",
+      "translation": {
+        "tr": "acele",
+        "en": "Rush"
+      }
     },
     {
       "article": "der",
-      "word": "Beleg"
+      "word": "Anteil",
+      "translation": {
+        "tr": "paylaş",
+        "en": "share"
+      }
     },
     {
       "article": "die",
-      "word": "Beobachtung"
-    },
-    {
-      "article": "die",
-      "word": "Berechnung"
-    },
-    {
-      "article": "die",
-      "word": "Bereitschaft"
+      "word": "Antike",
+      "translation": {
+        "tr": "Antik Çağ",
+        "en": "Antiquity"
+      }
     },
     {
       "article": "der",
-      "word": "Bergmann"
+      "word": "Antrieb",
+      "translation": {
+        "tr": "Sürüş",
+        "en": "Drive"
+      }
     },
     {
       "article": "die",
-      "word": "Berufung"
+      "word": "Anweisung",
+      "translation": {
+        "tr": "Talimat",
+        "en": "Instruction"
+      }
     },
     {
       "article": "die",
-      "word": "Berühmtheit"
-    },
-    {
-      "article": "die",
-      "word": "Berührung"
-    },
-    {
-      "article": "die",
-      "word": "Besatzung"
-    },
-    {
-      "article": "der",
-      "word": "Bescheid"
-    },
-    {
-      "article": "der",
-      "word": "Beschluss"
-    },
-    {
-      "article": "die",
-      "word": "Beschränkung"
-    },
-    {
-      "article": "die",
-      "word": "Beschreibung"
-    },
-    {
-      "article": "der",
-      "word": "Beschützer"
-    },
-    {
-      "article": "die",
-      "word": "Beschwerde"
-    },
-    {
-      "article": "die",
-      "word": "Besetzung"
-    },
-    {
-      "article": "die",
-      "word": "Besonderheit"
-    },
-    {
-      "article": "der",
-      "word": "Bestand"
-    },
-    {
-      "article": "der",
-      "word": "Bestandteil"
-    },
-    {
-      "article": "die",
-      "word": "Bestätigung"
-    },
-    {
-      "article": "der",
-      "word": "Beste"
-    },
-    {
-      "article": "die",
-      "word": "Bestimmung"
-    },
-    {
-      "article": "die",
-      "word": "Bestrafung"
-    },
-    {
-      "article": "der",
-      "word": "Bestseller"
-    },
-    {
-      "article": "die",
-      "word": "Beteiligung"
-    },
-    {
-      "article": "der",
-      "word": "Betrachter"
-    },
-    {
-      "article": "die",
-      "word": "Betrachtung"
-    },
-    {
-      "article": "der",
-      "word": "Betrag"
-    },
-    {
-      "article": "der",
-      "word": "Betreff"
-    },
-    {
-      "article": "der",
-      "word": "Betreiber"
-    },
-    {
-      "article": "die",
-      "word": "Betreuung"
-    },
-    {
-      "article": "der",
-      "word": "Betrieb"
+      "word": "Anwendung",
+      "translation": {
+        "tr": "Başvuru",
+        "en": "Application"
+      }
     },
     {
       "article": "das",
-      "word": "Betriebssystem"
+      "word": "Anwesen",
+      "translation": {
+        "tr": "Emlak",
+        "en": "Estate"
+      }
     },
     {
       "article": "der",
-      "word": "Betrug"
+      "word": "Anwohner",
+      "translation": {
+        "tr": "sakinleri",
+        "en": "residents"
+      }
     },
     {
       "article": "der",
-      "word": "Betrüger"
+      "word": "Appell",
+      "translation": {
+        "tr": "İtiraz",
+        "en": "Appeal"
+      }
     },
     {
       "article": "die",
-      "word": "Beurteilung"
+      "word": "Ära",
+      "translation": {
+        "tr": "çağ",
+        "en": "era"
+      }
     },
     {
       "article": "die",
-      "word": "Beute"
+      "word": "Arbeitskraft",
+      "translation": {
+        "tr": "İşgücü",
+        "en": "Workforce"
+      }
     },
     {
       "article": "die",
-      "word": "Bevölkerung"
-    },
-    {
-      "article": "die",
-      "word": "Bewegung"
+      "word": "Arbeitslosigkeit",
+      "translation": {
+        "tr": "İşsizlik",
+        "en": "Unemployment"
+      }
     },
     {
       "article": "der",
-      "word": "Beweis"
+      "word": "Arbeitsmarkt",
+      "translation": {
+        "tr": "İşgücü piyasası",
+        "en": "Labor market"
+      }
     },
     {
       "article": "der",
-      "word": "Bewerber"
+      "word": "Architekt",
+      "translation": {
+        "tr": "Mimar",
+        "en": "Architect"
+      }
     },
     {
       "article": "die",
-      "word": "Bewertung"
-    },
-    {
-      "article": "der",
-      "word": "Bewohner"
-    },
-    {
-      "article": "das",
-      "word": "Bewusstsein"
-    },
-    {
-      "article": "die",
-      "word": "Bezeichnung"
-    },
-    {
-      "article": "die",
-      "word": "Beziehung"
-    },
-    {
-      "article": "der",
-      "word": "Bezirk"
-    },
-    {
-      "article": "der",
-      "word": "Bezug"
-    },
-    {
-      "article": "die",
-      "word": "Bilanz"
-    },
-    {
-      "article": "der",
-      "word": "Bildband"
-    },
-    {
-      "article": "der",
-      "word": "Bildhauer"
-    },
-    {
-      "article": "die",
-      "word": "Bindung"
-    },
-    {
-      "article": "die",
-      "word": "Biografie"
+      "word": "Architektur",
+      "translation": {
+        "tr": "Mimarlık",
+        "en": "Architecture"
+      }
     },
     {
       "article": "das",
-      "word": "Blei"
-    },
-    {
-      "article": "die",
-      "word": "Blockade"
-    },
-    {
-      "article": "der",
-      "word": "Blutdruck"
-    },
-    {
-      "article": "die",
-      "word": "Blüte"
-    },
-    {
-      "article": "der",
-      "word": "Bord"
-    },
-    {
-      "article": "der",
-      "word": "Botschafter"
-    },
-    {
-      "article": "der",
-      "word": "Brauch"
-    },
-    {
-      "article": "die",
-      "word": "Bronze"
-    },
-    {
-      "article": "der",
-      "word": "Browser"
-    },
-    {
-      "article": "der",
-      "word": "Bruch"
-    },
-    {
-      "article": "der",
-      "word": "Brunnen"
-    },
-    {
-      "article": "der",
-      "word": "Buchhändler"
-    },
-    {
-      "article": "die",
-      "word": "Bucht"
-    },
-    {
-      "article": "die",
-      "word": "Buchung"
-    },
-    {
-      "article": "der",
-      "word": "Buddhismus"
+      "word": "Archiv",
+      "translation": {
+        "tr": "Arşiv",
+        "en": "Archive"
+      }
     },
     {
       "article": "das",
-      "word": "Budget"
-    },
-    {
-      "article": "der",
-      "word": "Bund"
-    },
-    {
-      "article": "das",
-      "word": "Bündel"
-    },
-    {
-      "article": "das",
-      "word": "Bundesamt"
-    },
-    {
-      "article": "der",
-      "word": "Bundeskanzler"
-    },
-    {
-      "article": "das",
-      "word": "Bundesland"
+      "word": "Areal",
+      "translation": {
+        "tr": "alan",
+        "en": "area"
+      }
     },
     {
       "article": "die",
-      "word": "Bundesliga"
+      "word": "Arena",
+      "translation": {
+        "tr": "Arena",
+        "en": "Arena"
+      }
     },
     {
       "article": "der",
-      "word": "Bundespräsident"
-    },
-    {
-      "article": "der",
-      "word": "Bundesrat"
-    },
-    {
-      "article": "die",
-      "word": "Bundesregierung"
-    },
-    {
-      "article": "die",
-      "word": "Bundesrepublik"
-    },
-    {
-      "article": "der",
-      "word": "Bundesstaat"
-    },
-    {
-      "article": "der",
-      "word": "Bundestag"
-    },
-    {
-      "article": "die",
-      "word": "Bundeswehr"
+      "word": "Ärger",
+      "translation": {
+        "tr": "Sorun",
+        "en": "Trouble"
+      }
     },
     {
       "article": "das",
-      "word": "Bündnis"
-    },
-    {
-      "article": "der",
-      "word": "Bürgerkrieg"
-    },
-    {
-      "article": "die",
-      "word": "Bürokratie"
-    },
-    {
-      "article": "das",
-      "word": "Business"
-    },
-    {
-      "article": "der",
-      "word": "Campus"
-    },
-    {
-      "article": "das",
-      "word": "Celsius"
-    },
-    {
-      "article": "der",
-      "word": "Center"
-    },
-    {
-      "article": "der",
-      "word": "Champagner"
-    },
-    {
-      "article": "das",
-      "word": "Chaos"
-    },
-    {
-      "article": "der",
-      "word": "Charakter"
-    },
-    {
-      "article": "der",
-      "word": "Charme"
-    },
-    {
-      "article": "der",
-      "word": "Chat"
+      "word": "Argument",
+      "translation": {
+        "tr": "Tartışma",
+        "en": "Argument"
+      }
     },
     {
       "article": "die",
-      "word": "Chemie"
-    },
-    {
-      "article": "die",
-      "word": "Chemikalie"
-    },
-    {
-      "article": "der",
-      "word": "Chemiker"
+      "word": "Arroganz",
+      "translation": {
+        "tr": "Kibir",
+        "en": "Arrogance"
+      }
     },
     {
       "article": "der",
-      "word": "Chinese"
-    },
-    {
-      "article": "die",
-      "word": "Chronik"
-    },
-    {
-      "article": "die",
-      "word": "City"
+      "word": "Aspekt",
+      "translation": {
+        "tr": "yön",
+        "en": "aspect"
+      }
     },
     {
       "article": "der",
-      "word": "Clip"
+      "word": "Asphalt",
+      "translation": {
+        "tr": "Asfalt",
+        "en": "Asphalt"
+      }
     },
     {
       "article": "der",
-      "word": "Coach"
-    },
-    {
-      "article": "der",
-      "word": "Cocktail"
-    },
-    {
-      "article": "der",
-      "word": "Code"
-    },
-    {
-      "article": "der",
-      "word": "Container"
-    },
-    {
-      "article": "die",
-      "word": "Creme"
-    },
-    {
-      "article": "der",
-      "word": "Dämon"
+      "word": "Asteroid",
+      "translation": {
+        "tr": "asteroit",
+        "en": "asteroid"
+      }
     },
     {
       "article": "das",
-      "word": "Darlehen"
-    },
-    {
-      "article": "die",
-      "word": "Darstellung"
-    },
-    {
-      "article": "die",
-      "word": "Datenbank"
-    },
-    {
-      "article": "der",
-      "word": "Deal"
-    },
-    {
-      "article": "die",
-      "word": "Debatte"
-    },
-    {
-      "article": "die",
-      "word": "Definition"
+      "word": "Asyl",
+      "translation": {
+        "tr": "İltica",
+        "en": "Asylum"
+      }
     },
     {
       "article": "das",
-      "word": "Defizit"
+      "word": "Atelier",
+      "translation": {
+        "tr": "stüdyo",
+        "en": "Studio"
+      }
     },
     {
       "article": "der",
-      "word": "Deich"
+      "word": "Atemzug",
+      "translation": {
+        "tr": "nefes",
+        "en": "breath"
+      }
     },
     {
       "article": "die",
-      "word": "Delegation"
-    },
-    {
-      "article": "der",
-      "word": "Delegierte"
-    },
-    {
-      "article": "das",
-      "word": "Delikt"
+      "word": "Atmosphäre",
+      "translation": {
+        "tr": "Atmosfer",
+        "en": "Atmosphere"
+      }
     },
     {
       "article": "die",
-      "word": "Demenz"
-    },
-    {
-      "article": "der",
-      "word": "Demonstrant"
-    },
-    {
-      "article": "die",
-      "word": "Demonstration"
-    },
-    {
-      "article": "das",
-      "word": "Denken"
-    },
-    {
-      "article": "das",
-      "word": "Denkmal"
+      "word": "Atmung",
+      "translation": {
+        "tr": "Nefes alma",
+        "en": "Breathing"
+      }
     },
     {
       "article": "die",
-      "word": "Depression"
+      "word": "Attacke",
+      "translation": {
+        "tr": "Saldırı",
+        "en": "Attack"
+      }
     },
     {
       "article": "das",
-      "word": "Design"
-    },
-    {
-      "article": "der",
-      "word": "Desktop"
-    },
-    {
-      "article": "das",
-      "word": "Detail"
-    },
-    {
-      "article": "der",
-      "word": "Diabetes"
+      "word": "Attentat",
+      "translation": {
+        "tr": "suikast girişimi",
+        "en": "assassination attempt"
+      }
     },
     {
       "article": "die",
-      "word": "Diagnose"
+      "word": "Attraktion",
+      "translation": {
+        "tr": "cazibe",
+        "en": "attraction"
+      }
     },
     {
       "article": "das",
-      "word": "Diagramm"
+      "word": "Attribut",
+      "translation": {
+        "tr": "Özellik",
+        "en": "Attribute"
+      }
     },
     {
       "article": "der",
-      "word": "Dialekt"
+      "word": "Aufbruch",
+      "translation": {
+        "tr": "Kalkış",
+        "en": "Departure"
+      }
     },
     {
       "article": "die",
-      "word": "Diät"
+      "word": "Auffassung",
+      "translation": {
+        "tr": "görüş",
+        "en": "opinion"
+      }
     },
     {
       "article": "die",
-      "word": "Dichtung"
+      "word": "Aufführung",
+      "translation": {
+        "tr": "Performans",
+        "en": "Performance"
+      }
     },
     {
       "article": "der",
-      "word": "Diebstahl"
+      "word": "Aufgang",
+      "translation": {
+        "tr": "Yüksel",
+        "en": "Rise"
+      }
     },
     {
       "article": "die",
-      "word": "Dienstleistung"
+      "word": "Aufklärung",
+      "translation": {
+        "tr": "Aydınlanma",
+        "en": "Enlightenment"
+      }
     },
     {
       "article": "die",
-      "word": "Differenz"
-    },
-    {
-      "article": "die",
-      "word": "Digitalisierung"
-    },
-    {
-      "article": "die",
-      "word": "Diktatur"
+      "word": "Auflösung",
+      "translation": {
+        "tr": "Çözünürlük",
+        "en": "Resolution"
+      }
     },
     {
       "article": "das",
-      "word": "Dilemma"
-    },
-    {
-      "article": "die",
-      "word": "Dimension"
-    },
-    {
-      "article": "der",
-      "word": "Dirigent"
-    },
-    {
-      "article": "die",
-      "word": "Diskriminierung"
+      "word": "Aufsehen",
+      "translation": {
+        "tr": "dikkat",
+        "en": "attention"
+      }
     },
     {
       "article": "der",
-      "word": "Diskurs"
-    },
-    {
-      "article": "die",
-      "word": "Distanz"
-    },
-    {
-      "article": "die",
-      "word": "Disziplin"
-    },
-    {
-      "article": "die",
-      "word": "Dokumentation"
+      "word": "Aufstand",
+      "translation": {
+        "tr": "Ayaklanma",
+        "en": "Uprising"
+      }
     },
     {
       "article": "der",
-      "word": "Dolmetscher"
-    },
-    {
-      "article": "die",
-      "word": "Dosis"
-    },
-    {
-      "article": "der",
-      "word": "Dozent"
-    },
-    {
-      "article": "der",
-      "word": "Drang"
+      "word": "Auftrag",
+      "translation": {
+        "tr": "Sipariş",
+        "en": "Order"
+      }
     },
     {
       "article": "das",
-      "word": "Drehbuch"
+      "word": "Auftreten",
+      "translation": {
+        "tr": "Görünüm",
+        "en": "Appearance"
+      }
     },
     {
       "article": "der",
-      "word": "Druck"
+      "word": "Auftritt",
+      "translation": {
+        "tr": "Görünüm",
+        "en": "Appearance"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Aufwand",
+      "translation": {
+        "tr": "Çaba",
+        "en": "Effort"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Aufzug",
+      "translation": {
+        "tr": "Asansör",
+        "en": "Elevator"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Auktion",
+      "translation": {
+        "tr": "Açık artırma",
+        "en": "Auction"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Aula",
+      "translation": {
+        "tr": "Oditoryum",
+        "en": "Auditorium"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Ausbau",
+      "translation": {
+        "tr": "Genişleme",
+        "en": "Expansion"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ausbeutung",
+      "translation": {
+        "tr": "Sömürü",
+        "en": "Exploitation"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Ausblick",
+      "translation": {
+        "tr": "Görünüm",
+        "en": "Outlook"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Ausbruch",
+      "translation": {
+        "tr": "salgın",
+        "en": "outbreak"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ausfahrt",
+      "translation": {
+        "tr": "Çıkış",
+        "en": "Exit"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Ausfall",
+      "translation": {
+        "tr": "başarısızlık",
+        "en": "failure"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ausfuhr",
+      "translation": {
+        "tr": "İhracat",
+        "en": "Export"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ausführung",
+      "translation": {
+        "tr": "Yürütme",
+        "en": "Execution"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Ausgangspunkt",
+      "translation": {
+        "tr": "Başlangıç noktası",
+        "en": "Starting point"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Auslöser",
+      "translation": {
+        "tr": "Tetikleyici",
+        "en": "Trigger"
+      }
     },
     {
       "article": "das",
-      "word": "Duell"
-    },
-    {
-      "article": "der",
-      "word": "Dünger"
+      "word": "Ausmaß",
+      "translation": {
+        "tr": "Kapsam",
+        "en": "Extent"
+      }
     },
     {
       "article": "die",
-      "word": "Dunkelheit"
+      "word": "Ausrichtung",
+      "translation": {
+        "tr": "Hizalama",
+        "en": "Alignment"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ausrüstung",
+      "translation": {
+        "tr": "Ekipman",
+        "en": "Equipment"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Ausschluss",
+      "translation": {
+        "tr": "Hariç Tutma",
+        "en": "Exclusion"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Ausschnitt",
+      "translation": {
+        "tr": "Detay",
+        "en": "Detail"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Ausschuss",
+      "translation": {
+        "tr": "Komite",
+        "en": "Committee"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Außenminister",
+      "translation": {
+        "tr": "Dışişleri Bakanı",
+        "en": "Foreign Minister"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Außenseite",
+      "translation": {
+        "tr": "Dışarıda",
+        "en": "Outside"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Außenseiter",
+      "translation": {
+        "tr": "yabancı",
+        "en": "outsider"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Äußerung",
+      "translation": {
+        "tr": "ifade",
+        "en": "utterance"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ausstattung",
+      "translation": {
+        "tr": "Ekipman",
+        "en": "Equipment"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Ausstoß",
+      "translation": {
+        "tr": "Emisyon",
+        "en": "Emission"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Austausch",
+      "translation": {
+        "tr": "Değişim",
+        "en": "Exchange"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Ausweg",
+      "translation": {
+        "tr": "çıkış yolu",
+        "en": "way out"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Auswertung",
+      "translation": {
+        "tr": "Değerlendirme",
+        "en": "Evaluation"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Auswirkung",
+      "translation": {
+        "tr": "Etki",
+        "en": "Impact"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Auszeichnung",
+      "translation": {
+        "tr": "Ödül",
+        "en": "Award"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Auszeit",
+      "translation": {
+        "tr": "Zaman aşımı",
+        "en": "Time out"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Auszug",
+      "translation": {
+        "tr": "Alıntı",
+        "en": "Excerpt"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Autobauer",
+      "translation": {
+        "tr": "Araba üreticisi",
+        "en": "Car manufacturer"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Autorität",
+      "translation": {
+        "tr": "Yetki",
+        "en": "Authority"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Balance",
+      "translation": {
+        "tr": "Bakiye",
+        "en": "Balance"
+      }
     },
     {
       "article": "das",
-      "word": "Duo"
+      "word": "Ballett",
+      "translation": {
+        "tr": "Bale",
+        "en": "Ballet"
+      }
     },
     {
       "article": "der",
-      "word": "Durchbruch"
+      "word": "Bambus",
+      "translation": {
+        "tr": "Bambu",
+        "en": "Bamboo"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Band",
+      "translation": {
+        "tr": "Bant",
+        "en": "Band"
+      }
     },
     {
       "article": "die",
-      "word": "Durchführung"
-    },
-    {
-      "article": "der",
-      "word": "Durchmesser"
-    },
-    {
-      "article": "der",
-      "word": "Durchschnitt"
-    },
-    {
-      "article": "die",
-      "word": "Durchsetzung"
-    },
-    {
-      "article": "die",
-      "word": "Dürre"
-    },
-    {
-      "article": "die",
-      "word": "Dynamik"
-    },
-    {
-      "article": "die",
-      "word": "Ebbe"
-    },
-    {
-      "article": "der",
-      "word": "Editor"
-    },
-    {
-      "article": "der",
-      "word": "Egoismus"
-    },
-    {
-      "article": "die",
-      "word": "Ehre"
-    },
-    {
-      "article": "die",
-      "word": "Ehrlichkeit"
-    },
-    {
-      "article": "der",
-      "word": "Einblick"
-    },
-    {
-      "article": "der",
-      "word": "Einbrecher"
-    },
-    {
-      "article": "der",
-      "word": "Einbruch"
-    },
-    {
-      "article": "der",
-      "word": "Eindruck"
-    },
-    {
-      "article": "der",
-      "word": "Einfluss"
-    },
-    {
-      "article": "der",
-      "word": "Eingriff"
-    },
-    {
-      "article": "der",
-      "word": "Einheimische"
-    },
-    {
-      "article": "die",
-      "word": "Einigung"
-    },
-    {
-      "article": "der",
-      "word": "Einklang"
-    },
-    {
-      "article": "die",
-      "word": "Einleitung"
-    },
-    {
-      "article": "die",
-      "word": "Einnahme"
-    },
-    {
-      "article": "die",
-      "word": "Einreise"
-    },
-    {
-      "article": "der",
-      "word": "Einsatzleiter"
-    },
-    {
-      "article": "die",
-      "word": "Einschätzung"
-    },
-    {
-      "article": "die",
-      "word": "Einschränkung"
-    },
-    {
-      "article": "die",
-      "word": "Einsicht"
-    },
-    {
-      "article": "der",
-      "word": "Einstieg"
-    },
-    {
-      "article": "die",
-      "word": "Einteilung"
-    },
-    {
-      "article": "die",
-      "word": "Eintragung"
-    },
-    {
-      "article": "der",
-      "word": "Einwand"
-    },
-    {
-      "article": "der",
-      "word": "Einzelfall"
-    },
-    {
-      "article": "der",
-      "word": "Einzug"
-    },
-    {
-      "article": "die",
-      "word": "Eizelle"
-    },
-    {
-      "article": "der",
-      "word": "Ekel"
-    },
-    {
-      "article": "die",
-      "word": "Elektronik"
+      "word": "Bande",
+      "translation": {
+        "tr": "çete",
+        "en": "gang"
+      }
     },
     {
       "article": "das",
-      "word": "Elend"
-    },
-    {
-      "article": "der",
-      "word": "Elfmeter"
+      "word": "Banner",
+      "translation": {
+        "tr": "Afişler",
+        "en": "Banners"
+      }
     },
     {
       "article": "die",
-      "word": "Elite"
+      "word": "Barriere",
+      "translation": {
+        "tr": "bariyer",
+        "en": "barrier"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Basis",
+      "translation": {
+        "tr": "baz",
+        "en": "base"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bass",
+      "translation": {
+        "tr": "bas",
+        "en": "bass"
+      }
     },
     {
       "article": "das",
-      "word": "Embargo"
+      "word": "Bauwerk",
+      "translation": {
+        "tr": "Bina",
+        "en": "Building"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Beachtung",
+      "translation": {
+        "tr": "Dikkat",
+        "en": "Attention"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bearbeitung",
+      "translation": {
+        "tr": "Düzenleme",
+        "en": "Editing"
+      }
     },
     {
       "article": "der",
-      "word": "Embryo"
-    },
-    {
-      "article": "die",
-      "word": "Emission"
-    },
-    {
-      "article": "die",
-      "word": "Emotion"
-    },
-    {
-      "article": "die",
-      "word": "Empfehlung"
-    },
-    {
-      "article": "der",
-      "word": "Endverbraucher"
+      "word": "Beat",
+      "translation": {
+        "tr": "Vuruş",
+        "en": "Beat"
+      }
     },
     {
       "article": "das",
-      "word": "Engagement"
+      "word": "Becken",
+      "translation": {
+        "tr": "havza",
+        "en": "basin"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bedarf",
+      "translation": {
+        "tr": "İhtiyaç",
+        "en": "Need"
+      }
     },
     {
       "article": "das",
-      "word": "Ensemble"
+      "word": "Bedauern",
+      "translation": {
+        "tr": "pişmanlık",
+        "en": "Regret"
+      }
     },
     {
       "article": "die",
-      "word": "Entlassung"
+      "word": "Bedrohung",
+      "translation": {
+        "tr": "Tehdit",
+        "en": "Threat"
+      }
     },
     {
       "article": "die",
-      "word": "Entschädigung"
+      "word": "Befragung",
+      "translation": {
+        "tr": "Anket",
+        "en": "Survey"
+      }
     },
     {
       "article": "die",
-      "word": "Entsorgung"
-    },
-    {
-      "article": "die",
-      "word": "Entstehung"
+      "word": "Befreiung",
+      "translation": {
+        "tr": "Kurtuluş",
+        "en": "Liberation"
+      }
     },
     {
       "article": "der",
-      "word": "Entwickler"
+      "word": "Befund",
+      "translation": {
+        "tr": "Bulgular",
+        "en": "Findings"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Begabung",
+      "translation": {
+        "tr": "Yetenek",
+        "en": "Talent"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Begegnung",
+      "translation": {
+        "tr": "karşılaşma",
+        "en": "encounter"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Begeisterung",
+      "translation": {
+        "tr": "Coşku",
+        "en": "Enthusiasm"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Begründung",
+      "translation": {
+        "tr": "Gerekçe",
+        "en": "Justification"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Beirat",
+      "translation": {
+        "tr": "Danışma Kurulu",
+        "en": "Advisory Board"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bekannte",
+      "translation": {
+        "tr": "tanıdıklar",
+        "en": "acquaintances"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bekanntmachung",
+      "translation": {
+        "tr": "Uyarı",
+        "en": "Notice"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Belästigung",
+      "translation": {
+        "tr": "Taciz",
+        "en": "Harassment"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Belastung",
+      "translation": {
+        "tr": "yük",
+        "en": "burden"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Beleg",
+      "translation": {
+        "tr": "Kanıt",
+        "en": "Proof"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Beobachtung",
+      "translation": {
+        "tr": "Gözlem",
+        "en": "Observation"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Berechnung",
+      "translation": {
+        "tr": "Hesaplama",
+        "en": "Calculation"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bereitschaft",
+      "translation": {
+        "tr": "Hazırlık",
+        "en": "Readiness"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bergmann",
+      "translation": {
+        "tr": "madenci",
+        "en": "Miner"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Berufung",
+      "translation": {
+        "tr": "Arama",
+        "en": "Calling"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Berühmtheit",
+      "translation": {
+        "tr": "şöhret",
+        "en": "celebrity"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Berührung",
+      "translation": {
+        "tr": "Dokunma",
+        "en": "Touch"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Besatzung",
+      "translation": {
+        "tr": "mürettebat",
+        "en": "crew"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bescheid",
+      "translation": {
+        "tr": "ihbar",
+        "en": "notice"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Beschluss",
+      "translation": {
+        "tr": "Karar",
+        "en": "Decision"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Beschränkung",
+      "translation": {
+        "tr": "Sınırlama",
+        "en": "Limitation"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Beschreibung",
+      "translation": {
+        "tr": "Açıklama",
+        "en": "Description"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Beschützer",
+      "translation": {
+        "tr": "Koruyucu",
+        "en": "Protector"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Beschwerde",
+      "translation": {
+        "tr": "Şikayet",
+        "en": "Complaint"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Besetzung",
+      "translation": {
+        "tr": "Oyuncular",
+        "en": "Cast"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Besonderheit",
+      "translation": {
+        "tr": "Özel özellik",
+        "en": "Special feature"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bestand",
+      "translation": {
+        "tr": "envanter",
+        "en": "inventory"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bestandteil",
+      "translation": {
+        "tr": "bileşen",
+        "en": "component"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bestätigung",
+      "translation": {
+        "tr": "Onay",
+        "en": "Confirmation"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Beste",
+      "translation": {
+        "tr": "En iyi",
+        "en": "Best"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bestimmung",
+      "translation": {
+        "tr": "Kararlılık",
+        "en": "Determination"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bestrafung",
+      "translation": {
+        "tr": "ceza",
+        "en": "Punishment"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bestseller",
+      "translation": {
+        "tr": "En çok satanlar",
+        "en": "Bestseller"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Beteiligung",
+      "translation": {
+        "tr": "Katılım",
+        "en": "Participation"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Betrachter",
+      "translation": {
+        "tr": "izleyici",
+        "en": "viewer"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Betrachtung",
+      "translation": {
+        "tr": "tefekkür",
+        "en": "contemplation"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Betrag",
+      "translation": {
+        "tr": "miktar",
+        "en": "amount"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Betreff",
+      "translation": {
+        "tr": "Konu",
+        "en": "Subject"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Betreiber",
+      "translation": {
+        "tr": "Operatör",
+        "en": "Operator"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Betreuung",
+      "translation": {
+        "tr": "Bakım",
+        "en": "Care"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Betrieb",
+      "translation": {
+        "tr": "Operasyon",
+        "en": "Operation"
+      }
     },
     {
       "article": "das",
-      "word": "Enzym"
-    },
-    {
-      "article": "die",
-      "word": "Epoche"
+      "word": "Betriebssystem",
+      "translation": {
+        "tr": "İşletim sistemi",
+        "en": "Operating system"
+      }
     },
     {
       "article": "der",
-      "word": "Erbe"
+      "word": "Betrug",
+      "translation": {
+        "tr": "Dolandırıcılık",
+        "en": "Fraud"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Betrüger",
+      "translation": {
+        "tr": "Dolandırıcılar",
+        "en": "Fraudsters"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Beurteilung",
+      "translation": {
+        "tr": "Değerlendirme",
+        "en": "Assessment"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Beute",
+      "translation": {
+        "tr": "av",
+        "en": "prey"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bevölkerung",
+      "translation": {
+        "tr": "nüfus",
+        "en": "population"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bewegung",
+      "translation": {
+        "tr": "hareket",
+        "en": "movement"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Beweis",
+      "translation": {
+        "tr": "Kanıt",
+        "en": "Proof"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bewerber",
+      "translation": {
+        "tr": "Başvuru sahibi",
+        "en": "Applicant"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bewertung",
+      "translation": {
+        "tr": "Derecelendirme",
+        "en": "Rating"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bewohner",
+      "translation": {
+        "tr": "sakinleri",
+        "en": "residents"
+      }
     },
     {
       "article": "das",
-      "word": "Erdgas"
+      "word": "Bewusstsein",
+      "translation": {
+        "tr": "Bilinç",
+        "en": "Consciousness"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bezeichnung",
+      "translation": {
+        "tr": "Tanım",
+        "en": "Designation"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Beziehung",
+      "translation": {
+        "tr": "ilişki",
+        "en": "relationship"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bezirk",
+      "translation": {
+        "tr": "bölge",
+        "en": "district"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bezug",
+      "translation": {
+        "tr": "referans",
+        "en": "reference"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bilanz",
+      "translation": {
+        "tr": "Bilanço",
+        "en": "Balance sheet"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bildband",
+      "translation": {
+        "tr": "Resimli kitap",
+        "en": "Illustrated book"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bildhauer",
+      "translation": {
+        "tr": "heykeltıraş",
+        "en": "sculptor"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bindung",
+      "translation": {
+        "tr": "bağlayıcı",
+        "en": "Binding"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Biografie",
+      "translation": {
+        "tr": "Biyografi",
+        "en": "Biography"
+      }
     },
     {
       "article": "das",
-      "word": "Erdöl"
+      "word": "Blei",
+      "translation": {
+        "tr": "Kurşun",
+        "en": "Lead"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Blockade",
+      "translation": {
+        "tr": "Abluka",
+        "en": "Blockade"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Blutdruck",
+      "translation": {
+        "tr": "Kan basıncı",
+        "en": "Blood pressure"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Blüte",
+      "translation": {
+        "tr": "çiçek",
+        "en": "blossom"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bord",
+      "translation": {
+        "tr": "tahta",
+        "en": "board"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Botschafter",
+      "translation": {
+        "tr": "Büyükelçi",
+        "en": "Ambassador"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Brauch",
+      "translation": {
+        "tr": "özel",
+        "en": "custom"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bronze",
+      "translation": {
+        "tr": "Bronz",
+        "en": "Bronze"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Browser",
+      "translation": {
+        "tr": "Tarayıcı",
+        "en": "Browser"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bruch",
+      "translation": {
+        "tr": "kırık",
+        "en": "fracture"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Brunnen",
+      "translation": {
+        "tr": "Çeşme",
+        "en": "Fountain"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Buchhändler",
+      "translation": {
+        "tr": "Kitapçı",
+        "en": "Bookseller"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bucht",
+      "translation": {
+        "tr": "Körfez",
+        "en": "Bay"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Buchung",
+      "translation": {
+        "tr": "Rezervasyon",
+        "en": "Booking"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Buddhismus",
+      "translation": {
+        "tr": "Budizm",
+        "en": "Buddhism"
+      }
     },
     {
       "article": "das",
-      "word": "Ereignis"
-    },
-    {
-      "article": "die",
-      "word": "Erfassung"
-    },
-    {
-      "article": "die",
-      "word": "Erfüllung"
+      "word": "Budget",
+      "translation": {
+        "tr": "Bütçe",
+        "en": "Budget"
+      }
     },
     {
       "article": "der",
-      "word": "Erhalt"
-    },
-    {
-      "article": "die",
-      "word": "Erhaltung"
-    },
-    {
-      "article": "die",
-      "word": "Erhebung"
-    },
-    {
-      "article": "die",
-      "word": "Erhöhung"
-    },
-    {
-      "article": "die",
-      "word": "Erholung"
-    },
-    {
-      "article": "die",
-      "word": "Erkrankung"
-    },
-    {
-      "article": "die",
-      "word": "Erkundung"
-    },
-    {
-      "article": "der",
-      "word": "Erlös"
-    },
-    {
-      "article": "der",
-      "word": "Ermittler"
-    },
-    {
-      "article": "die",
-      "word": "Ermittlung"
-    },
-    {
-      "article": "die",
-      "word": "Ermordung"
-    },
-    {
-      "article": "die",
-      "word": "Ermutigung"
-    },
-    {
-      "article": "die",
-      "word": "Eröffnung"
-    },
-    {
-      "article": "der",
-      "word": "Erreger"
-    },
-    {
-      "article": "der",
-      "word": "Ersatz"
-    },
-    {
-      "article": "die",
-      "word": "Erscheinung"
-    },
-    {
-      "article": "der",
-      "word": "Ertrag"
-    },
-    {
-      "article": "die",
-      "word": "Erwähnung"
-    },
-    {
-      "article": "die",
-      "word": "Erwärmung"
-    },
-    {
-      "article": "die",
-      "word": "Erwartung"
-    },
-    {
-      "article": "die",
-      "word": "Erweiterung"
-    },
-    {
-      "article": "der",
-      "word": "Erwerb"
-    },
-    {
-      "article": "die",
-      "word": "Erzählung"
-    },
-    {
-      "article": "der",
-      "word": "Erzieher"
-    },
-    {
-      "article": "die",
-      "word": "Erziehung"
-    },
-    {
-      "article": "die",
-      "word": "Essenz"
-    },
-    {
-      "article": "die",
-      "word": "Ethik"
-    },
-    {
-      "article": "die",
-      "word": "Euphorie"
-    },
-    {
-      "article": "die",
-      "word": "Evolution"
-    },
-    {
-      "article": "die",
-      "word": "Ewigkeit"
+      "word": "Bund",
+      "translation": {
+        "tr": "Federal",
+        "en": "Federal"
+      }
     },
     {
       "article": "das",
-      "word": "Examen"
+      "word": "Bündel",
+      "translation": {
+        "tr": "paket",
+        "en": "bundle"
+      }
     },
     {
       "article": "das",
-      "word": "Exemplar"
+      "word": "Bundesamt",
+      "translation": {
+        "tr": "Federal Ofis",
+        "en": "Federal Office"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Bundeskanzler",
+      "translation": {
+        "tr": "Şansölye",
+        "en": "Chancellor"
+      }
     },
     {
       "article": "das",
-      "word": "Exil"
+      "word": "Bundesland",
+      "translation": {
+        "tr": "Eyalet",
+        "en": "State"
+      }
     },
     {
       "article": "die",
-      "word": "Existenz"
-    },
-    {
-      "article": "die",
-      "word": "Expedition"
+      "word": "Bundesliga",
+      "translation": {
+        "tr": "Bundesliga",
+        "en": "Bundesliga"
+      }
     },
     {
       "article": "der",
-      "word": "Experte"
-    },
-    {
-      "article": "die",
-      "word": "Explosion"
-    },
-    {
-      "article": "der",
-      "word": "Fachbereich"
-    },
-    {
-      "article": "die",
-      "word": "Fachhochschule"
+      "word": "Bundespräsident",
+      "translation": {
+        "tr": "Federal Başkan",
+        "en": "Federal President"
+      }
     },
     {
       "article": "der",
-      "word": "Fachmann"
+      "word": "Bundesrat",
+      "translation": {
+        "tr": "Federal Konsey",
+        "en": "Federal Council"
+      }
     },
     {
       "article": "die",
-      "word": "Fähigkeit"
+      "word": "Bundesregierung",
+      "translation": {
+        "tr": "Federal Hükümet",
+        "en": "Federal Government"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Bundesrepublik",
+      "translation": {
+        "tr": "Federal Cumhuriyet",
+        "en": "Federal Republic"
+      }
     },
     {
       "article": "der",
-      "word": "Fahnder"
-    },
-    {
-      "article": "die",
-      "word": "Fahrbahn"
-    },
-    {
-      "article": "die",
-      "word": "Fairness"
-    },
-    {
-      "article": "die",
-      "word": "Fakultät"
+      "word": "Bundesstaat",
+      "translation": {
+        "tr": "Eyalet",
+        "en": "State"
+      }
     },
     {
       "article": "der",
-      "word": "Fang"
+      "word": "Bundestag",
+      "translation": {
+        "tr": "Federal Meclis",
+        "en": "Bundestag"
+      }
     },
     {
       "article": "die",
-      "word": "Färbung"
-    },
-    {
-      "article": "die",
-      "word": "Faser"
-    },
-    {
-      "article": "die",
-      "word": "Fassade"
-    },
-    {
-      "article": "die",
-      "word": "Fassung"
+      "word": "Bundeswehr",
+      "translation": {
+        "tr": "Bundeswehr",
+        "en": "Bundeswehr"
+      }
     },
     {
       "article": "das",
-      "word": "Fazit"
+      "word": "Bündnis",
+      "translation": {
+        "tr": "İttifak",
+        "en": "Alliance"
+      }
     },
     {
       "article": "der",
-      "word": "Fehlschlag"
+      "word": "Bürgerkrieg",
+      "translation": {
+        "tr": "İç Savaş",
+        "en": "Civil War"
+      }
     },
     {
       "article": "die",
-      "word": "Feigheit"
-    },
-    {
-      "article": "die",
-      "word": "Ferne"
-    },
-    {
-      "article": "die",
-      "word": "Fertigstellung"
-    },
-    {
-      "article": "die",
-      "word": "Fertigung"
+      "word": "Bürokratie",
+      "translation": {
+        "tr": "Bürokrasi",
+        "en": "Bureaucracy"
+      }
     },
     {
       "article": "das",
-      "word": "Festland"
+      "word": "Business",
+      "translation": {
+        "tr": "iş",
+        "en": "Business"
+      }
     },
     {
-      "article": "die",
-      "word": "Festlegung"
-    },
-    {
-      "article": "die",
-      "word": "Festnahme"
+      "article": "der",
+      "word": "Campus",
+      "translation": {
+        "tr": "Kampüs",
+        "en": "Campus"
+      }
     },
     {
       "article": "das",
-      "word": "Festnetz"
-    },
-    {
-      "article": "die",
-      "word": "Feststellung"
-    },
-    {
-      "article": "die",
-      "word": "Fiktion"
+      "word": "Celsius",
+      "translation": {
+        "tr": "santigrat",
+        "en": "Celsius"
+      }
     },
     {
       "article": "der",
-      "word": "Filmemacher"
+      "word": "Center",
+      "translation": {
+        "tr": "Merkez",
+        "en": "Center"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Champagner",
+      "translation": {
+        "tr": "Şampanya",
+        "en": "Champagne"
+      }
     },
     {
       "article": "das",
-      "word": "Filmmaterial"
+      "word": "Chaos",
+      "translation": {
+        "tr": "Kargaşa",
+        "en": "Mayhem"
+      }
     },
     {
       "article": "der",
-      "word": "Filz"
+      "word": "Charakter",
+      "translation": {
+        "tr": "Karakter",
+        "en": "Character"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Charme",
+      "translation": {
+        "tr": "Cazibe",
+        "en": "Charm"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Chat",
+      "translation": {
+        "tr": "Sohbet",
+        "en": "Chat"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Chemie",
+      "translation": {
+        "tr": "Kimya",
+        "en": "Chemistry"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Chemikalie",
+      "translation": {
+        "tr": "kimyasal",
+        "en": "chemical"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Chemiker",
+      "translation": {
+        "tr": "Kimyager",
+        "en": "Chemist"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Chinese",
+      "translation": {
+        "tr": "Çince",
+        "en": "Chinese"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Chronik",
+      "translation": {
+        "tr": "Tarih",
+        "en": "Chronicle"
+      }
+    },
+    {
+      "article": "die",
+      "word": "City",
+      "translation": {
+        "tr": "Şehir",
+        "en": "City"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Clip",
+      "translation": {
+        "tr": "Klip",
+        "en": "Clip"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Coach",
+      "translation": {
+        "tr": "Antrenör",
+        "en": "Coach"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Cocktail",
+      "translation": {
+        "tr": "Kokteyl",
+        "en": "Cocktail"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Code",
+      "translation": {
+        "tr": "Kod",
+        "en": "Code"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Container",
+      "translation": {
+        "tr": "Konteynerler",
+        "en": "Containers"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Creme",
+      "translation": {
+        "tr": "Krem",
+        "en": "Cream"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Dämon",
+      "translation": {
+        "tr": "Şeytan",
+        "en": "Demon"
+      }
     },
     {
       "article": "das",
-      "word": "Finale"
+      "word": "Darlehen",
+      "translation": {
+        "tr": "Kredi",
+        "en": "Loan"
+      }
     },
     {
       "article": "die",
-      "word": "Finanzierung"
+      "word": "Darstellung",
+      "translation": {
+        "tr": "Sunum",
+        "en": "Presentation"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Datenbank",
+      "translation": {
+        "tr": "Veritabanı",
+        "en": "Database"
+      }
     },
     {
       "article": "der",
-      "word": "Finanzminister"
+      "word": "Deal",
+      "translation": {
+        "tr": "anlaşma",
+        "en": "deal"
+      }
     },
     {
       "article": "die",
-      "word": "Finsternis"
+      "word": "Debatte",
+      "translation": {
+        "tr": "Tartışma",
+        "en": "Debate"
+      }
     },
     {
       "article": "die",
-      "word": "Flexibilität"
-    },
-    {
-      "article": "die",
-      "word": "Flotte"
-    },
-    {
-      "article": "die",
-      "word": "Flucht"
-    },
-    {
-      "article": "die",
-      "word": "Fluggesellschaft"
-    },
-    {
-      "article": "der",
-      "word": "Flur"
-    },
-    {
-      "article": "die",
-      "word": "Flüssigkeit"
-    },
-    {
-      "article": "die",
-      "word": "Flut"
-    },
-    {
-      "article": "der",
-      "word": "Flyer"
-    },
-    {
-      "article": "der",
-      "word": "Fond"
-    },
-    {
-      "article": "die",
-      "word": "Forderung"
-    },
-    {
-      "article": "die",
-      "word": "Förderung"
-    },
-    {
-      "article": "die",
-      "word": "Formulierung"
-    },
-    {
-      "article": "der",
-      "word": "Forscher"
-    },
-    {
-      "article": "die",
-      "word": "Forschung"
-    },
-    {
-      "article": "der",
-      "word": "Fortschritt"
-    },
-    {
-      "article": "die",
-      "word": "Fortsetzung"
-    },
-    {
-      "article": "die",
-      "word": "Fotografie"
+      "word": "Definition",
+      "translation": {
+        "tr": "Tanım",
+        "en": "Definition"
+      }
     },
     {
       "article": "das",
-      "word": "Foul"
+      "word": "Defizit",
+      "translation": {
+        "tr": "Açık",
+        "en": "Deficit"
+      }
     },
     {
       "article": "der",
-      "word": "Fragebogen"
+      "word": "Deich",
+      "translation": {
+        "tr": "Lezbiyen",
+        "en": "Dyke"
+      }
     },
     {
       "article": "die",
-      "word": "Fragestellung"
-    },
-    {
-      "article": "die",
-      "word": "Fraktion"
+      "word": "Delegation",
+      "translation": {
+        "tr": "Delegasyon",
+        "en": "Delegation"
+      }
     },
     {
       "article": "der",
-      "word": "Franzose"
-    },
-    {
-      "article": "der",
-      "word": "Freiberufler"
-    },
-    {
-      "article": "die",
-      "word": "Freigabe"
-    },
-    {
-      "article": "die",
-      "word": "Frequenz"
-    },
-    {
-      "article": "der",
-      "word": "Frust"
-    },
-    {
-      "article": "die",
-      "word": "Frustration"
-    },
-    {
-      "article": "die",
-      "word": "Führung"
-    },
-    {
-      "article": "die",
-      "word": "Fülle"
-    },
-    {
-      "article": "die",
-      "word": "Furcht"
-    },
-    {
-      "article": "der",
-      "word": "Fürst"
-    },
-    {
-      "article": "die",
-      "word": "Fusion"
-    },
-    {
-      "article": "die",
-      "word": "Galerie"
-    },
-    {
-      "article": "der",
-      "word": "Garant"
-    },
-    {
-      "article": "die",
-      "word": "Garantie"
-    },
-    {
-      "article": "die",
-      "word": "Gattin"
-    },
-    {
-      "article": "der",
-      "word": "Gaumen"
+      "word": "Delegierte",
+      "translation": {
+        "tr": "delegeler",
+        "en": "delegates"
+      }
     },
     {
       "article": "das",
-      "word": "Gebiet"
+      "word": "Delikt",
+      "translation": {
+        "tr": "suç",
+        "en": "offense"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Demenz",
+      "translation": {
+        "tr": "Demans",
+        "en": "Dementia"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Demonstrant",
+      "translation": {
+        "tr": "protestocu",
+        "en": "protester"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Demonstration",
+      "translation": {
+        "tr": "gösteri",
+        "en": "demonstration"
+      }
     },
     {
       "article": "das",
-      "word": "Gebirge"
+      "word": "Denken",
+      "translation": {
+        "tr": "Düşün",
+        "en": "Think"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Denkmal",
+      "translation": {
+        "tr": "Anıt",
+        "en": "Monument"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Depression",
+      "translation": {
+        "tr": "Depresyon",
+        "en": "Depression"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Design",
+      "translation": {
+        "tr": "tasarım",
+        "en": "design"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Desktop",
+      "translation": {
+        "tr": "Masaüstü",
+        "en": "Desktop"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Detail",
+      "translation": {
+        "tr": "detay",
+        "en": "detail"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Diabetes",
+      "translation": {
+        "tr": "Diyabet",
+        "en": "Diabetes"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Diagnose",
+      "translation": {
+        "tr": "Teşhis",
+        "en": "Diagnosis"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Diagramm",
+      "translation": {
+        "tr": "Diyagram",
+        "en": "Diagram"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Dialekt",
+      "translation": {
+        "tr": "Lehçe",
+        "en": "Dialect"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Diät",
+      "translation": {
+        "tr": "Diyet",
+        "en": "Diet"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Dichtung",
+      "translation": {
+        "tr": "mühür",
+        "en": "seal"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Diebstahl",
+      "translation": {
+        "tr": "Hırsızlık",
+        "en": "Theft"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Dienstleistung",
+      "translation": {
+        "tr": "Hizmet",
+        "en": "Service"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Differenz",
+      "translation": {
+        "tr": "Fark",
+        "en": "Difference"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Digitalisierung",
+      "translation": {
+        "tr": "Dijitalleşme",
+        "en": "Digitalization"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Diktatur",
+      "translation": {
+        "tr": "Diktatörlük",
+        "en": "Dictatorship"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Dilemma",
+      "translation": {
+        "tr": "ikilem",
+        "en": "dilemma"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Dimension",
+      "translation": {
+        "tr": "boyut",
+        "en": "dimension"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Dirigent",
+      "translation": {
+        "tr": "İletken",
+        "en": "Conductor"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Diskriminierung",
+      "translation": {
+        "tr": "Ayrımcılık",
+        "en": "Discrimination"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Diskurs",
+      "translation": {
+        "tr": "Söylem",
+        "en": "Discourse"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Distanz",
+      "translation": {
+        "tr": "Mesafe",
+        "en": "Distance"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Disziplin",
+      "translation": {
+        "tr": "Disiplin",
+        "en": "Discipline"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Dokumentation",
+      "translation": {
+        "tr": "Dokümantasyon",
+        "en": "Documentation"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Dolmetscher",
+      "translation": {
+        "tr": "Tercüman",
+        "en": "Interpreter"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Dosis",
+      "translation": {
+        "tr": "Doz",
+        "en": "Dose"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Dozent",
+      "translation": {
+        "tr": "Öğretim Görevlisi",
+        "en": "Lecturer"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Drang",
+      "translation": {
+        "tr": "Dürtü",
+        "en": "Urge"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Drehbuch",
+      "translation": {
+        "tr": "Senaryo",
+        "en": "Screenplay"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Druck",
+      "translation": {
+        "tr": "basınç",
+        "en": "pressure"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Duell",
+      "translation": {
+        "tr": "Düello",
+        "en": "Duel"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Dünger",
+      "translation": {
+        "tr": "gübre",
+        "en": "fertilizer"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Dunkelheit",
+      "translation": {
+        "tr": "Karanlık",
+        "en": "Darkness"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Duo",
+      "translation": {
+        "tr": "ikili",
+        "en": "duo"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Durchbruch",
+      "translation": {
+        "tr": "Atılım",
+        "en": "Breakthrough"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Durchführung",
+      "translation": {
+        "tr": "Uygulama",
+        "en": "Implementation"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Durchmesser",
+      "translation": {
+        "tr": "çap",
+        "en": "diameter"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Durchschnitt",
+      "translation": {
+        "tr": "Ortalama",
+        "en": "Average"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Durchsetzung",
+      "translation": {
+        "tr": "Yaptırım",
+        "en": "Enforcement"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Dürre",
+      "translation": {
+        "tr": "Kuraklık",
+        "en": "Drought"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Dynamik",
+      "translation": {
+        "tr": "Dinamik",
+        "en": "Dynamics"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ebbe",
+      "translation": {
+        "tr": "Düşük gelgit",
+        "en": "Low tide"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Editor",
+      "translation": {
+        "tr": "Editör",
+        "en": "Editor"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Egoismus",
+      "translation": {
+        "tr": "Bencillik",
+        "en": "Selfishness"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ehre",
+      "translation": {
+        "tr": "onur",
+        "en": "honor"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ehrlichkeit",
+      "translation": {
+        "tr": "Dürüstlük",
+        "en": "Honesty"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Einblick",
+      "translation": {
+        "tr": "içgörü",
+        "en": "Insight"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Einbrecher",
+      "translation": {
+        "tr": "Hırsız",
+        "en": "Burglar"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Einbruch",
+      "translation": {
+        "tr": "Hırsızlık",
+        "en": "Burglary"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Eindruck",
+      "translation": {
+        "tr": "izlenim",
+        "en": "impression"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Einfluss",
+      "translation": {
+        "tr": "Etki",
+        "en": "Influence"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Eingriff",
+      "translation": {
+        "tr": "müdahale",
+        "en": "intervention"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Einheimische",
+      "translation": {
+        "tr": "Yerliler",
+        "en": "Locals"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Einigung",
+      "translation": {
+        "tr": "anlaşma",
+        "en": "agreement"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Einklang",
+      "translation": {
+        "tr": "uyum",
+        "en": "harmony"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Einleitung",
+      "translation": {
+        "tr": "Giriş",
+        "en": "Introduction"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Einnahme",
+      "translation": {
+        "tr": "giriş",
+        "en": "intake"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Einreise",
+      "translation": {
+        "tr": "Giriş",
+        "en": "Entry"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Einsatzleiter",
+      "translation": {
+        "tr": "Operasyon Müdürü",
+        "en": "Operations Manager"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Einschätzung",
+      "translation": {
+        "tr": "Değerlendirme",
+        "en": "Assessment"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Einschränkung",
+      "translation": {
+        "tr": "Sınırlama",
+        "en": "Limitation"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Einsicht",
+      "translation": {
+        "tr": "içgörü",
+        "en": "insight"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Einstieg",
+      "translation": {
+        "tr": "Giriş",
+        "en": "Entry"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Einteilung",
+      "translation": {
+        "tr": "sınıflandırma",
+        "en": "Classification"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Eintragung",
+      "translation": {
+        "tr": "Kayıt",
+        "en": "Registration"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Einwand",
+      "translation": {
+        "tr": "İtiraz",
+        "en": "Objection"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Einzelfall",
+      "translation": {
+        "tr": "Bireysel vaka",
+        "en": "Individual case"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Einzug",
+      "translation": {
+        "tr": "Taşınma",
+        "en": "Move-in"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Eizelle",
+      "translation": {
+        "tr": "yumurta hücresi",
+        "en": "egg cell"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Ekel",
+      "translation": {
+        "tr": "İğrenme",
+        "en": "Disgust"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Elektronik",
+      "translation": {
+        "tr": "Elektronik",
+        "en": "Electronics"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Elend",
+      "translation": {
+        "tr": "Sefalet",
+        "en": "Misery"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Elfmeter",
+      "translation": {
+        "tr": "Penaltı",
+        "en": "Penalty"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Elite",
+      "translation": {
+        "tr": "elit",
+        "en": "elite"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Embargo",
+      "translation": {
+        "tr": "ambargo",
+        "en": "embargo"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Embryo",
+      "translation": {
+        "tr": "embriyo",
+        "en": "embryo"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Emission",
+      "translation": {
+        "tr": "Emisyon",
+        "en": "Emission"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Emotion",
+      "translation": {
+        "tr": "duygu",
+        "en": "emotion"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Empfehlung",
+      "translation": {
+        "tr": "Tavsiye",
+        "en": "Recommendation"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Endverbraucher",
+      "translation": {
+        "tr": "son kullanıcı",
+        "en": "end user"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Engagement",
+      "translation": {
+        "tr": "Taahhüt",
+        "en": "Commitment"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Ensemble",
+      "translation": {
+        "tr": "topluluk",
+        "en": "ensemble"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Entlassung",
+      "translation": {
+        "tr": "İşten çıkarılma",
+        "en": "Dismissal"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Entschädigung",
+      "translation": {
+        "tr": "Tazminat",
+        "en": "Compensation"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Entsorgung",
+      "translation": {
+        "tr": "Bertaraf",
+        "en": "Disposal"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Entstehung",
+      "translation": {
+        "tr": "Menşei",
+        "en": "Origin"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Entwickler",
+      "translation": {
+        "tr": "Geliştirici",
+        "en": "Developer"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Enzym",
+      "translation": {
+        "tr": "enzim",
+        "en": "enzyme"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Epoche",
+      "translation": {
+        "tr": "Dönem",
+        "en": "Epoch"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Erbe",
+      "translation": {
+        "tr": "Miras",
+        "en": "Heritage"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Erdgas",
+      "translation": {
+        "tr": "Doğal gaz",
+        "en": "Natural gas"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Erdöl",
+      "translation": {
+        "tr": "Petrol",
+        "en": "Petroleum"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Ereignis",
+      "translation": {
+        "tr": "olay",
+        "en": "event"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erfassung",
+      "translation": {
+        "tr": "Yakala",
+        "en": "Capture"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erfüllung",
+      "translation": {
+        "tr": "yerine getirilmesi",
+        "en": "fulfillment"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Erhalt",
+      "translation": {
+        "tr": "makbuz",
+        "en": "receipt"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erhaltung",
+      "translation": {
+        "tr": "Koruma",
+        "en": "Conservation"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erhebung",
+      "translation": {
+        "tr": "anket",
+        "en": "survey"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erhöhung",
+      "translation": {
+        "tr": "artış",
+        "en": "increase"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erholung",
+      "translation": {
+        "tr": "kurtarma",
+        "en": "recovery"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erkrankung",
+      "translation": {
+        "tr": "hastalık",
+        "en": "disease"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erkundung",
+      "translation": {
+        "tr": "Keşif",
+        "en": "Exploration"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Erlös",
+      "translation": {
+        "tr": "Gelir",
+        "en": "Revenue"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Ermittler",
+      "translation": {
+        "tr": "Araştırmacı",
+        "en": "Investigator"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ermittlung",
+      "translation": {
+        "tr": "Soruşturma",
+        "en": "Investigation"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ermordung",
+      "translation": {
+        "tr": "Suikast",
+        "en": "Assassination"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ermutigung",
+      "translation": {
+        "tr": "Teşvik",
+        "en": "Encouragement"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Eröffnung",
+      "translation": {
+        "tr": "Açılış",
+        "en": "Opening"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Erreger",
+      "translation": {
+        "tr": "patojen",
+        "en": "pathogen"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Ersatz",
+      "translation": {
+        "tr": "Değiştirme",
+        "en": "Replacement"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erscheinung",
+      "translation": {
+        "tr": "görünüm",
+        "en": "appearance"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Ertrag",
+      "translation": {
+        "tr": "verim",
+        "en": "yield"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erwähnung",
+      "translation": {
+        "tr": "Mansiyon",
+        "en": "Mention"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erwärmung",
+      "translation": {
+        "tr": "ısınma",
+        "en": "warming"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erwartung",
+      "translation": {
+        "tr": "Beklenti",
+        "en": "Expectation"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erweiterung",
+      "translation": {
+        "tr": "Uzantı",
+        "en": "Extension"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Erwerb",
+      "translation": {
+        "tr": "satın alma",
+        "en": "acquisition"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erzählung",
+      "translation": {
+        "tr": "Anlatım",
+        "en": "Narration"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Erzieher",
+      "translation": {
+        "tr": "Eğitimci",
+        "en": "Educator"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Erziehung",
+      "translation": {
+        "tr": "Eğitim",
+        "en": "Education"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Essenz",
+      "translation": {
+        "tr": "Öz",
+        "en": "Essence"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ethik",
+      "translation": {
+        "tr": "Etik",
+        "en": "Ethics"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Euphorie",
+      "translation": {
+        "tr": "Coşku",
+        "en": "Euphoria"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Evolution",
+      "translation": {
+        "tr": "Evrim",
+        "en": "Evolution"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ewigkeit",
+      "translation": {
+        "tr": "sonsuzluk",
+        "en": "eternity"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Examen",
+      "translation": {
+        "tr": "sınav",
+        "en": "exam"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Exemplar",
+      "translation": {
+        "tr": "kopyala",
+        "en": "copy"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Exil",
+      "translation": {
+        "tr": "Sürgün",
+        "en": "Exile"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Existenz",
+      "translation": {
+        "tr": "varoluş",
+        "en": "Existence"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Expedition",
+      "translation": {
+        "tr": "Sefer",
+        "en": "Expedition"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Experte",
+      "translation": {
+        "tr": "Uzman",
+        "en": "Expert"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Explosion",
+      "translation": {
+        "tr": "Patlama",
+        "en": "Explosion"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Fachbereich",
+      "translation": {
+        "tr": "Departman",
+        "en": "Department"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fachhochschule",
+      "translation": {
+        "tr": "Uygulamalı Bilimler Üniversitesi",
+        "en": "University of Applied Sciences"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Fachmann",
+      "translation": {
+        "tr": "Profesyonel",
+        "en": "Professional"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fähigkeit",
+      "translation": {
+        "tr": "yetenek",
+        "en": "ability"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Fahnder",
+      "translation": {
+        "tr": "Araştırmacı",
+        "en": "Investigator"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fahrbahn",
+      "translation": {
+        "tr": "karayolu",
+        "en": "roadway"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fairness",
+      "translation": {
+        "tr": "Adalet",
+        "en": "Fairness"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fakultät",
+      "translation": {
+        "tr": "Fakülte",
+        "en": "Faculty"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Fang",
+      "translation": {
+        "tr": "Yakala",
+        "en": "Catch"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Färbung",
+      "translation": {
+        "tr": "boyama",
+        "en": "coloring"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Faser",
+      "translation": {
+        "tr": "lif",
+        "en": "fiber"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fassade",
+      "translation": {
+        "tr": "Cephe",
+        "en": "Facade"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fassung",
+      "translation": {
+        "tr": "versiyon",
+        "en": "version"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Fazit",
+      "translation": {
+        "tr": "Sonuç",
+        "en": "Conclusion"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Fehlschlag",
+      "translation": {
+        "tr": "Başarısızlık",
+        "en": "Failure"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Feigheit",
+      "translation": {
+        "tr": "Korkaklık",
+        "en": "Cowardice"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Ferne",
+      "translation": {
+        "tr": "Mesafe",
+        "en": "Distance"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fertigstellung",
+      "translation": {
+        "tr": "Tamamlama",
+        "en": "Completion"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fertigung",
+      "translation": {
+        "tr": "İmalat",
+        "en": "Manufacturing"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Festland",
+      "translation": {
+        "tr": "anakara",
+        "en": "mainland"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Festlegung",
+      "translation": {
+        "tr": "Kararlılık",
+        "en": "Determination"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Festnahme",
+      "translation": {
+        "tr": "Tutuklama",
+        "en": "Arrest"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Festnetz",
+      "translation": {
+        "tr": "Sabit hat",
+        "en": "Landline"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Feststellung",
+      "translation": {
+        "tr": "Kararlılık",
+        "en": "Determination"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fiktion",
+      "translation": {
+        "tr": "Kurgu",
+        "en": "Fiction"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Filmemacher",
+      "translation": {
+        "tr": "Film yapımcısı",
+        "en": "Filmmaker"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Filmmaterial",
+      "translation": {
+        "tr": "görüntüleri",
+        "en": "footage"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Filz",
+      "translation": {
+        "tr": "keçe",
+        "en": "felt"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Finale",
+      "translation": {
+        "tr": "Final",
+        "en": "Final"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Finanzierung",
+      "translation": {
+        "tr": "Finansman",
+        "en": "Financing"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Finanzminister",
+      "translation": {
+        "tr": "Maliye Bakanı",
+        "en": "Finance Minister"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Finsternis",
+      "translation": {
+        "tr": "Karanlık",
+        "en": "Darkness"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Flexibilität",
+      "translation": {
+        "tr": "Esneklik",
+        "en": "Flexibility"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Flotte",
+      "translation": {
+        "tr": "Filo",
+        "en": "Fleet"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Flucht",
+      "translation": {
+        "tr": "Kaçış",
+        "en": "Escape"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fluggesellschaft",
+      "translation": {
+        "tr": "havayolu",
+        "en": "airline"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Flur",
+      "translation": {
+        "tr": "koridor",
+        "en": "hallway"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Flüssigkeit",
+      "translation": {
+        "tr": "sıvı",
+        "en": "liquid"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Flut",
+      "translation": {
+        "tr": "sel",
+        "en": "flood"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Flyer",
+      "translation": {
+        "tr": "El ilanları",
+        "en": "Flyers"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Fond",
+      "translation": {
+        "tr": "Fon",
+        "en": "Fund"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Forderung",
+      "translation": {
+        "tr": "talep",
+        "en": "demand"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Förderung",
+      "translation": {
+        "tr": "Promosyon",
+        "en": "Promotion"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Formulierung",
+      "translation": {
+        "tr": "Formülasyon",
+        "en": "Formulation"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Forscher",
+      "translation": {
+        "tr": "Araştırmacı",
+        "en": "Researcher"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Forschung",
+      "translation": {
+        "tr": "Araştırma",
+        "en": "Research"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Fortschritt",
+      "translation": {
+        "tr": "İlerleme",
+        "en": "Progress"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fortsetzung",
+      "translation": {
+        "tr": "Devamı",
+        "en": "Continuation"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fotografie",
+      "translation": {
+        "tr": "Fotoğrafçılık",
+        "en": "Photography"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Foul",
+      "translation": {
+        "tr": "Faul",
+        "en": "Foul"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Fragebogen",
+      "translation": {
+        "tr": "Anket",
+        "en": "Questionnaire"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fragestellung",
+      "translation": {
+        "tr": "Soru",
+        "en": "Question"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fraktion",
+      "translation": {
+        "tr": "hizip",
+        "en": "faction"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Franzose",
+      "translation": {
+        "tr": "Fransız",
+        "en": "Frenchman"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Freiberufler",
+      "translation": {
+        "tr": "Serbest çalışan",
+        "en": "Freelancer"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Freigabe",
+      "translation": {
+        "tr": "Sürüm",
+        "en": "Release"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Frequenz",
+      "translation": {
+        "tr": "Frekans",
+        "en": "Frequency"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Frust",
+      "translation": {
+        "tr": "hayal kırıklığı",
+        "en": "frustration"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Frustration",
+      "translation": {
+        "tr": "hayal kırıklığı",
+        "en": "frustration"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Führung",
+      "translation": {
+        "tr": "Liderlik",
+        "en": "Leadership"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fülle",
+      "translation": {
+        "tr": "bolluk",
+        "en": "abundance"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Furcht",
+      "translation": {
+        "tr": "Korku",
+        "en": "Fear"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Fürst",
+      "translation": {
+        "tr": "Prens",
+        "en": "Prince"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Fusion",
+      "translation": {
+        "tr": "Füzyon",
+        "en": "Fusion"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Galerie",
+      "translation": {
+        "tr": "Galeri",
+        "en": "Gallery"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Garant",
+      "translation": {
+        "tr": "Garanti",
+        "en": "Guarantee"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Garantie",
+      "translation": {
+        "tr": "Garanti",
+        "en": "Guarantee"
+      }
+    },
+    {
+      "article": "die",
+      "word": "Gattin",
+      "translation": {
+        "tr": "eş",
+        "en": "wife"
+      }
+    },
+    {
+      "article": "der",
+      "word": "Gaumen",
+      "translation": {
+        "tr": "damak",
+        "en": "palate"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Gebiet",
+      "translation": {
+        "tr": "alan",
+        "en": "area"
+      }
+    },
+    {
+      "article": "das",
+      "word": "Gebirge",
+      "translation": {
+        "tr": "Dağlar",
+        "en": "Mountains"
+      }
     }
   ],
   "C1": [
     {
       "article": "die",
-      "word": "Aktiengesellschaft"
+      "word": "Aktiengesellschaft",
+      "translation": {
+        "tr": "Halka açık şirket",
+        "en": "Public company"
+      }
     },
     {
       "article": "das",
-      "word": "Ambiente"
+      "word": "Ambiente",
+      "translation": {
+        "tr": "Ambiyans",
+        "en": "Ambiance"
+      }
     },
     {
       "article": "die",
-      "word": "Analogie"
+      "word": "Analogie",
+      "translation": {
+        "tr": "analoji",
+        "en": "Analogy"
+      }
     },
     {
       "article": "die",
-      "word": "Angleichung"
+      "word": "Angleichung",
+      "translation": {
+        "tr": "Hizalama",
+        "en": "Alignment"
+      }
     },
     {
       "article": "die",
-      "word": "Ästhetik"
+      "word": "Ästhetik",
+      "translation": {
+        "tr": "Estetik",
+        "en": "Aesthetics"
+      }
     },
     {
       "article": "der",
-      "word": "Aufsichtsrat"
+      "word": "Aufsichtsrat",
+      "translation": {
+        "tr": "Denetleme Kurulu",
+        "en": "Supervisory Board"
+      }
     },
     {
       "article": "die",
-      "word": "Aufzucht"
+      "word": "Aufzucht",
+      "translation": {
+        "tr": "yetiştirme",
+        "en": "rearing"
+      }
     },
     {
       "article": "die",
-      "word": "Ausprägung"
+      "word": "Ausprägung",
+      "translation": {
+        "tr": "ifade",
+        "en": "expression"
+      }
     },
     {
       "article": "der",
-      "word": "Baron"
+      "word": "Baron",
+      "translation": {
+        "tr": "Baron",
+        "en": "Baron"
+      }
     },
     {
       "article": "die",
-      "word": "Berücksichtigung"
+      "word": "Berücksichtigung",
+      "translation": {
+        "tr": "dikkate alma",
+        "en": "consideration"
+      }
     },
     {
       "article": "die",
-      "word": "Beschleunigung"
+      "word": "Beschleunigung",
+      "translation": {
+        "tr": "Hızlanma",
+        "en": "Acceleration"
+      }
     },
     {
       "article": "das",
-      "word": "Bruttoinlandsprodukt"
+      "word": "Bruttoinlandsprodukt",
+      "translation": {
+        "tr": "Gayri safi yurtiçi hasıla",
+        "en": "Gross domestic product"
+      }
     },
     {
       "article": "der",
-      "word": "Datensatz"
+      "word": "Datensatz",
+      "translation": {
+        "tr": "Veri kümesi",
+        "en": "Dataset"
+      }
     },
     {
       "article": "die",
-      "word": "Datenverarbeitung"
+      "word": "Datenverarbeitung",
+      "translation": {
+        "tr": "Veri işleme",
+        "en": "Data processing"
+      }
     },
     {
       "article": "die",
-      "word": "Deutung"
+      "word": "Deutung",
+      "translation": {
+        "tr": "Yorumlama",
+        "en": "Interpretation"
+      }
     },
     {
       "article": "die",
-      "word": "Dichte"
+      "word": "Dichte",
+      "translation": {
+        "tr": "yoğunluk",
+        "en": "density"
+      }
     },
     {
       "article": "die",
-      "word": "Diskretion"
+      "word": "Diskretion",
+      "translation": {
+        "tr": "Takdir",
+        "en": "Discretion"
+      }
     },
     {
       "article": "die",
-      "word": "Division"
+      "word": "Division",
+      "translation": {
+        "tr": "bölme",
+        "en": "division"
+      }
     },
     {
       "article": "die",
-      "word": "Domäne"
+      "word": "Domäne",
+      "translation": {
+        "tr": "etki alanı",
+        "en": "domain"
+      }
     },
     {
       "article": "die",
-      "word": "Dominanz"
+      "word": "Dominanz",
+      "translation": {
+        "tr": "Hakimiyet",
+        "en": "Dominance"
+      }
     },
     {
       "article": "die",
-      "word": "Echtzeit"
+      "word": "Echtzeit",
+      "translation": {
+        "tr": "Gerçek zamanlı",
+        "en": "Real time"
+      }
     },
     {
       "article": "die",
-      "word": "Effizienz"
+      "word": "Effizienz",
+      "translation": {
+        "tr": "Verimlilik",
+        "en": "Efficiency"
+      }
     },
     {
       "article": "die",
-      "word": "Ekstase"
+      "word": "Ekstase",
+      "translation": {
+        "tr": "Ecstasy",
+        "en": "Ecstasy"
+      }
     },
     {
       "article": "die",
-      "word": "Empfindlichkeit"
+      "word": "Empfindlichkeit",
+      "translation": {
+        "tr": "Hassasiyet",
+        "en": "Sensitivity"
+      }
     },
     {
       "article": "die",
-      "word": "Empörung"
+      "word": "Empörung",
+      "translation": {
+        "tr": "Öfke",
+        "en": "Outrage"
+      }
     },
     {
       "article": "der",
-      "word": "Energieträger"
+      "word": "Energieträger",
+      "translation": {
+        "tr": "enerji kaynağı",
+        "en": "energy source"
+      }
     },
     {
       "article": "die",
-      "word": "Energiewirtschaft"
+      "word": "Energiewirtschaft",
+      "translation": {
+        "tr": "Enerji endüstrisi",
+        "en": "Energy industry"
+      }
     },
     {
       "article": "die",
-      "word": "Entscheidungsfindung"
+      "word": "Entscheidungsfindung",
+      "translation": {
+        "tr": "Karar verme",
+        "en": "Decision making"
+      }
     },
     {
       "article": "die",
-      "word": "Entschlossenheit"
+      "word": "Entschlossenheit",
+      "translation": {
+        "tr": "Kararlılık",
+        "en": "Determination"
+      }
     },
     {
       "article": "das",
-      "word": "Erbgut"
+      "word": "Erbgut",
+      "translation": {
+        "tr": "Genetik materyal",
+        "en": "Genetic material"
+      }
     },
     {
       "article": "die",
-      "word": "Erkenntnis"
+      "word": "Erkenntnis",
+      "translation": {
+        "tr": "bilgi",
+        "en": "knowledge"
+      }
     },
     {
       "article": "die",
-      "word": "Erkennung"
+      "word": "Erkennung",
+      "translation": {
+        "tr": "Algılama",
+        "en": "Detection"
+      }
     },
     {
       "article": "die",
-      "word": "Erregung"
+      "word": "Erregung",
+      "translation": {
+        "tr": "Heyecan",
+        "en": "Excitement"
+      }
     },
     {
       "article": "die",
-      "word": "Erstellung"
+      "word": "Erstellung",
+      "translation": {
+        "tr": "Yaratılış",
+        "en": "Creation"
+      }
     },
     {
       "article": "die",
-      "word": "Erwägung"
+      "word": "Erwägung",
+      "translation": {
+        "tr": "dikkate alma",
+        "en": "consideration"
+      }
     },
     {
       "article": "der",
-      "word": "Fokus"
+      "word": "Fokus",
+      "translation": {
+        "tr": "Odaklanma",
+        "en": "Focus"
+      }
     },
     {
       "article": "das",
-      "word": "Gebot"
+      "word": "Gebot",
+      "translation": {
+        "tr": "emir",
+        "en": "Commandment"
+      }
     },
     {
       "article": "der",
-      "word": "Gebrauch"
+      "word": "Gebrauch",
+      "translation": {
+        "tr": "Kullanım",
+        "en": "Use"
+      }
     },
     {
       "article": "das",
-      "word": "Gedächtnis"
+      "word": "Gedächtnis",
+      "translation": {
+        "tr": "hafıza",
+        "en": "memory"
+      }
     },
     {
       "article": "der",
-      "word": "Gedanke"
+      "word": "Gedanke",
+      "translation": {
+        "tr": "düşünce",
+        "en": "thought"
+      }
     },
     {
       "article": "das",
-      "word": "Gefallen"
+      "word": "Gefallen",
+      "translation": {
+        "tr": "Beğendim",
+        "en": "Liked"
+      }
     },
     {
       "article": "das",
-      "word": "Gefäß"
+      "word": "Gefäß",
+      "translation": {
+        "tr": "damar",
+        "en": "vessel"
+      }
     },
     {
       "article": "das",
-      "word": "Gefühl"
+      "word": "Gefühl",
+      "translation": {
+        "tr": "duygu",
+        "en": "feeling"
+      }
     },
     {
       "article": "der",
-      "word": "Gegensatz"
+      "word": "Gegensatz",
+      "translation": {
+        "tr": "Kontrast",
+        "en": "Contrast"
+      }
     },
     {
       "article": "das",
-      "word": "Gegenstück"
+      "word": "Gegenstück",
+      "translation": {
+        "tr": "muadili",
+        "en": "counterpart"
+      }
     },
     {
       "article": "der",
-      "word": "Geheimdienst"
+      "word": "Geheimdienst",
+      "translation": {
+        "tr": "Gizli Servis",
+        "en": "Secret Service"
+      }
     },
     {
       "article": "das",
-      "word": "Gehör"
+      "word": "Gehör",
+      "translation": {
+        "tr": "işitme",
+        "en": "hearing"
+      }
     },
     {
       "article": "die",
-      "word": "Geisel"
+      "word": "Geisel",
+      "translation": {
+        "tr": "rehine",
+        "en": "hostage"
+      }
     },
     {
       "article": "die",
-      "word": "Geldstrafe"
+      "word": "Geldstrafe",
+      "translation": {
+        "tr": "iyi",
+        "en": "Fine"
+      }
     },
     {
       "article": "der",
-      "word": "Gemeinderat"
+      "word": "Gemeinderat",
+      "translation": {
+        "tr": "Belediye meclisi",
+        "en": "Municipal council"
+      }
     },
     {
       "article": "die",
-      "word": "Gemeinsamkeit"
+      "word": "Gemeinsamkeit",
+      "translation": {
+        "tr": "ortak nokta",
+        "en": "Commonality"
+      }
     },
     {
       "article": "das",
-      "word": "Gemisch"
+      "word": "Gemisch",
+      "translation": {
+        "tr": "Karışım",
+        "en": "Mixture"
+      }
     },
     {
       "article": "das",
-      "word": "Gemüt"
+      "word": "Gemüt",
+      "translation": {
+        "tr": "zihin",
+        "en": "mind"
+      }
     },
     {
       "article": "das",
-      "word": "Gen"
+      "word": "Gen",
+      "translation": {
+        "tr": "Gen",
+        "en": "Gen"
+      }
     },
     {
       "article": "die",
-      "word": "Genauigkeit"
+      "word": "Genauigkeit",
+      "translation": {
+        "tr": "doğruluk",
+        "en": "Accuracy"
+      }
     },
     {
       "article": "die",
-      "word": "Genehmigung"
+      "word": "Genehmigung",
+      "translation": {
+        "tr": "Onay",
+        "en": "Approval"
+      }
     },
     {
       "article": "der",
-      "word": "Generalsekretär"
+      "word": "Generalsekretär",
+      "translation": {
+        "tr": "Genel Sekreter",
+        "en": "Secretary General"
+      }
     },
     {
       "article": "die",
-      "word": "Generation"
+      "word": "Generation",
+      "translation": {
+        "tr": "nesil",
+        "en": "generation"
+      }
     },
     {
       "article": "der",
-      "word": "Generator"
+      "word": "Generator",
+      "translation": {
+        "tr": "jeneratör",
+        "en": "generator"
+      }
     },
     {
       "article": "das",
-      "word": "Genie"
+      "word": "Genie",
+      "translation": {
+        "tr": "Dahi",
+        "en": "Genius"
+      }
     },
     {
       "article": "das",
-      "word": "Genre"
+      "word": "Genre",
+      "translation": {
+        "tr": "Tür",
+        "en": "Genre"
+      }
     },
     {
       "article": "der",
-      "word": "Gentleman"
+      "word": "Gentleman",
+      "translation": {
+        "tr": "Beyefendi",
+        "en": "Gentleman"
+      }
     },
     {
       "article": "der",
-      "word": "Genuss"
+      "word": "Genuss",
+      "translation": {
+        "tr": "Zevk",
+        "en": "Enjoyment"
+      }
     },
     {
       "article": "die",
-      "word": "Geografie"
+      "word": "Geografie",
+      "translation": {
+        "tr": "Coğrafya",
+        "en": "Geography"
+      }
     },
     {
       "article": "die",
-      "word": "Geometrie"
+      "word": "Geometrie",
+      "translation": {
+        "tr": "Geometri",
+        "en": "Geometry"
+      }
     },
     {
       "article": "die",
-      "word": "Gerechtigkeit"
+      "word": "Gerechtigkeit",
+      "translation": {
+        "tr": "Adalet",
+        "en": "Justice"
+      }
     },
     {
       "article": "das",
-      "word": "Gerede"
+      "word": "Gerede",
+      "translation": {
+        "tr": "Konuşma",
+        "en": "Talk"
+      }
     },
     {
       "article": "das",
-      "word": "Gericht"
+      "word": "Gericht",
+      "translation": {
+        "tr": "mahkeme",
+        "en": "court"
+      }
     },
     {
       "article": "die",
-      "word": "Gerichtsbarkeit"
+      "word": "Gerichtsbarkeit",
+      "translation": {
+        "tr": "Yargı yetkisi",
+        "en": "Jurisdiction"
+      }
     },
     {
       "article": "die",
-      "word": "Germanistik"
+      "word": "Germanistik",
+      "translation": {
+        "tr": "Almanca çalışmaları",
+        "en": "German studies"
+      }
     },
     {
       "article": "die",
-      "word": "Gesamtsumme"
+      "word": "Gesamtsumme",
+      "translation": {
+        "tr": "Toplam",
+        "en": "Total"
+      }
     },
     {
       "article": "der",
-      "word": "Geschäftsführer"
+      "word": "Geschäftsführer",
+      "translation": {
+        "tr": "Genel Müdür",
+        "en": "Managing Director"
+      }
     },
     {
       "article": "das",
-      "word": "Geschäftsjahr"
+      "word": "Geschäftsjahr",
+      "translation": {
+        "tr": "mali yıl",
+        "en": "fiscal year"
+      }
     },
     {
       "article": "der",
-      "word": "Geschäftsmann"
+      "word": "Geschäftsmann",
+      "translation": {
+        "tr": "İş adamı",
+        "en": "Businessman"
+      }
     },
     {
       "article": "das",
-      "word": "Geschehen"
+      "word": "Geschehen",
+      "translation": {
+        "tr": "oldu",
+        "en": "Happened"
+      }
     },
     {
       "article": "das",
-      "word": "Geschlecht"
+      "word": "Geschlecht",
+      "translation": {
+        "tr": "Cinsiyet",
+        "en": "Gender"
+      }
     },
     {
       "article": "das",
-      "word": "Geschrei"
+      "word": "Geschrei",
+      "translation": {
+        "tr": "Bağırmak",
+        "en": "Yelling"
+      }
     },
     {
       "article": "die",
-      "word": "Geschwindigkeit"
+      "word": "Geschwindigkeit",
+      "translation": {
+        "tr": "Hız",
+        "en": "Speed"
+      }
     },
     {
       "article": "der",
-      "word": "Gesellschafter"
+      "word": "Gesellschafter",
+      "translation": {
+        "tr": "hissedar",
+        "en": "shareholder"
+      }
     },
     {
       "article": "der",
-      "word": "Gesetzgeber"
+      "word": "Gesetzgeber",
+      "translation": {
+        "tr": "Yasama Meclisi",
+        "en": "Legislature"
+      }
     },
     {
       "article": "die",
-      "word": "Gesetzgebung"
+      "word": "Gesetzgebung",
+      "translation": {
+        "tr": "Mevzuat",
+        "en": "Legislation"
+      }
     },
     {
       "article": "der",
-      "word": "Gesichtspunkt"
+      "word": "Gesichtspunkt",
+      "translation": {
+        "tr": "bakış açısı",
+        "en": "point of view"
+      }
     },
     {
       "article": "das",
-      "word": "Gespür"
+      "word": "Gespür",
+      "translation": {
+        "tr": "yetenek",
+        "en": "flair"
+      }
     },
     {
       "article": "die",
-      "word": "Gestalt"
+      "word": "Gestalt",
+      "translation": {
+        "tr": "şekil",
+        "en": "shape"
+      }
     },
     {
       "article": "die",
-      "word": "Gestaltung"
+      "word": "Gestaltung",
+      "translation": {
+        "tr": "Tasarım",
+        "en": "Design"
+      }
     },
     {
       "article": "das",
-      "word": "Geständnis"
+      "word": "Geständnis",
+      "translation": {
+        "tr": "İtiraf",
+        "en": "Confession"
+      }
     },
     {
       "article": "der",
-      "word": "Gestank"
+      "word": "Gestank",
+      "translation": {
+        "tr": "Kokuşmuş",
+        "en": "Stink"
+      }
     },
     {
       "article": "die",
-      "word": "Gewähr"
+      "word": "Gewähr",
+      "translation": {
+        "tr": "Garanti",
+        "en": "Guarantee"
+      }
     },
     {
       "article": "die",
-      "word": "Gewalt"
+      "word": "Gewalt",
+      "translation": {
+        "tr": "Şiddet",
+        "en": "Violence"
+      }
     },
     {
       "article": "das",
-      "word": "Gewand"
+      "word": "Gewand",
+      "translation": {
+        "tr": "elbise",
+        "en": "robe"
+      }
     },
     {
       "article": "das",
-      "word": "Gewebe"
+      "word": "Gewebe",
+      "translation": {
+        "tr": "Doku",
+        "en": "Tissue"
+      }
     },
     {
       "article": "der",
-      "word": "Gewinn"
+      "word": "Gewinn",
+      "translation": {
+        "tr": "kâr",
+        "en": "profit"
+      }
     },
     {
       "article": "der",
-      "word": "Gewinner"
+      "word": "Gewinner",
+      "translation": {
+        "tr": "Kazanan",
+        "en": "Winner"
+      }
     },
     {
       "article": "das",
-      "word": "Gewissen"
+      "word": "Gewissen",
+      "translation": {
+        "tr": "vicdan",
+        "en": "conscience"
+      }
     },
     {
       "article": "die",
-      "word": "Gewissheit"
+      "word": "Gewissheit",
+      "translation": {
+        "tr": "kesinlik",
+        "en": "Certainty"
+      }
     },
     {
       "article": "die",
-      "word": "Gier"
+      "word": "Gier",
+      "translation": {
+        "tr": "Açgözlülük",
+        "en": "Greed"
+      }
     },
     {
       "article": "der",
-      "word": "Gipfel"
+      "word": "Gipfel",
+      "translation": {
+        "tr": "Zirve",
+        "en": "Summit"
+      }
     },
     {
       "article": "der",
-      "word": "Glaube"
+      "word": "Glaube",
+      "translation": {
+        "tr": "inanç",
+        "en": "Faith"
+      }
     },
     {
       "article": "der",
-      "word": "Gläubiger"
+      "word": "Gläubiger",
+      "translation": {
+        "tr": "alacaklı",
+        "en": "creditor"
+      }
     },
     {
       "article": "die",
-      "word": "Glaubwürdigkeit"
+      "word": "Glaubwürdigkeit",
+      "translation": {
+        "tr": "Güvenilirlik",
+        "en": "Credibility"
+      }
     },
     {
       "article": "das",
-      "word": "Gleichgewicht"
+      "word": "Gleichgewicht",
+      "translation": {
+        "tr": "Bakiye",
+        "en": "Balance"
+      }
     },
     {
       "article": "die",
-      "word": "Gleichheit"
+      "word": "Gleichheit",
+      "translation": {
+        "tr": "Eşitlik",
+        "en": "Equality"
+      }
     },
     {
       "article": "das",
-      "word": "Glied"
+      "word": "Glied",
+      "translation": {
+        "tr": "uzuv",
+        "en": "limb"
+      }
     },
     {
       "article": "die",
-      "word": "Gliederung"
+      "word": "Gliederung",
+      "translation": {
+        "tr": "Taslak",
+        "en": "Outline"
+      }
     },
     {
       "article": "die",
-      "word": "Globalisierung"
+      "word": "Globalisierung",
+      "translation": {
+        "tr": "Küreselleşme",
+        "en": "Globalization"
+      }
     },
     {
       "article": "der",
-      "word": "Glücksbringer"
+      "word": "Glücksbringer",
+      "translation": {
+        "tr": "Şanslı çekicilik",
+        "en": "Lucky charm"
+      }
     },
     {
       "article": "das",
-      "word": "Glücksspiel"
+      "word": "Glücksspiel",
+      "translation": {
+        "tr": "Kumar",
+        "en": "Gambling"
+      }
     },
     {
       "article": "die",
-      "word": "Gnade"
+      "word": "Gnade",
+      "translation": {
+        "tr": "zarafet",
+        "en": "Grace"
+      }
     },
     {
       "article": "der",
-      "word": "Gouverneur"
+      "word": "Gouverneur",
+      "translation": {
+        "tr": "Vali",
+        "en": "Governor"
+      }
     },
     {
       "article": "der",
-      "word": "Graf"
+      "word": "Graf",
+      "translation": {
+        "tr": "Sayım",
+        "en": "Count"
+      }
     },
     {
       "article": "die",
-      "word": "Grafik"
+      "word": "Grafik",
+      "translation": {
+        "tr": "Grafik",
+        "en": "Graphics"
+      }
     },
     {
       "article": "der",
-      "word": "Grafiker"
+      "word": "Grafiker",
+      "translation": {
+        "tr": "Grafik sanatçısı",
+        "en": "Graphic artist"
+      }
     },
     {
       "article": "die",
-      "word": "Grafschaft"
+      "word": "Grafschaft",
+      "translation": {
+        "tr": "ilçe",
+        "en": "county"
+      }
     },
     {
       "article": "der",
-      "word": "Granit"
+      "word": "Granit",
+      "translation": {
+        "tr": "Granit",
+        "en": "Granite"
+      }
     },
     {
       "article": "das",
-      "word": "Gremium"
+      "word": "Gremium",
+      "translation": {
+        "tr": "Komite",
+        "en": "Committee"
+      }
     },
     {
       "article": "der",
-      "word": "Grenzwert"
+      "word": "Grenzwert",
+      "translation": {
+        "tr": "sınır",
+        "en": "limit"
+      }
     },
     {
       "article": "das",
-      "word": "Grinsen"
+      "word": "Grinsen",
+      "translation": {
+        "tr": "sırıtış",
+        "en": "Grin"
+      }
     },
     {
       "article": "die",
-      "word": "Größenordnung"
+      "word": "Größenordnung",
+      "translation": {
+        "tr": "Büyüklük",
+        "en": "Magnitude"
+      }
     },
     {
       "article": "der",
-      "word": "Großteil"
+      "word": "Großteil",
+      "translation": {
+        "tr": "Çoğunluk",
+        "en": "Majority"
+      }
     },
     {
       "article": "die",
-      "word": "Gruft"
+      "word": "Gruft",
+      "translation": {
+        "tr": "Kripto",
+        "en": "Crypt"
+      }
     },
     {
       "article": "das",
-      "word": "Grundrecht"
+      "word": "Grundrecht",
+      "translation": {
+        "tr": "Temel hak",
+        "en": "Fundamental right"
+      }
     },
     {
       "article": "der",
-      "word": "Grundsatz"
+      "word": "Grundsatz",
+      "translation": {
+        "tr": "prensip",
+        "en": "principle"
+      }
     },
     {
       "article": "das",
-      "word": "Grundstück"
+      "word": "Grundstück",
+      "translation": {
+        "tr": "Mülkiyet",
+        "en": "Property"
+      }
     },
     {
       "article": "die",
-      "word": "Gründung"
+      "word": "Gründung",
+      "translation": {
+        "tr": "Kurucu",
+        "en": "Founding"
+      }
     },
     {
       "article": "das",
-      "word": "Grüne"
+      "word": "Grüne",
+      "translation": {
+        "tr": "Yeşiller",
+        "en": "Greens"
+      }
     },
     {
       "article": "die",
-      "word": "Guerilla"
+      "word": "Guerilla",
+      "translation": {
+        "tr": "Gerilla",
+        "en": "Guerrilla"
+      }
     },
     {
       "article": "die",
-      "word": "Gültigkeit"
+      "word": "Gültigkeit",
+      "translation": {
+        "tr": "Geçerlilik",
+        "en": "Validity"
+      }
     },
     {
       "article": "die",
-      "word": "Gunst"
+      "word": "Gunst",
+      "translation": {
+        "tr": "iyilik",
+        "en": "Favor"
+      }
     },
     {
       "article": "der",
-      "word": "Guru"
+      "word": "Guru",
+      "translation": {
+        "tr": "guru",
+        "en": "Guru"
+      }
     },
     {
       "article": "das",
-      "word": "Gutachten"
+      "word": "Gutachten",
+      "translation": {
+        "tr": "Rapor",
+        "en": "Report"
+      }
     },
     {
       "article": "die",
-      "word": "Haft"
+      "word": "Haft",
+      "translation": {
+        "tr": "Gözaltı",
+        "en": "Detention"
+      }
     },
     {
       "article": "der",
-      "word": "Haftbefehl"
+      "word": "Haftbefehl",
+      "translation": {
+        "tr": "Tutuklama emri",
+        "en": "Arrest warrant"
+      }
     },
     {
       "article": "der",
-      "word": "Häftling"
+      "word": "Häftling",
+      "translation": {
+        "tr": "Mahkum",
+        "en": "Prisoner"
+      }
     },
     {
       "article": "die",
-      "word": "Haftung"
+      "word": "Haftung",
+      "translation": {
+        "tr": "Sorumluluk",
+        "en": "Liability"
+      }
     },
     {
       "article": "die",
-      "word": "Haltung"
+      "word": "Haltung",
+      "translation": {
+        "tr": "Tutum",
+        "en": "Attitude"
+      }
     },
     {
       "article": "die",
-      "word": "Handvoll"
+      "word": "Handvoll",
+      "translation": {
+        "tr": "bir avuç",
+        "en": "handful"
+      }
     },
     {
       "article": "die",
-      "word": "Hardware"
+      "word": "Hardware",
+      "translation": {
+        "tr": "Donanım",
+        "en": "Hardware"
+      }
     },
     {
       "article": "die",
-      "word": "Harmonie"
+      "word": "Harmonie",
+      "translation": {
+        "tr": "Uyum",
+        "en": "Harmony"
+      }
     },
     {
       "article": "der",
-      "word": "Hass"
+      "word": "Hass",
+      "translation": {
+        "tr": "Nefret",
+        "en": "Hate"
+      }
     },
     {
       "article": "die",
-      "word": "Hast"
+      "word": "Hast",
+      "translation": {
+        "tr": "sen",
+        "en": "You"
+      }
     },
     {
       "article": "die",
-      "word": "Häufigkeit"
+      "word": "Häufigkeit",
+      "translation": {
+        "tr": "Frekans",
+        "en": "Frequency"
+      }
     },
     {
       "article": "das",
-      "word": "Hauptquartier"
+      "word": "Hauptquartier",
+      "translation": {
+        "tr": "Karargah",
+        "en": "Headquarters"
+      }
     },
     {
       "article": "die",
-      "word": "Heide"
+      "word": "Heide",
+      "translation": {
+        "tr": "Heath",
+        "en": "Heath"
+      }
     },
     {
       "article": "das",
-      "word": "Heilmittel"
+      "word": "Heilmittel",
+      "translation": {
+        "tr": "Çözüm",
+        "en": "Remedy"
+      }
     },
     {
       "article": "das",
-      "word": "Heimatland"
+      "word": "Heimatland",
+      "translation": {
+        "tr": "vatan",
+        "en": "homeland"
+      }
     },
     {
       "article": "das",
-      "word": "Heimweh"
+      "word": "Heimweh",
+      "translation": {
+        "tr": "Ev hasreti",
+        "en": "Homesickness"
+      }
     },
     {
       "article": "der",
-      "word": "Hektar"
+      "word": "Hektar",
+      "translation": {
+        "tr": "hektar",
+        "en": "hectares"
+      }
     },
     {
       "article": "die",
-      "word": "Hektik"
+      "word": "Hektik",
+      "translation": {
+        "tr": "koşuşturma",
+        "en": "hustle and bustle"
+      }
     },
     {
       "article": "die",
-      "word": "Herausforderung"
+      "word": "Herausforderung",
+      "translation": {
+        "tr": "Mücadele",
+        "en": "Challenge"
+      }
     },
     {
       "article": "der",
-      "word": "Herausgeber"
+      "word": "Herausgeber",
+      "translation": {
+        "tr": "Editör",
+        "en": "Editor"
+      }
     },
     {
       "article": "die",
-      "word": "Herkunft"
+      "word": "Herkunft",
+      "translation": {
+        "tr": "Menşei",
+        "en": "Origin"
+      }
     },
     {
       "article": "die",
-      "word": "Herrschaft"
+      "word": "Herrschaft",
+      "translation": {
+        "tr": "Hakimiyet",
+        "en": "Domination"
+      }
     },
     {
       "article": "die",
-      "word": "Herstellung"
+      "word": "Herstellung",
+      "translation": {
+        "tr": "İmalat",
+        "en": "Manufacturing"
+      }
     },
     {
       "article": "der",
-      "word": "Herzog"
+      "word": "Herzog",
+      "translation": {
+        "tr": "Dük",
+        "en": "Duke"
+      }
     },
     {
       "article": "die",
-      "word": "Hexerei"
+      "word": "Hexerei",
+      "translation": {
+        "tr": "Büyücülük",
+        "en": "Witchcraft"
+      }
     },
     {
       "article": "das",
-      "word": "Highlight"
+      "word": "Highlight",
+      "translation": {
+        "tr": "Vurgula",
+        "en": "Highlight"
+      }
     },
     {
       "article": "das",
-      "word": "Hilfsmittel"
+      "word": "Hilfsmittel",
+      "translation": {
+        "tr": "Yardımlar",
+        "en": "Aids"
+      }
     },
     {
       "article": "der",
-      "word": "Hinblick"
+      "word": "Hinblick",
+      "translation": {
+        "tr": "görünüm",
+        "en": "view"
+      }
     },
     {
       "article": "das",
-      "word": "Hindernis"
+      "word": "Hindernis",
+      "translation": {
+        "tr": "Engel",
+        "en": "Obstacle"
+      }
     },
     {
       "article": "die",
-      "word": "Hinrichtung"
+      "word": "Hinrichtung",
+      "translation": {
+        "tr": "Yürütme",
+        "en": "Execution"
+      }
     },
     {
       "article": "die",
-      "word": "Hinsicht"
+      "word": "Hinsicht",
+      "translation": {
+        "tr": "saygı",
+        "en": "respect"
+      }
     },
     {
       "article": "der",
-      "word": "Historiker"
+      "word": "Historiker",
+      "translation": {
+        "tr": "Tarihçi",
+        "en": "Historian"
+      }
     },
     {
       "article": "die",
-      "word": "Hochschule"
+      "word": "Hochschule",
+      "translation": {
+        "tr": "üniversite",
+        "en": "College"
+      }
     },
     {
       "article": "das",
-      "word": "Hochwasser"
+      "word": "Hochwasser",
+      "translation": {
+        "tr": "Sel",
+        "en": "Flood"
+      }
     },
     {
       "article": "der",
-      "word": "Humor"
+      "word": "Humor",
+      "translation": {
+        "tr": "mizah",
+        "en": "humor"
+      }
     },
     {
       "article": "die",
-      "word": "Hypothek"
+      "word": "Hypothek",
+      "translation": {
+        "tr": "İpotek",
+        "en": "Mortgage"
+      }
     },
     {
       "article": "die",
-      "word": "Hypothese"
+      "word": "Hypothese",
+      "translation": {
+        "tr": "Hipotez",
+        "en": "Hypothesis"
+      }
     },
     {
       "article": "die",
-      "word": "Hysterie"
+      "word": "Hysterie",
+      "translation": {
+        "tr": "Histeri",
+        "en": "Hysteria"
+      }
     },
     {
       "article": "das",
-      "word": "Ideal"
+      "word": "Ideal",
+      "translation": {
+        "tr": "İdeal",
+        "en": "Ideal"
+      }
     },
     {
       "article": "die",
-      "word": "Identität"
+      "word": "Identität",
+      "translation": {
+        "tr": "Kimlik",
+        "en": "Identity"
+      }
     },
     {
       "article": "die",
-      "word": "Illusion"
+      "word": "Illusion",
+      "translation": {
+        "tr": "yanılsama",
+        "en": "illusion"
+      }
     },
     {
       "article": "die",
-      "word": "Illustration"
+      "word": "Illustration",
+      "translation": {
+        "tr": "illüstrasyon",
+        "en": "illustration"
+      }
     },
     {
       "article": "das",
-      "word": "Image"
+      "word": "Image",
+      "translation": {
+        "tr": "Resim",
+        "en": "Image"
+      }
     },
     {
       "article": "das",
-      "word": "Immunsystem"
+      "word": "Immunsystem",
+      "translation": {
+        "tr": "bağışıklık sistemi",
+        "en": "immune system"
+      }
     },
     {
       "article": "der",
-      "word": "Import"
+      "word": "Import",
+      "translation": {
+        "tr": "İthalat",
+        "en": "Import"
+      }
     },
     {
       "article": "der",
-      "word": "Impuls"
+      "word": "Impuls",
+      "translation": {
+        "tr": "Dürtü",
+        "en": "Impulse"
+      }
     },
     {
       "article": "der",
-      "word": "Index"
+      "word": "Index",
+      "translation": {
+        "tr": "Dizin",
+        "en": "Index"
+      }
     },
     {
       "article": "der",
-      "word": "Indikator"
+      "word": "Indikator",
+      "translation": {
+        "tr": "Gösterge",
+        "en": "Indicator"
+      }
     },
     {
       "article": "das",
-      "word": "Individuum"
+      "word": "Individuum",
+      "translation": {
+        "tr": "bireysel",
+        "en": "individual"
+      }
     },
     {
       "article": "das",
-      "word": "Indiz"
+      "word": "Indiz",
+      "translation": {
+        "tr": "Endikasyon",
+        "en": "Indication"
+      }
     },
     {
       "article": "die",
-      "word": "Infektion"
+      "word": "Infektion",
+      "translation": {
+        "tr": "enfeksiyon",
+        "en": "infection"
+      }
     },
     {
       "article": "das",
-      "word": "Inferno"
+      "word": "Inferno",
+      "translation": {
+        "tr": "Cehennem",
+        "en": "Inferno"
+      }
     },
     {
       "article": "die",
-      "word": "Inflation"
+      "word": "Inflation",
+      "translation": {
+        "tr": "Enflasyon",
+        "en": "Inflation"
+      }
     },
     {
       "article": "die",
-      "word": "Inflationsrate"
+      "word": "Inflationsrate",
+      "translation": {
+        "tr": "Enflasyon oranı",
+        "en": "Inflation rate"
+      }
     },
     {
       "article": "die",
-      "word": "Informatik"
+      "word": "Informatik",
+      "translation": {
+        "tr": "Bilgisayar Bilimi",
+        "en": "Computer Science"
+      }
     },
     {
       "article": "die",
-      "word": "Infrastruktur"
+      "word": "Infrastruktur",
+      "translation": {
+        "tr": "Altyapı",
+        "en": "Infrastructure"
+      }
     },
     {
       "article": "der",
-      "word": "Ingenieur"
+      "word": "Ingenieur",
+      "translation": {
+        "tr": "Mühendis",
+        "en": "Engineer"
+      }
     },
     {
       "article": "die",
-      "word": "Initiative"
+      "word": "Initiative",
+      "translation": {
+        "tr": "girişim",
+        "en": "initiative"
+      }
     },
     {
       "article": "der",
-      "word": "Innenminister"
+      "word": "Innenminister",
+      "translation": {
+        "tr": "İçişleri Bakanı",
+        "en": "Interior Minister"
+      }
     },
     {
       "article": "der",
-      "word": "Innenraum"
+      "word": "Innenraum",
+      "translation": {
+        "tr": "İç mekan",
+        "en": "Interior"
+      }
     },
     {
       "article": "die",
-      "word": "Innenstadt"
+      "word": "Innenstadt",
+      "translation": {
+        "tr": "Şehir merkezi",
+        "en": "Downtown"
+      }
     },
     {
       "article": "die",
-      "word": "Innovation"
+      "word": "Innovation",
+      "translation": {
+        "tr": "Yenilik",
+        "en": "Innovation"
+      }
     },
     {
       "article": "der",
-      "word": "Insasse"
+      "word": "Insasse",
+      "translation": {
+        "tr": "mahkum",
+        "en": "inmate"
+      }
     },
     {
       "article": "der",
-      "word": "Insider"
+      "word": "Insider",
+      "translation": {
+        "tr": "İçeriden öğrenenler",
+        "en": "Insiders"
+      }
     },
     {
       "article": "die",
-      "word": "Inspektion"
+      "word": "Inspektion",
+      "translation": {
+        "tr": "Muayene",
+        "en": "Inspection"
+      }
     },
     {
       "article": "der",
-      "word": "Inspektor"
+      "word": "Inspektor",
+      "translation": {
+        "tr": "Müfettiş",
+        "en": "Inspector"
+      }
     },
     {
       "article": "die",
-      "word": "Inspiration"
+      "word": "Inspiration",
+      "translation": {
+        "tr": "İlham",
+        "en": "Inspiration"
+      }
     },
     {
       "article": "die",
-      "word": "Installation"
+      "word": "Installation",
+      "translation": {
+        "tr": "Kurulum",
+        "en": "Installation"
+      }
     },
     {
       "article": "die",
-      "word": "Instanz"
+      "word": "Instanz",
+      "translation": {
+        "tr": "örnek",
+        "en": "instance"
+      }
     },
     {
       "article": "der",
-      "word": "Instinkt"
+      "word": "Instinkt",
+      "translation": {
+        "tr": "İçgüdü",
+        "en": "Instinct"
+      }
     },
     {
       "article": "das",
-      "word": "Institut"
+      "word": "Institut",
+      "translation": {
+        "tr": "Enstitü",
+        "en": "Institute"
+      }
     },
     {
       "article": "die",
-      "word": "Institution"
+      "word": "Institution",
+      "translation": {
+        "tr": "kurum",
+        "en": "institution"
+      }
     },
     {
       "article": "das",
-      "word": "Insulin"
+      "word": "Insulin",
+      "translation": {
+        "tr": "insülin",
+        "en": "Insulin"
+      }
     },
     {
       "article": "die",
-      "word": "Inszenierung"
+      "word": "Inszenierung",
+      "translation": {
+        "tr": "Evreleme",
+        "en": "Staging"
+      }
     },
     {
       "article": "die",
-      "word": "Integration"
+      "word": "Integration",
+      "translation": {
+        "tr": "Entegrasyon",
+        "en": "Integration"
+      }
     },
     {
       "article": "die",
-      "word": "Integrität"
+      "word": "Integrität",
+      "translation": {
+        "tr": "Dürüstlük",
+        "en": "Integrity"
+      }
     },
     {
       "article": "die",
-      "word": "Intelligenz"
+      "word": "Intelligenz",
+      "translation": {
+        "tr": "İstihbarat",
+        "en": "Intelligence"
+      }
     },
     {
       "article": "die",
-      "word": "Intensität"
+      "word": "Intensität",
+      "translation": {
+        "tr": "Yoğunluk",
+        "en": "Intensity"
+      }
     },
     {
       "article": "die",
-      "word": "Interaktion"
+      "word": "Interaktion",
+      "translation": {
+        "tr": "Etkileşim",
+        "en": "Interaction"
+      }
     },
     {
       "article": "die",
-      "word": "Interpretation"
+      "word": "Interpretation",
+      "translation": {
+        "tr": "Yorumlama",
+        "en": "Interpretation"
+      }
     },
     {
       "article": "die",
-      "word": "Intervention"
+      "word": "Intervention",
+      "translation": {
+        "tr": "Müdahale",
+        "en": "Intervention"
+      }
     },
     {
       "article": "die",
-      "word": "Invasion"
+      "word": "Invasion",
+      "translation": {
+        "tr": "istila",
+        "en": "invasion"
+      }
     },
     {
       "article": "die",
-      "word": "Investition"
+      "word": "Investition",
+      "translation": {
+        "tr": "Yatırım",
+        "en": "Investment"
+      }
     },
     {
       "article": "der",
-      "word": "Investor"
+      "word": "Investor",
+      "translation": {
+        "tr": "yatırımcı",
+        "en": "investor"
+      }
     },
     {
       "article": "die",
-      "word": "Ironie"
+      "word": "Ironie",
+      "translation": {
+        "tr": "ironi",
+        "en": "Irony"
+      }
     },
     {
       "article": "der",
-      "word": "Irrtum"
+      "word": "Irrtum",
+      "translation": {
+        "tr": "hata",
+        "en": "Mistake"
+      }
     },
     {
       "article": "die",
-      "word": "Isolation"
+      "word": "Isolation",
+      "translation": {
+        "tr": "izolasyon",
+        "en": "Isolation"
+      }
     },
     {
       "article": "die",
-      "word": "Jagd"
+      "word": "Jagd",
+      "translation": {
+        "tr": "Avcılık",
+        "en": "Hunting"
+      }
     },
     {
       "article": "der",
-      "word": "Jahrestag"
+      "word": "Jahrestag",
+      "translation": {
+        "tr": "yıldönümü",
+        "en": "anniversary"
+      }
     },
     {
       "article": "der",
-      "word": "Jahrgang"
+      "word": "Jahrgang",
+      "translation": {
+        "tr": "vintage",
+        "en": "vintage"
+      }
     },
     {
       "article": "der",
-      "word": "Jazz"
+      "word": "Jazz",
+      "translation": {
+        "tr": "Caz",
+        "en": "Jazz"
+      }
     },
     {
       "article": "der",
-      "word": "Jubel"
+      "word": "Jubel",
+      "translation": {
+        "tr": "Şerefe",
+        "en": "Cheers"
+      }
     },
     {
       "article": "das",
-      "word": "Jubiläum"
+      "word": "Jubiläum",
+      "translation": {
+        "tr": "yıldönümü",
+        "en": "anniversary"
+      }
     },
     {
       "article": "der",
-      "word": "Jude"
+      "word": "Jude",
+      "translation": {
+        "tr": "Yahudi",
+        "en": "Jew"
+      }
     },
     {
       "article": "die",
-      "word": "Jugend"
+      "word": "Jugend",
+      "translation": {
+        "tr": "Gençlik",
+        "en": "Youth"
+      }
     },
     {
       "article": "der",
-      "word": "Jurist"
+      "word": "Jurist",
+      "translation": {
+        "tr": "avukat",
+        "en": "lawyer"
+      }
     },
     {
       "article": "die",
-      "word": "Jury"
+      "word": "Jury",
+      "translation": {
+        "tr": "Jüri",
+        "en": "Jury"
+      }
     },
     {
       "article": "die",
-      "word": "Justiz"
+      "word": "Justiz",
+      "translation": {
+        "tr": "Adalet",
+        "en": "Justice"
+      }
     },
     {
       "article": "das",
-      "word": "Kabarett"
+      "word": "Kabarett",
+      "translation": {
+        "tr": "Kabare",
+        "en": "Cabaret"
+      }
     },
     {
       "article": "das",
-      "word": "Kabinett"
+      "word": "Kabinett",
+      "translation": {
+        "tr": "Dolap",
+        "en": "Cabinet"
+      }
     },
     {
       "article": "der",
-      "word": "Kaiser"
+      "word": "Kaiser",
+      "translation": {
+        "tr": "İmparator",
+        "en": "Emperor"
+      }
     },
     {
       "article": "die",
-      "word": "Kampagne"
+      "word": "Kampagne",
+      "translation": {
+        "tr": "kampanya",
+        "en": "campaign"
+      }
     },
     {
       "article": "der",
-      "word": "Kämpfer"
+      "word": "Kämpfer",
+      "translation": {
+        "tr": "Dövüşçü",
+        "en": "Fighter"
+      }
     },
     {
       "article": "der",
-      "word": "Kampfgeist"
+      "word": "Kampfgeist",
+      "translation": {
+        "tr": "mücadele ruhu",
+        "en": "fighting spirit"
+      }
     },
     {
       "article": "der",
-      "word": "Kanton"
+      "word": "Kanton",
+      "translation": {
+        "tr": "Kanton",
+        "en": "Canton"
+      }
     },
     {
       "article": "die",
-      "word": "Kanzlei"
+      "word": "Kanzlei",
+      "translation": {
+        "tr": "Hukuk firması",
+        "en": "Law firm"
+      }
     },
     {
       "article": "die",
-      "word": "Kapazität"
+      "word": "Kapazität",
+      "translation": {
+        "tr": "Kapasite",
+        "en": "Capacity"
+      }
     },
     {
       "article": "das",
-      "word": "Kapital"
+      "word": "Kapital",
+      "translation": {
+        "tr": "Sermaye",
+        "en": "Capital"
+      }
     },
     {
       "article": "der",
-      "word": "Kapitalismus"
+      "word": "Kapitalismus",
+      "translation": {
+        "tr": "Kapitalizm",
+        "en": "Capitalism"
+      }
     },
     {
       "article": "die",
-      "word": "Karriere"
+      "word": "Karriere",
+      "translation": {
+        "tr": "Kariyer",
+        "en": "Career"
+      }
     },
     {
       "article": "der",
-      "word": "Katalysator"
+      "word": "Katalysator",
+      "translation": {
+        "tr": "Katalizör",
+        "en": "Catalyst"
+      }
     },
     {
       "article": "die",
-      "word": "Katastrophe"
+      "word": "Katastrophe",
+      "translation": {
+        "tr": "Felaket",
+        "en": "Catastrophe"
+      }
     },
     {
       "article": "die",
-      "word": "Kategorie"
+      "word": "Kategorie",
+      "translation": {
+        "tr": "Kategori",
+        "en": "Category"
+      }
     },
     {
       "article": "die",
-      "word": "Kaution"
+      "word": "Kaution",
+      "translation": {
+        "tr": "Mevduat",
+        "en": "Deposit"
+      }
     },
     {
       "article": "die",
-      "word": "Kenntnis"
+      "word": "Kenntnis",
+      "translation": {
+        "tr": "Bilgi",
+        "en": "Knowledge"
+      }
     },
     {
       "article": "der",
-      "word": "Killer"
+      "word": "Killer",
+      "translation": {
+        "tr": "Katiller",
+        "en": "Killers"
+      }
     },
     {
       "article": "die",
-      "word": "Klage"
+      "word": "Klage",
+      "translation": {
+        "tr": "dava",
+        "en": "Lawsuit"
+      }
     },
     {
       "article": "die",
-      "word": "Klassifizierung"
+      "word": "Klassifizierung",
+      "translation": {
+        "tr": "sınıflandırma",
+        "en": "Classification"
+      }
     },
     {
       "article": "der",
-      "word": "Klassiker"
+      "word": "Klassiker",
+      "translation": {
+        "tr": "Klasik",
+        "en": "Classic"
+      }
     },
     {
       "article": "die",
-      "word": "Klausel"
+      "word": "Klausel",
+      "translation": {
+        "tr": "madde",
+        "en": "clause"
+      }
     },
     {
       "article": "die",
-      "word": "Klausur"
+      "word": "Klausur",
+      "translation": {
+        "tr": "Sınav",
+        "en": "Exam"
+      }
     },
     {
       "article": "der",
-      "word": "Klimawandel"
+      "word": "Klimawandel",
+      "translation": {
+        "tr": "İklim değişikliği",
+        "en": "Climate change"
+      }
     },
     {
       "article": "der",
-      "word": "Klotz"
+      "word": "Klotz",
+      "translation": {
+        "tr": "Klotz",
+        "en": "Klotz"
+      }
     },
     {
       "article": "die",
-      "word": "Kluft"
+      "word": "Kluft",
+      "translation": {
+        "tr": "Böl",
+        "en": "Divide"
+      }
     },
     {
       "article": "die",
-      "word": "Koalition"
+      "word": "Koalition",
+      "translation": {
+        "tr": "Koalisyon",
+        "en": "Coalition"
+      }
     },
     {
       "article": "der",
-      "word": "Kohlenstoff"
+      "word": "Kohlenstoff",
+      "translation": {
+        "tr": "Karbon",
+        "en": "Carbon"
+      }
     },
     {
       "article": "der",
-      "word": "Kollaps"
+      "word": "Kollaps",
+      "translation": {
+        "tr": "Daralt",
+        "en": "Collapse"
+      }
     },
     {
       "article": "die",
-      "word": "Kollision"
+      "word": "Kollision",
+      "translation": {
+        "tr": "çarpışma",
+        "en": "collision"
+      }
     },
     {
       "article": "die",
-      "word": "Kombination"
+      "word": "Kombination",
+      "translation": {
+        "tr": "Kombinasyon",
+        "en": "Combination"
+      }
     },
     {
       "article": "das",
-      "word": "Komitee"
+      "word": "Komitee",
+      "translation": {
+        "tr": "Komite",
+        "en": "Committee"
+      }
     },
     {
       "article": "der",
-      "word": "Kommandant"
+      "word": "Kommandant",
+      "translation": {
+        "tr": "Komutan",
+        "en": "Commander"
+      }
     },
     {
       "article": "das",
-      "word": "Kommando"
+      "word": "Kommando",
+      "translation": {
+        "tr": "Komut",
+        "en": "Command"
+      }
     },
     {
       "article": "die",
-      "word": "Kommission"
+      "word": "Kommission",
+      "translation": {
+        "tr": "Komisyon",
+        "en": "Commission"
+      }
     },
     {
       "article": "die",
-      "word": "Kommune"
+      "word": "Kommune",
+      "translation": {
+        "tr": "komün",
+        "en": "commune"
+      }
     },
     {
       "article": "die",
-      "word": "Kommunikation"
+      "word": "Kommunikation",
+      "translation": {
+        "tr": "İletişim",
+        "en": "Communication"
+      }
     },
     {
       "article": "die",
-      "word": "Komödie"
+      "word": "Komödie",
+      "translation": {
+        "tr": "Komedi",
+        "en": "Comedy"
+      }
     },
     {
       "article": "die",
-      "word": "Kompetenz"
+      "word": "Kompetenz",
+      "translation": {
+        "tr": "Yetkinlik",
+        "en": "Competence"
+      }
     },
     {
       "article": "der",
-      "word": "Komplex"
+      "word": "Komplex",
+      "translation": {
+        "tr": "Karmaşık",
+        "en": "Complex"
+      }
     },
     {
       "article": "die",
-      "word": "Komponente"
+      "word": "Komponente",
+      "translation": {
+        "tr": "bileşen",
+        "en": "component"
+      }
     },
     {
       "article": "der",
-      "word": "Komponist"
+      "word": "Komponist",
+      "translation": {
+        "tr": "Besteci",
+        "en": "Composer"
+      }
     },
     {
       "article": "der",
-      "word": "Kompromiss"
+      "word": "Kompromiss",
+      "translation": {
+        "tr": "Uzlaşma",
+        "en": "Compromise"
+      }
     },
     {
       "article": "die",
-      "word": "Konferenz"
+      "word": "Konferenz",
+      "translation": {
+        "tr": "Konferans",
+        "en": "Conference"
+      }
     },
     {
       "article": "die",
-      "word": "Konfiguration"
+      "word": "Konfiguration",
+      "translation": {
+        "tr": "Yapılandırma",
+        "en": "Configuration"
+      }
     },
     {
       "article": "die",
-      "word": "Konfrontation"
+      "word": "Konfrontation",
+      "translation": {
+        "tr": "Yüzleşme",
+        "en": "Confrontation"
+      }
     },
     {
       "article": "der",
-      "word": "Kongress"
+      "word": "Kongress",
+      "translation": {
+        "tr": "Kongre",
+        "en": "Congress"
+      }
     },
     {
       "article": "die",
-      "word": "Konjunktur"
+      "word": "Konjunktur",
+      "translation": {
+        "tr": "ekonomik durum",
+        "en": "economic situation"
+      }
     },
     {
       "article": "der",
-      "word": "Konkurrent"
+      "word": "Konkurrent",
+      "translation": {
+        "tr": "rakip",
+        "en": "competitor"
+      }
     },
     {
       "article": "die",
-      "word": "Konkurrenz"
+      "word": "Konkurrenz",
+      "translation": {
+        "tr": "Rekabet",
+        "en": "Competition"
+      }
     },
     {
       "article": "das",
-      "word": "Können"
+      "word": "Können",
+      "translation": {
+        "tr": "Yapabilir",
+        "en": "Can"
+      }
     },
     {
       "article": "der",
-      "word": "Konsens"
+      "word": "Konsens",
+      "translation": {
+        "tr": "Konsensüs",
+        "en": "Consensus"
+      }
     },
     {
       "article": "die",
-      "word": "Konsequenz"
+      "word": "Konsequenz",
+      "translation": {
+        "tr": "Sonuç",
+        "en": "Consequence"
+      }
     },
     {
       "article": "die",
-      "word": "Konsistenz"
+      "word": "Konsistenz",
+      "translation": {
+        "tr": "Tutarlılık",
+        "en": "Consistency"
+      }
     },
     {
       "article": "die",
-      "word": "Konstante"
+      "word": "Konstante",
+      "translation": {
+        "tr": "Sabit",
+        "en": "Constant"
+      }
     },
     {
       "article": "die",
-      "word": "Konstruktion"
+      "word": "Konstruktion",
+      "translation": {
+        "tr": "İnşaat",
+        "en": "Construction"
+      }
     },
     {
       "article": "das",
-      "word": "Konsulat"
+      "word": "Konsulat",
+      "translation": {
+        "tr": "Konsolosluk",
+        "en": "Consulate"
+      }
     },
     {
       "article": "der",
-      "word": "Konsument"
+      "word": "Konsument",
+      "translation": {
+        "tr": "tüketici",
+        "en": "consumer"
+      }
     },
     {
       "article": "der",
-      "word": "Kontext"
+      "word": "Kontext",
+      "translation": {
+        "tr": "Bağlam",
+        "en": "Context"
+      }
     },
     {
       "article": "die",
-      "word": "Kontroverse"
+      "word": "Kontroverse",
+      "translation": {
+        "tr": "Tartışma",
+        "en": "Controversy"
+      }
     },
     {
       "article": "die",
-      "word": "Konzentration"
+      "word": "Konzentration",
+      "translation": {
+        "tr": "Konsantrasyon",
+        "en": "Concentration"
+      }
     },
     {
       "article": "die",
-      "word": "Konzeption"
+      "word": "Konzeption",
+      "translation": {
+        "tr": "gebelik",
+        "en": "Conception"
+      }
     },
     {
       "article": "der",
-      "word": "Konzern"
+      "word": "Konzern",
+      "translation": {
+        "tr": "Grup",
+        "en": "Group"
+      }
     },
     {
       "article": "die",
-      "word": "Kooperation"
+      "word": "Kooperation",
+      "translation": {
+        "tr": "İşbirliği",
+        "en": "Cooperation"
+      }
     },
     {
       "article": "die",
-      "word": "Koordination"
+      "word": "Koordination",
+      "translation": {
+        "tr": "Koordinasyon",
+        "en": "Coordination"
+      }
     },
     {
       "article": "der",
-      "word": "Koordinator"
+      "word": "Koordinator",
+      "translation": {
+        "tr": "Koordinatör",
+        "en": "Coordinator"
+      }
     },
     {
       "article": "die",
-      "word": "Körpersprache"
+      "word": "Körpersprache",
+      "translation": {
+        "tr": "Beden dili",
+        "en": "Body language"
+      }
     },
     {
       "article": "die",
-      "word": "Korrelation"
+      "word": "Korrelation",
+      "translation": {
+        "tr": "Korelasyon",
+        "en": "Correlation"
+      }
     },
     {
       "article": "die",
-      "word": "Korrespondenz"
+      "word": "Korrespondenz",
+      "translation": {
+        "tr": "Yazışma",
+        "en": "Correspondence"
+      }
     },
     {
       "article": "die",
-      "word": "Korruption"
+      "word": "Korruption",
+      "translation": {
+        "tr": "Yolsuzluk",
+        "en": "Corruption"
+      }
     },
     {
       "article": "der",
-      "word": "Kosmos"
+      "word": "Kosmos",
+      "translation": {
+        "tr": "Evren",
+        "en": "Cosmos"
+      }
     },
     {
       "article": "der",
-      "word": "Kratzer"
+      "word": "Kratzer",
+      "translation": {
+        "tr": "çizikler",
+        "en": "Scratches"
+      }
     },
     {
       "article": "die",
-      "word": "Kreation"
+      "word": "Kreation",
+      "translation": {
+        "tr": "Yaratılış",
+        "en": "Creation"
+      }
     },
     {
       "article": "die",
-      "word": "Kreativität"
+      "word": "Kreativität",
+      "translation": {
+        "tr": "Yaratıcılık",
+        "en": "Creativity"
+      }
     },
     {
       "article": "der",
-      "word": "Krebs"
+      "word": "Krebs",
+      "translation": {
+        "tr": "Kanser",
+        "en": "Cancer"
+      }
     },
     {
       "article": "der",
-      "word": "Kreislauf"
+      "word": "Kreislauf",
+      "translation": {
+        "tr": "Dolaşım",
+        "en": "Circulation"
+      }
     },
     {
       "article": "die",
-      "word": "Kreuzfahrt"
+      "word": "Kreuzfahrt",
+      "translation": {
+        "tr": "Yolculuk",
+        "en": "Cruise"
+      }
     },
     {
       "article": "der",
-      "word": "Krieger"
+      "word": "Krieger",
+      "translation": {
+        "tr": "Savaşçı",
+        "en": "Warrior"
+      }
     },
     {
       "article": "der",
-      "word": "Kristall"
+      "word": "Kristall",
+      "translation": {
+        "tr": "Kristal",
+        "en": "Crystal"
+      }
     },
     {
       "article": "das",
-      "word": "Kriterium"
+      "word": "Kriterium",
+      "translation": {
+        "tr": "kriter",
+        "en": "criterion"
+      }
     },
     {
       "article": "die",
-      "word": "Kulisse"
+      "word": "Kulisse",
+      "translation": {
+        "tr": "Arka plan",
+        "en": "Backdrop"
+      }
     },
     {
       "article": "der",
-      "word": "Kult"
+      "word": "Kult",
+      "translation": {
+        "tr": "Kült",
+        "en": "Cult"
+      }
     },
     {
       "article": "die",
-      "word": "Kündigung"
+      "word": "Kündigung",
+      "translation": {
+        "tr": "Fesih",
+        "en": "Termination"
+      }
     },
     {
       "article": "der",
-      "word": "Kunststoff"
+      "word": "Kunststoff",
+      "translation": {
+        "tr": "Plastik",
+        "en": "Plastic"
+      }
     },
     {
       "article": "das",
-      "word": "Kunstwerk"
+      "word": "Kunstwerk",
+      "translation": {
+        "tr": "Sanat eseri",
+        "en": "Artwork"
+      }
     },
     {
       "article": "das",
-      "word": "Kupfer"
+      "word": "Kupfer",
+      "translation": {
+        "tr": "Bakır",
+        "en": "Copper"
+      }
     },
     {
       "article": "der",
-      "word": "Kurfürst"
+      "word": "Kurfürst",
+      "translation": {
+        "tr": "Seçmen",
+        "en": "Elector"
+      }
     },
     {
       "article": "das",
-      "word": "Lächeln"
+      "word": "Lächeln",
+      "translation": {
+        "tr": "Gülümseme",
+        "en": "Smile"
+      }
     },
     {
       "article": "die",
-      "word": "Ladung"
+      "word": "Ladung",
+      "translation": {
+        "tr": "Şarj",
+        "en": "Charge"
+      }
     },
     {
       "article": "die",
-      "word": "Lähmung"
+      "word": "Lähmung",
+      "translation": {
+        "tr": "felç",
+        "en": "paralysis"
+      }
     },
     {
       "article": "die",
-      "word": "Landesregierung"
+      "word": "Landesregierung",
+      "translation": {
+        "tr": "Eyalet hükümeti",
+        "en": "State government"
+      }
     },
     {
       "article": "der",
-      "word": "Landkreis"
+      "word": "Landkreis",
+      "translation": {
+        "tr": "Bölge",
+        "en": "District"
+      }
     },
     {
       "article": "der",
-      "word": "Landtag"
+      "word": "Landtag",
+      "translation": {
+        "tr": "Eyalet Parlamentosu",
+        "en": "State Parliament"
+      }
     },
     {
       "article": "der",
-      "word": "Laser"
+      "word": "Laser",
+      "translation": {
+        "tr": "Lazerler",
+        "en": "Lasers"
+      }
     },
     {
       "article": "die",
-      "word": "Laufbahn"
+      "word": "Laufbahn",
+      "translation": {
+        "tr": "Kariyer",
+        "en": "Career"
+      }
     },
     {
       "article": "die",
-      "word": "Laufzeit"
+      "word": "Laufzeit",
+      "translation": {
+        "tr": "Süre",
+        "en": "Duration"
+      }
     },
     {
       "article": "das",
-      "word": "Lebensjahr"
+      "word": "Lebensjahr",
+      "translation": {
+        "tr": "yaşam yılı",
+        "en": "year of life"
+      }
     },
     {
       "article": "der",
-      "word": "Lebenslauf"
+      "word": "Lebenslauf",
+      "translation": {
+        "tr": "CV",
+        "en": "CV"
+      }
     },
     {
       "article": "die",
-      "word": "Legende"
+      "word": "Legende",
+      "translation": {
+        "tr": "Efsane",
+        "en": "Legend"
+      }
     },
     {
       "article": "der",
-      "word": "Lehrmeister"
+      "word": "Lehrmeister",
+      "translation": {
+        "tr": "öğretmen",
+        "en": "teacher"
+      }
     },
     {
       "article": "der",
-      "word": "Lehrstuhl"
+      "word": "Lehrstuhl",
+      "translation": {
+        "tr": "Sandalye",
+        "en": "Chair"
+      }
     },
     {
       "article": "der",
-      "word": "Leib"
+      "word": "Leib",
+      "translation": {
+        "tr": "vücut",
+        "en": "body"
+      }
     },
     {
       "article": "die",
-      "word": "Leiche"
+      "word": "Leiche",
+      "translation": {
+        "tr": "Ceset",
+        "en": "Corpse"
+      }
     },
     {
       "article": "die",
-      "word": "Leichtigkeit"
+      "word": "Leichtigkeit",
+      "translation": {
+        "tr": "hafiflik",
+        "en": "lightness"
+      }
     },
     {
       "article": "das",
-      "word": "Leiden"
+      "word": "Leiden",
+      "translation": {
+        "tr": "acı çekmek",
+        "en": "suffering"
+      }
     },
     {
       "article": "die",
-      "word": "Leidenschaft"
+      "word": "Leidenschaft",
+      "translation": {
+        "tr": "Tutku",
+        "en": "Passion"
+      }
     },
     {
       "article": "die",
-      "word": "Leistungsfähigkeit"
+      "word": "Leistungsfähigkeit",
+      "translation": {
+        "tr": "performans",
+        "en": "performance"
+      }
     },
     {
       "article": "die",
-      "word": "Leitung"
+      "word": "Leitung",
+      "translation": {
+        "tr": "yönetim",
+        "en": "management"
+      }
     },
     {
       "article": "die",
-      "word": "Lektüre"
+      "word": "Lektüre",
+      "translation": {
+        "tr": "Okuma",
+        "en": "Reading"
+      }
     },
     {
       "article": "die",
-      "word": "Lesung"
+      "word": "Lesung",
+      "translation": {
+        "tr": "Okuma",
+        "en": "Reading"
+      }
     },
     {
       "article": "das",
-      "word": "Letzte"
+      "word": "Letzte",
+      "translation": {
+        "tr": "Sonuncusu",
+        "en": "Last one"
+      }
     },
     {
       "article": "der",
-      "word": "Liebeskummer"
+      "word": "Liebeskummer",
+      "translation": {
+        "tr": "Aşk hastalığı",
+        "en": "Lovesickness"
+      }
     },
     {
       "article": "der",
-      "word": "Liebhaber"
+      "word": "Liebhaber",
+      "translation": {
+        "tr": "Sevgili",
+        "en": "Lover"
+      }
     },
     {
       "article": "der",
-      "word": "Lifestyle"
+      "word": "Lifestyle",
+      "translation": {
+        "tr": "Yaşam Tarzı",
+        "en": "Lifestyle"
+      }
     },
     {
       "article": "das",
-      "word": "Limit"
+      "word": "Limit",
+      "translation": {
+        "tr": "sınır",
+        "en": "limit"
+      }
     },
     {
       "article": "der",
-      "word": "Link"
+      "word": "Link",
+      "translation": {
+        "tr": "Bağlantı",
+        "en": "Link"
+      }
     },
     {
       "article": "die",
-      "word": "Linke"
+      "word": "Linke",
+      "translation": {
+        "tr": "Sol",
+        "en": "Left"
+      }
     },
     {
       "article": "die",
-      "word": "Literatur"
+      "word": "Literatur",
+      "translation": {
+        "tr": "Edebiyat",
+        "en": "Literature"
+      }
     },
     {
       "article": "die",
-      "word": "Lizenz"
+      "word": "Lizenz",
+      "translation": {
+        "tr": "Lisans",
+        "en": "License"
+      }
     },
     {
       "article": "die",
-      "word": "Logik"
+      "word": "Logik",
+      "translation": {
+        "tr": "Mantık",
+        "en": "Logic"
+      }
     },
     {
       "article": "die",
-      "word": "Loyalität"
+      "word": "Loyalität",
+      "translation": {
+        "tr": "Sadakat",
+        "en": "Loyalty"
+      }
     },
     {
       "article": "der",
-      "word": "Luxus"
+      "word": "Luxus",
+      "translation": {
+        "tr": "Lüks",
+        "en": "Luxury"
+      }
     },
     {
       "article": "die",
-      "word": "Lyrik"
+      "word": "Lyrik",
+      "translation": {
+        "tr": "Şiir",
+        "en": "Poetry"
+      }
     },
     {
       "article": "die",
-      "word": "Magie"
+      "word": "Magie",
+      "translation": {
+        "tr": "Büyü",
+        "en": "Magic"
+      }
     },
     {
       "article": "der",
-      "word": "Magier"
+      "word": "Magier",
+      "translation": {
+        "tr": "Sihirbaz",
+        "en": "Magician"
+      }
     },
     {
       "article": "der",
-      "word": "Magistrat"
+      "word": "Magistrat",
+      "translation": {
+        "tr": "Yargıç",
+        "en": "Magistrate"
+      }
     },
     {
       "article": "das",
-      "word": "Magnetfeld"
+      "word": "Magnetfeld",
+      "translation": {
+        "tr": "Manyetik alan",
+        "en": "Magnetic field"
+      }
     },
     {
       "article": "die",
-      "word": "Mahnung"
+      "word": "Mahnung",
+      "translation": {
+        "tr": "Hatırlatma",
+        "en": "Reminder"
+      }
     },
     {
       "article": "der",
-      "word": "Mais"
+      "word": "Mais",
+      "translation": {
+        "tr": "mısır",
+        "en": "corn"
+      }
     },
     {
       "article": "der",
-      "word": "Makler"
+      "word": "Makler",
+      "translation": {
+        "tr": "Komisyoncu",
+        "en": "Broker"
+      }
     },
     {
       "article": "die",
-      "word": "Malerei"
+      "word": "Malerei",
+      "translation": {
+        "tr": "Boyama",
+        "en": "Painting"
+      }
     },
     {
       "article": "das",
-      "word": "Management"
+      "word": "Management",
+      "translation": {
+        "tr": "yönetim",
+        "en": "management"
+      }
     },
     {
       "article": "das",
-      "word": "Mandat"
+      "word": "Mandat",
+      "translation": {
+        "tr": "Yetki",
+        "en": "Mandate"
+      }
     },
     {
       "article": "der",
-      "word": "Mangel"
+      "word": "Mangel",
+      "translation": {
+        "tr": "eksiklik",
+        "en": "lack"
+      }
     },
     {
       "article": "die",
-      "word": "Manipulation"
+      "word": "Manipulation",
+      "translation": {
+        "tr": "Manipülasyon",
+        "en": "Manipulation"
+      }
     },
     {
       "article": "das",
-      "word": "Manuskript"
+      "word": "Manuskript",
+      "translation": {
+        "tr": "El yazması",
+        "en": "Manuscript"
+      }
     },
     {
       "article": "die",
-      "word": "Marine"
+      "word": "Marine",
+      "translation": {
+        "tr": "Denizcilik",
+        "en": "Marine"
+      }
     },
     {
       "article": "die",
-      "word": "Mark"
+      "word": "Mark",
+      "translation": {
+        "tr": "işaret",
+        "en": "Mark"
+      }
     },
     {
       "article": "das",
-      "word": "Marketing"
+      "word": "Marketing",
+      "translation": {
+        "tr": "Pazarlama",
+        "en": "Marketing"
+      }
     },
     {
       "article": "der",
-      "word": "Marktanteil"
+      "word": "Marktanteil",
+      "translation": {
+        "tr": "Pazar payı",
+        "en": "Market share"
+      }
     },
     {
       "article": "die",
-      "word": "Marktwirtschaft"
+      "word": "Marktwirtschaft",
+      "translation": {
+        "tr": "Pazar ekonomisi",
+        "en": "Market economy"
+      }
     },
     {
       "article": "der",
-      "word": "Marsch"
+      "word": "Marsch",
+      "translation": {
+        "tr": "Mart",
+        "en": "March"
+      }
     },
     {
       "article": "das",
-      "word": "Maß"
+      "word": "Maß",
+      "translation": {
+        "tr": "Boyut",
+        "en": "Dimension"
+      }
     },
     {
       "article": "das",
-      "word": "Massaker"
+      "word": "Massaker",
+      "translation": {
+        "tr": "katliam",
+        "en": "massacre"
+      }
     },
     {
       "article": "die",
-      "word": "Masse"
+      "word": "Masse",
+      "translation": {
+        "tr": "kütle",
+        "en": "mass"
+      }
     },
     {
       "article": "der",
-      "word": "Maßstab"
+      "word": "Maßstab",
+      "translation": {
+        "tr": "ölçek",
+        "en": "scale"
+      }
     },
     {
       "article": "die",
-      "word": "Materie"
+      "word": "Materie",
+      "translation": {
+        "tr": "madde",
+        "en": "matter"
+      }
     },
     {
       "article": "die",
-      "word": "Matrix"
+      "word": "Matrix",
+      "translation": {
+        "tr": "Matris",
+        "en": "Matrix"
+      }
     },
     {
       "article": "die",
-      "word": "Maut"
+      "word": "Maut",
+      "translation": {
+        "tr": "geçiş ücreti",
+        "en": "toll"
+      }
     },
     {
       "article": "das",
-      "word": "Maximum"
+      "word": "Maximum",
+      "translation": {
+        "tr": "Maksimum",
+        "en": "Maximum"
+      }
     },
     {
       "article": "die",
-      "word": "Mechanik"
+      "word": "Mechanik",
+      "translation": {
+        "tr": "Mekanik",
+        "en": "Mechanics"
+      }
     },
     {
       "article": "der",
-      "word": "Mechanismus"
+      "word": "Mechanismus",
+      "translation": {
+        "tr": "mekanizma",
+        "en": "mechanism"
+      }
     },
     {
       "article": "die",
-      "word": "Meditation"
+      "word": "Meditation",
+      "translation": {
+        "tr": "Meditasyon",
+        "en": "Meditation"
+      }
     },
     {
       "article": "das",
-      "word": "Medium"
+      "word": "Medium",
+      "translation": {
+        "tr": "orta",
+        "en": "medium"
+      }
     },
     {
       "article": "der",
-      "word": "Mediziner"
+      "word": "Mediziner",
+      "translation": {
+        "tr": "tıp uzmanları",
+        "en": "medical professionals"
+      }
     },
     {
       "article": "der",
-      "word": "Mehrwert"
+      "word": "Mehrwert",
+      "translation": {
+        "tr": "Katma değer",
+        "en": "Added value"
+      }
     },
     {
       "article": "die",
-      "word": "Meisterschaft"
+      "word": "Meisterschaft",
+      "translation": {
+        "tr": "Şampiyona",
+        "en": "Championship"
+      }
     },
     {
       "article": "die",
-      "word": "Membran"
+      "word": "Membran",
+      "translation": {
+        "tr": "Membran",
+        "en": "Membrane"
+      }
     },
     {
       "article": "das",
-      "word": "Menschenrecht"
+      "word": "Menschenrecht",
+      "translation": {
+        "tr": "İnsan hakkı",
+        "en": "Human right"
+      }
     },
     {
       "article": "die",
-      "word": "Menschheit"
+      "word": "Menschheit",
+      "translation": {
+        "tr": "insanlık",
+        "en": "humanity"
+      }
     },
     {
       "article": "die",
-      "word": "Menschlichkeit"
+      "word": "Menschlichkeit",
+      "translation": {
+        "tr": "insanlık",
+        "en": "humanity"
+      }
     },
     {
       "article": "die",
-      "word": "Metapher"
+      "word": "Metapher",
+      "translation": {
+        "tr": "Metafor",
+        "en": "Metaphor"
+      }
     },
     {
       "article": "die",
-      "word": "Metropole"
+      "word": "Metropole",
+      "translation": {
+        "tr": "metropol",
+        "en": "metropolis"
+      }
     },
     {
       "article": "die",
-      "word": "Migration"
+      "word": "Migration",
+      "translation": {
+        "tr": "Göç",
+        "en": "Migration"
+      }
     },
     {
       "article": "die",
-      "word": "Minderheit"
+      "word": "Minderheit",
+      "translation": {
+        "tr": "azınlık",
+        "en": "minority"
+      }
     },
     {
       "article": "das",
-      "word": "Minimum"
+      "word": "Minimum",
+      "translation": {
+        "tr": "Asgari",
+        "en": "Minimum"
+      }
     },
     {
       "article": "das",
-      "word": "Ministerium"
+      "word": "Ministerium",
+      "translation": {
+        "tr": "Bakanlık",
+        "en": "Ministry"
+      }
     },
     {
       "article": "der",
-      "word": "Ministerpräsident"
+      "word": "Ministerpräsident",
+      "translation": {
+        "tr": "Başbakan",
+        "en": "Prime Minister"
+      }
     },
     {
       "article": "die",
-      "word": "Misere"
+      "word": "Misere",
+      "translation": {
+        "tr": "sefalet",
+        "en": "misery"
+      }
     },
     {
       "article": "der",
-      "word": "Missbrauch"
+      "word": "Missbrauch",
+      "translation": {
+        "tr": "Kötüye kullanım",
+        "en": "Abuse"
+      }
     },
     {
       "article": "das",
-      "word": "Missverständnis"
+      "word": "Missverständnis",
+      "translation": {
+        "tr": "Yanlış anlama",
+        "en": "Misunderstanding"
+      }
     },
     {
       "article": "der",
-      "word": "Mitbewerber"
+      "word": "Mitbewerber",
+      "translation": {
+        "tr": "Rakipler",
+        "en": "Competitors"
+      }
     },
     {
       "article": "das",
-      "word": "Mitgefühl"
+      "word": "Mitgefühl",
+      "translation": {
+        "tr": "Şefkat",
+        "en": "Compassion"
+      }
     },
     {
       "article": "die",
-      "word": "Mitgliedschaft"
+      "word": "Mitgliedschaft",
+      "translation": {
+        "tr": "Üyelik",
+        "en": "Membership"
+      }
     },
     {
       "article": "das",
-      "word": "Mitleid"
+      "word": "Mitleid",
+      "translation": {
+        "tr": "Yazık",
+        "en": "Pity"
+      }
     },
     {
       "article": "die",
-      "word": "Mitteilung"
+      "word": "Mitteilung",
+      "translation": {
+        "tr": "Uyarı",
+        "en": "Notice"
+      }
     },
     {
       "article": "das",
-      "word": "Mittelalter"
+      "word": "Mittelalter",
+      "translation": {
+        "tr": "Orta Çağ",
+        "en": "Middle Ages"
+      }
     },
     {
       "article": "das",
-      "word": "Mittelmeer"
+      "word": "Mittelmeer",
+      "translation": {
+        "tr": "Akdeniz",
+        "en": "Mediterranean"
+      }
     },
     {
       "article": "der",
-      "word": "Mittelpunkt"
+      "word": "Mittelpunkt",
+      "translation": {
+        "tr": "Merkez noktası",
+        "en": "Center point"
+      }
     },
     {
       "article": "der",
-      "word": "Mittelwert"
+      "word": "Mittelwert",
+      "translation": {
+        "tr": "ortalama",
+        "en": "Mean"
+      }
     },
     {
       "article": "die",
-      "word": "Mitternacht"
+      "word": "Mitternacht",
+      "translation": {
+        "tr": "Gece yarısı",
+        "en": "Midnight"
+      }
     },
     {
       "article": "der",
-      "word": "Mob"
+      "word": "Mob",
+      "translation": {
+        "tr": "Mafya",
+        "en": "Mob"
+      }
     },
     {
       "article": "die",
-      "word": "Mobilität"
+      "word": "Mobilität",
+      "translation": {
+        "tr": "Hareketlilik",
+        "en": "Mobility"
+      }
     },
     {
       "article": "das",
-      "word": "Modell"
+      "word": "Modell",
+      "translation": {
+        "tr": "modeli",
+        "en": "model"
+      }
     },
     {
       "article": "der",
-      "word": "Moderator"
+      "word": "Moderator",
+      "translation": {
+        "tr": "Moderatör",
+        "en": "Moderator"
+      }
     },
     {
       "article": "die",
-      "word": "Moderne"
+      "word": "Moderne",
+      "translation": {
+        "tr": "Modernite",
+        "en": "Modernity"
+      }
     },
     {
       "article": "das",
-      "word": "Modul"
+      "word": "Modul",
+      "translation": {
+        "tr": "Modül",
+        "en": "Module"
+      }
     },
     {
       "article": "der",
-      "word": "Modus"
+      "word": "Modus",
+      "translation": {
+        "tr": "mod",
+        "en": "mode"
+      }
     },
     {
       "article": "der",
-      "word": "Mönch"
+      "word": "Mönch",
+      "translation": {
+        "tr": "Keşiş",
+        "en": "Monk"
+      }
     },
     {
       "article": "das",
-      "word": "Monopol"
+      "word": "Monopol",
+      "translation": {
+        "tr": "Tekel",
+        "en": "Monopoly"
+      }
     },
     {
       "article": "die",
-      "word": "Moral"
+      "word": "Moral",
+      "translation": {
+        "tr": "Ahlak",
+        "en": "Morality"
+      }
     },
     {
       "article": "die",
-      "word": "Motivation"
+      "word": "Motivation",
+      "translation": {
+        "tr": "Motivasyon",
+        "en": "Motivation"
+      }
     },
     {
       "article": "die",
-      "word": "Muskulatur"
+      "word": "Muskulatur",
+      "translation": {
+        "tr": "Kas yapısı",
+        "en": "Musculature"
+      }
     },
     {
       "article": "der",
-      "word": "Mythos"
+      "word": "Mythos",
+      "translation": {
+        "tr": "efsane",
+        "en": "Myth"
+      }
     },
     {
       "article": "der",
-      "word": "Nachahmer"
+      "word": "Nachahmer",
+      "translation": {
+        "tr": "taklitçi",
+        "en": "copycat"
+      }
     },
     {
       "article": "die",
-      "word": "Nachbarschaft"
+      "word": "Nachbarschaft",
+      "translation": {
+        "tr": "Mahalle",
+        "en": "Neighborhood"
+      }
     },
     {
       "article": "die",
-      "word": "Nachfolge"
+      "word": "Nachfolge",
+      "translation": {
+        "tr": "Veraset",
+        "en": "Succession"
+      }
     },
     {
       "article": "der",
-      "word": "Nachfolger"
+      "word": "Nachfolger",
+      "translation": {
+        "tr": "halef",
+        "en": "successor"
+      }
     },
     {
       "article": "die",
-      "word": "Nachrichtenagentur"
+      "word": "Nachrichtenagentur",
+      "translation": {
+        "tr": "Haber ajansı",
+        "en": "News agency"
+      }
     },
     {
       "article": "der",
-      "word": "Nachweis"
+      "word": "Nachweis",
+      "translation": {
+        "tr": "Kanıt",
+        "en": "Proof"
+      }
     },
     {
       "article": "der",
-      "word": "Nachwuchs"
+      "word": "Nachwuchs",
+      "translation": {
+        "tr": "yavru",
+        "en": "offspring"
+      }
     },
     {
       "article": "die",
-      "word": "Nähe"
+      "word": "Nähe",
+      "translation": {
+        "tr": "Yakınlık",
+        "en": "Proximity"
+      }
     },
     {
       "article": "der",
-      "word": "Nationalpark"
+      "word": "Nationalpark",
+      "translation": {
+        "tr": "Milli Park",
+        "en": "National Park"
+      }
     },
     {
       "article": "die",
-      "word": "Navigation"
+      "word": "Navigation",
+      "translation": {
+        "tr": "Navigasyon",
+        "en": "Navigation"
+      }
     },
     {
       "article": "die",
-      "word": "Neigung"
+      "word": "Neigung",
+      "translation": {
+        "tr": "Eğim",
+        "en": "Inclination"
+      }
     },
     {
       "article": "das",
-      "word": "Nervensystem"
+      "word": "Nervensystem",
+      "translation": {
+        "tr": "Sinir sistemi",
+        "en": "Nervous system"
+      }
     },
     {
       "article": "das",
-      "word": "Netzwerk"
+      "word": "Netzwerk",
+      "translation": {
+        "tr": "Ağ",
+        "en": "Network"
+      }
     },
     {
       "article": "die",
-      "word": "Neugier"
+      "word": "Neugier",
+      "translation": {
+        "tr": "Merak",
+        "en": "Curiosity"
+      }
     },
     {
       "article": "die",
-      "word": "Neuheit"
+      "word": "Neuheit",
+      "translation": {
+        "tr": "yenilik",
+        "en": "Novelty"
+      }
     },
     {
       "article": "der",
-      "word": "Niederschlag"
+      "word": "Niederschlag",
+      "translation": {
+        "tr": "Yağış",
+        "en": "Precipitation"
+      }
     },
     {
       "article": "das",
-      "word": "Niveau"
+      "word": "Niveau",
+      "translation": {
+        "tr": "seviye",
+        "en": "level"
+      }
     },
     {
       "article": "die",
-      "word": "Nominierung"
+      "word": "Nominierung",
+      "translation": {
+        "tr": "Adaylık",
+        "en": "Nomination"
+      }
     },
     {
       "article": "die",
-      "word": "Norm"
+      "word": "Norm",
+      "translation": {
+        "tr": "Norm",
+        "en": "Norm"
+      }
     },
     {
       "article": "die",
-      "word": "Nostalgie"
+      "word": "Nostalgie",
+      "translation": {
+        "tr": "Nostalji",
+        "en": "Nostalgia"
+      }
     },
     {
       "article": "die",
-      "word": "Notwendigkeit"
+      "word": "Notwendigkeit",
+      "translation": {
+        "tr": "gereklilik",
+        "en": "necessity"
+      }
     },
     {
       "article": "die",
-      "word": "Nutzung"
+      "word": "Nutzung",
+      "translation": {
+        "tr": "Kullanım",
+        "en": "Usage"
+      }
     },
     {
       "article": "der",
-      "word": "Oberst"
+      "word": "Oberst",
+      "translation": {
+        "tr": "Albay",
+        "en": "Colonel"
+      }
     },
     {
       "article": "die",
-      "word": "Offenbarung"
+      "word": "Offenbarung",
+      "translation": {
+        "tr": "Vahiy",
+        "en": "Revelation"
+      }
     },
     {
       "article": "die",
-      "word": "Offenheit"
+      "word": "Offenheit",
+      "translation": {
+        "tr": "Açıklık",
+        "en": "Openness"
+      }
     },
     {
       "article": "die",
-      "word": "Öffentlichkeit"
+      "word": "Öffentlichkeit",
+      "translation": {
+        "tr": "kamu",
+        "en": "public"
+      }
     },
     {
       "article": "die",
-      "word": "Ohnmacht"
+      "word": "Ohnmacht",
+      "translation": {
+        "tr": "bayılma",
+        "en": "fainting"
+      }
     },
     {
       "article": "die",
-      "word": "Ökonomie"
+      "word": "Ökonomie",
+      "translation": {
+        "tr": "Ekonomi",
+        "en": "Economics"
+      }
     },
     {
       "article": "die",
-      "word": "Operation"
+      "word": "Operation",
+      "translation": {
+        "tr": "Operasyon",
+        "en": "Operation"
+      }
     },
     {
       "article": "die",
-      "word": "Opposition"
+      "word": "Opposition",
+      "translation": {
+        "tr": "muhalefet",
+        "en": "opposition"
+      }
     },
     {
       "article": "der",
-      "word": "Optimismus"
+      "word": "Optimismus",
+      "translation": {
+        "tr": "İyimserlik",
+        "en": "Optimism"
+      }
     },
     {
       "article": "der",
-      "word": "Organismus"
+      "word": "Organismus",
+      "translation": {
+        "tr": "organizma",
+        "en": "organism"
+      }
     },
     {
       "article": "der",
-      "word": "Orient"
+      "word": "Orient",
+      "translation": {
+        "tr": "Doğu",
+        "en": "Orient"
+      }
     },
     {
       "article": "der",
-      "word": "Palästinenser"
+      "word": "Palästinenser",
+      "translation": {
+        "tr": "Filistinliler",
+        "en": "Palestinians"
+      }
     },
     {
       "article": "der",
-      "word": "Papst"
+      "word": "Papst",
+      "translation": {
+        "tr": "Papa",
+        "en": "Pope"
+      }
     },
     {
       "article": "die",
-      "word": "Parade"
+      "word": "Parade",
+      "translation": {
+        "tr": "geçit töreni",
+        "en": "parade"
+      }
     },
     {
       "article": "das",
-      "word": "Paradies"
+      "word": "Paradies",
+      "translation": {
+        "tr": "Cennet",
+        "en": "Paradise"
+      }
     },
     {
       "article": "die",
-      "word": "Parallele"
+      "word": "Parallele",
+      "translation": {
+        "tr": "paralel",
+        "en": "Parallel"
+      }
     },
     {
       "article": "der",
-      "word": "Parameter"
+      "word": "Parameter",
+      "translation": {
+        "tr": "Parametreler",
+        "en": "Parameters"
+      }
     },
     {
       "article": "das",
-      "word": "Parkett"
+      "word": "Parkett",
+      "translation": {
+        "tr": "Parke",
+        "en": "Parquet"
+      }
     },
     {
       "article": "der",
-      "word": "Parteitag"
+      "word": "Parteitag",
+      "translation": {
+        "tr": "Parti konferansı",
+        "en": "Party conference"
+      }
     },
     {
       "article": "die",
-      "word": "Partie"
+      "word": "Partie",
+      "translation": {
+        "tr": "oyun",
+        "en": "game"
+      }
     },
     {
       "article": "die",
-      "word": "Partnerschaft"
+      "word": "Partnerschaft",
+      "translation": {
+        "tr": "ortaklık",
+        "en": "partnership"
+      }
     },
     {
       "article": "die",
-      "word": "Passage"
+      "word": "Passage",
+      "translation": {
+        "tr": "geçit",
+        "en": "passage"
+      }
     },
     {
       "article": "der",
-      "word": "Pastor"
+      "word": "Pastor",
+      "translation": {
+        "tr": "papaz",
+        "en": "Pastor"
+      }
     },
     {
       "article": "der",
-      "word": "Patch"
+      "word": "Patch",
+      "translation": {
+        "tr": "Yama",
+        "en": "Patch"
+      }
     },
     {
       "article": "das",
-      "word": "Patent"
+      "word": "Patent",
+      "translation": {
+        "tr": "patent",
+        "en": "Patent"
+      }
     },
     {
       "article": "die",
-      "word": "Patrouille"
+      "word": "Patrouille",
+      "translation": {
+        "tr": "Devriye",
+        "en": "Patrol"
+      }
     },
     {
       "article": "der",
-      "word": "Pavillon"
+      "word": "Pavillon",
+      "translation": {
+        "tr": "köşk",
+        "en": "Pavilion"
+      }
     },
     {
       "article": "die",
-      "word": "Performance"
+      "word": "Performance",
+      "translation": {
+        "tr": "Performans",
+        "en": "Performance"
+      }
     },
     {
       "article": "die",
-      "word": "Periode"
+      "word": "Periode",
+      "translation": {
+        "tr": "dönem",
+        "en": "period"
+      }
     },
     {
       "article": "das",
-      "word": "Personal"
+      "word": "Personal",
+      "translation": {
+        "tr": "Personel",
+        "en": "Personnel"
+      }
     },
     {
       "article": "die",
-      "word": "Persönlichkeit"
+      "word": "Persönlichkeit",
+      "translation": {
+        "tr": "kişilik",
+        "en": "personality"
+      }
     },
     {
       "article": "die",
-      "word": "Perspektive"
+      "word": "Perspektive",
+      "translation": {
+        "tr": "perspektif",
+        "en": "perspective"
+      }
     },
     {
       "article": "die",
-      "word": "Pest"
+      "word": "Pest",
+      "translation": {
+        "tr": "Veba",
+        "en": "Plague"
+      }
     },
     {
       "article": "das",
-      "word": "Phänomen"
+      "word": "Phänomen",
+      "translation": {
+        "tr": "fenomen",
+        "en": "phenomenon"
+      }
     },
     {
       "article": "die",
-      "word": "Phantasie"
+      "word": "Phantasie",
+      "translation": {
+        "tr": "hayal gücü",
+        "en": "imagination"
+      }
     },
     {
       "article": "die",
-      "word": "Phase"
+      "word": "Phase",
+      "translation": {
+        "tr": "aşama",
+        "en": "phase"
+      }
     },
     {
       "article": "der",
-      "word": "Philosoph"
+      "word": "Philosoph",
+      "translation": {
+        "tr": "filozof",
+        "en": "philosopher"
+      }
     },
     {
       "article": "die",
-      "word": "Philosophie"
+      "word": "Philosophie",
+      "translation": {
+        "tr": "Felsefe",
+        "en": "Philosophy"
+      }
     },
     {
       "article": "die",
-      "word": "Physik"
+      "word": "Physik",
+      "translation": {
+        "tr": "Fizik",
+        "en": "Physics"
+      }
     },
     {
       "article": "der",
-      "word": "Physiker"
+      "word": "Physiker",
+      "translation": {
+        "tr": "Fizikçi",
+        "en": "Physicist"
+      }
     },
     {
       "article": "der",
-      "word": "Pilger"
+      "word": "Pilger",
+      "translation": {
+        "tr": "Hacı",
+        "en": "Pilgrim"
+      }
     },
     {
       "article": "der",
-      "word": "Pionier"
+      "word": "Pionier",
+      "translation": {
+        "tr": "Öncü",
+        "en": "Pioneer"
+      }
     },
     {
       "article": "die",
-      "word": "Pipeline"
+      "word": "Pipeline",
+      "translation": {
+        "tr": "boru hattı",
+        "en": "pipeline"
+      }
     },
     {
       "article": "das",
-      "word": "Plädoyer"
+      "word": "Plädoyer",
+      "translation": {
+        "tr": "savunma",
+        "en": "Plea"
+      }
     },
     {
       "article": "die",
-      "word": "Plantage"
+      "word": "Plantage",
+      "translation": {
+        "tr": "plantasyon",
+        "en": "plantation"
+      }
     },
     {
       "article": "die",
-      "word": "Planung"
+      "word": "Planung",
+      "translation": {
+        "tr": "Planlama",
+        "en": "Planning"
+      }
     },
     {
       "article": "das",
-      "word": "Plastik"
+      "word": "Plastik",
+      "translation": {
+        "tr": "Plastik",
+        "en": "Plastic"
+      }
     },
     {
       "article": "die",
-      "word": "Plattform"
+      "word": "Plattform",
+      "translation": {
+        "tr": "platformu",
+        "en": "Platform"
+      }
     },
     {
       "article": "der",
-      "word": "Platzhalter"
+      "word": "Platzhalter",
+      "translation": {
+        "tr": "Yer tutucu",
+        "en": "Placeholder"
+      }
     },
     {
       "article": "die",
-      "word": "Poesie"
+      "word": "Poesie",
+      "translation": {
+        "tr": "Şiir",
+        "en": "Poetry"
+      }
     },
     {
       "article": "der",
-      "word": "Pole"
+      "word": "Pole",
+      "translation": {
+        "tr": "Direkler",
+        "en": "Poles"
+      }
     },
     {
       "article": "der",
-      "word": "Politiker"
+      "word": "Politiker",
+      "translation": {
+        "tr": "Politikacı",
+        "en": "Politician"
+      }
     },
     {
       "article": "die",
-      "word": "Population"
+      "word": "Population",
+      "translation": {
+        "tr": "Nüfus",
+        "en": "Population"
+      }
     },
     {
       "article": "das",
-      "word": "Portfolio"
+      "word": "Portfolio",
+      "translation": {
+        "tr": "Portföy",
+        "en": "Portfolio"
+      }
     },
     {
       "article": "das",
-      "word": "Porträt"
+      "word": "Porträt",
+      "translation": {
+        "tr": "Portre",
+        "en": "Portrait"
+      }
     },
     {
       "article": "die",
-      "word": "Pose"
+      "word": "Pose",
+      "translation": {
+        "tr": "poz",
+        "en": "pose"
+      }
     }
   ],
   "C2": [
     {
       "article": "der",
-      "word": "Posten"
+      "word": "Posten",
+      "translation": {
+        "tr": "Gönderi",
+        "en": "Post"
+      }
     },
     {
       "article": "das",
-      "word": "Potenzial"
+      "word": "Potenzial",
+      "translation": {
+        "tr": "Potansiyel",
+        "en": "Potential"
+      }
     },
     {
       "article": "das",
-      "word": "Präparat"
+      "word": "Präparat",
+      "translation": {
+        "tr": "hazırlık",
+        "en": "preparation"
+      }
     },
     {
       "article": "die",
-      "word": "Präsidentschaft"
+      "word": "Präsidentschaft",
+      "translation": {
+        "tr": "başkanlık",
+        "en": "Presidency"
+      }
     },
     {
       "article": "die",
-      "word": "Prävention"
+      "word": "Prävention",
+      "translation": {
+        "tr": "Önleme",
+        "en": "Prevention"
+      }
     },
     {
       "article": "die",
-      "word": "Praxis"
+      "word": "Praxis",
+      "translation": {
+        "tr": "Alıştırma",
+        "en": "Practice"
+      }
     },
     {
       "article": "der",
-      "word": "Präzedenzfall"
+      "word": "Präzedenzfall",
+      "translation": {
+        "tr": "emsal",
+        "en": "Precedent"
+      }
     },
     {
       "article": "die",
-      "word": "Präzision"
+      "word": "Präzision",
+      "translation": {
+        "tr": "Hassasiyet",
+        "en": "Precision"
+      }
     },
     {
       "article": "der",
-      "word": "Premier"
+      "word": "Premier",
+      "translation": {
+        "tr": "Premier",
+        "en": "Premier"
+      }
     },
     {
       "article": "die",
-      "word": "Premiere"
+      "word": "Premiere",
+      "translation": {
+        "tr": "Prömiyer",
+        "en": "Premiere"
+      }
     },
     {
       "article": "der",
-      "word": "Premierminister"
+      "word": "Premierminister",
+      "translation": {
+        "tr": "Başbakan",
+        "en": "Prime Minister"
+      }
     },
     {
       "article": "die",
-      "word": "Presse"
+      "word": "Presse",
+      "translation": {
+        "tr": "Basın",
+        "en": "Press"
+      }
     },
     {
       "article": "die",
-      "word": "Pressekonferenz"
+      "word": "Pressekonferenz",
+      "translation": {
+        "tr": "Basın toplantısı",
+        "en": "Press conference"
+      }
     },
     {
       "article": "die",
-      "word": "Priorität"
+      "word": "Priorität",
+      "translation": {
+        "tr": "Öncelik",
+        "en": "Priority"
+      }
     },
     {
       "article": "die",
-      "word": "Privatisierung"
+      "word": "Privatisierung",
+      "translation": {
+        "tr": "Özelleştirme",
+        "en": "Privatization"
+      }
     },
     {
       "article": "die",
-      "word": "Privatsphäre"
+      "word": "Privatsphäre",
+      "translation": {
+        "tr": "Gizlilik",
+        "en": "Privacy"
+      }
     },
     {
       "article": "das",
-      "word": "Privileg"
+      "word": "Privileg",
+      "translation": {
+        "tr": "Ayrıcalık",
+        "en": "Privilege"
+      }
     },
     {
       "article": "die",
-      "word": "Problematik"
+      "word": "Problematik",
+      "translation": {
+        "tr": "Sorun",
+        "en": "Problem"
+      }
     },
     {
       "article": "die",
-      "word": "Produktivität"
+      "word": "Produktivität",
+      "translation": {
+        "tr": "Verimlilik",
+        "en": "Productivity"
+      }
     },
     {
       "article": "der",
-      "word": "Produzent"
+      "word": "Produzent",
+      "translation": {
+        "tr": "yapımcı",
+        "en": "producer"
+      }
     },
     {
       "article": "der",
-      "word": "Profit"
+      "word": "Profit",
+      "translation": {
+        "tr": "Kâr",
+        "en": "Profit"
+      }
     },
     {
       "article": "die",
-      "word": "Prognose"
+      "word": "Prognose",
+      "translation": {
+        "tr": "prognoz",
+        "en": "Prognosis"
+      }
     },
     {
       "article": "die",
-      "word": "Programmierung"
+      "word": "Programmierung",
+      "translation": {
+        "tr": "Programlama",
+        "en": "Programming"
+      }
     },
     {
       "article": "die",
-      "word": "Projektion"
+      "word": "Projektion",
+      "translation": {
+        "tr": "Projeksiyon",
+        "en": "Projection"
+      }
     },
     {
       "article": "der",
-      "word": "Projektor"
+      "word": "Projektor",
+      "translation": {
+        "tr": "Projektör",
+        "en": "Projector"
+      }
     },
     {
       "article": "der",
-      "word": "Prominente"
+      "word": "Prominente",
+      "translation": {
+        "tr": "ünlüler",
+        "en": "Celebrities"
+      }
     },
     {
       "article": "die",
-      "word": "Propaganda"
+      "word": "Propaganda",
+      "translation": {
+        "tr": "propaganda",
+        "en": "propaganda"
+      }
     },
     {
       "article": "der",
-      "word": "Protagonist"
+      "word": "Protagonist",
+      "translation": {
+        "tr": "kahraman",
+        "en": "protagonist"
+      }
     },
     {
       "article": "das",
-      "word": "Protein"
+      "word": "Protein",
+      "translation": {
+        "tr": "proteini",
+        "en": "Protein"
+      }
     },
     {
       "article": "der",
-      "word": "Prozess"
+      "word": "Prozess",
+      "translation": {
+        "tr": "Süreç",
+        "en": "Process"
+      }
     },
     {
       "article": "der",
-      "word": "Prozessor"
+      "word": "Prozessor",
+      "translation": {
+        "tr": "işlemci",
+        "en": "processor"
+      }
     },
     {
       "article": "die",
-      "word": "Psyche"
+      "word": "Psyche",
+      "translation": {
+        "tr": "Ruh",
+        "en": "Psyche"
+      }
     },
     {
       "article": "der",
-      "word": "Psychologe"
+      "word": "Psychologe",
+      "translation": {
+        "tr": "Psikolog",
+        "en": "Psychologist"
+      }
     },
     {
       "article": "die",
-      "word": "Psychologie"
+      "word": "Psychologie",
+      "translation": {
+        "tr": "Psikoloji",
+        "en": "Psychology"
+      }
     },
     {
       "article": "der",
-      "word": "Puffer"
+      "word": "Puffer",
+      "translation": {
+        "tr": "Tampon",
+        "en": "Buffer"
+      }
     },
     {
       "article": "der",
-      "word": "Punk"
+      "word": "Punk",
+      "translation": {
+        "tr": "Punk",
+        "en": "Punk"
+      }
     },
     {
       "article": "die",
-      "word": "Qualifikation"
+      "word": "Qualifikation",
+      "translation": {
+        "tr": "Yeterlilik",
+        "en": "Qualification"
+      }
     },
     {
       "article": "das",
-      "word": "Quartier"
+      "word": "Quartier",
+      "translation": {
+        "tr": "Çeyrek",
+        "en": "Quarter"
+      }
     },
     {
       "article": "die",
-      "word": "Quote"
+      "word": "Quote",
+      "translation": {
+        "tr": "Kota",
+        "en": "Quota"
+      }
     },
     {
       "article": "das",
-      "word": "Radar"
+      "word": "Radar",
+      "translation": {
+        "tr": "radar",
+        "en": "radar"
+      }
     },
     {
       "article": "der",
-      "word": "Radius"
+      "word": "Radius",
+      "translation": {
+        "tr": "yarıçap",
+        "en": "radius"
+      }
     },
     {
       "article": "der",
-      "word": "Radsport"
+      "word": "Radsport",
+      "translation": {
+        "tr": "Bisiklete binme",
+        "en": "Cycling"
+      }
     },
     {
       "article": "die",
-      "word": "Rallye"
+      "word": "Rallye",
+      "translation": {
+        "tr": "miting",
+        "en": "Rally"
+      }
     },
     {
       "article": "das",
-      "word": "Rampenlicht"
+      "word": "Rampenlicht",
+      "translation": {
+        "tr": "Gündem",
+        "en": "Spotlight"
+      }
     },
     {
       "article": "der",
-      "word": "Raub"
+      "word": "Raub",
+      "translation": {
+        "tr": "Soygun",
+        "en": "Robbery"
+      }
     },
     {
       "article": "die",
-      "word": "Räumung"
+      "word": "Räumung",
+      "translation": {
+        "tr": "Tahliye",
+        "en": "Eviction"
+      }
     },
     {
       "article": "der",
-      "word": "Rausch"
+      "word": "Rausch",
+      "translation": {
+        "tr": "Zehirlenme",
+        "en": "Intoxication"
+      }
     },
     {
       "article": "der",
-      "word": "Reaktor"
+      "word": "Reaktor",
+      "translation": {
+        "tr": "reaktör",
+        "en": "reactor"
+      }
     },
     {
       "article": "die",
-      "word": "Realisierung"
+      "word": "Realisierung",
+      "translation": {
+        "tr": "Gerçekleşme",
+        "en": "Realization"
+      }
     },
     {
       "article": "die",
-      "word": "Realität"
+      "word": "Realität",
+      "translation": {
+        "tr": "Gerçeklik",
+        "en": "Reality"
+      }
     },
     {
       "article": "die",
-      "word": "Recherche"
+      "word": "Recherche",
+      "translation": {
+        "tr": "Araştırma",
+        "en": "Research"
+      }
     },
     {
       "article": "die",
-      "word": "Rechtfertigung"
+      "word": "Rechtfertigung",
+      "translation": {
+        "tr": "Gerekçe",
+        "en": "Justification"
+      }
     },
     {
       "article": "der",
-      "word": "Rechtsanwalt"
+      "word": "Rechtsanwalt",
+      "translation": {
+        "tr": "Avukat",
+        "en": "Lawyer"
+      }
     },
     {
       "article": "die",
-      "word": "Rechtsprechung"
+      "word": "Rechtsprechung",
+      "translation": {
+        "tr": "içtihat",
+        "en": "jurisprudence"
+      }
     },
     {
       "article": "die",
-      "word": "Reduktion"
+      "word": "Reduktion",
+      "translation": {
+        "tr": "Azaltma",
+        "en": "Reduction"
+      }
     },
     {
       "article": "die",
-      "word": "Reduzierung"
+      "word": "Reduzierung",
+      "translation": {
+        "tr": "Azaltma",
+        "en": "Reduction"
+      }
     },
     {
       "article": "das",
-      "word": "Referendum"
+      "word": "Referendum",
+      "translation": {
+        "tr": "Referandum",
+        "en": "Referendum"
+      }
     },
     {
       "article": "der",
-      "word": "Referent"
+      "word": "Referent",
+      "translation": {
+        "tr": "Hoparlör",
+        "en": "Speaker"
+      }
     },
     {
       "article": "die",
-      "word": "Referenz"
+      "word": "Referenz",
+      "translation": {
+        "tr": "Referans",
+        "en": "Reference"
+      }
     },
     {
       "article": "die",
-      "word": "Reflexion"
+      "word": "Reflexion",
+      "translation": {
+        "tr": "Yansıma",
+        "en": "Reflection"
+      }
     },
     {
       "article": "die",
-      "word": "Reform"
+      "word": "Reform",
+      "translation": {
+        "tr": "reform",
+        "en": "reform"
+      }
     },
     {
       "article": "die",
-      "word": "Regelung"
+      "word": "Regelung",
+      "translation": {
+        "tr": "Düzenleme",
+        "en": "Regulation"
+      }
     },
     {
       "article": "der",
-      "word": "Regenschauer"
+      "word": "Regenschauer",
+      "translation": {
+        "tr": "Sağanak yağmur",
+        "en": "Rain showers"
+      }
     },
     {
       "article": "die",
-      "word": "Regierung"
+      "word": "Regierung",
+      "translation": {
+        "tr": "Hükümet",
+        "en": "Government"
+      }
     },
     {
       "article": "der",
-      "word": "Regierungschef"
+      "word": "Regierungschef",
+      "translation": {
+        "tr": "Hükümet Başkanı",
+        "en": "Head of Government"
+      }
     },
     {
       "article": "das",
-      "word": "Regime"
+      "word": "Regime",
+      "translation": {
+        "tr": "rejim",
+        "en": "regime"
+      }
     },
     {
       "article": "der",
-      "word": "Regisseur"
+      "word": "Regisseur",
+      "translation": {
+        "tr": "Direktör",
+        "en": "Director"
+      }
     },
     {
       "article": "das",
-      "word": "Register"
+      "word": "Register",
+      "translation": {
+        "tr": "Kayıt ol",
+        "en": "Register"
+      }
     },
     {
       "article": "das",
-      "word": "Reich"
+      "word": "Reich",
+      "translation": {
+        "tr": "Zengin",
+        "en": "Rich"
+      }
     },
     {
       "article": "der",
-      "word": "Reichtum"
+      "word": "Reichtum",
+      "translation": {
+        "tr": "zenginlik",
+        "en": "wealth"
+      }
     },
     {
       "article": "die",
-      "word": "Reichweite"
+      "word": "Reichweite",
+      "translation": {
+        "tr": "Aralık",
+        "en": "Range"
+      }
     },
     {
       "article": "die",
-      "word": "Reihenfolge"
+      "word": "Reihenfolge",
+      "translation": {
+        "tr": "Sipariş",
+        "en": "Order"
+      }
     },
     {
       "article": "die",
-      "word": "Reinheit"
+      "word": "Reinheit",
+      "translation": {
+        "tr": "saflık",
+        "en": "Purity"
+      }
     },
     {
       "article": "der",
-      "word": "Reisende"
+      "word": "Reisende",
+      "translation": {
+        "tr": "gezginler",
+        "en": "travelers"
+      }
     },
     {
       "article": "der",
-      "word": "Reiz"
+      "word": "Reiz",
+      "translation": {
+        "tr": "uyarıcı",
+        "en": "stimulus"
+      }
     },
     {
       "article": "der",
-      "word": "Rektor"
+      "word": "Rektor",
+      "translation": {
+        "tr": "Rektör",
+        "en": "Rector"
+      }
     },
     {
       "article": "die",
-      "word": "Relation"
+      "word": "Relation",
+      "translation": {
+        "tr": "ilişki",
+        "en": "relation"
+      }
     },
     {
       "article": "die",
-      "word": "Relevanz"
+      "word": "Relevanz",
+      "translation": {
+        "tr": "Alaka düzeyi",
+        "en": "Relevance"
+      }
     },
     {
       "article": "das",
-      "word": "Relief"
+      "word": "Relief",
+      "translation": {
+        "tr": "kabartma",
+        "en": "relief"
+      }
     },
     {
       "article": "die",
-      "word": "Rendite"
+      "word": "Rendite",
+      "translation": {
+        "tr": "Dönüş",
+        "en": "Return"
+      }
     },
     {
       "article": "die",
-      "word": "Reproduktion"
+      "word": "Reproduktion",
+      "translation": {
+        "tr": "Üreme",
+        "en": "Reproduction"
+      }
     },
     {
       "article": "die",
-      "word": "Republik"
+      "word": "Republik",
+      "translation": {
+        "tr": "Cumhuriyet",
+        "en": "Republic"
+      }
     },
     {
       "article": "der",
-      "word": "Republikaner"
+      "word": "Republikaner",
+      "translation": {
+        "tr": "Cumhuriyetçiler",
+        "en": "Republicans"
+      }
     },
     {
       "article": "die",
-      "word": "Reserve"
+      "word": "Reserve",
+      "translation": {
+        "tr": "Rezerv",
+        "en": "Reserve"
+      }
     },
     {
       "article": "die",
-      "word": "Reservierung"
+      "word": "Reservierung",
+      "translation": {
+        "tr": "Rezervasyon",
+        "en": "Reservation"
+      }
     },
     {
       "article": "die",
-      "word": "Residenz"
+      "word": "Residenz",
+      "translation": {
+        "tr": "İkamet",
+        "en": "Residence"
+      }
     },
     {
       "article": "das",
-      "word": "Resort"
+      "word": "Resort",
+      "translation": {
+        "tr": "çare",
+        "en": "resort"
+      }
     },
     {
       "article": "das",
-      "word": "Ressort"
+      "word": "Ressort",
+      "translation": {
+        "tr": "departman",
+        "en": "department"
+      }
     },
     {
       "article": "die",
-      "word": "Ressource"
+      "word": "Ressource",
+      "translation": {
+        "tr": "Kaynak",
+        "en": "Resource"
+      }
     },
     {
       "article": "das",
-      "word": "Resultat"
+      "word": "Resultat",
+      "translation": {
+        "tr": "Sonuç",
+        "en": "Result"
+      }
     },
     {
       "article": "die",
-      "word": "Reue"
+      "word": "Reue",
+      "translation": {
+        "tr": "pişmanlık",
+        "en": "Regret"
+      }
     },
     {
       "article": "die",
-      "word": "Revolution"
+      "word": "Revolution",
+      "translation": {
+        "tr": "devrim",
+        "en": "revolution"
+      }
     },
     {
       "article": "die",
-      "word": "Rezession"
+      "word": "Rezession",
+      "translation": {
+        "tr": "Durgunluk",
+        "en": "Recession"
+      }
     },
     {
       "article": "die",
-      "word": "Rhetorik"
+      "word": "Rhetorik",
+      "translation": {
+        "tr": "Retorik",
+        "en": "Rhetoric"
+      }
     },
     {
       "article": "das",
-      "word": "Rheuma"
+      "word": "Rheuma",
+      "translation": {
+        "tr": "Romatizma",
+        "en": "Rheumatism"
+      }
     },
     {
       "article": "der",
-      "word": "Rhythmus"
+      "word": "Rhythmus",
+      "translation": {
+        "tr": "ritim",
+        "en": "rhythm"
+      }
     },
     {
       "article": "die",
-      "word": "Richtlinie"
+      "word": "Richtlinie",
+      "translation": {
+        "tr": "Politika",
+        "en": "Policy"
+      }
     },
     {
       "article": "das",
-      "word": "Riff"
+      "word": "Riff",
+      "translation": {
+        "tr": "Resif",
+        "en": "Reef"
+      }
     },
     {
       "article": "das",
-      "word": "Ringen"
+      "word": "Ringen",
+      "translation": {
+        "tr": "Güreş",
+        "en": "Wrestling"
+      }
     },
     {
       "article": "das",
-      "word": "Ritual"
+      "word": "Ritual",
+      "translation": {
+        "tr": "ritüel",
+        "en": "ritual"
+      }
     },
     {
       "article": "der",
-      "word": "Rivale"
+      "word": "Rivale",
+      "translation": {
+        "tr": "Rakip",
+        "en": "Rival"
+      }
     },
     {
       "article": "der",
-      "word": "Rohstoff"
+      "word": "Rohstoff",
+      "translation": {
+        "tr": "hammadde",
+        "en": "raw material"
+      }
     },
     {
       "article": "die",
-      "word": "Romanze"
+      "word": "Romanze",
+      "translation": {
+        "tr": "romantik",
+        "en": "Romance"
+      }
     },
     {
       "article": "der",
-      "word": "Römer"
+      "word": "Römer",
+      "translation": {
+        "tr": "Romalılar",
+        "en": "Romans"
+      }
     },
     {
       "article": "die",
-      "word": "Rotation"
+      "word": "Rotation",
+      "translation": {
+        "tr": "rotasyon",
+        "en": "rotation"
+      }
     },
     {
       "article": "die",
-      "word": "Routine"
+      "word": "Routine",
+      "translation": {
+        "tr": "rutin",
+        "en": "routine"
+      }
     },
     {
       "article": "die",
-      "word": "Rubrik"
+      "word": "Rubrik",
+      "translation": {
+        "tr": "Değerlendirme tablosu",
+        "en": "Rubric"
+      }
     },
     {
       "article": "der",
-      "word": "Rückgang"
+      "word": "Rückgang",
+      "translation": {
+        "tr": "düşüş",
+        "en": "decline"
+      }
     },
     {
       "article": "der",
-      "word": "Rückhalt"
+      "word": "Rückhalt",
+      "translation": {
+        "tr": "destek",
+        "en": "support"
+      }
     },
     {
       "article": "die",
-      "word": "Rückkehr"
+      "word": "Rückkehr",
+      "translation": {
+        "tr": "Dönüş",
+        "en": "Return"
+      }
     },
     {
       "article": "die",
-      "word": "Rückmeldung"
+      "word": "Rückmeldung",
+      "translation": {
+        "tr": "Geribildirim",
+        "en": "Feedback"
+      }
     },
     {
       "article": "der",
-      "word": "Rückruf"
+      "word": "Rückruf",
+      "translation": {
+        "tr": "Geri arama",
+        "en": "Callback"
+      }
     },
     {
       "article": "die",
-      "word": "Rücksicht"
+      "word": "Rücksicht",
+      "translation": {
+        "tr": "dikkate alma",
+        "en": "Consideration"
+      }
     },
     {
       "article": "der",
-      "word": "Rückstand"
+      "word": "Rückstand",
+      "translation": {
+        "tr": "birikmiş iş yığını",
+        "en": "backlog"
+      }
     },
     {
       "article": "der",
-      "word": "Rücktritt"
+      "word": "Rücktritt",
+      "translation": {
+        "tr": "istifa",
+        "en": "Resignation"
+      }
     },
     {
       "article": "der",
-      "word": "Rückzug"
+      "word": "Rückzug",
+      "translation": {
+        "tr": "geri çekilmek",
+        "en": "retreat"
+      }
     },
     {
       "article": "der",
-      "word": "Ruhm"
+      "word": "Ruhm",
+      "translation": {
+        "tr": "Şöhret",
+        "en": "Fame"
+      }
     },
     {
       "article": "die",
-      "word": "Ruine"
+      "word": "Ruine",
+      "translation": {
+        "tr": "harabe",
+        "en": "Ruin"
+      }
     },
     {
       "article": "die",
-      "word": "Runde"
+      "word": "Runde",
+      "translation": {
+        "tr": "yuvarlak",
+        "en": "round"
+      }
     },
     {
       "article": "der",
-      "word": "Rundfunk"
+      "word": "Rundfunk",
+      "translation": {
+        "tr": "Yayıncılık",
+        "en": "Broadcasting"
+      }
     },
     {
       "article": "der",
-      "word": "Russe"
+      "word": "Russe",
+      "translation": {
+        "tr": "Rusça",
+        "en": "Russian"
+      }
     },
     {
       "article": "die",
-      "word": "Rutsche"
+      "word": "Rutsche",
+      "translation": {
+        "tr": "slayt",
+        "en": "slide"
+      }
     },
     {
       "article": "der",
-      "word": "Saal"
+      "word": "Saal",
+      "translation": {
+        "tr": "salon",
+        "en": "hall"
+      }
     },
     {
       "article": "das",
-      "word": "Saatgut"
+      "word": "Saatgut",
+      "translation": {
+        "tr": "Tohumlar",
+        "en": "Seeds"
+      }
     },
     {
       "article": "der",
-      "word": "Sachverhalt"
+      "word": "Sachverhalt",
+      "translation": {
+        "tr": "Gerçekler",
+        "en": "Facts"
+      }
     },
     {
       "article": "der",
-      "word": "Safe"
+      "word": "Safe",
+      "translation": {
+        "tr": "Güvenli",
+        "en": "Safe"
+      }
     },
     {
       "article": "das",
-      "word": "Sagen"
+      "word": "Sagen",
+      "translation": {
+        "tr": "Söyle",
+        "en": "Say"
+      }
     },
     {
       "article": "die",
-      "word": "Saison"
+      "word": "Saison",
+      "translation": {
+        "tr": "sezon",
+        "en": "season"
+      }
     },
     {
       "article": "der",
-      "word": "Salon"
+      "word": "Salon",
+      "translation": {
+        "tr": "salon",
+        "en": "Salon"
+      }
     },
     {
       "article": "der",
-      "word": "Satellit"
+      "word": "Satellit",
+      "translation": {
+        "tr": "Uydu",
+        "en": "Satellite"
+      }
     },
     {
       "article": "der",
-      "word": "Säugling"
+      "word": "Säugling",
+      "translation": {
+        "tr": "bebek",
+        "en": "infant"
+      }
     },
     {
       "article": "die",
-      "word": "Säule"
+      "word": "Säule",
+      "translation": {
+        "tr": "sütun",
+        "en": "pillar"
+      }
     },
     {
       "article": "die",
-      "word": "Säure"
+      "word": "Säure",
+      "translation": {
+        "tr": "Asit",
+        "en": "Acid"
+      }
     },
     {
       "article": "der",
-      "word": "Schädel"
+      "word": "Schädel",
+      "translation": {
+        "tr": "kafatası",
+        "en": "skull"
+      }
     },
     {
       "article": "der",
-      "word": "Schadenersatz"
+      "word": "Schadenersatz",
+      "translation": {
+        "tr": "Hasarlar",
+        "en": "Damages"
+      }
     },
     {
       "article": "die",
-      "word": "Scham"
+      "word": "Scham",
+      "translation": {
+        "tr": "Utanç verici",
+        "en": "Shame"
+      }
     },
     {
       "article": "die",
-      "word": "Schande"
+      "word": "Schande",
+      "translation": {
+        "tr": "Utanç verici",
+        "en": "Shame"
+      }
     },
     {
       "article": "die",
-      "word": "Schätzung"
+      "word": "Schätzung",
+      "translation": {
+        "tr": "Tahmin",
+        "en": "Estimate"
+      }
     },
     {
       "article": "die",
-      "word": "Schau"
+      "word": "Schau",
+      "translation": {
+        "tr": "Bak",
+        "en": "Look"
+      }
     },
     {
       "article": "der",
-      "word": "Schauer"
+      "word": "Schauer",
+      "translation": {
+        "tr": "Duş",
+        "en": "Shower"
+      }
     },
     {
       "article": "die",
-      "word": "Scheidung"
+      "word": "Scheidung",
+      "translation": {
+        "tr": "Boşanma",
+        "en": "Divorce"
+      }
     },
     {
       "article": "das",
-      "word": "Schema"
+      "word": "Schema",
+      "translation": {
+        "tr": "Şema",
+        "en": "Scheme"
+      }
     },
     {
       "article": "der",
-      "word": "Scherz"
+      "word": "Scherz",
+      "translation": {
+        "tr": "Şaka",
+        "en": "Joke"
+      }
     },
     {
       "article": "die",
-      "word": "Scheu"
+      "word": "Scheu",
+      "translation": {
+        "tr": "Utangaç",
+        "en": "Shy"
+      }
     },
     {
       "article": "die",
-      "word": "Schicht"
+      "word": "Schicht",
+      "translation": {
+        "tr": "katman",
+        "en": "layer"
+      }
     },
     {
       "article": "das",
-      "word": "Schicksal"
+      "word": "Schicksal",
+      "translation": {
+        "tr": "Kader",
+        "en": "Fate"
+      }
     },
     {
       "article": "der",
-      "word": "Schiedsrichter"
+      "word": "Schiedsrichter",
+      "translation": {
+        "tr": "Hakem",
+        "en": "Referee"
+      }
     },
     {
       "article": "der",
-      "word": "Schilling"
+      "word": "Schilling",
+      "translation": {
+        "tr": "Şilin",
+        "en": "Shilling"
+      }
     },
     {
       "article": "die",
-      "word": "Schlacht"
+      "word": "Schlacht",
+      "translation": {
+        "tr": "savaş",
+        "en": "battle"
+      }
     },
     {
       "article": "das",
-      "word": "Schlachtfeld"
+      "word": "Schlachtfeld",
+      "translation": {
+        "tr": "Savaş Alanı",
+        "en": "Battlefield"
+      }
     },
     {
       "article": "der",
-      "word": "Schlag"
+      "word": "Schlag",
+      "translation": {
+        "tr": "Darbe",
+        "en": "Blow"
+      }
     },
     {
       "article": "der",
-      "word": "Schläger"
+      "word": "Schläger",
+      "translation": {
+        "tr": "Eşkıya",
+        "en": "Thug"
+      }
     },
     {
       "article": "die",
-      "word": "Schlägerei"
+      "word": "Schlägerei",
+      "translation": {
+        "tr": "Kavga",
+        "en": "Brawl"
+      }
     },
     {
       "article": "die",
-      "word": "Schlagzeile"
+      "word": "Schlagzeile",
+      "translation": {
+        "tr": "Başlık",
+        "en": "Headline"
+      }
     },
     {
       "article": "die",
-      "word": "Schleuse"
+      "word": "Schleuse",
+      "translation": {
+        "tr": "kilit",
+        "en": "lock"
+      }
     },
     {
       "article": "die",
-      "word": "Schließung"
+      "word": "Schließung",
+      "translation": {
+        "tr": "Kapatma",
+        "en": "Closure"
+      }
     },
     {
       "article": "der",
-      "word": "Schluss"
+      "word": "Schluss",
+      "translation": {
+        "tr": "Bitiş",
+        "en": "End"
+      }
     },
     {
       "article": "die",
-      "word": "Schnittstelle"
+      "word": "Schnittstelle",
+      "translation": {
+        "tr": "Arayüz",
+        "en": "Interface"
+      }
     },
     {
       "article": "der",
-      "word": "Schock"
+      "word": "Schock",
+      "translation": {
+        "tr": "Şok",
+        "en": "Shock"
+      }
     },
     {
       "article": "die",
-      "word": "Schönheit"
+      "word": "Schönheit",
+      "translation": {
+        "tr": "Güzellik",
+        "en": "Beauty"
+      }
     },
     {
       "article": "der",
-      "word": "Schöpfer"
+      "word": "Schöpfer",
+      "translation": {
+        "tr": "Yaratıcı",
+        "en": "Creator"
+      }
     },
     {
       "article": "die",
-      "word": "Schreibweise"
+      "word": "Schreibweise",
+      "translation": {
+        "tr": "Gösterim",
+        "en": "Notation"
+      }
     },
     {
       "article": "die",
-      "word": "Schrift"
+      "word": "Schrift",
+      "translation": {
+        "tr": "yazı tipi",
+        "en": "font"
+      }
     },
     {
       "article": "der",
-      "word": "Schriftsteller"
+      "word": "Schriftsteller",
+      "translation": {
+        "tr": "yazar",
+        "en": "Writer"
+      }
     },
     {
       "article": "der",
-      "word": "Schrott"
+      "word": "Schrott",
+      "translation": {
+        "tr": "Hurda",
+        "en": "Scrap"
+      }
     },
     {
       "article": "die",
-      "word": "Schuld"
+      "word": "Schuld",
+      "translation": {
+        "tr": "suçluluk",
+        "en": "guilt"
+      }
     },
     {
       "article": "die",
-      "word": "Schwerkraft"
+      "word": "Schwerkraft",
+      "translation": {
+        "tr": "Yerçekimi",
+        "en": "Gravity"
+      }
     },
     {
       "article": "der",
-      "word": "Schwerpunkt"
+      "word": "Schwerpunkt",
+      "translation": {
+        "tr": "Odaklanma",
+        "en": "Focus"
+      }
     },
     {
       "article": "die",
-      "word": "Schwingung"
+      "word": "Schwingung",
+      "translation": {
+        "tr": "Titreşim",
+        "en": "Vibration"
+      }
     },
     {
       "article": "der",
-      "word": "Schwung"
+      "word": "Schwung",
+      "translation": {
+        "tr": "ivme",
+        "en": "Momentum"
+      }
     },
     {
       "article": "die",
-      "word": "Seele"
+      "word": "Seele",
+      "translation": {
+        "tr": "ruh",
+        "en": "soul"
+      }
     },
     {
       "article": "der",
-      "word": "Segen"
+      "word": "Segen",
+      "translation": {
+        "tr": "Nimet",
+        "en": "Blessing"
+      }
     },
     {
       "article": "das",
-      "word": "Segment"
+      "word": "Segment",
+      "translation": {
+        "tr": "bölüm",
+        "en": "segment"
+      }
     },
     {
       "article": "die",
-      "word": "Sehnsucht"
+      "word": "Sehnsucht",
+      "translation": {
+        "tr": "Özlem",
+        "en": "Longing"
+      }
     },
     {
       "article": "die",
-      "word": "Seide"
+      "word": "Seide",
+      "translation": {
+        "tr": "İpek",
+        "en": "Silk"
+      }
     },
     {
       "article": "das",
-      "word": "Sein"
+      "word": "Sein",
+      "translation": {
+        "tr": "Onun",
+        "en": "His"
+      }
     },
     {
       "article": "die",
-      "word": "Sektion"
+      "word": "Sektion",
+      "translation": {
+        "tr": "Bölüm",
+        "en": "Section"
+      }
     },
     {
       "article": "der",
-      "word": "Sektor"
+      "word": "Sektor",
+      "translation": {
+        "tr": "Sektör",
+        "en": "Sector"
+      }
     },
     {
       "article": "die",
-      "word": "Selbstständigkeit"
+      "word": "Selbstständigkeit",
+      "translation": {
+        "tr": "Bağımsızlık",
+        "en": "Independence"
+      }
     },
     {
       "article": "der",
-      "word": "Senat"
+      "word": "Senat",
+      "translation": {
+        "tr": "Senato",
+        "en": "Senate"
+      }
     },
     {
       "article": "der",
-      "word": "Senator"
+      "word": "Senator",
+      "translation": {
+        "tr": "Senatör",
+        "en": "Senator"
+      }
     },
     {
       "article": "die",
-      "word": "Senkung"
+      "word": "Senkung",
+      "translation": {
+        "tr": "İndirme",
+        "en": "Lowering"
+      }
     },
     {
       "article": "die",
-      "word": "Sequenz"
+      "word": "Sequenz",
+      "translation": {
+        "tr": "sıra",
+        "en": "sequence"
+      }
     },
     {
       "article": "der",
-      "word": "Service"
+      "word": "Service",
+      "translation": {
+        "tr": "Hizmet",
+        "en": "Service"
+      }
     },
     {
       "article": "die",
-      "word": "Sexualität"
+      "word": "Sexualität",
+      "translation": {
+        "tr": "Cinsellik",
+        "en": "Sexuality"
+      }
     },
     {
       "article": "die",
-      "word": "Sicherung"
+      "word": "Sicherung",
+      "translation": {
+        "tr": "Yedekleme",
+        "en": "Backup"
+      }
     },
     {
       "article": "die",
-      "word": "Sicht"
+      "word": "Sicht",
+      "translation": {
+        "tr": "görünüm",
+        "en": "view"
+      }
     },
     {
       "article": "die",
-      "word": "Simulation"
+      "word": "Simulation",
+      "translation": {
+        "tr": "Simülasyon",
+        "en": "Simulation"
+      }
     },
     {
       "article": "die",
-      "word": "Single"
+      "word": "Single",
+      "translation": {
+        "tr": "Tek",
+        "en": "Single"
+      }
     },
     {
       "article": "der",
-      "word": "Sir"
+      "word": "Sir",
+      "translation": {
+        "tr": "Efendim",
+        "en": "Sir"
+      }
     },
     {
       "article": "die",
-      "word": "Skala"
+      "word": "Skala",
+      "translation": {
+        "tr": "ölçek",
+        "en": "scale"
+      }
     },
     {
       "article": "der",
-      "word": "Skandal"
+      "word": "Skandal",
+      "translation": {
+        "tr": "Skandal",
+        "en": "Scandal"
+      }
     },
     {
       "article": "das",
-      "word": "Skelett"
+      "word": "Skelett",
+      "translation": {
+        "tr": "İskelet",
+        "en": "Skeleton"
+      }
     },
     {
       "article": "die",
-      "word": "Skepsis"
+      "word": "Skepsis",
+      "translation": {
+        "tr": "şüphecilik",
+        "en": "Skepticism"
+      }
     },
     {
       "article": "die",
-      "word": "Sklaverei"
+      "word": "Sklaverei",
+      "translation": {
+        "tr": "Kölelik",
+        "en": "Slavery"
+      }
     },
     {
       "article": "das",
-      "word": "Skript"
+      "word": "Skript",
+      "translation": {
+        "tr": "senaryo",
+        "en": "script"
+      }
     },
     {
       "article": "die",
-      "word": "Skulptur"
+      "word": "Skulptur",
+      "translation": {
+        "tr": "Heykel",
+        "en": "Sculpture"
+      }
     },
     {
       "article": "die",
-      "word": "Software"
+      "word": "Software",
+      "translation": {
+        "tr": "Yazılım",
+        "en": "Software"
+      }
     },
     {
       "article": "die",
-      "word": "Solidarität"
+      "word": "Solidarität",
+      "translation": {
+        "tr": "Dayanışma",
+        "en": "Solidarity"
+      }
     },
     {
       "article": "das",
-      "word": "Solo"
+      "word": "Solo",
+      "translation": {
+        "tr": "Yalnız",
+        "en": "Solo"
+      }
     },
     {
       "article": "die",
-      "word": "Sonde"
+      "word": "Sonde",
+      "translation": {
+        "tr": "sonda",
+        "en": "probe"
+      }
     },
     {
       "article": "die",
-      "word": "Souveränität"
+      "word": "Souveränität",
+      "translation": {
+        "tr": "Egemenlik",
+        "en": "Sovereignty"
+      }
     },
     {
       "article": "der",
-      "word": "Sozialarbeiter"
+      "word": "Sozialarbeiter",
+      "translation": {
+        "tr": "Sosyal hizmet uzmanı",
+        "en": "Social worker"
+      }
     },
     {
       "article": "der",
-      "word": "Sozialdemokrat"
+      "word": "Sozialdemokrat",
+      "translation": {
+        "tr": "Sosyal Demokrat",
+        "en": "Social Democrat"
+      }
     },
     {
       "article": "die",
-      "word": "Soziologie"
+      "word": "Soziologie",
+      "translation": {
+        "tr": "Sosyoloji",
+        "en": "Sociology"
+      }
     },
     {
       "article": "der",
-      "word": "Spalt"
+      "word": "Spalt",
+      "translation": {
+        "tr": "boşluk",
+        "en": "gap"
+      }
     },
     {
       "article": "die",
-      "word": "Spalte"
+      "word": "Spalte",
+      "translation": {
+        "tr": "Sütun",
+        "en": "Column"
+      }
     },
     {
       "article": "die",
-      "word": "Spaltung"
+      "word": "Spaltung",
+      "translation": {
+        "tr": "Bölüm",
+        "en": "Division"
+      }
     },
     {
       "article": "der",
-      "word": "Spam"
+      "word": "Spam",
+      "translation": {
+        "tr": "Spam",
+        "en": "Spam"
+      }
     },
     {
       "article": "die",
-      "word": "Spannung"
+      "word": "Spannung",
+      "translation": {
+        "tr": "gerilim",
+        "en": "tension"
+      }
     },
     {
       "article": "die",
-      "word": "Spannweite"
+      "word": "Spannweite",
+      "translation": {
+        "tr": "Kanat açıklığı",
+        "en": "Wingspan"
+      }
     },
     {
       "article": "das",
-      "word": "Spektakel"
+      "word": "Spektakel",
+      "translation": {
+        "tr": "gösteri",
+        "en": "spectacle"
+      }
     },
     {
       "article": "das",
-      "word": "Spektrum"
+      "word": "Spektrum",
+      "translation": {
+        "tr": "Spektrum",
+        "en": "Spectrum"
+      }
     },
     {
       "article": "die",
-      "word": "Spekulation"
+      "word": "Spekulation",
+      "translation": {
+        "tr": "spekülasyon",
+        "en": "speculation"
+      }
     },
     {
       "article": "die",
-      "word": "Spezies"
+      "word": "Spezies",
+      "translation": {
+        "tr": "türler",
+        "en": "species"
+      }
     },
     {
       "article": "die",
-      "word": "Spezifikation"
+      "word": "Spezifikation",
+      "translation": {
+        "tr": "Şartname",
+        "en": "Specification"
+      }
     },
     {
       "article": "der",
-      "word": "Spielraum"
+      "word": "Spielraum",
+      "translation": {
+        "tr": "hareket alanı",
+        "en": "leeway"
+      }
     },
     {
       "article": "der",
-      "word": "Spion"
+      "word": "Spion",
+      "translation": {
+        "tr": "Casus",
+        "en": "Spy"
+      }
     },
     {
       "article": "die",
-      "word": "Spionage"
+      "word": "Spionage",
+      "translation": {
+        "tr": "Casusluk",
+        "en": "Espionage"
+      }
     },
     {
       "article": "der",
-      "word": "Spott"
+      "word": "Spott",
+      "translation": {
+        "tr": "alay",
+        "en": "mockery"
+      }
     },
     {
       "article": "der",
-      "word": "Sprengstoff"
+      "word": "Sprengstoff",
+      "translation": {
+        "tr": "Patlayıcılar",
+        "en": "Explosives"
+      }
     },
     {
       "article": "der",
-      "word": "Spruch"
+      "word": "Spruch",
+      "translation": {
+        "tr": "söyleyerek",
+        "en": "saying"
+      }
     },
     {
       "article": "der",
-      "word": "Spuk"
+      "word": "Spuk",
+      "translation": {
+        "tr": "Ürkütücü",
+        "en": "Spooky"
+      }
     },
     {
       "article": "der",
-      "word": "Staatsanwalt"
+      "word": "Staatsanwalt",
+      "translation": {
+        "tr": "Savcı",
+        "en": "Prosecutor"
+      }
     },
     {
       "article": "die",
-      "word": "Staatsbürgerschaft"
+      "word": "Staatsbürgerschaft",
+      "translation": {
+        "tr": "Vatandaşlık",
+        "en": "Citizenship"
+      }
     },
     {
       "article": "die",
-      "word": "Stabilität"
+      "word": "Stabilität",
+      "translation": {
+        "tr": "Kararlılık",
+        "en": "Stability"
+      }
     },
     {
       "article": "das",
-      "word": "Stadium"
+      "word": "Stadium",
+      "translation": {
+        "tr": "sahne",
+        "en": "stage"
+      }
     },
     {
       "article": "der",
-      "word": "Stadtrat"
+      "word": "Stadtrat",
+      "translation": {
+        "tr": "Kent Konseyi",
+        "en": "City Council"
+      }
     },
     {
       "article": "der",
-      "word": "Stamm"
+      "word": "Stamm",
+      "translation": {
+        "tr": "kabile",
+        "en": "tribe"
+      }
     },
     {
       "article": "der",
-      "word": "Stand"
+      "word": "Stand",
+      "translation": {
+        "tr": "Stand",
+        "en": "Stand"
+      }
     },
     {
       "article": "der",
-      "word": "Standard"
+      "word": "Standard",
+      "translation": {
+        "tr": "Varsayılan",
+        "en": "Default"
+      }
     },
     {
       "article": "der",
-      "word": "Standort"
+      "word": "Standort",
+      "translation": {
+        "tr": "Konum",
+        "en": "Location"
+      }
     },
     {
       "article": "der",
-      "word": "Standpunkt"
+      "word": "Standpunkt",
+      "translation": {
+        "tr": "bakış açısı",
+        "en": "point of view"
+      }
     },
     {
       "article": "die",
-      "word": "Starre"
+      "word": "Starre",
+      "translation": {
+        "tr": "Sert",
+        "en": "Rigid"
+      }
     },
     {
       "article": "die",
-      "word": "Statistik"
+      "word": "Statistik",
+      "translation": {
+        "tr": "İstatistikler",
+        "en": "Statistics"
+      }
     },
     {
       "article": "die",
-      "word": "Statue"
+      "word": "Statue",
+      "translation": {
+        "tr": "Heykel",
+        "en": "Statue"
+      }
     },
     {
       "article": "der",
-      "word": "Status"
+      "word": "Status",
+      "translation": {
+        "tr": "durum",
+        "en": "status"
+      }
     },
     {
       "article": "die",
-      "word": "Steigerung"
+      "word": "Steigerung",
+      "translation": {
+        "tr": "Artış",
+        "en": "Increase"
+      }
     },
     {
       "article": "die",
-      "word": "Steigung"
+      "word": "Steigung",
+      "translation": {
+        "tr": "eğim",
+        "en": "slope"
+      }
     },
     {
       "article": "die",
-      "word": "Stellung"
+      "word": "Stellung",
+      "translation": {
+        "tr": "konum",
+        "en": "position"
+      }
     },
     {
       "article": "die",
-      "word": "Stellungnahme"
+      "word": "Stellungnahme",
+      "translation": {
+        "tr": "Görüş",
+        "en": "Opinion"
+      }
     },
     {
       "article": "der",
-      "word": "Stellvertreter"
+      "word": "Stellvertreter",
+      "translation": {
+        "tr": "Yardımcısı",
+        "en": "Deputy"
+      }
     },
     {
       "article": "der",
-      "word": "Steuerberater"
+      "word": "Steuerberater",
+      "translation": {
+        "tr": "Vergi danışmanı",
+        "en": "Tax advisor"
+      }
     },
     {
       "article": "die",
-      "word": "Steuerung"
+      "word": "Steuerung",
+      "translation": {
+        "tr": "Kontrol",
+        "en": "Control"
+      }
     },
     {
       "article": "der",
-      "word": "Steuerzahler"
+      "word": "Steuerzahler",
+      "translation": {
+        "tr": "Vergi mükellefi",
+        "en": "Taxpayer"
+      }
     },
     {
       "article": "der",
-      "word": "Stich"
+      "word": "Stich",
+      "translation": {
+        "tr": "Dikiş",
+        "en": "Stitch"
+      }
     },
     {
       "article": "die",
-      "word": "Stichprobe"
+      "word": "Stichprobe",
+      "translation": {
+        "tr": "Örnek",
+        "en": "Sample"
+      }
     },
     {
       "article": "das",
-      "word": "Stichwort"
+      "word": "Stichwort",
+      "translation": {
+        "tr": "Anahtar kelime",
+        "en": "Keyword"
+      }
     },
     {
       "article": "der",
-      "word": "Stickstoff"
+      "word": "Stickstoff",
+      "translation": {
+        "tr": "Azot",
+        "en": "Nitrogen"
+      }
     },
     {
       "article": "die",
-      "word": "Stiftung"
+      "word": "Stiftung",
+      "translation": {
+        "tr": "Vakıf",
+        "en": "Foundation"
+      }
     },
     {
       "article": "der",
-      "word": "Stil"
+      "word": "Stil",
+      "translation": {
+        "tr": "stil",
+        "en": "style"
+      }
     },
     {
       "article": "die",
-      "word": "Stille"
+      "word": "Stille",
+      "translation": {
+        "tr": "Sessizlik",
+        "en": "Silence"
+      }
     },
     {
       "article": "der",
-      "word": "Stimmzettel"
+      "word": "Stimmzettel",
+      "translation": {
+        "tr": "oy pusulası",
+        "en": "Ballot"
+      }
     },
     {
       "article": "das",
-      "word": "Stipendium"
+      "word": "Stipendium",
+      "translation": {
+        "tr": "Burs",
+        "en": "Scholarship"
+      }
     },
     {
       "article": "der",
-      "word": "Stoffwechsel"
+      "word": "Stoffwechsel",
+      "translation": {
+        "tr": "Metabolizma",
+        "en": "Metabolism"
+      }
     },
     {
       "article": "der",
-      "word": "Stolz"
+      "word": "Stolz",
+      "translation": {
+        "tr": "Gurur",
+        "en": "Pride"
+      }
     },
     {
       "article": "die",
-      "word": "Störung"
+      "word": "Störung",
+      "translation": {
+        "tr": "Rahatsızlık",
+        "en": "Disturbance"
+      }
     },
     {
       "article": "die",
-      "word": "Straftat"
+      "word": "Straftat",
+      "translation": {
+        "tr": "suç",
+        "en": "crime"
+      }
     },
     {
       "article": "der",
-      "word": "Straftäter"
+      "word": "Straftäter",
+      "translation": {
+        "tr": "suçlular",
+        "en": "criminals"
+      }
     },
     {
       "article": "die",
-      "word": "Strafverfolgung"
+      "word": "Strafverfolgung",
+      "translation": {
+        "tr": "Kanun yaptırımı",
+        "en": "Law enforcement"
+      }
     },
     {
       "article": "die",
-      "word": "Strahlung"
+      "word": "Strahlung",
+      "translation": {
+        "tr": "Radyasyon",
+        "en": "Radiation"
+      }
     },
     {
       "article": "die",
-      "word": "Strategie"
+      "word": "Strategie",
+      "translation": {
+        "tr": "Strateji",
+        "en": "Strategy"
+      }
     },
     {
       "article": "der",
-      "word": "Strauß"
+      "word": "Strauß",
+      "translation": {
+        "tr": "Devekuşu",
+        "en": "Ostrich"
+      }
     },
     {
       "article": "das",
-      "word": "Streben"
+      "word": "Streben",
+      "translation": {
+        "tr": "Çabala",
+        "en": "Strive"
+      }
     },
     {
       "article": "die",
-      "word": "Strömung"
+      "word": "Strömung",
+      "translation": {
+        "tr": "Akış",
+        "en": "Flow"
+      }
     },
     {
       "article": "die",
-      "word": "Struktur"
+      "word": "Struktur",
+      "translation": {
+        "tr": "Yapı",
+        "en": "Structure"
+      }
     },
     {
       "article": "die",
-      "word": "Studie"
+      "word": "Studie",
+      "translation": {
+        "tr": "çalışma",
+        "en": "Study"
+      }
     },
     {
       "article": "der",
-      "word": "Studiengang"
+      "word": "Studiengang",
+      "translation": {
+        "tr": "Çalışma kursu",
+        "en": "Course of study"
+      }
     },
     {
       "article": "das",
-      "word": "Studium"
+      "word": "Studium",
+      "translation": {
+        "tr": "çalışma",
+        "en": "Study"
+      }
     },
     {
       "article": "der",
-      "word": "Stürmer"
+      "word": "Stürmer",
+      "translation": {
+        "tr": "Forvet",
+        "en": "Striker"
+      }
     },
     {
       "article": "der",
-      "word": "Sturz"
+      "word": "Sturz",
+      "translation": {
+        "tr": "Güz",
+        "en": "Fall"
+      }
     },
     {
       "article": "die",
-      "word": "Stütze"
+      "word": "Stütze",
+      "translation": {
+        "tr": "Destek",
+        "en": "Support"
+      }
     },
     {
       "article": "die",
-      "word": "Substanz"
+      "word": "Substanz",
+      "translation": {
+        "tr": "madde",
+        "en": "substance"
+      }
     },
     {
       "article": "das",
-      "word": "Substrat"
+      "word": "Substrat",
+      "translation": {
+        "tr": "Yüzey",
+        "en": "Substrate"
+      }
     },
     {
       "article": "die",
-      "word": "Subvention"
+      "word": "Subvention",
+      "translation": {
+        "tr": "Sübvansiyon",
+        "en": "Subsidy"
+      }
     },
     {
       "article": "die",
-      "word": "Sucht"
+      "word": "Sucht",
+      "translation": {
+        "tr": "Bağımlılık",
+        "en": "Addiction"
+      }
     },
     {
       "article": "die",
-      "word": "Suite"
+      "word": "Suite",
+      "translation": {
+        "tr": "süit",
+        "en": "suite"
+      }
     },
     {
       "article": "der",
-      "word": "Sumpf"
+      "word": "Sumpf",
+      "translation": {
+        "tr": "bataklık",
+        "en": "swamp"
+      }
     },
     {
       "article": "die",
-      "word": "Synthese"
+      "word": "Synthese",
+      "translation": {
+        "tr": "Sentez",
+        "en": "Synthesis"
+      }
     },
     {
       "article": "das",
-      "word": "Szenario"
+      "word": "Szenario",
+      "translation": {
+        "tr": "Senaryo",
+        "en": "Scenario"
+      }
     },
     {
       "article": "der",
-      "word": "Tadel"
+      "word": "Tadel",
+      "translation": {
+        "tr": "Suçlama",
+        "en": "Blame"
+      }
     },
     {
       "article": "die",
-      "word": "Tagesmutter"
+      "word": "Tagesmutter",
+      "translation": {
+        "tr": "çocuk bakıcısı",
+        "en": "childminder"
+      }
     },
     {
       "article": "die",
-      "word": "Tagesordnung"
+      "word": "Tagesordnung",
+      "translation": {
+        "tr": "Gündem",
+        "en": "Agenda"
+      }
     },
     {
       "article": "die",
-      "word": "Taktik"
+      "word": "Taktik",
+      "translation": {
+        "tr": "Taktikler",
+        "en": "Tactics"
+      }
     },
     {
       "article": "der",
-      "word": "Tarif"
+      "word": "Tarif",
+      "translation": {
+        "tr": "Tarife",
+        "en": "Tariff"
+      }
     },
     {
       "article": "die",
-      "word": "Tätigkeit"
+      "word": "Tätigkeit",
+      "translation": {
+        "tr": "aktivite",
+        "en": "activity"
+      }
     },
     {
       "article": "der",
-      "word": "Tatort"
+      "word": "Tatort",
+      "translation": {
+        "tr": "Suç mahalli",
+        "en": "Crime scene"
+      }
     },
     {
       "article": "die",
-      "word": "Technologie"
+      "word": "Technologie",
+      "translation": {
+        "tr": "Teknoloji",
+        "en": "Technology"
+      }
     },
     {
       "article": "die",
-      "word": "Teilung"
+      "word": "Teilung",
+      "translation": {
+        "tr": "bölme",
+        "en": "division"
+      }
     },
     {
       "article": "die",
-      "word": "Tendenz"
+      "word": "Tendenz",
+      "translation": {
+        "tr": "eğilim",
+        "en": "tendency"
+      }
     },
     {
       "article": "der",
-      "word": "Tenor"
+      "word": "Tenor",
+      "translation": {
+        "tr": "Tenor",
+        "en": "Tenor"
+      }
     },
     {
       "article": "das",
-      "word": "Territorium"
+      "word": "Territorium",
+      "translation": {
+        "tr": "bölge",
+        "en": "territory"
+      }
     },
     {
       "article": "der",
-      "word": "Terror"
+      "word": "Terror",
+      "translation": {
+        "tr": "Terör",
+        "en": "Terror"
+      }
     },
     {
       "article": "das",
-      "word": "Testament"
+      "word": "Testament",
+      "translation": {
+        "tr": "irade",
+        "en": "Will"
+      }
     },
     {
       "article": "die",
-      "word": "Theorie"
+      "word": "Theorie",
+      "translation": {
+        "tr": "Teori",
+        "en": "Theory"
+      }
     },
     {
       "article": "die",
-      "word": "Therapie"
+      "word": "Therapie",
+      "translation": {
+        "tr": "Terapi",
+        "en": "Therapy"
+      }
     },
     {
       "article": "die",
-      "word": "These"
+      "word": "These",
+      "translation": {
+        "tr": "Tez",
+        "en": "Thesis"
+      }
     },
     {
       "article": "der",
-      "word": "Thriller"
+      "word": "Thriller",
+      "translation": {
+        "tr": "Gerilim",
+        "en": "Thriller"
+      }
     },
     {
       "article": "der",
-      "word": "Thron"
+      "word": "Thron",
+      "translation": {
+        "tr": "taht",
+        "en": "throne"
+      }
     },
     {
       "article": "die",
-      "word": "Tierwelt"
+      "word": "Tierwelt",
+      "translation": {
+        "tr": "yaban hayatı",
+        "en": "wildlife"
+      }
     },
     {
       "article": "das",
-      "word": "Timing"
+      "word": "Timing",
+      "translation": {
+        "tr": "Zamanlama",
+        "en": "Timing"
+      }
     },
     {
       "article": "die",
-      "word": "Toleranz"
+      "word": "Toleranz",
+      "translation": {
+        "tr": "Hoşgörü",
+        "en": "Tolerance"
+      }
     },
     {
       "article": "der",
-      "word": "Tonfall"
+      "word": "Tonfall",
+      "translation": {
+        "tr": "Ses tonu",
+        "en": "Tone of voice"
+      }
     },
     {
       "article": "das",
-      "word": "Top"
+      "word": "Top",
+      "translation": {
+        "tr": "Harika",
+        "en": "Great"
+      }
     },
     {
       "article": "der",
-      "word": "Tornado"
+      "word": "Tornado",
+      "translation": {
+        "tr": "Kasırga",
+        "en": "Tornado"
+      }
     },
     {
       "article": "der",
-      "word": "Torwart"
+      "word": "Torwart",
+      "translation": {
+        "tr": "Kaleci",
+        "en": "Goalkeeper"
+      }
     },
     {
       "article": "der",
-      "word": "Tote"
+      "word": "Tote",
+      "translation": {
+        "tr": "ölü",
+        "en": "dead"
+      }
     },
     {
       "article": "der",
-      "word": "Tourismus"
+      "word": "Tourismus",
+      "translation": {
+        "tr": "Turizm",
+        "en": "Tourism"
+      }
     },
     {
       "article": "der",
-      "word": "Träger"
+      "word": "Träger",
+      "translation": {
+        "tr": "Taşıyıcı",
+        "en": "Carrier"
+      }
     },
     {
       "article": "die",
-      "word": "Trägheit"
+      "word": "Trägheit",
+      "translation": {
+        "tr": "eylemsizlik",
+        "en": "inertia"
+      }
     },
     {
       "article": "die",
-      "word": "Tragödie"
+      "word": "Tragödie",
+      "translation": {
+        "tr": "Trajedi",
+        "en": "Tragedy"
+      }
     },
     {
       "article": "die",
-      "word": "Transaktion"
+      "word": "Transaktion",
+      "translation": {
+        "tr": "işlem",
+        "en": "transaction"
+      }
     },
     {
       "article": "der",
-      "word": "Transfer"
+      "word": "Transfer",
+      "translation": {
+        "tr": "aktarma",
+        "en": "transfer"
+      }
     },
     {
       "article": "die",
-      "word": "Transformation"
+      "word": "Transformation",
+      "translation": {
+        "tr": "Dönüşüm",
+        "en": "Transformation"
+      }
     },
     {
       "article": "die",
-      "word": "Transparenz"
+      "word": "Transparenz",
+      "translation": {
+        "tr": "Şeffaflık",
+        "en": "Transparency"
+      }
     },
     {
       "article": "die",
-      "word": "Trauer"
+      "word": "Trauer",
+      "translation": {
+        "tr": "Yas",
+        "en": "Mourning"
+      }
     },
     {
       "article": "das",
-      "word": "Trauma"
+      "word": "Trauma",
+      "translation": {
+        "tr": "travma",
+        "en": "trauma"
+      }
     },
     {
       "article": "die",
-      "word": "Trauung"
+      "word": "Trauung",
+      "translation": {
+        "tr": "Düğün töreni",
+        "en": "Wedding ceremony"
+      }
     },
     {
       "article": "der",
-      "word": "Treffer"
+      "word": "Treffer",
+      "translation": {
+        "tr": "Vur",
+        "en": "Hit"
+      }
     },
     {
       "article": "der",
-      "word": "Treibstoff"
+      "word": "Treibstoff",
+      "translation": {
+        "tr": "Yakıt",
+        "en": "Fuel"
+      }
     },
     {
       "article": "der",
-      "word": "Tresor"
+      "word": "Tresor",
+      "translation": {
+        "tr": "Güvenli",
+        "en": "Safe"
+      }
     },
     {
       "article": "das",
-      "word": "Tribunal"
+      "word": "Tribunal",
+      "translation": {
+        "tr": "Mahkeme",
+        "en": "Tribunal"
+      }
     },
     {
       "article": "der",
-      "word": "Tribut"
+      "word": "Tribut",
+      "translation": {
+        "tr": "haraç",
+        "en": "Tribute"
+      }
     },
     {
       "article": "die",
-      "word": "Trilogie"
+      "word": "Trilogie",
+      "translation": {
+        "tr": "üçleme",
+        "en": "trilogy"
+      }
     },
     {
       "article": "der",
-      "word": "Triumph"
+      "word": "Triumph",
+      "translation": {
+        "tr": "Zafer",
+        "en": "Triumph"
+      }
     },
     {
       "article": "der",
-      "word": "Trost"
+      "word": "Trost",
+      "translation": {
+        "tr": "teselli",
+        "en": "Consolation"
+      }
     },
     {
       "article": "die",
-      "word": "Tugend"
+      "word": "Tugend",
+      "translation": {
+        "tr": "Fazilet",
+        "en": "Virtue"
+      }
     },
     {
       "article": "das",
-      "word": "Übel"
+      "word": "Übel",
+      "translation": {
+        "tr": "Kötülük",
+        "en": "Evil"
+      }
     },
     {
       "article": "die",
-      "word": "Übelkeit"
+      "word": "Übelkeit",
+      "translation": {
+        "tr": "Bulantı",
+        "en": "Nausea"
+      }
     },
     {
       "article": "der",
-      "word": "Überblick"
+      "word": "Überblick",
+      "translation": {
+        "tr": "Genel Bakış",
+        "en": "Overview"
+      }
     },
     {
       "article": "die",
-      "word": "Übereinstimmung"
+      "word": "Übereinstimmung",
+      "translation": {
+        "tr": "Maç",
+        "en": "Match"
+      }
     },
     {
       "article": "der",
-      "word": "Überfall"
+      "word": "Überfall",
+      "translation": {
+        "tr": "baskın",
+        "en": "raid"
+      }
     },
     {
       "article": "die",
-      "word": "Übergabe"
+      "word": "Übergabe",
+      "translation": {
+        "tr": "Devir teslim",
+        "en": "Handover"
+      }
     },
     {
       "article": "der",
-      "word": "Überlebende"
+      "word": "Überlebende",
+      "translation": {
+        "tr": "Hayatta kalanlar",
+        "en": "Survivors"
+      }
     },
     {
       "article": "die",
-      "word": "Übernahme"
+      "word": "Übernahme",
+      "translation": {
+        "tr": "Devralma",
+        "en": "Takeover"
+      }
     },
     {
       "article": "der",
-      "word": "Überschuss"
+      "word": "Überschuss",
+      "translation": {
+        "tr": "fazlalık",
+        "en": "surplus"
+      }
     },
     {
       "article": "die",
-      "word": "Übertragung"
+      "word": "Übertragung",
+      "translation": {
+        "tr": "İletim",
+        "en": "Transmission"
+      }
     },
     {
       "article": "die",
-      "word": "Überwachung"
+      "word": "Überwachung",
+      "translation": {
+        "tr": "İzleme",
+        "en": "Monitoring"
+      }
     },
     {
       "article": "die",
-      "word": "Überzeugung"
+      "word": "Überzeugung",
+      "translation": {
+        "tr": "Mahkumiyet",
+        "en": "Conviction"
+      }
     },
     {
       "article": "das",
-      "word": "Ultimatum"
+      "word": "Ultimatum",
+      "translation": {
+        "tr": "Ültimatom",
+        "en": "Ultimatum"
+      }
     },
     {
       "article": "der",
-      "word": "Umfang"
+      "word": "Umfang",
+      "translation": {
+        "tr": "Kapsam",
+        "en": "Scope"
+      }
     },
     {
       "article": "das",
-      "word": "Umfeld"
+      "word": "Umfeld",
+      "translation": {
+        "tr": "Çevre",
+        "en": "Environment"
+      }
     },
     {
       "article": "der",
-      "word": "Umgang"
+      "word": "Umgang",
+      "translation": {
+        "tr": "elleçleme",
+        "en": "handling"
+      }
     },
     {
       "article": "der",
-      "word": "Umsatz"
+      "word": "Umsatz",
+      "translation": {
+        "tr": "Satış",
+        "en": "Sales"
+      }
     },
     {
       "article": "die",
-      "word": "Umsetzung"
+      "word": "Umsetzung",
+      "translation": {
+        "tr": "Uygulama",
+        "en": "Implementation"
+      }
     },
     {
       "article": "der",
-      "word": "Umstand"
+      "word": "Umstand",
+      "translation": {
+        "tr": "durum",
+        "en": "circumstance"
+      }
     },
     {
       "article": "die",
-      "word": "Umwandlung"
+      "word": "Umwandlung",
+      "translation": {
+        "tr": "Dönüşüm",
+        "en": "Conversion"
+      }
     },
     {
       "article": "die",
-      "word": "Unabhängigkeit"
+      "word": "Unabhängigkeit",
+      "translation": {
+        "tr": "Bağımsızlık",
+        "en": "Independence"
+      }
     },
     {
       "article": "das",
-      "word": "Ungeheuer"
+      "word": "Ungeheuer",
+      "translation": {
+        "tr": "canavar",
+        "en": "monster"
+      }
     },
     {
       "article": "das",
-      "word": "Unglück"
+      "word": "Unglück",
+      "translation": {
+        "tr": "Talihsizlik",
+        "en": "Misfortune"
+      }
     },
     {
       "article": "die",
-      "word": "Union"
+      "word": "Union",
+      "translation": {
+        "tr": "Birlik",
+        "en": "Union"
+      }
     },
     {
       "article": "die",
-      "word": "Universität"
+      "word": "Universität",
+      "translation": {
+        "tr": "Üniversite",
+        "en": "University"
+      }
     },
     {
       "article": "der",
-      "word": "Unmut"
+      "word": "Unmut",
+      "translation": {
+        "tr": "hoşnutsuzluk",
+        "en": "displeasure"
+      }
     },
     {
       "article": "die",
-      "word": "Unordnung"
+      "word": "Unordnung",
+      "translation": {
+        "tr": "Dağınıklık",
+        "en": "Clutter"
+      }
     },
     {
       "article": "das",
-      "word": "Unrecht"
+      "word": "Unrecht",
+      "translation": {
+        "tr": "Adaletsizlik",
+        "en": "Injustice"
+      }
     },
     {
       "article": "die",
-      "word": "Unruhe"
+      "word": "Unruhe",
+      "translation": {
+        "tr": "huzursuzluk",
+        "en": "restlessness"
+      }
     },
     {
       "article": "die",
-      "word": "Unsicherheit"
+      "word": "Unsicherheit",
+      "translation": {
+        "tr": "Belirsizlik",
+        "en": "Uncertainty"
+      }
     },
     {
       "article": "der",
-      "word": "Unsinn"
+      "word": "Unsinn",
+      "translation": {
+        "tr": "saçmalık",
+        "en": "Nonsense"
+      }
     },
     {
       "article": "die",
-      "word": "Unterschrift"
+      "word": "Unterschrift",
+      "translation": {
+        "tr": "İmza",
+        "en": "Signature"
+      }
     },
     {
       "article": "der",
-      "word": "Unterstützer"
+      "word": "Unterstützer",
+      "translation": {
+        "tr": "Destekçi",
+        "en": "Supporter"
+      }
     },
     {
       "article": "die",
-      "word": "Unterstützung"
+      "word": "Unterstützung",
+      "translation": {
+        "tr": "Destek",
+        "en": "Support"
+      }
     },
     {
       "article": "die",
-      "word": "Untersuchung"
+      "word": "Untersuchung",
+      "translation": {
+        "tr": "Soruşturma",
+        "en": "Investigation"
+      }
     },
     {
       "article": "die",
-      "word": "Unterwäsche"
+      "word": "Unterwäsche",
+      "translation": {
+        "tr": "İç çamaşırı",
+        "en": "Underwear"
+      }
     },
     {
       "article": "das",
-      "word": "Unwetter"
+      "word": "Unwetter",
+      "translation": {
+        "tr": "Fırtına",
+        "en": "Storm"
+      }
     },
     {
       "article": "die",
-      "word": "Unwissenheit"
+      "word": "Unwissenheit",
+      "translation": {
+        "tr": "Cehalet",
+        "en": "Ignorance"
+      }
     },
     {
       "article": "das",
-      "word": "Uran"
+      "word": "Uran",
+      "translation": {
+        "tr": "Uranyum",
+        "en": "Uranium"
+      }
     },
     {
       "article": "das",
-      "word": "Urheberrecht"
+      "word": "Urheberrecht",
+      "translation": {
+        "tr": "Telif hakkı",
+        "en": "Copyright"
+      }
     },
     {
       "article": "die",
-      "word": "Urkunde"
+      "word": "Urkunde",
+      "translation": {
+        "tr": "Sertifika",
+        "en": "Certificate"
+      }
     },
     {
       "article": "der",
-      "word": "Ursprung"
+      "word": "Ursprung",
+      "translation": {
+        "tr": "Menşei",
+        "en": "Origin"
+      }
     },
     {
       "article": "das",
-      "word": "Urteil"
+      "word": "Urteil",
+      "translation": {
+        "tr": "Yargı",
+        "en": "Judgment"
+      }
     },
     {
       "article": "die",
-      "word": "Utopie"
+      "word": "Utopie",
+      "translation": {
+        "tr": "Ütopya",
+        "en": "Utopia"
+      }
     },
     {
       "article": "der",
-      "word": "Vandalismus"
+      "word": "Vandalismus",
+      "translation": {
+        "tr": "Vandalizm",
+        "en": "Vandalism"
+      }
     },
     {
       "article": "die",
-      "word": "Variable"
+      "word": "Variable",
+      "translation": {
+        "tr": "değişken",
+        "en": "variable"
+      }
     },
     {
       "article": "die",
-      "word": "Variante"
+      "word": "Variante",
+      "translation": {
+        "tr": "Varyant",
+        "en": "Variant"
+      }
     },
     {
       "article": "die",
-      "word": "Variation"
+      "word": "Variation",
+      "translation": {
+        "tr": "Varyasyon",
+        "en": "Variation"
+      }
     },
     {
       "article": "die",
-      "word": "Verachtung"
+      "word": "Verachtung",
+      "translation": {
+        "tr": "küçümseme",
+        "en": "Contempt"
+      }
     },
     {
       "article": "die",
-      "word": "Veränderung"
+      "word": "Veränderung",
+      "translation": {
+        "tr": "Değiştir",
+        "en": "Change"
+      }
     },
     {
       "article": "der",
-      "word": "Veranstalter"
+      "word": "Veranstalter",
+      "translation": {
+        "tr": "Organizatör",
+        "en": "Organizer"
+      }
     },
     {
       "article": "die",
-      "word": "Verarbeitung"
+      "word": "Verarbeitung",
+      "translation": {
+        "tr": "İşleme",
+        "en": "Processing"
+      }
     },
     {
       "article": "der",
-      "word": "Verband"
+      "word": "Verband",
+      "translation": {
+        "tr": "Dernek",
+        "en": "Association"
+      }
     },
     {
       "article": "die",
-      "word": "Verbesserung"
+      "word": "Verbesserung",
+      "translation": {
+        "tr": "İyileştirme",
+        "en": "Improvement"
+      }
     },
     {
       "article": "die",
-      "word": "Verbindlichkeit"
+      "word": "Verbindlichkeit",
+      "translation": {
+        "tr": "Taahhüt",
+        "en": "Commitment"
+      }
     },
     {
       "article": "das",
-      "word": "Verbrechen"
+      "word": "Verbrechen",
+      "translation": {
+        "tr": "Suç",
+        "en": "Crime"
+      }
     },
     {
       "article": "die",
-      "word": "Verbreitung"
+      "word": "Verbreitung",
+      "translation": {
+        "tr": "Yayılma",
+        "en": "Spread"
+      }
     },
     {
       "article": "der",
-      "word": "Verbündete"
+      "word": "Verbündete",
+      "translation": {
+        "tr": "Müttefikler",
+        "en": "Allies"
+      }
     },
     {
       "article": "der",
-      "word": "Verdacht"
+      "word": "Verdacht",
+      "translation": {
+        "tr": "şüphe",
+        "en": "Suspicion"
+      }
     },
     {
       "article": "der",
-      "word": "Verdächtige"
+      "word": "Verdächtige",
+      "translation": {
+        "tr": "Şüpheliler",
+        "en": "Suspects"
+      }
     },
     {
       "article": "die",
-      "word": "Vereinbarung"
+      "word": "Vereinbarung",
+      "translation": {
+        "tr": "anlaşma",
+        "en": "agreement"
+      }
     },
     {
       "article": "die",
-      "word": "Vereinigung"
+      "word": "Vereinigung",
+      "translation": {
+        "tr": "Dernek",
+        "en": "Association"
+      }
     },
     {
       "article": "das",
-      "word": "Verfahren"
+      "word": "Verfahren",
+      "translation": {
+        "tr": "Prosedür",
+        "en": "Procedure"
+      }
     },
     {
       "article": "die",
-      "word": "Verfassung"
+      "word": "Verfassung",
+      "translation": {
+        "tr": "Anayasa",
+        "en": "Constitution"
+      }
     },
     {
       "article": "die",
-      "word": "Verfolgung"
+      "word": "Verfolgung",
+      "translation": {
+        "tr": "Zulüm",
+        "en": "Persecution"
+      }
     },
     {
       "article": "die",
-      "word": "Verfügbarkeit"
+      "word": "Verfügbarkeit",
+      "translation": {
+        "tr": "Kullanılabilirlik",
+        "en": "Availability"
+      }
     },
     {
       "article": "die",
-      "word": "Verfügung"
+      "word": "Verfügung",
+      "translation": {
+        "tr": "mevcut",
+        "en": "available"
+      }
     },
     {
       "article": "die",
-      "word": "Vergangenheit"
+      "word": "Vergangenheit",
+      "translation": {
+        "tr": "geçmiş",
+        "en": "past"
+      }
     },
     {
       "article": "der",
-      "word": "Vergleich"
+      "word": "Vergleich",
+      "translation": {
+        "tr": "Karşılaştırma",
+        "en": "Comparison"
+      }
     },
     {
       "article": "das",
-      "word": "Verhältnis"
+      "word": "Verhältnis",
+      "translation": {
+        "tr": "oran",
+        "en": "ratio"
+      }
     },
     {
       "article": "die",
-      "word": "Verhandlung"
+      "word": "Verhandlung",
+      "translation": {
+        "tr": "müzakere",
+        "en": "Negotiation"
+      }
     },
     {
       "article": "das",
-      "word": "Verhör"
+      "word": "Verhör",
+      "translation": {
+        "tr": "Sorgulama",
+        "en": "Interrogation"
+      }
     },
     {
       "article": "die",
-      "word": "Verknüpfung"
+      "word": "Verknüpfung",
+      "translation": {
+        "tr": "Bağlantı",
+        "en": "Link"
+      }
     },
     {
       "article": "der",
-      "word": "Verlag"
+      "word": "Verlag",
+      "translation": {
+        "tr": "Yayıncı",
+        "en": "Publisher"
+      }
     },
     {
       "article": "das",
-      "word": "Verlangen"
+      "word": "Verlangen",
+      "translation": {
+        "tr": "arzu",
+        "en": "Desire"
+      }
     },
     {
       "article": "die",
-      "word": "Verlängerung"
+      "word": "Verlängerung",
+      "translation": {
+        "tr": "Uzantı",
+        "en": "Extension"
+      }
     },
     {
       "article": "der",
-      "word": "Verlauf"
+      "word": "Verlauf",
+      "translation": {
+        "tr": "Tarih",
+        "en": "History"
+      }
     },
     {
       "article": "der",
-      "word": "Verletzte"
+      "word": "Verletzte",
+      "translation": {
+        "tr": "Yaralı",
+        "en": "Injured"
+      }
     },
     {
       "article": "die",
-      "word": "Verletzung"
+      "word": "Verletzung",
+      "translation": {
+        "tr": "yaralanma",
+        "en": "injury"
+      }
     },
     {
       "article": "der",
-      "word": "Verlust"
+      "word": "Verlust",
+      "translation": {
+        "tr": "kayıp",
+        "en": "loss"
+      }
     },
     {
       "article": "das",
-      "word": "Vermächtnis"
+      "word": "Vermächtnis",
+      "translation": {
+        "tr": "Eski",
+        "en": "Legacy"
+      }
     },
     {
       "article": "der",
-      "word": "Vermieter"
+      "word": "Vermieter",
+      "translation": {
+        "tr": "Ev sahibi",
+        "en": "Landlord"
+      }
     },
     {
       "article": "die",
-      "word": "Vermittlung"
+      "word": "Vermittlung",
+      "translation": {
+        "tr": "Arabuluculuk",
+        "en": "Mediation"
+      }
     },
     {
       "article": "das",
-      "word": "Vermögen"
+      "word": "Vermögen",
+      "translation": {
+        "tr": "Varlıklar",
+        "en": "Assets"
+      }
     },
     {
       "article": "die",
-      "word": "Vermutung"
+      "word": "Vermutung",
+      "translation": {
+        "tr": "Tahmin et",
+        "en": "Guess"
+      }
     },
     {
       "article": "die",
-      "word": "Vernachlässigung"
+      "word": "Vernachlässigung",
+      "translation": {
+        "tr": "İhmal",
+        "en": "Neglect"
+      }
     },
     {
       "article": "die",
-      "word": "Vernunft"
+      "word": "Vernunft",
+      "translation": {
+        "tr": "Sebep",
+        "en": "Reason"
+      }
     },
     {
       "article": "die",
-      "word": "Veröffentlichung"
+      "word": "Veröffentlichung",
+      "translation": {
+        "tr": "Yayın",
+        "en": "Publication"
+      }
     },
     {
       "article": "die",
-      "word": "Verordnung"
+      "word": "Verordnung",
+      "translation": {
+        "tr": "Düzenleme",
+        "en": "Regulation"
+      }
     },
     {
       "article": "die",
-      "word": "Verpflichtung"
+      "word": "Verpflichtung",
+      "translation": {
+        "tr": "Taahhüt",
+        "en": "Commitment"
+      }
     },
     {
       "article": "der",
-      "word": "Versager"
+      "word": "Versager",
+      "translation": {
+        "tr": "Başarısızlık",
+        "en": "Failure"
+      }
     },
     {
       "article": "der",
-      "word": "Versand"
+      "word": "Versand",
+      "translation": {
+        "tr": "Nakliye",
+        "en": "Shipping"
+      }
     },
     {
       "article": "die",
-      "word": "Verschiebung"
+      "word": "Verschiebung",
+      "translation": {
+        "tr": "Shift",
+        "en": "Shift"
+      }
     },
     {
       "article": "die",
-      "word": "Verschmutzung"
+      "word": "Verschmutzung",
+      "translation": {
+        "tr": "Kirlilik",
+        "en": "Pollution"
+      }
     },
     {
       "article": "die",
-      "word": "Verschwörung"
+      "word": "Verschwörung",
+      "translation": {
+        "tr": "Komplo",
+        "en": "Conspiracy"
+      }
     },
     {
       "article": "die",
-      "word": "Verstärkung"
+      "word": "Verstärkung",
+      "translation": {
+        "tr": "Takviye",
+        "en": "Reinforcement"
+      }
     },
     {
       "article": "der",
-      "word": "Verstoß"
+      "word": "Verstoß",
+      "translation": {
+        "tr": "İhlal",
+        "en": "Violation"
+      }
     },
     {
       "article": "der",
-      "word": "Verteidiger"
+      "word": "Verteidiger",
+      "translation": {
+        "tr": "Defans",
+        "en": "Defender"
+      }
     },
     {
       "article": "die",
-      "word": "Verteidigung"
+      "word": "Verteidigung",
+      "translation": {
+        "tr": "Savunma",
+        "en": "Defense"
+      }
     },
     {
       "article": "die",
-      "word": "Verteilung"
+      "word": "Verteilung",
+      "translation": {
+        "tr": "Dağıtım",
+        "en": "Distribution"
+      }
     },
     {
       "article": "der",
-      "word": "Vertreter"
+      "word": "Vertreter",
+      "translation": {
+        "tr": "Temsilci",
+        "en": "Representative"
+      }
     },
     {
       "article": "die",
-      "word": "Vertretung"
+      "word": "Vertretung",
+      "translation": {
+        "tr": "Temsil",
+        "en": "Representation"
+      }
     },
     {
       "article": "der",
-      "word": "Vertrieb"
+      "word": "Vertrieb",
+      "translation": {
+        "tr": "Satış",
+        "en": "Sales"
+      }
     },
     {
       "article": "die",
-      "word": "Verwaltung"
+      "word": "Verwaltung",
+      "translation": {
+        "tr": "Yönetim",
+        "en": "Administration"
+      }
     },
     {
       "article": "der",
-      "word": "Verwandte"
+      "word": "Verwandte",
+      "translation": {
+        "tr": "akrabalar",
+        "en": "relatives"
+      }
     },
     {
       "article": "der",
-      "word": "Verweis"
+      "word": "Verweis",
+      "translation": {
+        "tr": "Referans",
+        "en": "Reference"
+      }
     },
     {
       "article": "die",
-      "word": "Verwendung"
+      "word": "Verwendung",
+      "translation": {
+        "tr": "Kullanım",
+        "en": "Usage"
+      }
     },
     {
       "article": "die",
-      "word": "Verzögerung"
+      "word": "Verzögerung",
+      "translation": {
+        "tr": "gecikme",
+        "en": "delay"
+      }
     },
     {
       "article": "die",
-      "word": "Verzweiflung"
+      "word": "Verzweiflung",
+      "translation": {
+        "tr": "Çaresizlik",
+        "en": "Desperation"
+      }
     },
     {
       "article": "die",
-      "word": "Vielfalt"
+      "word": "Vielfalt",
+      "translation": {
+        "tr": "Çeşitlilik",
+        "en": "Diversity"
+      }
     },
     {
       "article": "die",
-      "word": "Vielzahl"
+      "word": "Vielzahl",
+      "translation": {
+        "tr": "çeşitlilik",
+        "en": "Variety"
+      }
     },
     {
       "article": "das",
-      "word": "Visier"
+      "word": "Visier",
+      "translation": {
+        "tr": "Vizör",
+        "en": "Visor"
+      }
     },
     {
       "article": "die",
-      "word": "Vision"
+      "word": "Vision",
+      "translation": {
+        "tr": "vizyon",
+        "en": "vision"
+      }
     },
     {
       "article": "die",
-      "word": "Vita"
+      "word": "Vita",
+      "translation": {
+        "tr": "Hayat",
+        "en": "Vita"
+      }
     },
     {
       "article": "der",
-      "word": "Vizepräsident"
+      "word": "Vizepräsident",
+      "translation": {
+        "tr": "Başkan Yardımcısı",
+        "en": "Vice President"
+      }
     },
     {
       "article": "der",
-      "word": "Völkermord"
+      "word": "Völkermord",
+      "translation": {
+        "tr": "Soykırım",
+        "en": "Genocide"
+      }
     },
     {
       "article": "der",
-      "word": "Volkswagen"
+      "word": "Volkswagen",
+      "translation": {
+        "tr": "volkswagen",
+        "en": "Volkswagen"
+      }
     },
     {
       "article": "die",
-      "word": "Volkswirtschaft"
+      "word": "Volkswirtschaft",
+      "translation": {
+        "tr": "Ekonomi",
+        "en": "Economics"
+      }
     },
     {
       "article": "die",
-      "word": "Vollmacht"
+      "word": "Vollmacht",
+      "translation": {
+        "tr": "Vekaletname",
+        "en": "Power of attorney"
+      }
     },
     {
       "article": "die",
-      "word": "Voraussetzung"
+      "word": "Voraussetzung",
+      "translation": {
+        "tr": "Gereksinim",
+        "en": "Requirement"
+      }
     },
     {
       "article": "die",
-      "word": "Vorbereitung"
+      "word": "Vorbereitung",
+      "translation": {
+        "tr": "Hazırlık",
+        "en": "Preparation"
+      }
     },
     {
       "article": "der",
-      "word": "Vorfall"
+      "word": "Vorfall",
+      "translation": {
+        "tr": "Olay",
+        "en": "Incident"
+      }
     },
     {
       "article": "das",
-      "word": "Vorfeld"
+      "word": "Vorfeld",
+      "translation": {
+        "tr": "Önlük",
+        "en": "Apron"
+      }
     },
     {
       "article": "die",
-      "word": "Vorgabe"
+      "word": "Vorgabe",
+      "translation": {
+        "tr": "Varsayılan",
+        "en": "Default"
+      }
     },
     {
       "article": "der",
-      "word": "Vorgang"
+      "word": "Vorgang",
+      "translation": {
+        "tr": "süreç",
+        "en": "process"
+      }
     },
     {
       "article": "der",
-      "word": "Vorgänger"
+      "word": "Vorgänger",
+      "translation": {
+        "tr": "öncül",
+        "en": "predecessor"
+      }
     },
     {
       "article": "das",
-      "word": "Vorgehen"
+      "word": "Vorgehen",
+      "translation": {
+        "tr": "Prosedür",
+        "en": "Procedure"
+      }
     },
     {
       "article": "die",
-      "word": "Vorgehensweise"
+      "word": "Vorgehensweise",
+      "translation": {
+        "tr": "Prosedür",
+        "en": "Procedure"
+      }
     },
     {
       "article": "der",
-      "word": "Vorgesetzte"
+      "word": "Vorgesetzte",
+      "translation": {
+        "tr": "Üstler",
+        "en": "Superiors"
+      }
     },
     {
       "article": "das",
-      "word": "Vorhaben"
+      "word": "Vorhaben",
+      "translation": {
+        "tr": "Projeler",
+        "en": "Projects"
+      }
     },
     {
       "article": "die",
-      "word": "Vorhersage"
+      "word": "Vorhersage",
+      "translation": {
+        "tr": "Tahmin",
+        "en": "Prediction"
+      }
     },
     {
       "article": "die",
-      "word": "Vorlage"
+      "word": "Vorlage",
+      "translation": {
+        "tr": "Şablon",
+        "en": "Template"
+      }
     },
     {
       "article": "der",
-      "word": "Vormarsch"
+      "word": "Vormarsch",
+      "translation": {
+        "tr": "avans",
+        "en": "advance"
+      }
     },
     {
       "article": "der",
-      "word": "Vorort"
+      "word": "Vorort",
+      "translation": {
+        "tr": "Banliyö",
+        "en": "Suburb"
+      }
     },
     {
       "article": "der",
-      "word": "Vorrat"
+      "word": "Vorrat",
+      "translation": {
+        "tr": "Stok",
+        "en": "Stock"
+      }
     },
     {
       "article": "der",
-      "word": "Vorsitz"
+      "word": "Vorsitz",
+      "translation": {
+        "tr": "Sandalye",
+        "en": "Chair"
+      }
     },
     {
       "article": "der",
-      "word": "Vorsitzende"
+      "word": "Vorsitzende",
+      "translation": {
+        "tr": "Başkan",
+        "en": "Chairman"
+      }
     },
     {
       "article": "der",
-      "word": "Vorsprung"
+      "word": "Vorsprung",
+      "translation": {
+        "tr": "Avantajlı başlangıç",
+        "en": "Head start"
+      }
     },
     {
       "article": "die",
-      "word": "Vorstadt"
+      "word": "Vorstadt",
+      "translation": {
+        "tr": "Banliyö",
+        "en": "Suburbia"
+      }
     },
     {
       "article": "der",
-      "word": "Vorstand"
+      "word": "Vorstand",
+      "translation": {
+        "tr": "Yönetim Kurulu",
+        "en": "Board of Directors"
+      }
     },
     {
       "article": "der",
-      "word": "Vorstoß"
+      "word": "Vorstoß",
+      "translation": {
+        "tr": "avans",
+        "en": "advance"
+      }
     },
     {
       "article": "der",
-      "word": "Vortrag"
+      "word": "Vortrag",
+      "translation": {
+        "tr": "Ders",
+        "en": "Lecture"
+      }
     },
     {
       "article": "das",
-      "word": "Vorurteil"
+      "word": "Vorurteil",
+      "translation": {
+        "tr": "Önyargı",
+        "en": "Prejudice"
+      }
     },
     {
       "article": "der",
-      "word": "Vorwurf"
+      "word": "Vorwurf",
+      "translation": {
+        "tr": "suçlama",
+        "en": "accusation"
+      }
     },
     {
       "article": "das",
-      "word": "Vorzeichen"
+      "word": "Vorzeichen",
+      "translation": {
+        "tr": "işaret",
+        "en": "sign"
+      }
     },
     {
       "article": "das",
-      "word": "Wachstum"
+      "word": "Wachstum",
+      "translation": {
+        "tr": "Büyüme",
+        "en": "Growth"
+      }
     },
     {
       "article": "der",
-      "word": "Wahlkampf"
+      "word": "Wahlkampf",
+      "translation": {
+        "tr": "Seçim kampanyası",
+        "en": "Election campaign"
+      }
     },
     {
       "article": "die",
-      "word": "Wahlperiode"
+      "word": "Wahlperiode",
+      "translation": {
+        "tr": "seçim dönemi",
+        "en": "election period"
+      }
     },
     {
       "article": "der",
-      "word": "Wahn"
+      "word": "Wahn",
+      "translation": {
+        "tr": "sanrı",
+        "en": "delusion"
+      }
     },
     {
       "article": "der",
-      "word": "Wahnsinn"
+      "word": "Wahnsinn",
+      "translation": {
+        "tr": "Delilik",
+        "en": "Madness"
+      }
     },
     {
       "article": "die",
-      "word": "Wahrnehmung"
+      "word": "Wahrnehmung",
+      "translation": {
+        "tr": "Algı",
+        "en": "Perception"
+      }
     },
     {
       "article": "die",
-      "word": "Wahrscheinlichkeit"
+      "word": "Wahrscheinlichkeit",
+      "translation": {
+        "tr": "Olasılık",
+        "en": "Probability"
+      }
     },
     {
       "article": "der",
-      "word": "Wandel"
+      "word": "Wandel",
+      "translation": {
+        "tr": "Değiştir",
+        "en": "Change"
+      }
     },
     {
       "article": "der",
-      "word": "Wasserstoff"
+      "word": "Wasserstoff",
+      "translation": {
+        "tr": "Hidrojen",
+        "en": "Hydrogen"
+      }
     },
     {
       "article": "der",
-      "word": "Wechsel"
+      "word": "Wechsel",
+      "translation": {
+        "tr": "Değiştir",
+        "en": "Change"
+      }
     },
     {
       "article": "der",
-      "word": "Wechselkurs"
+      "word": "Wechselkurs",
+      "translation": {
+        "tr": "Döviz kuru",
+        "en": "Exchange rate"
+      }
     },
     {
       "article": "die",
-      "word": "Wechselwirkung"
+      "word": "Wechselwirkung",
+      "translation": {
+        "tr": "etkileşim",
+        "en": "interaction"
+      }
     },
     {
       "article": "das",
-      "word": "Weib"
+      "word": "Weib",
+      "translation": {
+        "tr": "kadın",
+        "en": "woman"
+      }
     },
     {
       "article": "das",
-      "word": "Weibchen"
+      "word": "Weibchen",
+      "translation": {
+        "tr": "Dişiler",
+        "en": "Females"
+      }
     },
     {
       "article": "die",
-      "word": "Weiche"
+      "word": "Weiche",
+      "translation": {
+        "tr": "Yumuşak",
+        "en": "Soft"
+      }
     },
     {
       "article": "die",
-      "word": "Weide"
+      "word": "Weide",
+      "translation": {
+        "tr": "mera",
+        "en": "pasture"
+      }
     },
     {
       "article": "die",
-      "word": "Weile"
+      "word": "Weile",
+      "translation": {
+        "tr": "süre",
+        "en": "while"
+      }
     },
     {
       "article": "die",
-      "word": "Weise"
+      "word": "Weise",
+      "translation": {
+        "tr": "yol",
+        "en": "way"
+      }
     },
     {
       "article": "die",
-      "word": "Weisheit"
+      "word": "Weisheit",
+      "translation": {
+        "tr": "Bilgelik",
+        "en": "Wisdom"
+      }
     },
     {
       "article": "die",
-      "word": "Weiterbildung"
+      "word": "Weiterbildung",
+      "translation": {
+        "tr": "İleri eğitim",
+        "en": "Further training"
+      }
     },
     {
       "article": "die",
-      "word": "Weiterentwicklung"
+      "word": "Weiterentwicklung",
+      "translation": {
+        "tr": "Daha fazla gelişme",
+        "en": "Further development"
+      }
     },
     {
       "article": "die",
-      "word": "Wellenlänge"
+      "word": "Wellenlänge",
+      "translation": {
+        "tr": "dalga boyu",
+        "en": "wavelength"
+      }
     },
     {
       "article": "der",
-      "word": "Weltkrieg"
+      "word": "Weltkrieg",
+      "translation": {
+        "tr": "Dünya Savaşı",
+        "en": "World War"
+      }
     },
     {
       "article": "die",
-      "word": "Wendung"
+      "word": "Wendung",
+      "translation": {
+        "tr": "büküm",
+        "en": "twist"
+      }
     },
     {
       "article": "die",
-      "word": "Wertschätzung"
+      "word": "Wertschätzung",
+      "translation": {
+        "tr": "Takdir",
+        "en": "Appreciation"
+      }
     },
     {
       "article": "das",
-      "word": "Wesen"
+      "word": "Wesen",
+      "translation": {
+        "tr": "varlıklar",
+        "en": "beings"
+      }
     },
     {
       "article": "die",
-      "word": "Wichtigkeit"
+      "word": "Wichtigkeit",
+      "translation": {
+        "tr": "Önem",
+        "en": "Importance"
+      }
     },
     {
       "article": "der",
-      "word": "Widerspruch"
+      "word": "Widerspruch",
+      "translation": {
+        "tr": "çelişki",
+        "en": "contradiction"
+      }
     }
   ]
-} as const;
+};

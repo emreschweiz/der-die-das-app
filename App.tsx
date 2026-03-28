@@ -25,6 +25,7 @@ type Article = 'der' | 'die' | 'das';
 type LevelId = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
 type Screen = 'home' | 'levels' | 'gameModes' | 'articleGameModes' | 'caseGameModes' | 'game' | 'results' | 'stats' | 'settings' | 'wordList';
 type Language = 'tr' | 'en';
+type ThemeMode = 'light' | 'dark';
 
 type WordSeed = {
   id: string;
@@ -34,7 +35,7 @@ type WordSeed = {
   level: LevelId;
 };
 
-type QuestionKind = 'article' | 'nominative' | 'accusative' | 'dative';
+type QuestionKind = 'article' | 'nominative' | 'accusative' | 'dative' | 'find_wrong';
 
 type GameQuestion = WordSeed & {
   kind: QuestionKind;
@@ -44,7 +45,7 @@ type GameQuestion = WordSeed & {
   label: Record<Language, string>;
 };
 
-type GameMode = 'classic' | 'timed' | 'one_life' | 'review';
+type GameMode = 'classic' | 'timed' | 'one_life' | 'review' | 'find_wrong';
 type GameFamily = 'article' | 'case';
 
 type LevelStats = Record<LevelId, { correct: number; wrong: number }>;
@@ -53,6 +54,7 @@ type Settings = {
   soundEnabled: boolean;
   vibrationEnabled: boolean;
   language: Language;
+  theme: ThemeMode;
 };
 
 type WordListMode = 'menu' | 'letters' | 'articles' | 'levels';
@@ -200,6 +202,21 @@ const BUTTON_GRADIENTS: Record<
   slate: { colors: ['#7d8797', '#4b5563', '#1f2937'], textColor: '#ffffff' },
 };
 
+const APP_THEMES: Record<'light' | 'dark', { background: string; title: string; loadingTitle: string; loadingSubtitle: string }> = {
+  light: {
+    background: '#f6f4ee',
+    title: '#1f2937',
+    loadingTitle: '#1f2a37',
+    loadingSubtitle: '#6b7280',
+  },
+  dark: {
+    background: '#111827',
+    title: '#f8fafc',
+    loadingTitle: '#f8fafc',
+    loadingSubtitle: '#cbd5e1',
+  },
+};
+
 const COPY = {
   tr: {
     heroEyebrow: 'Seviye bazlı mini oyun',
@@ -227,6 +244,8 @@ const COPY = {
     modeOneLifeHint: 'Tek hata hakkın var.',
     modeReview: 'Tekrar Modu',
     modeReviewHint: 'Yanlış yaptığın kelimeleri çalış.',
+    modeFindWrong: 'Yanlışı Bul',
+    modeFindWrongHint: 'Hatalı artikel-kelime eşleşmesini seç.',
     time: 'Süre',
     noReviewWords: 'Bu seviye için tekrar kelimesi henüz yok.',
     backToWordList: 'KELİME LİSTESİNE DÖN',
@@ -275,6 +294,9 @@ const COPY = {
     soundEffects: 'Ses efektleri',
     vibration: 'Titreşim',
     language: 'Dil',
+    theme: 'Tema',
+    light: 'Açık',
+    dark: 'Koyu',
     turkish: 'Türkçe',
     english: 'İngilizce',
     on: 'Açık',
@@ -308,6 +330,8 @@ const COPY = {
     modeOneLifeHint: 'You only have one mistake chance.',
     modeReview: 'Review Mode',
     modeReviewHint: 'Practice the words you got wrong.',
+    modeFindWrong: 'Find the Wrong One',
+    modeFindWrongHint: 'Pick the wrong article-word match.',
     time: 'Time',
     noReviewWords: 'There are no review words for this level yet.',
     backToWordList: 'BACK TO WORD LIST',
@@ -356,6 +380,9 @@ const COPY = {
     soundEffects: 'Sound effects',
     vibration: 'Vibration',
     language: 'Language',
+    theme: 'Theme',
+    light: 'Light',
+    dark: 'Dark',
     turkish: 'Turkish',
     english: 'English',
     on: 'On',
@@ -466,6 +493,7 @@ const defaultSettings: Settings = {
   soundEnabled: true,
   vibrationEnabled: true,
   language: 'tr',
+  theme: 'light',
 };
 
 const createEmptyStats = (): AppStats => ({
@@ -610,10 +638,10 @@ function pickCasePromptCategory(word: WordSeed): CasePromptCategory {
   return 'object';
 }
 
-function buildCasePrompt(word: WordSeed, kind: Exclude<QuestionKind, 'article'>) {
+function buildCasePrompt(word: WordSeed, kind: 'nominative' | 'accusative' | 'dative') {
   const category = pickCasePromptCategory(word);
 
-  const prompts: Record<CasePromptCategory, Record<Exclude<QuestionKind, 'article'>, string>> = {
+  const prompts: Record<CasePromptCategory, Record<'nominative' | 'accusative' | 'dative', string>> = {
     person: {
       nominative: `Das ist ___ ${word.word}.`,
       accusative: `Ich kenne ___ ${word.word}.`,
@@ -671,6 +699,32 @@ const buildClassicQuestions = (words: WordSeed[]): GameQuestion[] =>
       en: 'Article',
     },
   }));
+
+const buildFindWrongQuestions = (words: WordSeed[]) =>
+  words.map((word, index, allWords) => {
+    const wrongArticle = ARTICLES.find((article) => article !== word.article) ?? 'der';
+    const wrongOption = `${wrongArticle} ${word.word}`;
+    const distractors = shuffle(
+      allWords
+        .filter((candidate) => candidate.word !== word.word)
+        .map((candidate) => `${candidate.article} ${candidate.word}`),
+    ).slice(0, 2);
+
+    const options = shuffle([wrongOption, ...distractors]);
+
+    return {
+      ...word,
+      id: `${word.id}-find-wrong-${index}`,
+      kind: 'find_wrong' as const,
+      prompt: 'Yanlış artikel eşleşmesini seç.',
+      answer: wrongOption,
+      options,
+      label: {
+        tr: 'Yanlışı Bul',
+        en: 'Find the Wrong One',
+      },
+    };
+  });
 
 const buildCaseQuestions = (words: WordSeed[]): GameQuestion[] =>
   words.flatMap((word) => {
@@ -828,6 +882,43 @@ function FloatingArticlesBackground() {
   );
 }
 
+function HomePremiumBackground() {
+  return (
+    <View pointerEvents="none" style={styles.homeBackgroundLayer}>
+      <LinearGradient
+        colors={['#fffdf7', '#f7efe1', '#eef2f7']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={StyleSheet.absoluteFillObject}
+      />
+      <LinearGradient
+        colors={['rgba(255,255,255,0.72)', 'rgba(255,255,255,0.18)', 'rgba(255,255,255,0.00)']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.homeBackgroundWash}
+      />
+      <LinearGradient
+        colors={['rgba(244, 181, 70, 0.34)', 'rgba(244, 181, 70, 0.08)', 'rgba(244, 181, 70, 0.00)']}
+        start={{ x: 0.1, y: 0.1 }}
+        end={{ x: 0.9, y: 0.9 }}
+        style={styles.homeBackgroundBlobWarm}
+      />
+      <LinearGradient
+        colors={['rgba(125, 161, 214, 0.30)', 'rgba(125, 161, 214, 0.08)', 'rgba(125, 161, 214, 0.00)']}
+        start={{ x: 0.2, y: 0.2 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.homeBackgroundBlobCool}
+      />
+      <LinearGradient
+        colors={['rgba(255,255,255,0.46)', 'rgba(255,255,255,0.04)']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.homeBackgroundRibbon}
+      />
+    </View>
+  );
+}
+
 function GradientButton({
   label,
   onPress,
@@ -926,6 +1017,7 @@ function GradientButton({
           <Text
             style={[
               styles.gradientButtonText,
+              styles.gradientButtonTextOverlay,
               { color: theme.textColor },
               small && styles.gradientButtonTextSmall,
               square && styles.gradientButtonTextSquare,
@@ -1150,6 +1242,8 @@ export default function App() {
   const confettiValue = useRef(new Animated.Value(0)).current;
   const currentQuestion = currentRound[currentIndex];
   const t = COPY[settings.language];
+  const effectiveTheme = settings.theme;
+  const uiTheme = APP_THEMES[effectiveTheme];
   const allWordListItems = useMemo<WordListItem[]>(
     () =>
       LEVELS.flatMap((level) =>
@@ -1380,7 +1474,12 @@ export default function App() {
       return;
     }
 
-    const nextRound = family === 'case' ? buildCaseQuestions(nextWords) : buildClassicQuestions(nextWords);
+    const nextRound =
+      family === 'case'
+        ? buildCaseQuestions(nextWords)
+        : mode === 'find_wrong'
+          ? buildFindWrongQuestions(nextWords)
+          : buildClassicQuestions(nextWords);
 
     setSelectedLevel(level);
     setSelectedGameFamily(family);
@@ -1573,20 +1672,19 @@ export default function App() {
 
   if (!isReady) {
     return (
-      <SafeAreaView style={styles.safeArea}>
-        <StatusBar style="dark" />
+      <SafeAreaView style={[styles.safeArea, { backgroundColor: uiTheme.background }]}>
+        <StatusBar style={effectiveTheme === 'dark' ? 'light' : 'dark'} />
         <View style={[styles.screen, styles.centered]}>
-          <Text style={styles.loadingTitle}>Der Die Das</Text>
-          <Text style={styles.loadingSubtitle}>{t.loading}</Text>
+          <Text style={[styles.loadingTitle, { color: uiTheme.loadingTitle }]}>Der Die Das</Text>
+          <Text style={[styles.loadingSubtitle, { color: uiTheme.loadingSubtitle }]}>{t.loading}</Text>
         </View>
       </SafeAreaView>
     );
   }
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <StatusBar style="dark" />
-      {screen !== 'game' && <FloatingArticlesBackground />}
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: uiTheme.background }]}>
+      <StatusBar style={effectiveTheme === 'dark' ? 'light' : 'dark'} />
 
       {screen === 'home' && (
         <View style={styles.screen}>
@@ -1629,7 +1727,7 @@ export default function App() {
         <View style={styles.levelsScreen}>
           <ScrollView contentContainerStyle={styles.levelsScrollContent}>
             <View style={styles.levelHeaderRow}>
-              <Text style={styles.sectionTitle}>{t.chooseLevel}</Text>
+              <Text style={[styles.sectionTitle, { color: uiTheme.title }]}>{t.chooseLevel}</Text>
               <RotatingWordBadge label={t.totalWords} />
             </View>
 
@@ -1668,7 +1766,7 @@ export default function App() {
       {screen === 'gameModes' && (
         <View style={styles.levelsScreen}>
           <ScrollView contentContainerStyle={styles.levelsScrollContent}>
-            <Text style={styles.sectionTitle}>{t.chooseGameMode}</Text>
+            <Text style={[styles.sectionTitle, { color: uiTheme.title }]}>{t.chooseGameMode}</Text>
 
             <Pressable
               key="article-family-mode"
@@ -1722,7 +1820,7 @@ export default function App() {
       {screen === 'articleGameModes' && (
         <View style={styles.levelsScreen}>
           <ScrollView contentContainerStyle={styles.levelsScrollContent}>
-            <Text style={styles.sectionTitle}>{t.articleGameFamily}</Text>
+            <Text style={[styles.sectionTitle, { color: uiTheme.title }]}>{t.articleGameFamily}</Text>
 
             <Pressable key="classic-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'article', 'classic'))}>
               <LinearGradient
@@ -1767,6 +1865,15 @@ export default function App() {
               </LinearGradient>
             </Pressable>
 
+            <Pressable key="find-wrong-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'article', 'find_wrong'))}>
+              <LinearGradient colors={BUTTON_GRADIENTS.slate.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
+                <View>
+                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.slate.textColor }]}>{t.modeFindWrong}</Text>
+                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.slate.textColor }]}>{t.modeFindWrongHint}</Text>
+                </View>
+              </LinearGradient>
+            </Pressable>
+
             <GradientButton label={t.back} variant="blue" onPress={() => handleButtonPress(() => setScreen('gameModes'))} />
             <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
           </ScrollView>
@@ -1776,7 +1883,7 @@ export default function App() {
       {screen === 'caseGameModes' && (
         <View style={styles.levelsScreen}>
           <ScrollView contentContainerStyle={styles.levelsScrollContent}>
-            <Text style={styles.sectionTitle}>{t.modeCase}</Text>
+            <Text style={[styles.sectionTitle, { color: uiTheme.title }]}>{t.modeCase}</Text>
 
             <Pressable key="case-classic-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'case', 'classic'))}>
               <LinearGradient
@@ -1882,7 +1989,7 @@ export default function App() {
 
           {wordListMode === 'letters' && !selectedLetter && (
             <>
-              <Text style={styles.sectionTitle}>{t.chooseLetter}</Text>
+              <Text style={[styles.sectionTitle, { color: uiTheme.title }]}>{t.chooseLetter}</Text>
               <View style={styles.wordFilterGrid}>
                 {wordListLetters.map((letter) => (
                   <Pressable key={letter} style={styles.wordFilterCardShell} onPress={() => handleButtonPress(() => setSelectedLetter(letter))}>
@@ -1907,7 +2014,7 @@ export default function App() {
 
           {wordListMode === 'articles' && !selectedArticleFilter && (
             <>
-              <Text style={styles.sectionTitle}>{t.chooseArticle}</Text>
+              <Text style={[styles.sectionTitle, { color: uiTheme.title }]}>{t.chooseArticle}</Text>
               <View style={styles.wordArticleFilterGrid}>
                 {ARTICLES.map((article) => (
                   <Pressable
@@ -1931,7 +2038,7 @@ export default function App() {
 
           {wordListMode === 'levels' && !selectedWordLevel && (
             <>
-              <Text style={styles.sectionTitle}>{t.chooseLevelForWords}</Text>
+              <Text style={[styles.sectionTitle, { color: uiTheme.title }]}>{t.chooseLevelForWords}</Text>
               <View style={styles.wordLevelFilterGrid}>
                 {LEVELS.map((level) => (
                   <Pressable
@@ -2150,6 +2257,9 @@ export default function App() {
               {selectedGameFamily === 'case' && (
                 <Text style={styles.caseQuestionLabel}>{currentQuestion.label[settings.language]}</Text>
               )}
+              {currentQuestion.kind === 'find_wrong' && (
+                <Text style={styles.findWrongQuestionLabel}>{currentQuestion.prompt}</Text>
+              )}
 
               {answerState && (
                 <View
@@ -2167,15 +2277,17 @@ export default function App() {
                       { color: ARTICLE_FORM_COLORS[currentQuestion.answer as keyof typeof ARTICLE_FORM_COLORS] ?? ARTICLE_COLORS[currentQuestion.article] },
                     ]}
                   >
-                    {currentQuestion.answer}
+                    {currentQuestion.kind === 'find_wrong' ? `${currentQuestion.article} ${currentQuestion.word}` : currentQuestion.answer}
                   </Text>
                 </View>
               )}
 
-              <Text style={[styles.wordText, selectedGameFamily === 'case' && styles.wordTextCase]}>
-                {selectedGameFamily === 'case' ? currentQuestion.prompt : currentQuestion.word}
-              </Text>
-              {currentQuestion.translation[settings.language] ? (
+              {currentQuestion.kind !== 'find_wrong' && (
+                <Text style={[styles.wordText, selectedGameFamily === 'case' && styles.wordTextCase]}>
+                  {selectedGameFamily === 'case' ? currentQuestion.prompt : currentQuestion.word}
+                </Text>
+              )}
+              {currentQuestion.translation[settings.language] && currentQuestion.kind !== 'find_wrong' ? (
                 <Text style={styles.questionTranslation}>
                   {currentQuestion.translation[settings.language]}
                 </Text>
@@ -2243,7 +2355,7 @@ export default function App() {
             <View style={styles.sectionHeaderBackWrap}>
               <GradientButton small label={t.back} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
             </View>
-            <Text style={styles.sectionTitle}>{t.statistics}</Text>
+            <Text style={[styles.sectionTitle, { color: uiTheme.title }]}>{t.statistics}</Text>
           </View>
 
           <View style={styles.statGrid}>
@@ -2301,7 +2413,7 @@ export default function App() {
 
       {screen === 'settings' && (
         <ScrollView contentContainerStyle={styles.scrollContent}>
-          <Text style={styles.sectionTitle}>{t.settings}</Text>
+          <Text style={[styles.sectionTitle, { color: uiTheme.title }]}>{t.settings}</Text>
 
           <View style={styles.panel}>
             <View style={styles.settingHeaderRow}>
@@ -2352,6 +2464,17 @@ export default function App() {
             </View>
           </View>
 
+          <View style={styles.panel}>
+            <View style={styles.settingHeaderRow}>
+              <Text style={styles.settingIconText}>◐</Text>
+              <Text style={styles.panelTitleNoMargin}>{t.theme}</Text>
+            </View>
+            <View style={styles.toggleRow}>
+              <GradientButton label={t.light} variant={settings.theme === 'light' ? 'gold' : 'slate'} onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, theme: 'light' })))} />
+              <GradientButton label={t.dark} variant={settings.theme === 'dark' ? 'blue' : 'slate'} onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, theme: 'dark' })))} />
+            </View>
+          </View>
+
           <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
         </ScrollView>
       )}
@@ -2396,6 +2519,43 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     gap: 16,
     backgroundColor: 'transparent',
+  },
+  homeBackgroundLayer: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  homeBackgroundWash: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '58%',
+  },
+  homeBackgroundBlobWarm: {
+    position: 'absolute',
+    width: 520,
+    height: 520,
+    borderRadius: 999,
+    left: -170,
+    top: -30,
+    transform: [{ rotate: '-14deg' }],
+  },
+  homeBackgroundBlobCool: {
+    position: 'absolute',
+    width: 500,
+    height: 500,
+    borderRadius: 999,
+    right: -180,
+    bottom: -10,
+    transform: [{ rotate: '16deg' }],
+  },
+  homeBackgroundRibbon: {
+    position: 'absolute',
+    left: '-12%',
+    right: '-12%',
+    top: '34%',
+    height: 240,
+    borderRadius: 48,
+    transform: [{ rotate: '-8deg' }],
   },
   levelBackgroundLayer: {
     ...StyleSheet.absoluteFillObject,
@@ -2850,6 +3010,14 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     letterSpacing: 0.8,
     textTransform: 'uppercase',
+  },
+  findWrongQuestionLabel: {
+    color: '#8b5e34',
+    fontSize: 11,
+    fontWeight: '800',
+    letterSpacing: 0.4,
+    textTransform: 'uppercase',
+    textAlign: 'center',
   },
   questionTranslation: {
     marginTop: 4,

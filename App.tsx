@@ -23,7 +23,7 @@ import {
 
 type Article = 'der' | 'die' | 'das';
 type LevelId = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
-type Screen = 'home' | 'levels' | 'gameModes' | 'game' | 'results' | 'stats' | 'settings' | 'wordList';
+type Screen = 'home' | 'levels' | 'gameModes' | 'articleGameModes' | 'caseGameModes' | 'game' | 'results' | 'stats' | 'settings' | 'wordList';
 type Language = 'tr' | 'en';
 
 type WordSeed = {
@@ -34,7 +34,18 @@ type WordSeed = {
   level: LevelId;
 };
 
+type QuestionKind = 'article' | 'nominative' | 'accusative' | 'dative';
+
+type GameQuestion = WordSeed & {
+  kind: QuestionKind;
+  prompt: string;
+  answer: string;
+  options: string[];
+  label: Record<Language, string>;
+};
+
 type GameMode = 'classic' | 'timed' | 'one_life' | 'review';
+type GameFamily = 'article' | 'case';
 
 type LevelStats = Record<LevelId, { correct: number; wrong: number }>;
 
@@ -68,6 +79,7 @@ type RoundSummary = {
   wrong: number;
   bestStreak: number;
   level: LevelId;
+  family: GameFamily;
   mode: GameMode;
 };
 
@@ -87,6 +99,7 @@ type WordListItem = {
   article: Article;
   word: string;
   level: LevelId;
+  translation: Record<Language, string>;
 };
 
 type ConfettiSeed = {
@@ -104,14 +117,42 @@ const STARTING_LIVES = 3;
 const LEVEL_POOL_SIZE = 500;
 const ANSWER_DELAY_MS = 1850;
 const ARTICLES: Article[] = ['der', 'die', 'das'];
+const ARTICLE_OPTIONS = ['der', 'die', 'das', 'den', 'dem'] as const;
 const LEVELS: LevelId[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 const WORDS_PER_PAGE = 100;
 const TIMED_MODE_SECONDS = 60;
+const CASE_WORD_COUNT = 3;
 
 const ARTICLE_COLORS: Record<Article, string> = {
   der: '#3498db',
   die: '#ff5b8a',
   das: '#2ecc71',
+};
+
+const ARTICLE_FORM_COLORS: Record<(typeof ARTICLE_OPTIONS)[number], string> = {
+  der: '#3498db',
+  die: '#ff5b8a',
+  das: '#2ecc71',
+  den: '#f59e0b',
+  dem: '#8b5cf6',
+};
+
+const CASE_ARTICLES: Record<Article, Record<'nominative' | 'accusative' | 'dative', string>> = {
+  der: {
+    nominative: 'der',
+    accusative: 'den',
+    dative: 'dem',
+  },
+  die: {
+    nominative: 'die',
+    accusative: 'die',
+    dative: 'der',
+  },
+  das: {
+    nominative: 'das',
+    accusative: 'das',
+    dative: 'dem',
+  },
 };
 
 const ARTICLE_CARD_GRADIENTS: Record<Article, [string, string, string]> = {
@@ -173,8 +214,13 @@ const COPY = {
     chooseArticle: 'Artikel seç',
     chooseLevelForWords: 'Seviye seç',
     chooseGameMode: 'Oyun türü seç',
+    articleGameFamily: 'Der Die Das Bilme Oyunu',
+    articleGameFamilyHint: 'Artikel odaklı 4 farklı oyun modu.',
     modeClassic: '3 Can 10 Soru',
     modeClassicHint: 'Klasik mod. 3 canla 10 soruyu bitir.',
+    modeCase: 'Kasus Oyunu',
+    modeCaseHint: 'Artikel ve hâl çekimlerini 4 modla çalış.',
+    caseGameFamilyHint: 'Önce artikel, sonra Nominativ, Akkusativ ve Dativ soruları.',
     modeTimed: 'Süreye Karşı',
     modeTimedHint: '60 saniyede en yüksek skoru yap.',
     modeOneLife: 'Tek Can',
@@ -249,8 +295,13 @@ const COPY = {
     chooseArticle: 'Choose an article',
     chooseLevelForWords: 'Choose a level',
     chooseGameMode: 'Choose a game mode',
+    articleGameFamily: 'Der Die Das Game',
+    articleGameFamilyHint: 'Four different article-focused game modes.',
     modeClassic: '3 Lives 10 Questions',
     modeClassicHint: 'Classic mode. Finish 10 questions with 3 lives.',
+    modeCase: 'Case Game',
+    modeCaseHint: 'Practice article and case forms with 4 modes.',
+    caseGameFamilyHint: 'First article, then Nominative, Accusative, and Dative questions.',
     modeTimed: 'Time Attack',
     modeTimedHint: 'Score as much as you can in 60 seconds.',
     modeOneLife: 'One Life',
@@ -510,6 +561,175 @@ const buildRoundFromPool = (pool: WordSeed[], count: number) => {
   return uniqueRound;
 };
 
+const buildQuestionOptions = (correctAnswer: string) =>
+  [correctAnswer, ...shuffle(ARTICLE_OPTIONS.filter((option) => option !== correctAnswer)).slice(0, 2)];
+
+type CasePromptCategory =
+  | 'person'
+  | 'animal'
+  | 'food'
+  | 'place'
+  | 'vehicle'
+  | 'document'
+  | 'abstract'
+  | 'object';
+
+const PERSON_KEYWORDS = ['person', 'people', 'man', 'woman', 'child', 'teacher', 'student', 'doctor', 'worker', 'citizen', 'president', 'member', 'friend', 'guest', 'tourist', 'european', 'deputy', 'human'];
+const ANIMAL_KEYWORDS = ['dog', 'cat', 'bird', 'mouse', 'lion', 'snake', 'insect', 'sheep', 'eagle', 'monkey', 'fish', 'horse', 'bear', 'tiger', 'wolf', 'animal', 'eel'];
+const FOOD_KEYWORDS = ['bread', 'banana', 'egg', 'salad', 'rice', 'soup', 'ice cream', 'dinner', 'food', 'meal', 'drink', 'coffee', 'tea', 'cake', 'fruit', 'vegetable', 'meat', 'cheese'];
+const PLACE_KEYWORDS = ['city', 'country', 'village', 'garden', 'forest', 'office', 'market', 'school', 'university', 'factory', 'room', 'house', 'home', 'park', 'station', 'hospital', 'company', 'environment', 'building'];
+const VEHICLE_KEYWORDS = ['car', 'bus', 'train', 'bike', 'bicycle', 'plane', 'ship', 'truck', 'vehicle'];
+const DOCUMENT_KEYWORDS = ['document', 'newspaper', 'ticket', 'passport', 'letter', 'book', 'paper', 'report', 'illustration', 'query', 'preparation', 'post'];
+const ABSTRACT_KEYWORDS = ['freedom', 'health', 'system', 'progress', 'experience', 'knowledge', 'discourse', 'behavior', 'perception', 'viewpoint', 'method', 'consensus', 'consequence', 'paradigm', 'contradiction', 'interaction', 'phenomenon', 'exchange', 'justification', 'structure', 'impulse', 'aesthetics', 'analogy', 'alignment', 'prevention', 'potential', 'leadership', 'departure', 'takeoff', 'tax', 'cancellation'];
+
+function pickCasePromptCategory(word: WordSeed): CasePromptCategory {
+  const translation = word.translation.en.toLowerCase();
+
+  if (PERSON_KEYWORDS.some((keyword) => translation.includes(keyword))) {
+    return 'person';
+  }
+  if (ANIMAL_KEYWORDS.some((keyword) => translation.includes(keyword))) {
+    return 'animal';
+  }
+  if (FOOD_KEYWORDS.some((keyword) => translation.includes(keyword))) {
+    return 'food';
+  }
+  if (PLACE_KEYWORDS.some((keyword) => translation.includes(keyword))) {
+    return 'place';
+  }
+  if (VEHICLE_KEYWORDS.some((keyword) => translation.includes(keyword))) {
+    return 'vehicle';
+  }
+  if (DOCUMENT_KEYWORDS.some((keyword) => translation.includes(keyword))) {
+    return 'document';
+  }
+  if (ABSTRACT_KEYWORDS.some((keyword) => translation.includes(keyword))) {
+    return 'abstract';
+  }
+
+  return 'object';
+}
+
+function buildCasePrompt(word: WordSeed, kind: Exclude<QuestionKind, 'article'>) {
+  const category = pickCasePromptCategory(word);
+
+  const prompts: Record<CasePromptCategory, Record<Exclude<QuestionKind, 'article'>, string>> = {
+    person: {
+      nominative: `Das ist ___ ${word.word}.`,
+      accusative: `Ich kenne ___ ${word.word}.`,
+      dative: `Ich helfe ___ ${word.word}.`,
+    },
+    animal: {
+      nominative: `Das ist ___ ${word.word}.`,
+      accusative: `Ich sehe ___ ${word.word}.`,
+      dative: `Ich spiele mit ___ ${word.word}.`,
+    },
+    food: {
+      nominative: `Hier ist ___ ${word.word}.`,
+      accusative: `Ich bestelle ___ ${word.word}.`,
+      dative: `Ich koche mit ___ ${word.word}.`,
+    },
+    place: {
+      nominative: `Dort ist ___ ${word.word}.`,
+      accusative: `Ich besuche ___ ${word.word}.`,
+      dative: `Ich bin in ___ ${word.word}.`,
+    },
+    vehicle: {
+      nominative: `Das ist ___ ${word.word}.`,
+      accusative: `Ich benutze ___ ${word.word}.`,
+      dative: `Ich fahre mit ___ ${word.word}.`,
+    },
+    document: {
+      nominative: `Das ist ___ ${word.word}.`,
+      accusative: `Ich lese ___ ${word.word}.`,
+      dative: `Ich arbeite mit ___ ${word.word}.`,
+    },
+    abstract: {
+      nominative: `Das ist ___ ${word.word}.`,
+      accusative: `Wir besprechen ___ ${word.word}.`,
+      dative: `Wir arbeiten mit ___ ${word.word}.`,
+    },
+    object: {
+      nominative: `Das ist ___ ${word.word}.`,
+      accusative: `Ich benutze ___ ${word.word}.`,
+      dative: `Ich arbeite mit ___ ${word.word}.`,
+    },
+  };
+
+  return prompts[category][kind];
+}
+
+const buildClassicQuestions = (words: WordSeed[]): GameQuestion[] =>
+  words.map((word) => ({
+    ...word,
+    kind: 'article',
+    prompt: word.word,
+    answer: word.article,
+    options: [...ARTICLES],
+    label: {
+      tr: 'Artikel',
+      en: 'Article',
+    },
+  }));
+
+const buildCaseQuestions = (words: WordSeed[]): GameQuestion[] =>
+  words.flatMap((word) => {
+    const nominative = CASE_ARTICLES[word.article].nominative;
+    const accusative = CASE_ARTICLES[word.article].accusative;
+    const dative = CASE_ARTICLES[word.article].dative;
+
+    return [
+      {
+        ...word,
+        id: `${word.id}-article`,
+        kind: 'article',
+        prompt: `___ ${word.word}`,
+        answer: word.article,
+        options: [...ARTICLES],
+        label: {
+          tr: 'Artikel',
+          en: 'Article',
+        },
+      },
+      {
+        ...word,
+        id: `${word.id}-nom`,
+        kind: 'nominative',
+        prompt: buildCasePrompt(word, 'nominative'),
+        answer: nominative,
+        options: buildQuestionOptions(nominative),
+        label: {
+          tr: 'Nominativ',
+          en: 'Nominative',
+        },
+      },
+      {
+        ...word,
+        id: `${word.id}-akk`,
+        kind: 'accusative',
+        prompt: buildCasePrompt(word, 'accusative'),
+        answer: accusative,
+        options: buildQuestionOptions(accusative),
+        label: {
+          tr: 'Akkusativ',
+          en: 'Accusative',
+        },
+      },
+      {
+        ...word,
+        id: `${word.id}-dat`,
+        kind: 'dative',
+        prompt: buildCasePrompt(word, 'dative'),
+        answer: dative,
+        options: buildQuestionOptions(dative),
+        label: {
+          tr: 'Dativ',
+          en: 'Dative',
+        },
+      },
+    ];
+  });
+
 function FloatingArticlesBackground() {
   const animatedValues = useRef(
     FLOATING_ARTICLES.map(() => ({
@@ -753,6 +973,91 @@ function RotatingWordBadge({ label }: { label: string }) {
   );
 }
 
+function FlippableWordCard({
+  item,
+  language,
+  isFlipped,
+  onPress,
+}: {
+  item: WordListItem;
+  language: Language;
+  isFlipped: boolean;
+  onPress: () => void;
+}) {
+  const rotation = useRef(new Animated.Value(isFlipped ? 180 : 0)).current;
+
+  useEffect(() => {
+    Animated.timing(rotation, {
+      toValue: isFlipped ? 180 : 0,
+      duration: 280,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: true,
+    }).start();
+  }, [isFlipped, rotation]);
+
+  const frontRotate = rotation.interpolate({
+    inputRange: [0, 180],
+    outputRange: ['0deg', '180deg'],
+  });
+
+  const backRotate = rotation.interpolate({
+    inputRange: [0, 180],
+    outputRange: ['180deg', '360deg'],
+  });
+
+  return (
+    <Pressable style={styles.wordCardPressable} onPress={onPress}>
+      <View style={styles.wordCardFlipContainer}>
+        <Animated.View
+          style={[
+            styles.wordCardFace,
+            {
+              transform: [
+                { perspective: 1000 },
+                { rotateY: frontRotate },
+              ],
+            },
+          ]}
+        >
+          <LinearGradient
+            colors={ARTICLE_CARD_GRADIENTS[item.article]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={[styles.wordCard, { borderColor: `${ARTICLE_COLORS[item.article]}88` }]}
+          >
+            <Text style={styles.wordCardLevelText}>{item.level}</Text>
+            <Text style={styles.wordCardArticle}>{item.article}</Text>
+            <Text style={styles.wordCardWord}>{item.word}</Text>
+          </LinearGradient>
+        </Animated.View>
+
+        <Animated.View
+          style={[
+            styles.wordCardFace,
+            {
+              transform: [
+                { perspective: 1000 },
+                { rotateY: backRotate },
+              ],
+            },
+          ]}
+        >
+          <LinearGradient
+            colors={ARTICLE_CARD_GRADIENTS[item.article]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={[styles.wordCard, styles.wordCardBackFace, { borderColor: `${ARTICLE_COLORS[item.article]}88` }]}
+          >
+            <Text style={styles.wordCardTranslation}>
+              {item.translation[language]}
+            </Text>
+          </LinearGradient>
+        </Animated.View>
+      </View>
+    </Pressable>
+  );
+}
+
 function hexToRgb(hex: string) {
   const normalized = hex.replace('#', '');
   const value = normalized.length === 3
@@ -813,13 +1118,15 @@ export default function App() {
   const [stats, setStats] = useState<AppStats>(createEmptyStats);
   const [settings, setSettings] = useState<Settings>(defaultSettings);
   const [selectedLevel, setSelectedLevel] = useState<LevelId>('A1');
+  const [selectedGameFamily, setSelectedGameFamily] = useState<GameFamily>('article');
   const [selectedGameMode, setSelectedGameMode] = useState<GameMode>('classic');
   const [wordListPage, setWordListPage] = useState(0);
   const [wordListMode, setWordListMode] = useState<WordListMode>('menu');
+  const [activeWordCardId, setActiveWordCardId] = useState<string | null>(null);
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [selectedArticleFilter, setSelectedArticleFilter] = useState<Article | null>(null);
   const [selectedWordLevel, setSelectedWordLevel] = useState<LevelId | null>(null);
-  const [currentRound, setCurrentRound] = useState<WordSeed[]>([]);
+  const [currentRound, setCurrentRound] = useState<GameQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(STARTING_LIVES);
@@ -827,8 +1134,8 @@ export default function App() {
   const [roundBestStreak, setRoundBestStreak] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [wrongCount, setWrongCount] = useState(0);
-  const [answerState, setAnswerState] = useState<{ selected: Article; correct: boolean } | null>(null);
-  const [selectedWrongArticle, setSelectedWrongArticle] = useState<Article | null>(null);
+  const [answerState, setAnswerState] = useState<{ selected: string; correct: boolean } | null>(null);
+  const [selectedWrongArticle, setSelectedWrongArticle] = useState<string | null>(null);
   const [lastSummary, setLastSummary] = useState<RoundSummary | null>(null);
   const [mistakes, setMistakes] = useState<WordSeed[]>([]);
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
@@ -964,6 +1271,10 @@ export default function App() {
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({ stats, settings, mistakes })).catch(() => null);
   }, [isReady, mistakes, settings, stats]);
 
+  useEffect(() => {
+    setActiveWordCardId(null);
+  }, [screen, wordListMode, wordListPage, selectedLetter, selectedArticleFilter, selectedWordLevel]);
+
   const playFeedbackSound = (kind: 'true' | 'false') => {
     if (!settings.soundEnabled) {
       return;
@@ -1050,24 +1361,29 @@ export default function App() {
     ]).start();
   };
 
-  const startGame = (level: LevelId, mode: GameMode = 'classic') => {
+  const startGame = (level: LevelId, family: GameFamily = 'article', mode: GameMode = 'classic') => {
     const reviewPool =
       mode === 'review'
         ? mistakes.filter((item) => item.level === level)
         : [];
-    const nextRound =
+    const nextWords =
       mode === 'timed'
         ? buildRoundFromPool(LEVEL_POOLS[level], LEVEL_POOLS[level].length)
         : mode === 'review'
           ? buildRoundFromPool(reviewPool, ROUND_LENGTH)
+          : family === 'case'
+            ? buildRound(level).slice(0, CASE_WORD_COUNT)
           : buildRound(level);
 
-    if (mode === 'review' && nextRound.length === 0) {
+    if (mode === 'review' && nextWords.length === 0) {
       Alert.alert(t.info, t.noReviewWords);
       return;
     }
 
+    const nextRound = family === 'case' ? buildCaseQuestions(nextWords) : buildClassicQuestions(nextWords);
+
     setSelectedLevel(level);
+    setSelectedGameFamily(family);
     setSelectedGameMode(mode);
     setCurrentRound(nextRound);
     setCurrentIndex(0);
@@ -1095,6 +1411,7 @@ export default function App() {
       wrong: finalWrong,
       bestStreak: finalBestStreak,
       level: selectedLevel,
+      family: selectedGameFamily,
       mode: selectedGameMode,
     });
 
@@ -1119,12 +1436,12 @@ export default function App() {
     setScreen('results');
   };
 
-  const handleAnswer = (selected: Article) => {
+  const handleAnswer = (selected: string) => {
     if (!currentQuestion || answerState) {
       return;
     }
 
-    const isCorrect = selected === currentQuestion.article;
+    const isCorrect = selected === currentQuestion.answer;
     const nextCorrect = isCorrect ? correctCount + 1 : correctCount;
     const nextWrong = isCorrect ? wrongCount : wrongCount + 1;
     const nextStreak = isCorrect ? currentStreak + 1 : 0;
@@ -1224,10 +1541,11 @@ export default function App() {
     Alert.alert(t.info, t.iosExitInfo);
   };
 
-  const answerButtonStyle = (article: Article) => {
-    const isSelected = answerState?.selected === article;
-    const isCorrectAnswer = answerState && currentQuestion?.article === article;
-    const isWrongSelection = selectedWrongArticle === article;
+  const answerButtonStyle = (option: string) => {
+    const isSelected = answerState?.selected === option;
+    const isCorrectAnswer = answerState && currentQuestion?.answer === option;
+    const isWrongSelection = selectedWrongArticle === option;
+    const optionColor = ARTICLE_FORM_COLORS[option as keyof typeof ARTICLE_FORM_COLORS] ?? '#64748b';
     const animatedTransform =
       isWrongSelection
         ? {
@@ -1246,7 +1564,7 @@ export default function App() {
       wrapper: animatedTransform,
       button: [
         styles.answerButton,
-        { backgroundColor: ARTICLE_COLORS[article], borderColor: ARTICLE_COLORS[article] },
+        { backgroundColor: optionColor, borderColor: optionColor },
         isSelected && !answerState?.correct && styles.answerButtonWrong,
         isCorrectAnswer && styles.answerButtonCorrect,
       ],
@@ -1352,7 +1670,61 @@ export default function App() {
           <ScrollView contentContainerStyle={styles.levelsScrollContent}>
             <Text style={styles.sectionTitle}>{t.chooseGameMode}</Text>
 
-            <Pressable key="classic-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'classic'))}>
+            <Pressable
+              key="article-family-mode"
+              style={styles.levelCard}
+              onPress={() =>
+                handleButtonPress(() => {
+                  setSelectedGameFamily('article');
+                  setScreen('articleGameModes');
+                })
+              }
+            >
+              <LinearGradient
+                colors={BUTTON_GRADIENTS.gold.colors}
+                start={{ x: 0, y: 0.5 }}
+                end={{ x: 1, y: 0.5 }}
+                style={styles.levelGradient}
+              >
+                <View>
+                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>{t.articleGameFamily}</Text>
+                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>
+                    {t.articleGameFamilyHint}
+                  </Text>
+                </View>
+              </LinearGradient>
+            </Pressable>
+
+            <Pressable
+              key="case-mode"
+              style={styles.levelCard}
+              onPress={() =>
+                handleButtonPress(() => {
+                  setSelectedGameFamily('case');
+                  setScreen('caseGameModes');
+                })
+              }
+            >
+              <LinearGradient colors={BUTTON_GRADIENTS.teal.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
+                <View>
+                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.teal.textColor }]}>{t.modeCase}</Text>
+                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.teal.textColor }]}>{t.modeCaseHint}</Text>
+                </View>
+              </LinearGradient>
+            </Pressable>
+
+            <GradientButton label={t.levels} variant="blue" onPress={() => handleButtonPress(() => setScreen('levels'))} />
+            <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
+          </ScrollView>
+        </View>
+      )}
+
+      {screen === 'articleGameModes' && (
+        <View style={styles.levelsScreen}>
+          <ScrollView contentContainerStyle={styles.levelsScrollContent}>
+            <Text style={styles.sectionTitle}>{t.articleGameFamily}</Text>
+
+            <Pressable key="classic-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'article', 'classic'))}>
               <LinearGradient
                 colors={BUTTON_GRADIENTS.gold.colors}
                 start={{ x: 0, y: 0.5 }}
@@ -1368,7 +1740,7 @@ export default function App() {
               </LinearGradient>
             </Pressable>
 
-            <Pressable key="timed-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'timed'))}>
+            <Pressable key="timed-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'article', 'timed'))}>
               <LinearGradient colors={BUTTON_GRADIENTS.blue.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
                 <View>
                   <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.blue.textColor }]}>{t.modeTimed}</Text>
@@ -1377,7 +1749,7 @@ export default function App() {
               </LinearGradient>
             </Pressable>
 
-            <Pressable key="one-life-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'one_life'))}>
+            <Pressable key="one-life-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'article', 'one_life'))}>
               <LinearGradient colors={BUTTON_GRADIENTS.berry.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
                 <View>
                   <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.berry.textColor }]}>{t.modeOneLife}</Text>
@@ -1386,7 +1758,7 @@ export default function App() {
               </LinearGradient>
             </Pressable>
 
-            <Pressable key="review-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'review'))}>
+            <Pressable key="review-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'article', 'review'))}>
               <LinearGradient colors={BUTTON_GRADIENTS.teal.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
                 <View>
                   <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.teal.textColor }]}>{t.modeReview}</Text>
@@ -1395,7 +1767,59 @@ export default function App() {
               </LinearGradient>
             </Pressable>
 
-            <GradientButton label={t.levels} variant="blue" onPress={() => handleButtonPress(() => setScreen('levels'))} />
+            <GradientButton label={t.back} variant="blue" onPress={() => handleButtonPress(() => setScreen('gameModes'))} />
+            <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
+          </ScrollView>
+        </View>
+      )}
+
+      {screen === 'caseGameModes' && (
+        <View style={styles.levelsScreen}>
+          <ScrollView contentContainerStyle={styles.levelsScrollContent}>
+            <Text style={styles.sectionTitle}>{t.modeCase}</Text>
+
+            <Pressable key="case-classic-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'case', 'classic'))}>
+              <LinearGradient
+                colors={BUTTON_GRADIENTS.gold.colors}
+                start={{ x: 0, y: 0.5 }}
+                end={{ x: 1, y: 0.5 }}
+                style={styles.levelGradient}
+              >
+                <View>
+                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>{t.modeClassic}</Text>
+                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>{t.caseGameFamilyHint}</Text>
+                </View>
+              </LinearGradient>
+            </Pressable>
+
+            <Pressable key="case-timed-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'case', 'timed'))}>
+              <LinearGradient colors={BUTTON_GRADIENTS.blue.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
+                <View>
+                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.blue.textColor }]}>{t.modeTimed}</Text>
+                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.blue.textColor }]}>{t.modeTimedHint}</Text>
+                </View>
+              </LinearGradient>
+            </Pressable>
+
+            <Pressable key="case-one-life-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'case', 'one_life'))}>
+              <LinearGradient colors={BUTTON_GRADIENTS.berry.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
+                <View>
+                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.berry.textColor }]}>{t.modeOneLife}</Text>
+                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.berry.textColor }]}>{t.modeOneLifeHint}</Text>
+                </View>
+              </LinearGradient>
+            </Pressable>
+
+            <Pressable key="case-review-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'case', 'review'))}>
+              <LinearGradient colors={BUTTON_GRADIENTS.teal.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
+                <View>
+                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.teal.textColor }]}>{t.modeReview}</Text>
+                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.teal.textColor }]}>{t.modeReviewHint}</Text>
+                </View>
+              </LinearGradient>
+            </Pressable>
+
+            <GradientButton label={t.back} variant="blue" onPress={() => handleButtonPress(() => setScreen('gameModes'))} />
             <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
           </ScrollView>
         </View>
@@ -1571,17 +1995,13 @@ export default function App() {
 
               <View style={styles.wordGrid}>
                 {visibleWordListItems.map((item, index) => (
-                  <LinearGradient
+                  <FlippableWordCard
                     key={`${item.level}-${item.article}-${item.word}-${index}`}
-                    colors={ARTICLE_CARD_GRADIENTS[item.article]}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 1 }}
-                    style={[styles.wordCard, { borderColor: `${ARTICLE_COLORS[item.article]}88` }]}
-                  >
-                    <Text style={styles.wordCardLevelText}>{item.level}</Text>
-                    <Text style={styles.wordCardArticle}>{item.article}</Text>
-                    <Text style={styles.wordCardWord}>{item.word}</Text>
-                  </LinearGradient>
+                    item={item}
+                    language={settings.language}
+                    isFlipped={activeWordCardId === `${item.level}-${item.article}-${item.word}-${index}`}
+                    onPress={() => setActiveWordCardId((previous) => (previous === `${item.level}-${item.article}-${item.word}-${index}` ? null : `${item.level}-${item.article}-${item.word}-${index}`))}
+                  />
                 ))}
               </View>
 
@@ -1727,20 +2147,34 @@ export default function App() {
             </Animated.View>
 
             <View style={styles.questionCard}>
+              {selectedGameFamily === 'case' && (
+                <Text style={styles.caseQuestionLabel}>{currentQuestion.label[settings.language]}</Text>
+              )}
+
               {answerState && (
                 <View
                   style={[
                     styles.articleRevealBadge,
-                    { backgroundColor: `${ARTICLE_COLORS[currentQuestion.article]}18`, borderColor: ARTICLE_COLORS[currentQuestion.article] },
+                    {
+                      backgroundColor: `${(ARTICLE_FORM_COLORS[currentQuestion.answer as keyof typeof ARTICLE_FORM_COLORS] ?? ARTICLE_COLORS[currentQuestion.article])}18`,
+                      borderColor: ARTICLE_FORM_COLORS[currentQuestion.answer as keyof typeof ARTICLE_FORM_COLORS] ?? ARTICLE_COLORS[currentQuestion.article],
+                    },
                   ]}
                 >
-                  <Text style={[styles.articleRevealText, { color: ARTICLE_COLORS[currentQuestion.article] }]}>
-                    {currentQuestion.article}
+                  <Text
+                    style={[
+                      styles.articleRevealText,
+                      { color: ARTICLE_FORM_COLORS[currentQuestion.answer as keyof typeof ARTICLE_FORM_COLORS] ?? ARTICLE_COLORS[currentQuestion.article] },
+                    ]}
+                  >
+                    {currentQuestion.answer}
                   </Text>
                 </View>
               )}
 
-              <Text style={styles.wordText}>{currentQuestion.word}</Text>
+              <Text style={[styles.wordText, selectedGameFamily === 'case' && styles.wordTextCase]}>
+                {selectedGameFamily === 'case' ? currentQuestion.prompt : currentQuestion.word}
+              </Text>
               {currentQuestion.translation[settings.language] ? (
                 <Text style={styles.questionTranslation}>
                   {currentQuestion.translation[settings.language]}
@@ -1750,16 +2184,16 @@ export default function App() {
           </View>
 
           <View style={styles.answerColumn}>
-            {ARTICLES.map((article) => {
-              const style = answerButtonStyle(article);
+            {currentQuestion.options.map((option) => {
+              const style = answerButtonStyle(option);
               return (
-                <Animated.View key={article} style={style.wrapper}>
+                <Animated.View key={option} style={style.wrapper}>
                   <Pressable
                     style={style.button}
                     disabled={Boolean(answerState)}
-                    onPress={() => handleAnswer(article)}
+                    onPress={() => handleAnswer(option)}
                   >
-                    <Text style={styles.answerText}>{article}</Text>
+                    <Text style={styles.answerText}>{option}</Text>
                   </Pressable>
                 </Animated.View>
               );
@@ -1797,7 +2231,7 @@ export default function App() {
             </View>
           </View>
 
-          <GradientButton label={t.replayLevel} variant="gold" onPress={() => handleButtonPress(() => startGame(lastSummary.level, lastSummary.mode))} />
+          <GradientButton label={t.replayLevel} variant="gold" onPress={() => handleButtonPress(() => startGame(lastSummary.level, lastSummary.family, lastSummary.mode))} />
           <GradientButton label={t.levels} variant="blue" onPress={() => handleButtonPress(() => setScreen('levels'))} />
           <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
         </ScrollView>
@@ -1874,32 +2308,17 @@ export default function App() {
               <Text style={styles.settingIconText}>♪</Text>
               <Text style={styles.panelTitleNoMargin}>{t.soundEffects}</Text>
             </View>
-            <View style={styles.modernSwitchRow}>
-              <Pressable
-                onPress={() => {
-                  playButtonSound();
-                  setSettings((previous) => ({ ...previous, soundEnabled: !previous.soundEnabled }));
-                }}
-                style={[
-                  styles.modernToggle,
-                  settings.soundEnabled ? styles.modernToggleOn : styles.modernToggleOff,
-                ]}
-              >
-                <View
-                  style={[
-                    styles.modernToggleThumb,
-                    settings.soundEnabled ? styles.modernToggleThumbOn : styles.modernToggleThumbOff,
-                  ]}
-                />
-                <Text
-                  style={[
-                    styles.modernToggleLabel,
-                    settings.soundEnabled ? styles.modernToggleLabelOn : styles.modernToggleLabelOff,
-                  ]}
-                >
-                  {settings.soundEnabled ? t.on : t.off}
-                </Text>
-              </Pressable>
+            <View style={styles.toggleRow}>
+              <GradientButton
+                label={t.on}
+                variant={settings.soundEnabled ? 'teal' : 'slate'}
+                onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, soundEnabled: true })))}
+              />
+              <GradientButton
+                label={t.off}
+                variant={!settings.soundEnabled ? 'berry' : 'slate'}
+                onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, soundEnabled: false })))}
+              />
             </View>
           </View>
 
@@ -1908,32 +2327,17 @@ export default function App() {
               <Text style={styles.settingIconText}>≈</Text>
               <Text style={styles.panelTitleNoMargin}>{t.vibration}</Text>
             </View>
-            <View style={styles.modernSwitchRow}>
-              <Pressable
-                onPress={() => {
-                  playButtonSound();
-                  setSettings((previous) => ({ ...previous, vibrationEnabled: !previous.vibrationEnabled }));
-                }}
-                style={[
-                  styles.modernToggle,
-                  settings.vibrationEnabled ? styles.modernToggleOn : styles.modernToggleOff,
-                ]}
-              >
-                <View
-                  style={[
-                    styles.modernToggleThumb,
-                    settings.vibrationEnabled ? styles.modernToggleThumbOn : styles.modernToggleThumbOff,
-                  ]}
-                />
-                <Text
-                  style={[
-                    styles.modernToggleLabel,
-                    settings.vibrationEnabled ? styles.modernToggleLabelOn : styles.modernToggleLabelOff,
-                  ]}
-                >
-                  {settings.vibrationEnabled ? t.on : t.off}
-                </Text>
-              </Pressable>
+            <View style={styles.toggleRow}>
+              <GradientButton
+                label={t.on}
+                variant={settings.vibrationEnabled ? 'teal' : 'slate'}
+                onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, vibrationEnabled: true })))}
+              />
+              <GradientButton
+                label={t.off}
+                variant={!settings.vibrationEnabled ? 'berry' : 'slate'}
+                onPress={() => handleButtonPress(() => setSettings((previous) => ({ ...previous, vibrationEnabled: false })))}
+              />
             </View>
           </View>
 
@@ -2440,6 +2844,13 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     textTransform: 'lowercase',
   },
+  caseQuestionLabel: {
+    color: '#8b5e34',
+    fontSize: 13,
+    fontWeight: '800',
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
+  },
   questionTranslation: {
     marginTop: 4,
     color: '#4b5563',
@@ -2453,6 +2864,10 @@ const styles = StyleSheet.create({
     fontSize: 42,
     fontWeight: '800',
     textAlign: 'center',
+  },
+  wordTextCase: {
+    fontSize: 28,
+    lineHeight: 36,
   },
   answerColumn: {
     gap: 12,
@@ -2595,24 +3010,56 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   wordCard: {
+    width: '100%',
+    height: '100%',
+    aspectRatio: undefined,
+    flex: 1,
+    borderRadius: 20,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+    overflow: 'hidden',
+  },
+  wordCardPressable: {
+    width: '23%',
+    aspectRatio: 1,
+  },
+  wordCardFlipContainer: {
+    flex: 1,
+    position: 'relative',
+  },
+  wordCardFace: {
+    ...StyleSheet.absoluteFillObject,
+    backfaceVisibility: 'hidden',
+  },
+  wordCardBackFace: {
+    paddingHorizontal: 12,
+  },
+  wordCardTranslation: {
+    color: '#ffffff',
+    fontSize: 13,
+    fontWeight: '800',
+    textAlign: 'center',
+    textShadowColor: 'rgba(0, 0, 0, 0.14)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+    lineHeight: 17,
+  },
+  wordCardBack: {
     width: '23%',
     aspectRatio: 1,
     borderRadius: 20,
     borderWidth: 1,
     borderColor: '#eadcc8',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 10,
-    overflow: 'hidden',
     shadowColor: '#cbd5e1',
     shadowOpacity: 0.18,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
     elevation: 2,
   },
-  wordCardBack: {
-    width: '23%',
-    aspectRatio: 1,
+  wordCardBackInner: {
+    flex: 1,
     borderRadius: 16,
     backgroundColor: '#ffffff',
     borderWidth: 1,
@@ -2793,66 +3240,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 12,
     marginTop: 8,
-  },
-  modernSwitchRow: {
-    marginTop: 12,
-    alignItems: 'stretch',
-  },
-  modernToggle: {
-    height: 64,
-    borderRadius: 999,
-    paddingHorizontal: 16,
-    justifyContent: 'center',
-    position: 'relative',
-    borderWidth: 1,
-    overflow: 'hidden',
-    shadowColor: '#c7b8a2',
-    shadowOpacity: 0.14,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 4 },
-    elevation: 2,
-  },
-  modernToggleOn: {
-    backgroundColor: '#e9f9ee',
-    borderColor: '#bfe8ca',
-  },
-  modernToggleOff: {
-    backgroundColor: '#fdeeee',
-    borderColor: '#f2caca',
-  },
-  modernToggleThumb: {
-    position: 'absolute',
-    top: 7,
-    width: 92,
-    height: 48,
-    borderRadius: 999,
-    backgroundColor: '#ffffff',
-    shadowColor: 'rgba(31, 41, 55, 0.18)',
-    shadowOpacity: 0.18,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: 2,
-  },
-  modernToggleThumbOn: {
-    left: 8,
-  },
-  modernToggleThumbOff: {
-    right: 8,
-  },
-  modernToggleLabel: {
-    fontSize: 16,
-    fontWeight: '800',
-    zIndex: 1,
-  },
-  modernToggleLabelOn: {
-    color: '#15803d',
-    textAlign: 'left',
-    paddingLeft: 22,
-  },
-  modernToggleLabelOff: {
-    color: '#b91c1c',
-    textAlign: 'right',
-    paddingRight: 22,
   },
   optionButton: {
     flex: 1,

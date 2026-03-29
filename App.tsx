@@ -33,6 +33,7 @@ type WordSeed = {
   article: Article;
   translation: Record<Language, string>;
   level: LevelId;
+  casePrompts?: Record<'nominative' | 'accusative' | 'dative', string>;
 };
 
 type QuestionKind = 'article' | 'nominative' | 'accusative' | 'dative' | 'find_wrong';
@@ -551,6 +552,7 @@ const buildLevelPool = (level: LevelId) => {
         tr: '',
         en: '',
       },
+    casePrompts: item.casePrompts,
   }));
 };
 
@@ -653,6 +655,10 @@ function pickCasePromptCategory(word: WordSeed): CasePromptCategory {
 }
 
 function buildCasePrompt(word: WordSeed, kind: 'nominative' | 'accusative' | 'dative') {
+  if (word.casePrompts?.[kind]) {
+    return word.casePrompts[kind];
+  }
+
   const category = pickCasePromptCategory(word);
 
   const prompts: Record<CasePromptCategory, Record<'nominative' | 'accusative' | 'dative', string>> = {

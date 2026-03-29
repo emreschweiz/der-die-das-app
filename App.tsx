@@ -157,6 +157,16 @@ const CASE_ARTICLES: Record<Article, Record<'nominative' | 'accusative' | 'dativ
   },
 };
 
+const CASE_KIND_DESCRIPTIONS: Record<
+  Exclude<QuestionKind, 'find_wrong'>,
+  { tr: string; en: string }
+> = {
+  article: { tr: 'Artikel', en: 'Article' },
+  nominative: { tr: 'Yalın hali', en: 'Base form' },
+  accusative: { tr: 'Belirtme hali', en: 'Accusative object' },
+  dative: { tr: 'Yönelme hali', en: 'Dative object' },
+};
+
 const ARTICLE_CARD_GRADIENTS: Record<Article, [string, string, string]> = {
   der: ['#7fbfff', '#3478f6', '#1d4ed8'],
   die: ['#ff8db2', '#e94b7d', '#be185d'],
@@ -235,6 +245,8 @@ const COPY = {
     articleGameFamilyHint: 'Artikel odaklı 4 farklı oyun modu.',
     modeClassic: '3 Can 10 Soru',
     modeClassicHint: 'Klasik mod. 3 canla 10 soruyu bitir.',
+    modeCaseClassic: '3 Can 12 Soru',
+    modeCaseClassicHint: 'Klasik mod. 3 canla 12 kasus sorusunu bitir.',
     modeCase: 'Kasus Oyunu',
     modeCaseHint: 'Artikel ve hâl çekimlerini 4 modla çalış.',
     caseGameFamilyHint: 'Önce artikel, sonra Nominativ, Akkusativ ve Dativ soruları.',
@@ -321,6 +333,8 @@ const COPY = {
     articleGameFamilyHint: 'Four different article-focused game modes.',
     modeClassic: '3 Lives 10 Questions',
     modeClassicHint: 'Classic mode. Finish 10 questions with 3 lives.',
+    modeCaseClassic: '3 Lives 12 Questions',
+    modeCaseClassicHint: 'Classic mode. Finish 12 case questions with 3 lives.',
     modeCase: 'Case Game',
     modeCaseHint: 'Practice article and case forms with 4 modes.',
     caseGameFamilyHint: 'First article, then Nominative, Accusative, and Dative questions.',
@@ -590,7 +604,7 @@ const buildRoundFromPool = (pool: WordSeed[], count: number) => {
 };
 
 const buildQuestionOptions = (correctAnswer: string) =>
-  [correctAnswer, ...shuffle(ARTICLE_OPTIONS.filter((option) => option !== correctAnswer)).slice(0, 2)];
+  shuffle([correctAnswer, ...shuffle(ARTICLE_OPTIONS.filter((option) => option !== correctAnswer)).slice(0, 2)]);
 
 type CasePromptCategory =
   | 'person'
@@ -1893,8 +1907,8 @@ export default function App() {
                 style={styles.levelGradient}
               >
                 <View>
-                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>{t.modeClassic}</Text>
-                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>{t.caseGameFamilyHint}</Text>
+                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>{t.modeCaseClassic}</Text>
+                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>{t.modeCaseClassicHint}</Text>
                 </View>
               </LinearGradient>
             </Pressable>
@@ -2196,16 +2210,25 @@ export default function App() {
           </View>
 
           <View style={styles.gameInfoRow}>
-            <View style={styles.gameInfoCard}>
-              <Text style={styles.gameInfoLabel}>{t.level}</Text>
-              <Text style={styles.gameInfoValue}>{selectedLevel}</Text>
+            <View style={styles.gameInfoLevelShell}>
+              <LinearGradient
+                colors={LEVEL_GRADIENTS[selectedLevel].colors}
+                start={{ x: 0, y: 0.5 }}
+                end={{ x: 1, y: 0.5 }}
+                style={styles.gameInfoLevelCard}
+              >
+                <Text style={[styles.gameInfoLabel, styles.gameInfoLevelLabel, { color: LEVEL_GRADIENTS[selectedLevel].metaColor }]}>
+                  {t.level}
+                </Text>
+                <Text style={[styles.gameInfoValue, styles.gameInfoLevelValue, { color: LEVEL_GRADIENTS[selectedLevel].textColor }]}>
+                  {selectedLevel}
+                </Text>
+              </LinearGradient>
             </View>
 
             <View style={styles.gameInfoCard}>
               <Text style={styles.gameInfoLabel}>{t.progress}</Text>
-              <Text style={styles.gameInfoValue}>
-                {currentIndex + 1}/{currentRound.length}
-              </Text>
+              <Text style={styles.gameInfoValue}>{currentIndex + 1}</Text>
             </View>
           </View>
 
@@ -2255,7 +2278,11 @@ export default function App() {
 
             <View style={styles.questionCard}>
               {selectedGameFamily === 'case' && (
-                <Text style={styles.caseQuestionLabel}>{currentQuestion.label[settings.language]}</Text>
+                <Text style={styles.caseQuestionLabel}>
+                  {currentQuestion.kind === 'article'
+                    ? currentQuestion.label[settings.language]
+                    : `${currentQuestion.label[settings.language]} \u00b7 ${CASE_KIND_DESCRIPTIONS[currentQuestion.kind as Exclude<QuestionKind, 'find_wrong' | 'article'>][settings.language]}`}
+                </Text>
               )}
               {currentQuestion.kind === 'find_wrong' && (
                 <Text style={styles.findWrongQuestionLabel}>{currentQuestion.prompt}</Text>
@@ -2283,8 +2310,8 @@ export default function App() {
               )}
 
               {currentQuestion.kind !== 'find_wrong' && (
-                <Text style={[styles.wordText, selectedGameFamily === 'case' && styles.wordTextCase]}>
-                  {selectedGameFamily === 'case' ? currentQuestion.prompt : currentQuestion.word}
+                <Text style={[styles.wordText, selectedGameFamily === 'case' && currentQuestion.kind !== 'article' && styles.wordTextCase]}>
+                  {selectedGameFamily === 'case' && currentQuestion.kind !== 'article' ? currentQuestion.prompt : currentQuestion.word}
                 </Text>
               )}
               {currentQuestion.translation[settings.language] && currentQuestion.kind !== 'find_wrong' ? (
@@ -2904,6 +2931,21 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     elevation: 2,
   },
+  gameInfoLevelShell: {
+    flex: 1,
+    borderRadius: 22,
+    overflow: 'hidden',
+    shadowColor: '#d1c1ae',
+    shadowOpacity: 0.16,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 5 },
+    elevation: 3,
+  },
+  gameInfoLevelCard: {
+    borderRadius: 22,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+  },
   gameInfoLabel: {
     color: '#8b5e34',
     fontSize: 11,
@@ -2916,6 +2958,12 @@ const styles = StyleSheet.create({
     color: '#111827',
     fontSize: 24,
     fontWeight: '900',
+  },
+  gameInfoLevelLabel: {
+    color: '#ecfdf5',
+  },
+  gameInfoLevelValue: {
+    color: '#ffffff',
   },
   gameStatsRow: {
     flexDirection: 'row',

@@ -23,7 +23,7 @@ import {
 
 type Article = 'der' | 'die' | 'das';
 type LevelId = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
-type Screen = 'home' | 'levels' | 'gameModes' | 'articleGameModes' | 'caseGameModes' | 'game' | 'results' | 'stats' | 'settings' | 'wordList';
+type Screen = 'home' | 'levels' | 'gameModes' | 'game' | 'results' | 'stats' | 'settings' | 'wordList';
 type Language = 'tr' | 'en';
 type ThemeMode = 'light' | 'dark';
 
@@ -46,9 +46,7 @@ type GameQuestion = WordSeed & {
   label: Record<Language, string>;
 };
 
-type GameMode = 'classic' | 'timed' | 'one_life' | 'review' | 'find_wrong';
-type GameFamily = 'article' | 'case';
-
+type GameMode = 'classic' | 'timed' | 'one_life' | 'review' | 'find_wrong' | 'developer';
 type LevelStats = Record<LevelId, { correct: number; wrong: number }>;
 
 type Settings = {
@@ -82,7 +80,6 @@ type RoundSummary = {
   wrong: number;
   bestStreak: number;
   level: LevelId;
-  family: GameFamily;
   mode: GameMode;
 };
 
@@ -112,10 +109,16 @@ type ConfettiSeed = {
   color: string;
 };
 
+type DeveloperVisual = {
+  emoji: string;
+  colors: [string, string];
+};
+
 type GradientButtonVariant = 'gold' | 'blue' | 'berry' | 'teal' | 'slate';
 
 const STORAGE_KEY = 'derdiedas.levels.v4';
 const ROUND_LENGTH = 10;
+const DEVELOPER_ROUND_LENGTH = 100;
 const STARTING_LIVES = 3;
 const LEVEL_POOL_SIZE = 500;
 const ANSWER_DELAY_MS = 1850;
@@ -259,6 +262,8 @@ const COPY = {
     modeReviewHint: 'Yanlış yaptığın kelimeleri çalış.',
     modeFindWrong: 'Yanlışı Bul',
     modeFindWrongHint: 'Hatalı artikel-kelime eşleşmesini seç.',
+    modeDeveloper: 'Geliştirici Oyunu',
+    modeDeveloperHint: 'Can ve süre olmadan 100 rastgele soruyu test et.',
     time: 'Süre',
     noReviewWords: 'Bu seviye için tekrar kelimesi henüz yok.',
     backToWordList: 'KELİME LİSTESİNE DÖN',
@@ -347,6 +352,8 @@ const COPY = {
     modeReviewHint: 'Practice the words you got wrong.',
     modeFindWrong: 'Find the Wrong One',
     modeFindWrongHint: 'Pick the wrong article-word match.',
+    modeDeveloper: 'Developer Mode',
+    modeDeveloperHint: 'Test 100 random questions without lives or timer.',
     time: 'Time',
     noReviewWords: 'There are no review words for this level yet.',
     backToWordList: 'BACK TO WORD LIST',
@@ -565,6 +572,29 @@ const LEVEL_POOLS: Record<LevelId, WordSeed[]> = {
   C2: buildLevelPool('C2'),
 };
 
+const buildDeveloperPool = () => {
+  const allWords = LEVELS.flatMap((level) => LEVEL_POOLS[level]);
+  const specificallyMatched = allWords.filter(
+    (word) => Boolean(getDeveloperVisualMatch(word)) && pickCasePromptCategory(word) !== 'abstract',
+  );
+  const uniqueRound: WordSeed[] = [];
+  const seenWords = new Set<string>();
+
+  for (const item of specificallyMatched.sort((a, b) => a.word.localeCompare(b.word, 'de'))) {
+    const key = `${item.article}-${item.word}`;
+    if (seenWords.has(key)) {
+      continue;
+    }
+    seenWords.add(key);
+    uniqueRound.push(item);
+    if (uniqueRound.length === DEVELOPER_ROUND_LENGTH) {
+      break;
+    }
+  }
+
+  return uniqueRound;
+};
+
 const buildRound = (level: LevelId) => {
   const uniqueRound: WordSeed[] = [];
   const seenWords = new Set<string>();
@@ -626,6 +656,123 @@ const VEHICLE_KEYWORDS = ['car', 'bus', 'train', 'bike', 'bicycle', 'plane', 'sh
 const DOCUMENT_KEYWORDS = ['document', 'newspaper', 'ticket', 'passport', 'letter', 'book', 'paper', 'report', 'illustration', 'query', 'preparation', 'post'];
 const ABSTRACT_KEYWORDS = ['freedom', 'health', 'system', 'progress', 'experience', 'knowledge', 'discourse', 'behavior', 'perception', 'viewpoint', 'method', 'consensus', 'consequence', 'paradigm', 'contradiction', 'interaction', 'phenomenon', 'exchange', 'justification', 'structure', 'impulse', 'aesthetics', 'analogy', 'alignment', 'prevention', 'potential', 'leadership', 'departure', 'takeoff', 'tax', 'cancellation'];
 
+const DEVELOPER_VISUAL_MATCHERS: Array<{ keywords: string[]; visual: DeveloperVisual }> = [
+  { keywords: ['dog'], visual: { emoji: '🐶', colors: ['#fed7aa', '#f97316'] } },
+  { keywords: ['cat'], visual: { emoji: '🐱', colors: ['#fde68a', '#eab308'] } },
+  { keywords: ['bird', 'eagle'], visual: { emoji: '🐦', colors: ['#bfdbfe', '#3b82f6'] } },
+  { keywords: ['fish', 'eel'], visual: { emoji: '🐟', colors: ['#a5f3fc', '#0891b2'] } },
+  { keywords: ['horse'], visual: { emoji: '🐴', colors: ['#fdba74', '#ea580c'] } },
+  { keywords: ['bear'], visual: { emoji: '🐻', colors: ['#d6d3d1', '#78716c'] } },
+  { keywords: ['tiger', 'lion'], visual: { emoji: '🐯', colors: ['#fdba74', '#f59e0b'] } },
+  { keywords: ['snake'], visual: { emoji: '🐍', colors: ['#86efac', '#16a34a'] } },
+  { keywords: ['mouse'], visual: { emoji: '🐭', colors: ['#e5e7eb', '#9ca3af'] } },
+  { keywords: ['sheep'], visual: { emoji: '🐑', colors: ['#f8fafc', '#cbd5e1'] } },
+  { keywords: ['monkey'], visual: { emoji: '🐵', colors: ['#fdba74', '#92400e'] } },
+  { keywords: ['bread'], visual: { emoji: '🍞', colors: ['#fdba74', '#f59e0b'] } },
+  { keywords: ['banana'], visual: { emoji: '🍌', colors: ['#fef08a', '#eab308'] } },
+  { keywords: ['egg'], visual: { emoji: '🥚', colors: ['#f8fafc', '#d6d3d1'] } },
+  { keywords: ['salad'], visual: { emoji: '🥗', colors: ['#bbf7d0', '#16a34a'] } },
+  { keywords: ['rice'], visual: { emoji: '🍚', colors: ['#f8fafc', '#cbd5e1'] } },
+  { keywords: ['soup'], visual: { emoji: '🍲', colors: ['#fed7aa', '#f97316'] } },
+  { keywords: ['ice cream'], visual: { emoji: '🍨', colors: ['#fecdd3', '#ec4899'] } },
+  { keywords: ['coffee'], visual: { emoji: '☕', colors: ['#d6d3d1', '#78716c'] } },
+  { keywords: ['tea'], visual: { emoji: '🍵', colors: ['#bbf7d0', '#15803d'] } },
+  { keywords: ['water'], visual: { emoji: '💧', colors: ['#bae6fd', '#0284c7'] } },
+  { keywords: ['milk'], visual: { emoji: '🥛', colors: ['#f8fafc', '#cbd5e1'] } },
+  { keywords: ['beer'], visual: { emoji: '🍺', colors: ['#fde68a', '#d97706'] } },
+  { keywords: ['wine', 'alcohol'], visual: { emoji: '🍷', colors: ['#fbcfe8', '#be185d'] } },
+  { keywords: ['cake'], visual: { emoji: '🍰', colors: ['#fecdd3', '#f472b6'] } },
+  { keywords: ['fruit', 'apple', 'orange', 'pineapple'], visual: { emoji: '🍎', colors: ['#fecaca', '#dc2626'] } },
+  { keywords: ['vegetable', 'carrot', 'tomato', 'potato', 'onion'], visual: { emoji: '🥕', colors: ['#fdba74', '#ea580c'] } },
+  { keywords: ['cheese'], visual: { emoji: '🧀', colors: ['#fde68a', '#eab308'] } },
+  { keywords: ['meat'], visual: { emoji: '🥩', colors: ['#fca5a5', '#dc2626'] } },
+  { keywords: ['pizza'], visual: { emoji: '🍕', colors: ['#fde68a', '#f97316'] } },
+  { keywords: ['pasta'], visual: { emoji: '🍝', colors: ['#fdba74', '#ea580c'] } },
+  { keywords: ['chocolate'], visual: { emoji: '🍫', colors: ['#d6d3d1', '#6b4423'] } },
+  { keywords: ['table'], visual: { emoji: '🪑', colors: ['#fed7aa', '#b45309'] } },
+  { keywords: ['lamp'], visual: { emoji: '💡', colors: ['#fef08a', '#f59e0b'] } },
+  { keywords: ['bed'], visual: { emoji: '🛏️', colors: ['#ddd6fe', '#7c3aed'] } },
+  { keywords: ['window'], visual: { emoji: '🪟', colors: ['#bfdbfe', '#2563eb'] } },
+  { keywords: ['door'], visual: { emoji: '🚪', colors: ['#d6d3d1', '#78716c'] } },
+  { keywords: ['mirror'], visual: { emoji: '🪞', colors: ['#e0f2fe', '#0ea5e9'] } },
+  { keywords: ['fridge'], visual: { emoji: '🧊', colors: ['#dbeafe', '#60a5fa'] } },
+  { keywords: ['couch', 'sofa'], visual: { emoji: '🛋️', colors: ['#ddd6fe', '#8b5cf6'] } },
+  { keywords: ['chair'], visual: { emoji: '🪑', colors: ['#fed7aa', '#c2410c'] } },
+  { keywords: ['glasses'], visual: { emoji: '👓', colors: ['#cbd5e1', '#475569'] } },
+  { keywords: ['wallet'], visual: { emoji: '👛', colors: ['#fecdd3', '#e11d48'] } },
+  { keywords: ['key'], visual: { emoji: '🔑', colors: ['#fde68a', '#eab308'] } },
+  { keywords: ['bag', 'backpack'], visual: { emoji: '🎒', colors: ['#bfdbfe', '#2563eb'] } },
+  { keywords: ['phone'], visual: { emoji: '📱', colors: ['#c7d2fe', '#4338ca'] } },
+  { keywords: ['computer', 'laptop'], visual: { emoji: '💻', colors: ['#bae6fd', '#0284c7'] } },
+  { keywords: ['camera'], visual: { emoji: '📷', colors: ['#e5e7eb', '#4b5563'] } },
+  { keywords: ['radio'], visual: { emoji: '📻', colors: ['#fbcfe8', '#be185d'] } },
+  { keywords: ['television', 'tv'], visual: { emoji: '📺', colors: ['#ddd6fe', '#7c3aed'] } },
+  { keywords: ['printer'], visual: { emoji: '🖨️', colors: ['#e5e7eb', '#6b7280'] } },
+  { keywords: ['pen', 'pencil'], visual: { emoji: '✏️', colors: ['#fde68a', '#f59e0b'] } },
+  { keywords: ['ticket'], visual: { emoji: '🎫', colors: ['#fecaca', '#ef4444'] } },
+  { keywords: ['passport'], visual: { emoji: '🛂', colors: ['#bfdbfe', '#1d4ed8'] } },
+  { keywords: ['newspaper'], visual: { emoji: '📰', colors: ['#e5e7eb', '#4b5563'] } },
+  { keywords: ['book'], visual: { emoji: '📘', colors: ['#bfdbfe', '#2563eb'] } },
+  { keywords: ['letter', 'email', 'message', 'note'], visual: { emoji: '✉️', colors: ['#f8fafc', '#94a3af'] } },
+  { keywords: ['document', 'report', 'paper', 'text', 'file'], visual: { emoji: '📄', colors: ['#f8fafc', '#6b7280'] } },
+  { keywords: ['photo', 'picture', 'image', 'illustration'], visual: { emoji: '🖼️', colors: ['#ddd6fe', '#8b5cf6'] } },
+  { keywords: ['song', 'album'], visual: { emoji: '🎵', colors: ['#fbcfe8', '#db2777'] } },
+  { keywords: ['car', 'taxi'], visual: { emoji: '🚗', colors: ['#bae6fd', '#0284c7'] } },
+  { keywords: ['bus'], visual: { emoji: '🚌', colors: ['#fde68a', '#f59e0b'] } },
+  { keywords: ['train'], visual: { emoji: '🚆', colors: ['#cbd5e1', '#475569'] } },
+  { keywords: ['bike', 'bicycle'], visual: { emoji: '🚲', colors: ['#bbf7d0', '#16a34a'] } },
+  { keywords: ['plane', 'airport'], visual: { emoji: '✈️', colors: ['#bfdbfe', '#2563eb'] } },
+  { keywords: ['ship'], visual: { emoji: '🚢', colors: ['#a5f3fc', '#0891b2'] } },
+  { keywords: ['truck'], visual: { emoji: '🚚', colors: ['#fed7aa', '#ea580c'] } },
+  { keywords: ['city', 'village', 'country', 'old town'], visual: { emoji: '🏘️', colors: ['#c7d2fe', '#4f46e5'] } },
+  { keywords: ['garden', 'park'], visual: { emoji: '🌳', colors: ['#bbf7d0', '#15803d'] } },
+  { keywords: ['forest'], visual: { emoji: '🌲', colors: ['#86efac', '#166534'] } },
+  { keywords: ['market', 'shop', 'supermarket'], visual: { emoji: '🛒', colors: ['#fde68a', '#ca8a04'] } },
+  { keywords: ['school', 'university', 'lesson', 'course', 'training', 'academy'], visual: { emoji: '🎓', colors: ['#c7d2fe', '#4338ca'] } },
+  { keywords: ['hospital'], visual: { emoji: '🏥', colors: ['#fecaca', '#dc2626'] } },
+  { keywords: ['station'], visual: { emoji: '🚉', colors: ['#cbd5e1', '#64748b'] } },
+  { keywords: ['office', 'company', 'factory', 'department', 'agency'], visual: { emoji: '🏢', colors: ['#dbeafe', '#2563eb'] } },
+  { keywords: ['house', 'home', 'apartment', 'building', 'room'], visual: { emoji: '🏠', colors: ['#fed7aa', '#f97316'] } },
+  { keywords: ['kitchen'], visual: { emoji: '🍳', colors: ['#fde68a', '#f59e0b'] } },
+  { keywords: ['bathroom'], visual: { emoji: '🛁', colors: ['#bae6fd', '#0ea5e9'] } },
+  { keywords: ['bedroom'], visual: { emoji: '🛏️', colors: ['#ddd6fe', '#8b5cf6'] } },
+  { keywords: ['museum'], visual: { emoji: '🏛️', colors: ['#e5e7eb', '#6b7280'] } },
+  { keywords: ['library'], visual: { emoji: '📚', colors: ['#bfdbfe', '#2563eb'] } },
+  { keywords: ['restaurant', 'cafe'], visual: { emoji: '🍽️', colors: ['#fecaca', '#ef4444'] } },
+  { keywords: ['bank'], visual: { emoji: '🏦', colors: ['#dbeafe', '#1d4ed8'] } },
+  { keywords: ['theater', 'cinema'], visual: { emoji: '🎭', colors: ['#fbcfe8', '#be185d'] } },
+  { keywords: ['stadium'], visual: { emoji: '🏟️', colors: ['#bbf7d0', '#16a34a'] } },
+  { keywords: ['meeting', 'conference', 'discussion', 'conversation', 'interview'], visual: { emoji: '🗣️', colors: ['#ddd6fe', '#7c3aed'] } },
+  { keywords: ['exam'], visual: { emoji: '📝', colors: ['#fde68a', '#ca8a04'] } },
+  { keywords: ['project', 'program', 'plan', 'process'], visual: { emoji: '📋', colors: ['#bfdbfe', '#2563eb'] } },
+  { keywords: ['trip', 'journey', 'vacation', 'holiday'], visual: { emoji: '🧳', colors: ['#fed7aa', '#ea580c'] } },
+  { keywords: ['game'], visual: { emoji: '🎮', colors: ['#c7d2fe', '#4338ca'] } },
+  { keywords: ['tree', 'flower', 'plant', 'grass'], visual: { emoji: '🌿', colors: ['#bbf7d0', '#16a34a'] } },
+  { keywords: ['wind', 'air'], visual: { emoji: '💨', colors: ['#e0f2fe', '#38bdf8'] } },
+  { keywords: ['rain'], visual: { emoji: '🌧️', colors: ['#bae6fd', '#0284c7'] } },
+  { keywords: ['snow'], visual: { emoji: '❄️', colors: ['#f8fafc', '#93c5fd'] } },
+  { keywords: ['sun'], visual: { emoji: '☀️', colors: ['#fde68a', '#f59e0b'] } },
+  { keywords: ['moon', 'evening'], visual: { emoji: '🌙', colors: ['#c7d2fe', '#4f46e5'] } },
+  { keywords: ['star'], visual: { emoji: '⭐', colors: ['#fde68a', '#ca8a04'] } },
+  { keywords: ['stone'], visual: { emoji: '🪨', colors: ['#d6d3d1', '#78716c'] } },
+  { keywords: ['earth', 'world'], visual: { emoji: '🌍', colors: ['#bbf7d0', '#0f766e'] } },
+  { keywords: ['freedom', 'peace', 'hope', 'love'], visual: { emoji: '🕊️', colors: ['#dbeafe', '#60a5fa'] } },
+  { keywords: ['health'], visual: { emoji: '❤️', colors: ['#fecaca', '#dc2626'] } },
+  { keywords: ['system', 'structure', 'method', 'algorithm'], visual: { emoji: '⚙️', colors: ['#e5e7eb', '#6b7280'] } },
+  { keywords: ['progress', 'potential'], visual: { emoji: '📈', colors: ['#bbf7d0', '#16a34a'] } },
+  { keywords: ['experience', 'knowledge', 'idea'], visual: { emoji: '🧠', colors: ['#ddd6fe', '#8b5cf6'] } },
+  { keywords: ['discourse', 'language', 'answer', 'question', 'accent', 'abbreviation', 'alphabet'], visual: { emoji: '💬', colors: ['#c7d2fe', '#4338ca'] } },
+  { keywords: ['behavior', 'interaction', 'exchange', 'agreement', 'alliance'], visual: { emoji: '🤝', colors: ['#bfdbfe', '#2563eb'] } },
+  { keywords: ['perception', 'viewpoint', 'attention'], visual: { emoji: '👁️', colors: ['#e0f2fe', '#0284c7'] } },
+  { keywords: ['consensus', 'alignment', 'acceptance', 'adoption'], visual: { emoji: '✅', colors: ['#bbf7d0', '#16a34a'] } },
+  { keywords: ['consequence', 'result', 'graduation'], visual: { emoji: '🎯', colors: ['#fecaca', '#ef4444'] } },
+  { keywords: ['contradiction', 'problem', 'crash', 'abort', 'abyss'], visual: { emoji: '⚠️', colors: ['#fdba74', '#ea580c'] } },
+  { keywords: ['justification', 'logic', 'theory', 'strategy', 'analysis', 'analogy'], visual: { emoji: '📚', colors: ['#ddd6fe', '#7c3aed'] } },
+  { keywords: ['impulse', 'energy', 'activity', 'action'], visual: { emoji: '⚡', colors: ['#fde68a', '#eab308'] } },
+  { keywords: ['culture', 'society'], visual: { emoji: '🌐', colors: ['#bfdbfe', '#2563eb'] } },
+  { keywords: ['tax', 'share', 'shareholder', 'levy'], visual: { emoji: '💰', colors: ['#fde68a', '#ca8a04'] } },
+];
+
 function pickCasePromptCategory(word: WordSeed): CasePromptCategory {
   const translation = word.translation.en.toLowerCase();
 
@@ -652,6 +799,13 @@ function pickCasePromptCategory(word: WordSeed): CasePromptCategory {
   }
 
   return 'object';
+}
+
+function getDeveloperVisualMatch(word: WordSeed) {
+  const source = `${word.word.toLowerCase()} ${word.translation.en.toLowerCase()} ${word.translation.tr.toLowerCase()}`;
+  return DEVELOPER_VISUAL_MATCHERS.find(({ keywords }) =>
+    keywords.some((keyword) => source.includes(keyword.toLowerCase())),
+  );
 }
 
 function buildCasePrompt(word: WordSeed, kind: 'nominative' | 'accusative' | 'dative') {
@@ -705,6 +859,166 @@ function buildCasePrompt(word: WordSeed, kind: 'nominative' | 'accusative' | 'da
   };
 
   return prompts[category][kind];
+}
+
+function getWordVisual(word: WordSeed) {
+  const directMatch = getDeveloperVisualMatch(word);
+  if (directMatch) {
+    return directMatch.visual;
+  }
+
+  const translation = word.translation.en.toLowerCase();
+
+  const keywordVisuals: Array<{ keywords: string[]; visual: { emoji: string; colors: [string, string] } }> = [
+    { keywords: ['dog'], visual: { emoji: '🐶', colors: ['#fed7aa', '#f97316'] } },
+    { keywords: ['cat'], visual: { emoji: '🐱', colors: ['#fde68a', '#eab308'] } },
+    { keywords: ['bird', 'eagle'], visual: { emoji: '🐦', colors: ['#bfdbfe', '#3b82f6'] } },
+    { keywords: ['fish', 'eel'], visual: { emoji: '🐟', colors: ['#a5f3fc', '#0891b2'] } },
+    { keywords: ['horse'], visual: { emoji: '🐴', colors: ['#fdba74', '#ea580c'] } },
+    { keywords: ['bear'], visual: { emoji: '🐻', colors: ['#d6d3d1', '#78716c'] } },
+    { keywords: ['tiger', 'lion'], visual: { emoji: '🐯', colors: ['#fdba74', '#f59e0b'] } },
+    { keywords: ['snake'], visual: { emoji: '🐍', colors: ['#86efac', '#16a34a'] } },
+    { keywords: ['mouse'], visual: { emoji: '🐭', colors: ['#e5e7eb', '#9ca3af'] } },
+    { keywords: ['sheep'], visual: { emoji: '🐑', colors: ['#f8fafc', '#cbd5e1'] } },
+    { keywords: ['monkey'], visual: { emoji: '🐵', colors: ['#fdba74', '#92400e'] } },
+    { keywords: ['bread'], visual: { emoji: '🍞', colors: ['#fdba74', '#f59e0b'] } },
+    { keywords: ['banana'], visual: { emoji: '🍌', colors: ['#fef08a', '#eab308'] } },
+    { keywords: ['egg'], visual: { emoji: '🥚', colors: ['#f8fafc', '#d6d3d1'] } },
+    { keywords: ['salad'], visual: { emoji: '🥗', colors: ['#bbf7d0', '#16a34a'] } },
+    { keywords: ['rice'], visual: { emoji: '🍚', colors: ['#f8fafc', '#cbd5e1'] } },
+    { keywords: ['soup'], visual: { emoji: '🍲', colors: ['#fed7aa', '#f97316'] } },
+    { keywords: ['ice cream'], visual: { emoji: '🍨', colors: ['#fecdd3', '#ec4899'] } },
+    { keywords: ['coffee'], visual: { emoji: '☕', colors: ['#d6d3d1', '#78716c'] } },
+    { keywords: ['tea'], visual: { emoji: '🍵', colors: ['#bbf7d0', '#15803d'] } },
+    { keywords: ['water'], visual: { emoji: '💧', colors: ['#bae6fd', '#0284c7'] } },
+    { keywords: ['milk'], visual: { emoji: '🥛', colors: ['#f8fafc', '#cbd5e1'] } },
+    { keywords: ['beer'], visual: { emoji: '🍺', colors: ['#fde68a', '#d97706'] } },
+    { keywords: ['wine', 'alcohol'], visual: { emoji: '🍷', colors: ['#fbcfe8', '#be185d'] } },
+    { keywords: ['cake'], visual: { emoji: '🍰', colors: ['#fecdd3', '#f472b6'] } },
+    { keywords: ['fruit', 'apple', 'orange'], visual: { emoji: '🍎', colors: ['#fecaca', '#dc2626'] } },
+    { keywords: ['vegetable', 'carrot', 'tomato', 'potato', 'onion'], visual: { emoji: '🥕', colors: ['#fdba74', '#ea580c'] } },
+    { keywords: ['cheese'], visual: { emoji: '🧀', colors: ['#fde68a', '#eab308'] } },
+    { keywords: ['meat'], visual: { emoji: '🥩', colors: ['#fca5a5', '#dc2626'] } },
+    { keywords: ['pizza'], visual: { emoji: '🍕', colors: ['#fde68a', '#f97316'] } },
+    { keywords: ['pasta'], visual: { emoji: '🍝', colors: ['#fdba74', '#ea580c'] } },
+    { keywords: ['chocolate'], visual: { emoji: '🍫', colors: ['#d6d3d1', '#6b4423'] } },
+    { keywords: ['table'], visual: { emoji: '🪑', colors: ['#fed7aa', '#b45309'] } },
+    { keywords: ['lamp'], visual: { emoji: '💡', colors: ['#fef08a', '#f59e0b'] } },
+    { keywords: ['bed'], visual: { emoji: '🛏️', colors: ['#ddd6fe', '#7c3aed'] } },
+    { keywords: ['window'], visual: { emoji: '🪟', colors: ['#bfdbfe', '#2563eb'] } },
+    { keywords: ['door'], visual: { emoji: '🚪', colors: ['#d6d3d1', '#78716c'] } },
+    { keywords: ['mirror'], visual: { emoji: '🪞', colors: ['#e0f2fe', '#0ea5e9'] } },
+    { keywords: ['fridge'], visual: { emoji: '🧊', colors: ['#dbeafe', '#60a5fa'] } },
+    { keywords: ['couch', 'sofa'], visual: { emoji: '🛋️', colors: ['#ddd6fe', '#8b5cf6'] } },
+    { keywords: ['chair'], visual: { emoji: '🪑', colors: ['#fed7aa', '#c2410c'] } },
+    { keywords: ['glasses'], visual: { emoji: '👓', colors: ['#cbd5e1', '#475569'] } },
+    { keywords: ['wallet'], visual: { emoji: '👛', colors: ['#fecdd3', '#e11d48'] } },
+    { keywords: ['key'], visual: { emoji: '🔑', colors: ['#fde68a', '#eab308'] } },
+    { keywords: ['bag', 'backpack'], visual: { emoji: '🎒', colors: ['#bfdbfe', '#2563eb'] } },
+    { keywords: ['phone'], visual: { emoji: '📱', colors: ['#c7d2fe', '#4338ca'] } },
+    { keywords: ['computer', 'laptop'], visual: { emoji: '💻', colors: ['#bae6fd', '#0284c7'] } },
+    { keywords: ['camera'], visual: { emoji: '📷', colors: ['#e5e7eb', '#4b5563'] } },
+    { keywords: ['radio'], visual: { emoji: '📻', colors: ['#fbcfe8', '#be185d'] } },
+    { keywords: ['television', 'tv'], visual: { emoji: '📺', colors: ['#ddd6fe', '#7c3aed'] } },
+    { keywords: ['printer'], visual: { emoji: '🖨️', colors: ['#e5e7eb', '#6b7280'] } },
+    { keywords: ['pen', 'pencil'], visual: { emoji: '✏️', colors: ['#fde68a', '#f59e0b'] } },
+    { keywords: ['ticket'], visual: { emoji: '🎫', colors: ['#fecaca', '#ef4444'] } },
+    { keywords: ['passport'], visual: { emoji: '🛂', colors: ['#bfdbfe', '#1d4ed8'] } },
+    { keywords: ['newspaper'], visual: { emoji: '📰', colors: ['#e5e7eb', '#4b5563'] } },
+    { keywords: ['book'], visual: { emoji: '📘', colors: ['#bfdbfe', '#2563eb'] } },
+    { keywords: ['letter', 'email', 'message', 'note'], visual: { emoji: '✉️', colors: ['#f8fafc', '#94a3b8'] } },
+    { keywords: ['document', 'report', 'paper', 'text'], visual: { emoji: '📄', colors: ['#f8fafc', '#6b7280'] } },
+    { keywords: ['photo', 'picture', 'image'], visual: { emoji: '🖼️', colors: ['#ddd6fe', '#8b5cf6'] } },
+    { keywords: ['song', 'album'], visual: { emoji: '🎵', colors: ['#fbcfe8', '#db2777'] } },
+    { keywords: ['car', 'taxi'], visual: { emoji: '🚗', colors: ['#bae6fd', '#0284c7'] } },
+    { keywords: ['bus'], visual: { emoji: '🚌', colors: ['#fde68a', '#f59e0b'] } },
+    { keywords: ['train'], visual: { emoji: '🚆', colors: ['#cbd5e1', '#475569'] } },
+    { keywords: ['bike', 'bicycle'], visual: { emoji: '🚲', colors: ['#bbf7d0', '#16a34a'] } },
+    { keywords: ['plane', 'airport', 'takeoff', 'landing'], visual: { emoji: '✈️', colors: ['#bfdbfe', '#2563eb'] } },
+    { keywords: ['ship'], visual: { emoji: '🚢', colors: ['#a5f3fc', '#0891b2'] } },
+    { keywords: ['truck'], visual: { emoji: '🚚', colors: ['#fed7aa', '#ea580c'] } },
+    { keywords: ['city', 'village', 'country'], visual: { emoji: '🏘️', colors: ['#c7d2fe', '#4f46e5'] } },
+    { keywords: ['garden', 'park'], visual: { emoji: '🌳', colors: ['#bbf7d0', '#15803d'] } },
+    { keywords: ['forest'], visual: { emoji: '🌲', colors: ['#86efac', '#166534'] } },
+    { keywords: ['market', 'shop', 'supermarket'], visual: { emoji: '🛒', colors: ['#fde68a', '#ca8a04'] } },
+    { keywords: ['school', 'university', 'lesson', 'course', 'training'], visual: { emoji: '🎓', colors: ['#c7d2fe', '#4338ca'] } },
+    { keywords: ['hospital'], visual: { emoji: '🏥', colors: ['#fecaca', '#dc2626'] } },
+    { keywords: ['station'], visual: { emoji: '🚉', colors: ['#cbd5e1', '#64748b'] } },
+    { keywords: ['office', 'company', 'factory'], visual: { emoji: '🏢', colors: ['#dbeafe', '#2563eb'] } },
+    { keywords: ['house', 'home', 'apartment', 'building', 'room'], visual: { emoji: '🏠', colors: ['#fed7aa', '#f97316'] } },
+    { keywords: ['kitchen'], visual: { emoji: '🍳', colors: ['#fde68a', '#f59e0b'] } },
+    { keywords: ['bathroom'], visual: { emoji: '🛁', colors: ['#bae6fd', '#0ea5e9'] } },
+    { keywords: ['bedroom'], visual: { emoji: '🛏️', colors: ['#ddd6fe', '#8b5cf6'] } },
+    { keywords: ['museum'], visual: { emoji: '🏛️', colors: ['#e5e7eb', '#6b7280'] } },
+    { keywords: ['library'], visual: { emoji: '📚', colors: ['#bfdbfe', '#2563eb'] } },
+    { keywords: ['restaurant', 'cafe'], visual: { emoji: '🍽️', colors: ['#fecaca', '#ef4444'] } },
+    { keywords: ['bank'], visual: { emoji: '🏦', colors: ['#dbeafe', '#1d4ed8'] } },
+    { keywords: ['theater', 'cinema'], visual: { emoji: '🎭', colors: ['#fbcfe8', '#be185d'] } },
+    { keywords: ['stadium'], visual: { emoji: '🏟️', colors: ['#bbf7d0', '#16a34a'] } },
+    { keywords: ['meeting', 'conference', 'discussion', 'conversation', 'interview'], visual: { emoji: '🗣️', colors: ['#ddd6fe', '#7c3aed'] } },
+    { keywords: ['exam'], visual: { emoji: '📝', colors: ['#fde68a', '#ca8a04'] } },
+    { keywords: ['project', 'program', 'plan'], visual: { emoji: '📋', colors: ['#bfdbfe', '#2563eb'] } },
+    { keywords: ['trip', 'journey', 'vacation', 'holiday'], visual: { emoji: '🧳', colors: ['#fed7aa', '#ea580c'] } },
+    { keywords: ['game'], visual: { emoji: '🎮', colors: ['#c7d2fe', '#4338ca'] } },
+    { keywords: ['tree', 'flower', 'plant', 'grass'], visual: { emoji: '🌿', colors: ['#bbf7d0', '#16a34a'] } },
+    { keywords: ['wind', 'air'], visual: { emoji: '💨', colors: ['#e0f2fe', '#38bdf8'] } },
+    { keywords: ['rain', 'waterfall'], visual: { emoji: '🌧️', colors: ['#bae6fd', '#0284c7'] } },
+    { keywords: ['snow'], visual: { emoji: '❄️', colors: ['#f8fafc', '#93c5fd'] } },
+    { keywords: ['sun'], visual: { emoji: '☀️', colors: ['#fde68a', '#f59e0b'] } },
+    { keywords: ['moon', 'evening'], visual: { emoji: '🌙', colors: ['#c7d2fe', '#4f46e5'] } },
+    { keywords: ['star'], visual: { emoji: '⭐', colors: ['#fde68a', '#ca8a04'] } },
+    { keywords: ['stone'], visual: { emoji: '🪨', colors: ['#d6d3d1', '#78716c'] } },
+    { keywords: ['earth', 'world'], visual: { emoji: '🌍', colors: ['#bbf7d0', '#0f766e'] } },
+    { keywords: ['freedom', 'peace', 'hope', 'love'], visual: { emoji: '🕊️', colors: ['#dbeafe', '#60a5fa'] } },
+    { keywords: ['health'], visual: { emoji: '❤️', colors: ['#fecaca', '#dc2626'] } },
+    { keywords: ['system', 'structure', 'method'], visual: { emoji: '⚙️', colors: ['#e5e7eb', '#6b7280'] } },
+    { keywords: ['progress', 'potential'], visual: { emoji: '📈', colors: ['#bbf7d0', '#16a34a'] } },
+    { keywords: ['experience', 'knowledge', 'idea'], visual: { emoji: '🧠', colors: ['#ddd6fe', '#8b5cf6'] } },
+    { keywords: ['discourse', 'language', 'answer', 'question'], visual: { emoji: '💬', colors: ['#c7d2fe', '#4338ca'] } },
+    { keywords: ['behavior', 'interaction', 'exchange'], visual: { emoji: '🤝', colors: ['#bfdbfe', '#2563eb'] } },
+    { keywords: ['perception', 'viewpoint'], visual: { emoji: '👁️', colors: ['#e0f2fe', '#0284c7'] } },
+    { keywords: ['consensus', 'alignment'], visual: { emoji: '✅', colors: ['#bbf7d0', '#16a34a'] } },
+    { keywords: ['consequence', 'result'], visual: { emoji: '🎯', colors: ['#fecaca', '#ef4444'] } },
+    { keywords: ['contradiction', 'problem'], visual: { emoji: '⚠️', colors: ['#fdba74', '#ea580c'] } },
+    { keywords: ['justification', 'logic', 'theory', 'strategy'], visual: { emoji: '📚', colors: ['#ddd6fe', '#7c3aed'] } },
+    { keywords: ['impulse', 'energy'], visual: { emoji: '⚡', colors: ['#fde68a', '#eab308'] } },
+    { keywords: ['culture', 'society'], visual: { emoji: '🌐', colors: ['#bfdbfe', '#2563eb'] } },
+    { keywords: ['tax'], visual: { emoji: '💰', colors: ['#fde68a', '#ca8a04'] } },
+  ];
+
+  const matchedVisual = keywordVisuals.find(({ keywords }) => keywords.some((keyword) => translation.includes(keyword)));
+  if (matchedVisual) {
+    return matchedVisual.visual;
+  }
+
+  const category = pickCasePromptCategory(word);
+  const baseVisuals: Record<Exclude<CasePromptCategory, 'object'>, { emoji: string; colors: [string, string] }> = {
+    person: { emoji: '🧑', colors: ['#fde68a', '#f59e0b'] },
+    animal: { emoji: '🐾', colors: ['#bfdbfe', '#3b82f6'] },
+    food: { emoji: '🍽️', colors: ['#fecaca', '#ef4444'] },
+    place: { emoji: '🏛️', colors: ['#c7d2fe', '#6366f1'] },
+    vehicle: { emoji: '🚗', colors: ['#bae6fd', '#0ea5e9'] },
+    document: { emoji: '📄', colors: ['#e5e7eb', '#6b7280'] },
+    abstract: { emoji: '💡', colors: ['#ddd6fe', '#8b5cf6'] },
+  };
+
+  if (category !== 'object') {
+    return baseVisuals[category];
+  }
+
+  const objectVisuals = [
+    { emoji: '🧩', colors: ['#bbf7d0', '#22c55e'] as [string, string] },
+    { emoji: '🔑', colors: ['#fde68a', '#f59e0b'] as [string, string] },
+    { emoji: '🪑', colors: ['#fed7aa', '#f97316'] as [string, string] },
+    { emoji: '💼', colors: ['#bfdbfe', '#2563eb'] as [string, string] },
+    { emoji: '📦', colors: ['#fecdd3', '#e11d48'] as [string, string] },
+    { emoji: '🛋️', colors: ['#ddd6fe', '#7c3aed'] as [string, string] },
+    { emoji: '💻', colors: ['#a5f3fc', '#0891b2'] as [string, string] },
+    { emoji: '📱', colors: ['#c7d2fe', '#4f46e5'] as [string, string] },
+  ];
+
+  const hash = word.word.split('').reduce((total, char) => total + char.charCodeAt(0), 0);
+  return objectVisuals[hash % objectVisuals.length];
 }
 
 const buildClassicQuestions = (words: WordSeed[]): GameQuestion[] =>
@@ -1230,7 +1544,6 @@ export default function App() {
   const [stats, setStats] = useState<AppStats>(createEmptyStats);
   const [settings, setSettings] = useState<Settings>(defaultSettings);
   const [selectedLevel, setSelectedLevel] = useState<LevelId>('A1');
-  const [selectedGameFamily, setSelectedGameFamily] = useState<GameFamily>('article');
   const [selectedGameMode, setSelectedGameMode] = useState<GameMode>('classic');
   const [wordListPage, setWordListPage] = useState(0);
   const [wordListMode, setWordListMode] = useState<WordListMode>('menu');
@@ -1475,7 +1788,7 @@ export default function App() {
     ]).start();
   };
 
-  const startGame = (level: LevelId, family: GameFamily = 'article', mode: GameMode = 'classic') => {
+  const startGame = (level: LevelId, mode: GameMode = 'classic') => {
     const reviewPool =
       mode === 'review'
         ? mistakes.filter((item) => item.level === level)
@@ -1483,10 +1796,10 @@ export default function App() {
     const nextWords =
       mode === 'timed'
         ? buildRoundFromPool(LEVEL_POOLS[level], LEVEL_POOLS[level].length)
+        : mode === 'developer'
+          ? buildDeveloperPool()
         : mode === 'review'
           ? buildRoundFromPool(reviewPool, ROUND_LENGTH)
-          : family === 'case'
-            ? buildRound(level).slice(0, CASE_WORD_COUNT)
           : buildRound(level);
 
     if (mode === 'review' && nextWords.length === 0) {
@@ -1495,19 +1808,16 @@ export default function App() {
     }
 
     const nextRound =
-      family === 'case'
-        ? buildCaseQuestions(nextWords)
-        : mode === 'find_wrong'
-          ? buildFindWrongQuestions(nextWords)
-          : buildClassicQuestions(nextWords);
+      mode === 'find_wrong'
+        ? buildFindWrongQuestions(nextWords)
+        : buildClassicQuestions(nextWords);
 
     setSelectedLevel(level);
-    setSelectedGameFamily(family);
     setSelectedGameMode(mode);
     setCurrentRound(nextRound);
     setCurrentIndex(0);
     setScore(0);
-    setLives(mode === 'timed' ? 0 : mode === 'one_life' ? 1 : STARTING_LIVES);
+    setLives(mode === 'timed' || mode === 'developer' ? 0 : mode === 'one_life' ? 1 : STARTING_LIVES);
     setCurrentStreak(0);
     setRoundBestStreak(0);
     setCorrectCount(0);
@@ -1530,7 +1840,6 @@ export default function App() {
       wrong: finalWrong,
       bestStreak: finalBestStreak,
       level: selectedLevel,
-      family: selectedGameFamily,
       mode: selectedGameMode,
     });
 
@@ -1565,7 +1874,7 @@ export default function App() {
     const nextWrong = isCorrect ? wrongCount : wrongCount + 1;
     const nextStreak = isCorrect ? currentStreak + 1 : 0;
     const nextBestStreak = Math.max(roundBestStreak, nextStreak);
-    const nextLives = selectedGameMode === 'timed' ? lives : isCorrect ? lives : lives - 1;
+    const nextLives = selectedGameMode === 'timed' || selectedGameMode === 'developer' ? lives : isCorrect ? lives : lives - 1;
     const nextScore = isCorrect ? score + 10 + currentStreak * 2 : Math.max(0, score - 4);
 
     setAnswerState({ selected, correct: isCorrect });
@@ -1596,9 +1905,9 @@ export default function App() {
 
     setTimeout(() => {
       const roundFinished = currentIndex + 1 >= currentRound.length;
-      const noLivesLeft = selectedGameMode !== 'timed' && !isCorrect && nextLives <= 0;
+      const noLivesLeft = selectedGameMode !== 'timed' && selectedGameMode !== 'developer' && !isCorrect && nextLives <= 0;
 
-      if (!isCorrect && selectedGameMode !== 'timed') {
+      if (!isCorrect && selectedGameMode !== 'timed' && selectedGameMode !== 'developer') {
         setLives(nextLives);
       }
 
@@ -1788,61 +2097,7 @@ export default function App() {
           <ScrollView contentContainerStyle={styles.levelsScrollContent}>
             <Text style={[styles.sectionTitle, { color: uiTheme.title }]}>{t.chooseGameMode}</Text>
 
-            <Pressable
-              key="article-family-mode"
-              style={styles.levelCard}
-              onPress={() =>
-                handleButtonPress(() => {
-                  setSelectedGameFamily('article');
-                  setScreen('articleGameModes');
-                })
-              }
-            >
-              <LinearGradient
-                colors={BUTTON_GRADIENTS.gold.colors}
-                start={{ x: 0, y: 0.5 }}
-                end={{ x: 1, y: 0.5 }}
-                style={styles.levelGradient}
-              >
-                <View>
-                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>{t.articleGameFamily}</Text>
-                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>
-                    {t.articleGameFamilyHint}
-                  </Text>
-                </View>
-              </LinearGradient>
-            </Pressable>
-
-            <Pressable
-              key="case-mode"
-              style={styles.levelCard}
-              onPress={() =>
-                handleButtonPress(() => {
-                  setSelectedGameFamily('case');
-                  setScreen('caseGameModes');
-                })
-              }
-            >
-              <LinearGradient colors={BUTTON_GRADIENTS.teal.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
-                <View>
-                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.teal.textColor }]}>{t.modeCase}</Text>
-                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.teal.textColor }]}>{t.modeCaseHint}</Text>
-                </View>
-              </LinearGradient>
-            </Pressable>
-
-            <GradientButton label={t.levels} variant="blue" onPress={() => handleButtonPress(() => setScreen('levels'))} />
-            <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
-          </ScrollView>
-        </View>
-      )}
-
-      {screen === 'articleGameModes' && (
-        <View style={styles.levelsScreen}>
-          <ScrollView contentContainerStyle={styles.levelsScrollContent}>
-            <Text style={[styles.sectionTitle, { color: uiTheme.title }]}>{t.articleGameFamily}</Text>
-
-            <Pressable key="classic-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'article', 'classic'))}>
+            <Pressable key="classic-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'classic'))}>
               <LinearGradient
                 colors={BUTTON_GRADIENTS.gold.colors}
                 start={{ x: 0, y: 0.5 }}
@@ -1851,14 +2106,12 @@ export default function App() {
               >
                 <View>
                   <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>{t.modeClassic}</Text>
-                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>
-                    {t.modeClassicHint}
-                  </Text>
+                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>{t.modeClassicHint}</Text>
                 </View>
               </LinearGradient>
             </Pressable>
 
-            <Pressable key="timed-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'article', 'timed'))}>
+            <Pressable key="timed-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'timed'))}>
               <LinearGradient colors={BUTTON_GRADIENTS.blue.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
                 <View>
                   <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.blue.textColor }]}>{t.modeTimed}</Text>
@@ -1867,7 +2120,7 @@ export default function App() {
               </LinearGradient>
             </Pressable>
 
-            <Pressable key="one-life-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'article', 'one_life'))}>
+            <Pressable key="one-life-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'one_life'))}>
               <LinearGradient colors={BUTTON_GRADIENTS.berry.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
                 <View>
                   <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.berry.textColor }]}>{t.modeOneLife}</Text>
@@ -1876,7 +2129,7 @@ export default function App() {
               </LinearGradient>
             </Pressable>
 
-            <Pressable key="review-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'article', 'review'))}>
+            <Pressable key="review-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'review'))}>
               <LinearGradient colors={BUTTON_GRADIENTS.teal.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
                 <View>
                   <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.teal.textColor }]}>{t.modeReview}</Text>
@@ -1885,7 +2138,7 @@ export default function App() {
               </LinearGradient>
             </Pressable>
 
-            <Pressable key="find-wrong-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'article', 'find_wrong'))}>
+            <Pressable key="find-wrong-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'find_wrong'))}>
               <LinearGradient colors={BUTTON_GRADIENTS.slate.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
                 <View>
                   <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.slate.textColor }]}>{t.modeFindWrong}</Text>
@@ -1894,59 +2147,16 @@ export default function App() {
               </LinearGradient>
             </Pressable>
 
-            <GradientButton label={t.back} variant="blue" onPress={() => handleButtonPress(() => setScreen('gameModes'))} />
-            <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
-          </ScrollView>
-        </View>
-      )}
-
-      {screen === 'caseGameModes' && (
-        <View style={styles.levelsScreen}>
-          <ScrollView contentContainerStyle={styles.levelsScrollContent}>
-            <Text style={[styles.sectionTitle, { color: uiTheme.title }]}>{t.modeCase}</Text>
-
-            <Pressable key="case-classic-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'case', 'classic'))}>
-              <LinearGradient
-                colors={BUTTON_GRADIENTS.gold.colors}
-                start={{ x: 0, y: 0.5 }}
-                end={{ x: 1, y: 0.5 }}
-                style={styles.levelGradient}
-              >
-                <View>
-                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>{t.modeCaseClassic}</Text>
-                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.gold.textColor }]}>{t.modeCaseClassicHint}</Text>
-                </View>
-              </LinearGradient>
-            </Pressable>
-
-            <Pressable key="case-timed-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'case', 'timed'))}>
-              <LinearGradient colors={BUTTON_GRADIENTS.blue.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
-                <View>
-                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.blue.textColor }]}>{t.modeTimed}</Text>
-                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.blue.textColor }]}>{t.modeTimedHint}</Text>
-                </View>
-              </LinearGradient>
-            </Pressable>
-
-            <Pressable key="case-one-life-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'case', 'one_life'))}>
+            <Pressable key="developer-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'developer'))}>
               <LinearGradient colors={BUTTON_GRADIENTS.berry.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
                 <View>
-                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.berry.textColor }]}>{t.modeOneLife}</Text>
-                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.berry.textColor }]}>{t.modeOneLifeHint}</Text>
+                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.berry.textColor }]}>{t.modeDeveloper}</Text>
+                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.berry.textColor }]}>{t.modeDeveloperHint}</Text>
                 </View>
               </LinearGradient>
             </Pressable>
 
-            <Pressable key="case-review-mode" style={styles.levelCard} onPress={() => handleButtonPress(() => startGame(selectedLevel, 'case', 'review'))}>
-              <LinearGradient colors={BUTTON_GRADIENTS.teal.colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={styles.levelGradient}>
-                <View>
-                  <Text style={[styles.levelTitle, { color: BUTTON_GRADIENTS.teal.textColor }]}>{t.modeReview}</Text>
-                  <Text style={[styles.levelSubtitle, { color: BUTTON_GRADIENTS.teal.textColor }]}>{t.modeReviewHint}</Text>
-                </View>
-              </LinearGradient>
-            </Pressable>
-
-            <GradientButton label={t.back} variant="blue" onPress={() => handleButtonPress(() => setScreen('gameModes'))} />
+            <GradientButton label={t.levels} variant="blue" onPress={() => handleButtonPress(() => setScreen('levels'))} />
             <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
           </ScrollView>
         </View>
@@ -2247,7 +2457,7 @@ export default function App() {
               <Text style={styles.gameStatLabel}>{t.streak}</Text>
               <Text style={styles.gameStatValue}>{currentStreak}</Text>
             </View>
-            {selectedGameMode !== 'timed' && (
+            {selectedGameMode !== 'timed' && selectedGameMode !== 'developer' && (
               <View style={[styles.gameStatCard, styles.gameStatCardRose]}>
                 <Text style={styles.gameStatLabel}>{t.lives}</Text>
                 <Text style={styles.gameStatValue}>{'\u2665'.repeat(lives)}</Text>
@@ -2283,16 +2493,18 @@ export default function App() {
             </Animated.View>
 
             <View style={styles.questionCard}>
-              {selectedGameFamily === 'case' && (
-                <Text style={styles.caseQuestionLabel}>
-                  {currentQuestion.kind === 'article'
-                    ? currentQuestion.label[settings.language]
-                    : `${currentQuestion.label[settings.language]} \u00b7 ${CASE_KIND_DESCRIPTIONS[currentQuestion.kind as Exclude<QuestionKind, 'find_wrong' | 'article'>][settings.language]}`}
-                </Text>
-              )}
               {currentQuestion.kind === 'find_wrong' && (
                 <Text style={styles.findWrongQuestionLabel}>{currentQuestion.prompt}</Text>
               )}
+
+              <LinearGradient
+                colors={getWordVisual(currentQuestion).colors}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={styles.developerVisualCard}
+              >
+                <Text style={styles.developerVisualEmoji}>{getWordVisual(currentQuestion).emoji}</Text>
+              </LinearGradient>
 
               {answerState && (
                 <View
@@ -2315,11 +2527,7 @@ export default function App() {
                 </View>
               )}
 
-              {currentQuestion.kind !== 'find_wrong' && (
-                <Text style={[styles.wordText, selectedGameFamily === 'case' && currentQuestion.kind !== 'article' && styles.wordTextCase]}>
-                  {selectedGameFamily === 'case' && currentQuestion.kind !== 'article' ? currentQuestion.prompt : currentQuestion.word}
-                </Text>
-              )}
+              {currentQuestion.kind !== 'find_wrong' && <Text style={styles.wordText}>{currentQuestion.word}</Text>}
               {currentQuestion.translation[settings.language] && currentQuestion.kind !== 'find_wrong' ? (
                 <Text style={styles.questionTranslation}>
                   {currentQuestion.translation[settings.language]}
@@ -2376,7 +2584,7 @@ export default function App() {
             </View>
           </View>
 
-          <GradientButton label={t.replayLevel} variant="gold" onPress={() => handleButtonPress(() => startGame(lastSummary.level, lastSummary.family, lastSummary.mode))} />
+          <GradientButton label={t.replayLevel} variant="gold" onPress={() => handleButtonPress(() => startGame(lastSummary.level, lastSummary.mode))} />
           <GradientButton label={t.levels} variant="blue" onPress={() => handleButtonPress(() => setScreen('levels'))} />
           <GradientButton label={t.home} variant="slate" onPress={() => handleButtonPress(() => setScreen('home'))} />
         </ScrollView>
@@ -3045,6 +3253,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderColor: '#eadcc8',
+  },
+  developerVisualCard: {
+    width: 124,
+    height: 124,
+    borderRadius: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 8,
+    shadowColor: '#d1c1ae',
+    shadowOpacity: 0.16,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 3,
+  },
+  developerVisualEmoji: {
+    fontSize: 60,
   },
   articleRevealBadge: {
     marginTop: 12,

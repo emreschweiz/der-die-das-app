@@ -66,7 +66,7 @@ npm start -- --lan -c
 
 ## Gameplay Rules
 
-- each round contains 12 words
+- each round contains 10 words
 - player starts with 3 lives
 - correct answers increase score
 - consecutive correct answers build streak
@@ -85,13 +85,18 @@ The current MVP includes these categories:
 
 ## Project Structure
 
-At the moment the app is intentionally simple and most of the MVP lives in a single file:
+The app is still intentionally simple, but the core pieces are split by responsibility:
 
-- `App.tsx`: screens, game logic, local state, persistence
+- `App.tsx`: screens, local state, persistence, and app flow
+- `src/game.ts`: word pools and quiz question generation
+- `src/progress.ts`: statistics helpers and performance colors
+- `src/styles.ts`: shared React Native styles
+- `src/types.ts`: shared app types
+- `src/data/wordLists.ts`: level-based word data
 - `index.ts`: Expo entry point
 - `app.json`: Expo app configuration
 
-This structure is temporary and can be split into smaller modules later.
+This structure keeps the MVP easy to change without hiding the main app flow.
 
 ## Notes
 
@@ -107,4 +112,3 @@ This structure is temporary and can be split into smaller modules later.
 - add sounds and animations
 - introduce spaced repetition logic
 - move to proper navigation and modular folder structure
-
